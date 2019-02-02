@@ -4,6 +4,10 @@
 \usepackage{xcolor}
 \usepackage[colorlinks]{hyperref}
 
+\ctexset{
+  section/format = \Large\bfseries\raggedright
+}
+
 \lstset{
   backgroundcolor = \color{lightgray!30},
   keywordstyle = \color{blue},
@@ -12,7 +16,8 @@
   basicstyle = {\small\ttfamily},
   breaklines = true,
   tabsize = 4,
-  gobble = 2
+  gobble = 2,
+  numbers = left
 }
 
 \title{一份简短的安装 \LaTeX 的介绍}
@@ -23,17 +28,23 @@
 \maketitle
 
 \begin{abstract}
-  在QQ群91940767时，经常有群友咨询如何安装 \LaTeX。本文将介绍Windows系统中安装 \TeX Live、升级宏包、编译简易文档、配置编辑器的相关操作，并多以介绍命令行操作为主。建议用户阅读 \href{http://www.latexstudio.net/archives/11469.html}{LaTeX2e安装 \& 新手指点 FAQ} 和 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-ch} 以更全面地了解基础内容。本文所涉及到的代码还请用户多多动手，不要简单地复制粘贴。
+  在QQ群91940767时，经常有群友咨询如何安装 \LaTeX。
+  本文将介绍Windows 10系统中安装 \TeX Live、升级宏包、编译简易文档、配置编辑器的相关操作，并多以介绍命令行操作为主。
+  建议用户阅读 \href{http://www.latexstudio.net/archives/11469.html}{LaTeX2e安装 \& 新手指点 FAQ} 和 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-ch} 以更全面地了解基础内容。
+  本文所涉及到的代码还请用户多多动手，不要简单地复制粘贴。
 \end{abstract}
 
 \section{安装 \TeX Live}
-首先用户下载 \TeX Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{光盘镜像}。下载完毕后，可以将光盘镜像加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载，无需使用其他软件}，亦可直接解压缩。假设加载或解压缩后的路径为 \verb|X:\texlive|。
+首先用户下载 \TeX Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{光盘镜像}。
+下载完毕后，可以将光盘镜像加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载，无需使用其他软件}，亦可直接解压缩。
+假设加载或解压缩后的路径为 \texttt{X:\textbackslash texlive}。
 
-接下来，用户打开 \verb|cmd| 窗口\footnote{微软键加\texttt{R}键，即可打开“运行”，在其中输入\texttt{cmd}后确定即可}，执行\footnote{输入下列代码并按\texttt{enter}键即为执行}
+接下来，用户打开 \texttt{cmd} 窗口\footnote{微软键加\texttt{R}键，即可打开“运行”，在其中输入\texttt{cmd}后确定即可}，执行\footnote{输入下列代码并按\texttt{enter}键即为执行}
 \begin{lstlisting}[language = bash]
   echo %path%
 \end{lstlisting}
-查看环境变量\footnote{注意空格}。若 \verb|C:\Windows\system32| 不在结果中\footnote{这里默认系统盘为\texttt{C}盘}，则需要在 \verb|cmd| 中继续执行
+查看环境变量\footnote{注意空格}。
+若 \texttt{C:\textbackslash Windows\textbackslash system32} 不在结果中\footnote{这里默认系统盘为\texttt{C}盘}，则需要在 \texttt{cmd} 中继续执行
 \begin{lstlisting}[language = bash]
   path=C:\Windows\system32;%path%
 \end{lstlisting}
@@ -43,10 +54,182 @@
 \begin{lstlisting}[language = bash]
   cd /d X:\texlive
 \end{lstlisting}
-切换路径。接下来执行
+切换路径。
+接下来执行
 \begin{lstlisting}[language = bash]
-  install-tl-windows.bat -no-gui
+  install-tl-windows.bat --no-gui
 \end{lstlisting}
 即可进入安装流程。
+
+此安装方法所采取的是纯命令行操作，因此用户将看到如下的结果\footnote{有部分用户反应，使用命令行安装时，系统会提示用户无权限（Permission）。
+  对于这种情况，建议用户右键桌面左下角的“开始”图标，找到 \texttt{Windows PowerShell(管理员)}。
+  之后执行 \texttt{cmd}，便可获取权限。}
+\begin{lstlisting}
+  =====================> TeX Live installation procedure <=====================
+  
+  ======>   Letters/digits in <angle brackets> indicate   <=======
+  ======>   menu items for actions or customizations      <=======
+  
+  Detected platform: Windows
+  
+  <B> set binary platforms: 1 out of 8
+  
+  <S> set installation scheme: scheme-full
+  
+  <C> set installation collections:
+  41 collections out of 41, disk space required: 5541 MB
+  
+  <D> set directories:
+  TEXDIR (the main TeX directory):
+  C:/texlive/2018
+  TEXMFLOCAL (directory for site-wide local files):
+  C:/texlive/texmf-local
+  TEXMFSYSVAR (directory for variable and automatically generated data):
+  C:/texlive/2018/texmf-var
+  TEXMFSYSCONFIG (directory for local config):
+  C:/texlive/2018/texmf-config
+  TEXMFVAR (personal directory for variable and automatically generated data):
+  ~/.texlive2018/texmf-var
+  TEXMFCONFIG (personal directory for local config):
+  ~/.texlive2018/texmf-config
+  TEXMFHOME (directory for user-specific files):
+  ~/texmf
+  
+  <O> options:
+  [ ] use letter size instead of A4 by default
+  [X] allow execution of restricted list of programs via \write18
+  [X] create all format files
+  [X] install macro/font doc tree
+  [X] install macro/font source tree
+  [X] adjust search path
+  [1] add menu items, shortcuts, etc.                                                                                                                                                                                                          [1] update file associations                                                                                                                                                                                                                 [X] install TeXworks front end
+  [X] after install, use tlnet on CTAN for package updates
+  
+  <V> set up for portable installation
+  
+  Actions:
+  <I> start installation to hard disk
+  <P> save installation profile to 'texlive.profile' and exit
+  <H> help
+  <Q> quit
+  
+  Enter command:
+\end{lstlisting}
+这时，用户可先执行 \texttt{D} 来更改安装路径，也可直接执行 \texttt{I} 在默认路径中安装 \TeX Live。
+
+执行 \texttt{D} 后，用户可看到
+\begin{lstlisting}
+  ==============================================================================
+  Directories customization:
+  
+  <1> TEXDIR:       C:/texlive/2018
+  support tree: C:/texlive/2018/texmf-dist
+  
+  <2> TEXMFLOCAL:     C:/texlive/texmf-local
+  <3> TEXMFSYSVAR:    C:/texlive/2018/texmf-var
+  <4> TEXMFSYSCONFIG: C:/texlive/2018/texmf-config
+  
+  <5> TEXMFVAR:       ~/.texlive2018/texmf-var
+  <6> TEXMFCONFIG:    ~/.texlive2018/texmf-config
+  <7> TEXMFHOME:      ~/texmf
+  
+  Note: ~ will expand to %USERPROFILE%
+  
+  Actions:
+  <R> return to main menu
+  <Q> quit
+  
+  Enter command:
+\end{lstlisting}
+这时执行数字 \texttt{1}，将看到
+\begin{lstlisting}
+  New value for TEXDIR [C:/texlive/2018]:
+\end{lstlisting}
+即可更改路径，如 \texttt{D:/texlive/2018}。
+接下来，执行 \texttt{R} 即可回到初始的安装界面。
+其他操作用户可通过阅读英文自行执行，这里不再赘述。
+至此，用户只需耐心等待安装完成。
+
+安装完成后，执行 \texttt{exit} 退出命令行，再打开，执行
+\begin{lstlisting}
+  tex -v
+\end{lstlisting}
+以验证安装是否成功\footnote{关闭原 \texttt{cmd} 窗口再重新打开才能获取新的环境变量}。
+结果显示为
+\begin{lstlisting}
+  TeX 3.14159265 (TeX Live 2018/W32TeX)
+  kpathsea version 6.3.0
+  Copyright 2018 D.E. Knuth.
+  There is NO warranty.  Redistribution of this software is
+  covered by the terms of both the TeX copyright and
+  the Lesser GNU General Public License.
+  For more information about these matters, see the file
+  named COPYING and the TeX source.
+  Primary author of TeX: D.E. Knuth.
+\end{lstlisting}
+即可认为安装顺利完成。
+
+\section{卸载 \TeX Live}
+有些时候，如跨版本升级 \TeX Live， 用户需要卸载 \TeX Live。
+相较于安装，卸载稍容易一些。
+用户找卸载批命令文件，如 \texttt{C:\textbackslash texlive\textbackslash 2018\textbackslash tlpkg\textbackslash installer\textbackslash uninst.bat}。
+双击或在 \texttt{cmd} 中运行均可。
+
+\section{升级宏包}
+安装完成后，用户可以升级宏包以获得更好的使用体验。
+下面将介绍使用命令行升级宏包的相关操作。
+
+打开 \texttt{cmd} 窗口，首先执行
+\begin{lstlisting}
+  tlmgr option repository ctan
+\end{lstlisting}
+指定升级源。
+\texttt{ctan} 表示系统在升级时将自动寻求最近的源进行下载。
+用户同样可指定源为国内的大学镜像，如
+\begin{lstlisting}
+  tlmgr option repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet
+\end{lstlisting}
+是将源定位在清华大学，
+\begin{lstlisting}
+  tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
+\end{lstlisting}
+是将源定位在中国科技大学。
+
+接下来，用户执行命令
+\begin{lstlisting}
+  tlmgr update --list
+\end{lstlisting}
+可查看目前源上可升级的宏包都有哪些。
+高级用户可以根据自己的需求选择升级特定宏包，而初级用户建议直接升级全部宏包。
+用户只需执行
+\begin{lstlisting}
+  tlmgr update --self --all
+\end{lstlisting}
+同时升级 \texttt{tlmgr} 本身和全部宏包。
+
+部分用户会碰到升级不成功的情况，这些情况我们将一一给出处理办法。
+
+\subsection{\texttt{tlmgr} 本身无法成功升级}
+
+遇到这种情况时，用户需自行下载 \href{http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe}{update-tlmgr-latest.exe}，然后再执行升级命令即可。
+
+\subsection{升级到一半停止}
+
+这种情况下，用户需要执行另外一个命令继续升级
+\begin{lstlisting}
+  tlmgr update −−reinstall−forcibly−removed --all
+\end{lstlisting}
+
+\section{编译文档}
+
+升级宏包完成后，用户可以编译文档。
+在这里，我依旧执拗地使用命令行来完成这一过程。
+
+首先，用户需要在指定位置建立一个 \texttt{tex} 文件。
+在命令行执行
+\begin{lstlisting}[language = bash]
+  mkdir E:\work_latex\
+\end{lstlisting}
+
 
 \end{document}
