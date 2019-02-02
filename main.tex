@@ -1,4 +1,3 @@
-%!TEX program = xelatex
 \documentclass{ctexart}
 \usepackage[margin=1in]{geometry}
 \usepackage{listings}
@@ -40,7 +39,7 @@
 首先用户下载 \TeX{} Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{镜像文件}。下载完毕后，可以将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载，无需使用其他软件}，推荐使用 WinCDEmu 进行加载。
 假设加载后的路径为 \texttt{X:\textbackslash texlive}。
 
-接下来，用户打开 \texttt{cmd} 窗口\footnote{在 Windows 搜索栏里面搜 cmd 即可}，输入下面代码
+接下来，用户打开 \texttt{cmd} 窗口\footnote{在 Windows 搜索栏里面搜 cmd，系统显示“命令提示符”即为 \texttt{cmd} 窗口}，执行以下代码
 \begin{lstlisting}[language = bash]
   echo %path%
 \end{lstlisting}
@@ -59,7 +58,7 @@
 即可进入安装流程。
 
 此安装方法所采取的是纯命令行操作，因此用户将看到如下的结果\footnote{有部分用户反应，使用命令行安装时，系统会提示用户无权限（Permission）。
-  对于这种情况，可以在打开 cmd 的时候选择以管理员权限打开即可。}
+  对于这种情况，可以右键“命令提示符”，选择“以管理员身份运行”。}
 \begin{lstlisting}
   =====================> TeX Live installation procedure <=====================
   
@@ -160,9 +159,6 @@
 \section{卸载 \TeX{} Live}
 有些时候，如跨版本升级 \TeX{} Live， 用户需要卸载 \TeX{} Live。相较于安装，卸载稍容易一些。用户找卸载批命令文件，如 \texttt{C:\textbackslash texlive\textbackslash 2018\textbackslash tlpkg\textbackslash installer\textbackslash uninst.bat}。双击或在 \texttt{cmd} 中运行均可。
 
-\section{安装宏包}
-% 待补充...
-
 \section{升级宏包}
 安装完成后，用户可以升级宏包以获得更好的使用体验。下面将介绍使用命令行升级宏包。打开 \texttt{cmd} 窗口，首先执行下面命令指定升级使用的镜像源。\texttt{ctan} 表示系统在升级时将自动寻求最近的源进行下载。
 \begin{lstlisting}
@@ -176,7 +172,6 @@
 \begin{lstlisting}
   tlmgr option repository https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
 \end{lstlisting}
-
 接下来，用户执行命令
 \begin{lstlisting}
   tlmgr update --list
@@ -200,19 +195,23 @@
   tlmgr update −−reinstall−forcibly−removed --all
 \end{lstlisting}
 
-\section{编译文档}
+\section{安装宏包}
+在默认状态下，用户将完整安装 \TeX{} Live，因此用户极少碰到需要手动安装宏包的情形。同时，在 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-ch} 中也明确提到，\textbf{如非万不得已，尽量不要手动安装宏包}。因此在这里我只介绍从源处安装宏包的命令。假设用户想安装 \texttt{mcmthesis} 宏包，只需在 \texttt{cmd} 窗口执行
+\begin{lstlisting}
+  tlmgr install mcmthesis
+\end{lstlisting}
+需要注意的是，用户一定要清楚所要安装的宏包名称，并且在安装宏包前先确保镜像源设置正确。
 
+\section{编译文档}
 升级宏包完成后，用户可以编译文档。在这里，我依旧执拗地使用命令行来完成这一过程。
 
-首先，用户需要在指定位置建立一个 \texttt{tex} 文件：
+首先，用户需要在指定位置\footnote{以下称工作路径}建立一个 \texttt{tex} 文件：
 \begin{lstlisting}[language = bash]
-  mkdir E:\work_latex % create working directory
-  cd /d E:\work_latex  % cd to the working directory
-  notepad main.tex % create main.tex file
+  mkdir E:\work_latex
+  cd /d E:\work_latex
+  notepad main.tex
 \end{lstlisting}
-
-在打开的记事本中输入一个最小实例
-
+第1行表示创建一个工作路径 \texttt{E:\textbackslash work\_latex}，第2行表示进入工作路径，第3行表示用记事本打开 \texttt{main.tex} 文件，若文件不存在，系统将询问用户是否创建该文件。在打开的记事本中输入一个最小实例
 \begin{lstlisting}[language = tex]
   \documentclass{article}
   \begin{document}
