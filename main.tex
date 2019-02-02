@@ -17,7 +17,11 @@
   breaklines = true,
   tabsize = 4,
   gobble = 2,
-  numbers = left
+  numbers = left,
+  emph={ 
+    mkdir,
+  },
+  emphstyle={\color{blue}\small\ttfamily}%
 }
 
 \title{一份简短的安装 \LaTeX 的介绍}
@@ -228,8 +232,46 @@
 首先，用户需要在指定位置建立一个 \texttt{tex} 文件。
 在命令行执行
 \begin{lstlisting}[language = bash]
-  mkdir E:\work_latex\
+  mkdir E:\work_latex
 \end{lstlisting}
+以建立一个工作路径\footnote{工作路径是一个文件夹}。
+接下来进入该工作路径
+\begin{lstlisting}[language = bash]
+  cd /d E:\work_latex
+\end{lstlisting}
+并使用记事本生成一个新的 \texttt{tex} 文件
+\begin{lstlisting}
+  notepad main.tex
+\end{lstlisting}
+在打开的记事本中输入一个最小实例
+\begin{lstlisting}
+  \documentclass{article}
+  \begin{document}
+    Hello \LaTeX{} World!
+  \end{document}
+\end{lstlisting}
+保存并退出。
+接下来执行
+\begin{lstlisting}
+  pdflatex main
+\end{lstlisting}
+等待系统完成编译过程。
+待编译完成后，我们即可看到在 \texttt{E:\textbackslash work\_latex} 中出现了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}。
+
+总结一下，在使用 \LaTeX 时，用户首先要在工作路径\footnote{建议不同的文档要放入不同的工作路径}中编写好一个 \texttt{tex} 文件。
+当 \texttt{tex} 文件编写完毕，我们即可使用编译命令\footnote{目前常用的编译命令为 \texttt{pdflatex} 和 \texttt{xelatex}}，将 \texttt{tex} 文件编译成 \texttt{pdf} 文件。
+
+编译命令其实有很多可选参数，如用户能够从 \texttt{pdf} 文件跳回 \texttt{tex} 文件，便是因为执行编译命令时添加了参数
+\begin{lstlisting}
+  pdflatex -synctex=1 main
+\end{lstlisting}
+此外还有很多其他参数，用户若感兴趣，可自行阅读手册。
+
+在很多时候，我个人更倾向于使用 \texttt{latexmk} 来编译 \texttt{tex} 文档，如执行
+\begin{lstlisting}
+  latexmk -pdf -synctex=1 -interaction=nonstopmode main
+\end{lstlisting}
+意味着使用 \texttt{pdflatex -synctex=1 -interaction=nonstopmode main} 来编译文档，并在有需要时完成其他步骤\footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译}。
 
 
 \end{document}
