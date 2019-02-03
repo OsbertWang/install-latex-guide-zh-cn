@@ -11,7 +11,6 @@
 \lstset{
   backgroundcolor = \color{lightgray!30},
   keywordstyle = \color{blue},
-  commentstyle = \color{green!40},
   stringstyle = \color{purple!40},
   basicstyle = {\small\ttfamily},
   breaklines = true,
@@ -142,7 +141,7 @@
 \begin{lstlisting}
   tex -v
 \end{lstlisting}
-以验证安装是否成功\footnote{关闭原 \texttt{cmd} 窗口再重新打开才能获取新的环境变量}。结果显示为
+以验证安装是否成功\footnote{正常安装 \TeX{} Live 后，环境变量会变化，关闭原 \texttt{cmd} 窗口再重新打开才能获取新的环境变量}。结果显示为
 \begin{lstlisting}
   TeX 3.14159265 (TeX Live 2018/W32TeX)
   kpathsea version 6.3.0
@@ -160,11 +159,11 @@
 有些时候，如跨版本升级 \TeX{} Live， 用户需要卸载 \TeX{} Live。相较于安装，卸载稍容易一些。用户找卸载批命令文件，如 \texttt{C:\textbackslash texlive\textbackslash 2018\textbackslash tlpkg\textbackslash installer\textbackslash uninst.bat}。双击或在 \texttt{cmd} 中运行均可。
 
 \section{升级宏包}
-安装完成后，用户可以升级宏包以获得更好的使用体验。下面将介绍使用命令行升级宏包。打开 \texttt{cmd} 窗口，首先执行下面命令指定升级使用的镜像源。\texttt{ctan} 表示系统在升级时将自动寻求最近的源进行下载。
+安装完成后，用户可以升级宏包以获得更好的使用体验。下面将介绍使用命令行升级宏包的方法。打开 \texttt{cmd} 窗口，首先执行下面命令指定升级使用的镜像源。\texttt{ctan} 表示系统在升级时将自动寻求最近的源进行下载。
 \begin{lstlisting}
   tlmgr option repository ctan
 \end{lstlisting}
-用户同样可以指定国内其他的镜像源，比如清华大学的镜像源：
+用户同样可以指定其他的镜像源，比如清华大学的镜像源：
 \begin{lstlisting}
   tlmgr option repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet
 \end{lstlisting}
@@ -212,7 +211,7 @@
   notepad main.tex
 \end{lstlisting}
 第1行表示创建一个工作路径 \texttt{E:\textbackslash work\_latex}，第2行表示进入工作路径，第3行表示用记事本打开 \texttt{main.tex} 文件，若文件不存在，系统将询问用户是否创建该文件。在打开的记事本中输入一个最小实例
-\begin{lstlisting}[language = tex]
+\begin{lstlisting}[language = TeX]
   \documentclass{article}
   \begin{document}
     Hello \LaTeX{} World!
@@ -243,5 +242,36 @@
 \end{lstlisting}
 来编译文档，并在有需要时完成其他步骤\footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译}。
 
+\section{配置编辑器}
+在实际操作中，用户会发觉使用记事本编写 \texttt{tex} 文件十分不便，因此很多用户都将其他编辑器作为自己的首选。这里我像大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 TeXworks 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{TeXstudio}。其他编辑器如 \href{https://github.com/EthanDeng/vscode-latex}{VScode} 和 \href{https://ddswhu.me/posts/2018-06/sublime-text-for-latex/}{Sublime Text}，感兴趣的用户可自行了解。
+
+\subsection{TeXworks}
+TeXworks 是一款轻量级的 \LaTeX 编辑器，非常适合入门级用户使用\footnote{很多用户在编写 \texttt{tex} 文件时喜欢借助其他工具，这不是个好习惯，这里鼓励用户多手动敲代码}。
+
+和大多数国产软件不同，TeXworks 不会自动在桌面生成快捷方式，新人往往不知道如何打开它。实际上 TeXworks 在 \TeX{} Live 安装路径的 \texttt{\textbackslash bin\textbackslash win32} 中，可在 \texttt{cmd} 中执行 \texttt{texworks} 打开，也可直接在 Windows 搜索栏里搜 texworks 打开。
+
+刚开始使用 TeXworks 的用户不必过多配置，在默认状态下打开软件、编写代码、保存文件后，用户可使用 TeXworks 的“排版”按钮进行文档编译而不必回到命令行\footnote{实际上编辑器的按钮也是调用命令行来编译文档，TeXworks 默认排版按钮快捷键是 \texttt{ctrl + T}}。按钮旁边是编译命令菜单，用户可根据需要自行选择。
+
+我使用 TeXworks 时使用较多的功能是自动补全和魔法注释。
+
+\subsubsection{自动补全}
+自动补全主要是 \texttt{tab} 键的功能。用它补全环境和某些常用命令比较方便。
+
+\subsubsection{魔法注释}
+魔法注释可以直接规定主文档、文件编码和编译命令等。例如用户写学位论文时，往往有一个主文档和若干子文档。在子文档的开头写上魔法注释
+\begin{lstlisting}[language = TeX]
+  % !TeX root = ../main_file.tex
+\end{lstlisting}
+即可告诉系统上一级目录中的 \texttt{main\_file.tex} 是主文档\footnote{主文档和子文档的更多内容参考 \texttt{\textbackslash include} 和 \texttt{\textbackslash input} 的用法}。魔法注释
+\begin{lstlisting}[language = TeX]
+  % !TeX encoding = UTF8
+\end{lstlisting}
+表示该文档使用 ``utf-8'' 编码\footnote{目前建议用户多用 ``utf-8'' 编码，尤其是中文文档}。魔法注释
+\begin{lstlisting}[language = TeX]
+  % !TeX program = xelatex
+\end{lstlisting}
+表示该文档使用 \texttt{xelatex} 编译命令进行编译。
+
+除以上内容外，TeXworks 还支持正则表达式、自定义快捷键等。这些内容都写在 TeXworks 自带的手册中。手册不长，用户可以通读一遍以了解更多内容。
 
 \end{document}
