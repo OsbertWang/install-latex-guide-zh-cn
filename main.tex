@@ -250,27 +250,41 @@ TeXworks 是一款轻量级的 \LaTeX 编辑器，非常适合入门级用户使
 
 和大多数国产软件不同，TeXworks 不会自动在桌面生成快捷方式，新人往往不知道如何打开它。实际上 TeXworks 在 \TeX{} Live 安装路径的 \texttt{\textbackslash bin\textbackslash win32} 中，可在 \texttt{cmd} 中执行 \texttt{texworks} 打开，也可直接在 Windows 搜索栏里搜 texworks 打开。
 
-刚开始使用 TeXworks 的用户不必过多配置，在默认状态下打开软件、编写代码、保存文件后，用户可使用 TeXworks 的“排版”按钮进行文档编译而不必回到命令行\footnote{实际上编辑器的按钮也是调用命令行来编译文档，TeXworks 默认排版按钮快捷键是 \texttt{ctrl + T}}。按钮旁边是编译命令菜单，用户可根据需要自行选择。
+刚开始使用 TeXworks 的用户不必过多配置，在默认状态下打开软件、编写代码、保存文件后，用户可使用 TeXworks 的“排版”按钮进行文档编译而不必回到命令行\footnote{实际上编辑器的按钮也是调用命令行来编译文档，TeXworks 默认排版快捷键是 \texttt{ctrl + T}}。按钮旁边是编译命令菜单，用户可根据需要自行选择。
 
-我使用 TeXworks 时使用较多的功能是自动补全和魔法注释。
+下面介绍几个常用的功能。
+
+\subsubsection{显示行号}
+打开\texttt{编辑}菜单\texttt{首选项}的\texttt{编辑器}标签，选择\texttt{行号}即可。
 
 \subsubsection{自动补全}
-自动补全主要是 \texttt{tab} 键的功能。用它补全环境和某些常用命令比较方便。
+自动补全主要是 \texttt{tab} 键的功能，使用前需确定\texttt{首选项}的\texttt{编辑器}标签中是否勾选了\texttt{启动自动补全}。
+
+\subsubsection{使用模板}
+TeXworks支持从模板新建文档，在\textbf{文件}菜单中可见。
+
+\subsubsection{拼写检查}
+默认情况，Texworks没有搭载拼写检查字典，需要用户自己配置。
+首先，访问 \href{http://wiki.openoffice.org/wiki/Dictionaries}{openoffice} 下载词典。接下来将词典安装到 \texttt{<resources>\textbackslash dictionaries}。\texttt{<resources>} 的具体位置可以在\texttt{帮助}的\texttt{TeXworks 配置与资源}中找到。安装完成后，在\texttt{编辑}菜单的\texttt{拼写}中选择即可。
 
 \subsubsection{魔法注释}
 魔法注释可以直接规定主文档、文件编码和编译命令等。例如用户写学位论文时，往往有一个主文档和若干子文档。在子文档的开头写上魔法注释
-\begin{lstlisting}[language = TeX]
+\begin{lstlisting}
   % !TeX root = ../main_file.tex
 \end{lstlisting}
-即可告诉系统上一级目录中的 \texttt{main\_file.tex} 是主文档\footnote{主文档和子文档的更多内容参考 \texttt{\textbackslash include} 和 \texttt{\textbackslash input} 的用法}。魔法注释
-\begin{lstlisting}[language = TeX]
+即可告诉系统上一级目录中的 \texttt{main\_file.tex} 是主文档\footnote{主文档和子文档的更多内容参考 \texttt{\textbackslash include} 和 \texttt{\textbackslash input} 的用法}。
+\begin{lstlisting}
   % !TeX encoding = UTF8
 \end{lstlisting}
-表示该文档使用 ``utf-8'' 编码\footnote{目前建议用户多用 ``utf-8'' 编码，尤其是中文文档}。魔法注释
-\begin{lstlisting}[language = TeX]
+表示该文档使用 ``utf-8'' 编码\footnote{目前建议用户多用 ``utf-8'' 编码，尤其是中文文档}。
+\begin{lstlisting}
   % !TeX program = xelatex
 \end{lstlisting}
 表示该文档使用 \texttt{xelatex} 编译命令进行编译。
+\begin{lstlisting}
+  % !TeX spellcheck = <language_code>
+\end{lstlisting}
+表示该文档使用 \texttt{<language\_code>} 进行拼写检查，它的具体名称请用户到\texttt{编辑}菜单的\texttt{拼写}中查看。
 
 除以上内容外，TeXworks 还支持正则表达式、自定义快捷键等。这些内容都写在 TeXworks 自带的手册中。手册不长，用户可以通读一遍以了解更多内容。
 
