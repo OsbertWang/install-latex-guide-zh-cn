@@ -243,7 +243,7 @@
 来编译文档，并在有需要时完成其他步骤\footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译}。
 
 \section{配置编辑器}
-在实际操作中，用户会发觉使用记事本编写 \texttt{tex} 文件十分不便，因此很多用户都将其他编辑器作为自己的首选。这里我像大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 TeXworks 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{TeXstudio}。其他编辑器如 \href{https://github.com/EthanDeng/vscode-latex}{VScode} 和 \href{https://ddswhu.me/posts/2018-06/sublime-text-for-latex/}{Sublime Text}，感兴趣的用户可自行了解。
+在实际操作中，用户会发觉使用记事本编写 \texttt{tex} 文件十分不便，因此很多用户都将其他编辑器作为自己的首选。这里向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 TeXworks 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{TeXstudio}。其他编辑器如 \href{https://github.com/EthanDeng/vscode-latex}{VScode} 和 \href{https://ddswhu.me/posts/2018-06/sublime-text-for-latex/}{Sublime Text}，感兴趣的用户可自行了解。
 
 \subsection{TeXworks}
 TeXworks 是一款轻量级的 \LaTeX 编辑器，非常适合入门级用户使用\footnote{很多用户在编写 \texttt{tex} 文件时喜欢借助其他工具，这不是个好习惯，这里鼓励用户多手动敲代码}。
@@ -255,17 +255,17 @@ TeXworks 是一款轻量级的 \LaTeX 编辑器，非常适合入门级用户使
 下面介绍几个常用的功能。
 
 \subsubsection{显示行号}
-打开\texttt{编辑}菜单\texttt{首选项}的\texttt{编辑器}标签，选择\texttt{行号}即可。
+打开\texttt{编辑 -> 首选项 -> 编辑器}，选择\texttt{行号}即可。
 
 \subsubsection{自动补全}
-自动补全主要是 \texttt{tab} 键的功能，使用前需确定\texttt{首选项}的\texttt{编辑器}标签中是否勾选了\texttt{启动自动补全}。
+自动补全主要是 \texttt{tab} 键的功能，使用前需确定\texttt{首选项 -> 编辑器}中是否勾选了\texttt{启动自动补全}。有关自动补全的更多内容用户可参考 \href{http://blog.sina.com.cn/s/blog_630306a50101fjwy.html}{TeXworks 的自动补全功能分类解析}。
 
 \subsubsection{使用模板}
-TeXworks支持从模板新建文档，在\textbf{文件}菜单中可见。
+TeXworks支持从模板新建文档，在\texttt{文件}菜单中可见。
 
 \subsubsection{拼写检查}
 默认情况，Texworks没有搭载拼写检查字典，需要用户自己配置。
-首先，访问 \href{http://wiki.openoffice.org/wiki/Dictionaries}{openoffice} 下载词典。接下来将词典安装到 \texttt{<resources>\textbackslash dictionaries}。\texttt{<resources>} 的具体位置可以在\texttt{帮助}的\texttt{TeXworks 配置与资源}中找到。安装完成后，在\texttt{编辑}菜单的\texttt{拼写}中选择即可。
+首先，访问 \href{http://wiki.openoffice.org/wiki/Dictionaries}{openoffice} 下载词典。接下来将词典安装到 \texttt{<resources>\textbackslash dictionaries}。\texttt{<resources>} 的具体位置可以在\texttt{帮助 -> TeXworks 配置与资源}中找到。安装完成后，在\texttt{编辑 -> 拼写}中选择即可。
 
 \subsubsection{魔法注释}
 魔法注释可以直接规定主文档、文件编码和编译命令等。例如用户写学位论文时，往往有一个主文档和若干子文档。在子文档的开头写上魔法注释
@@ -284,8 +284,32 @@ TeXworks支持从模板新建文档，在\textbf{文件}菜单中可见。
 \begin{lstlisting}
   % !TeX spellcheck = <language_code>
 \end{lstlisting}
-表示该文档使用 \texttt{<language\_code>} 进行拼写检查，它的具体名称请用户到\texttt{编辑}菜单的\texttt{拼写}中查看。
+表示该文档使用 \texttt{<language\_code>} 进行拼写检查，它的具体名称请用户到\texttt{编辑} --> \texttt{拼写}中查看。
 
 除以上内容外，TeXworks 还支持正则表达式、自定义快捷键等。这些内容都写在 TeXworks 自带的手册中。手册不长，用户可以通读一遍以了解更多内容。
+
+\subsection{TeXstudio}
+相较于 TeXworks，TeXstudio 功能更丰富，用法更多。
+
+\subsubsection{更改默认编译命令}
+在 \texttt{Options -> configure TeXstudio -> build -> default compiler} 中选择默认编译命令。
+
+\subsubsection{显示行号}
+在  \texttt{Options -> configure TeXstudio} 中勾选 \texttt{Show Advanced Options}，然后在 \texttt{Adv. Editor -> show line numbers} 选择。
+
+\subsubsection{拼写检查}
+TeXstudio 默认使用德语进行拼写检查，在右下角将 \texttt{de\_DE} 改为 \texttt{en\_US} 即可进行英文拼写检查，
+
+\subsubsection{魔法注释}
+除了像 TeXworks 中使用魔法注释外，TeXstudio 还有很多其他的魔法注释，例如
+\begin{lstlisting}
+  % !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode]
+\end{lstlisting}
+表示使用 \texttt{latexmk} 编译命令，使用 \texttt{-xelatex -synctex=1 -interaction=nonstopmode} 作为参数。
+
+其他有关 \texttt{texstudio} 的用法，用户也可以参阅手册进行学习。
+
+\section{总结}
+本文是个人最近一段时间的使用总结，其中难免有不甚合理或晦涩难懂的部分。若用户在阅读本文档的过程中有任何意见和建议，请发邮件或在 GitHub 中提 issue\footnote{\url{https://github.com/OsbertWang/install_latex}}。
 
 \end{document}
