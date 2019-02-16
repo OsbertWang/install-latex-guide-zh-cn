@@ -243,7 +243,7 @@
 来编译文档，并在有需要时完成其他步骤\footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译}。
 
 \section{配置编辑器}
-在实际操作中，用户会发觉使用记事本编写 \texttt{tex} 文件十分不便，因此很多用户都将其他编辑器作为自己的首选。这里向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 TeXworks 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{TeXstudio}。其他编辑器如 \href{https://github.com/EthanDeng/vscode-latex}{VScode} 和 \href{https://ddswhu.me/posts/2018-06/sublime-text-for-latex/}{Sublime Text}，感兴趣的用户可自行了解。
+在实际操作中，用户会发觉使用记事本编写 \texttt{tex} 文件十分不便，因此很多用户都将其他编辑器作为自己的首选。这里向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 TeXworks 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{TeXstudio}。其他编辑器如 \href{https://github.com/EthanDeng/vscode-latex}{VScode} 和 \href{https://ddswhu.me/posts/2018-06/sublime-text-for-latex/}{Sublime Text} 的配置方案，感兴趣的用户可自行了解。另外还有很多用户喜欢使用 Vim 或 Emacs 等强大的编辑器，孰作者能力有限，无法一一列举，还请自己在网上寻求更多帮助。
 
 \subsection{TeXworks}
 TeXworks 是一款轻量级的 \LaTeX 编辑器，非常适合入门级用户使用\footnote{很多用户在编写 \texttt{tex} 文件时喜欢借助其他工具，这不是个好习惯，这里鼓励用户多手动敲代码}。
@@ -294,8 +294,15 @@ TeXworks支持从模板新建文档，在\texttt{文件}菜单中可见。
 \subsubsection{更改默认编译命令}
 在 \texttt{Options -> configure TeXstudio -> build -> default compiler} 中选择默认编译命令。
 
+另外如果有用户喜欢用 \texttt{latexmk} 和 \texttt{biblatex}，可以考虑在 \texttt{Options -> configure TeXstudio -> build -> Build Options} 中取消 \texttt{Check and update bibliography before compiling}。
+
 \subsubsection{显示行号}
 在  \texttt{Options -> configure TeXstudio} 中勾选 \texttt{Show Advanced Options}，然后在 \texttt{Adv. Editor -> show line numbers} 选择。
+
+\subsubsection{调整缩进}
+在 \texttt{Options -> Editor -> Indentation Mode} 处可以选择是否保持缩进，旁边的 \texttt{Replace Indentation Tab by Spaces} 勾选后可以让缩进完全变为空格。
+
+在 \texttt{Options -> Adv. Editor -> Appearance} 中可以更改 \texttt{Tab Widths}。
 
 \subsubsection{拼写检查}
 TeXstudio 默认使用德语进行拼写检查，在右下角将 \texttt{de\_DE} 改为 \texttt{en\_US} 即可进行英文拼写检查，
