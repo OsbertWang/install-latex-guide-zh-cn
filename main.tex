@@ -345,6 +345,11 @@ TeXworks支持从模板新建文档，在\texttt{文件}菜单中可见。
 
 在 \texttt{Options -> Adv. Editor -> Appearance} 中可以更改 \texttt{Tab Widths}。
 
+\subsubsection{自动补全}
+TeXstudio 自动补全功能会先通过用户引用的宏包来判断代码是否需要自动补全，而它的自动补全内容全部被写入了 \href{https://github.com/texstudio-org/texstudio/tree/master/completion}{cwl 文件} 中。
+用户可以根据自己的需要更改 cwl 文件，然后将其放入 \texttt{<settings directory>\textbackslash completion\textbackslash user} 文件夹。
+点击 \texttt{Help -> Check LaTeX Installation}，在生成的 \texttt{System Report.txt} 中找到 \texttt{ini} 文件所在文件夹即为 \texttt{<settings directory>}。
+
 \subsubsection{拼写检查}
 TeXstudio 默认使用德语进行拼写检查，在右下角将 \texttt{de\_DE} 改为 \texttt{en\_US} 即可进行英文拼写检查，
 
