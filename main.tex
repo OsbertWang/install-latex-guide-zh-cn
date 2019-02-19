@@ -360,6 +360,10 @@ TeXstudio 默认使用德语进行拼写检查，在右下角将 \texttt{de\_DE}
 \end{lstlisting}
 表示使用 \texttt{latexmk} 编译命令，使用 \texttt{-xelatex -synctex=1 -interaction=nonstopmode} 作为参数，而 \texttt{\{\}} 表示无视编辑器赋予该命令的其他参数。
 
+\subsubsection{渲染方式}
+TeXstudio 默认渲染方式对中文括号的支持不够好。
+可以在 \texttt{Options -> Configure TeXstudio -> Adv. Editor -> Hacks/Workarounds} 中取消 \texttt{Try to automatically choose best display options}，然后在 \texttt{Render Mode} 中选择 \texttt{Qt}。
+
 其他有关 \texttt{texstudio} 的用法，用户也可以参阅手册进行学习。
 
 \section{总结}
