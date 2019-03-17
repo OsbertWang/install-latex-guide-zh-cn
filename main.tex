@@ -315,7 +315,7 @@ TeXworks支持从模板新建文档，在\texttt{文件}菜单中可见。
 \begin{lstlisting}
   % !TeX encoding = UTF8
 \end{lstlisting}
-表示该文档使用 ``utf-8'' 编码\footnote{目前建议用户多用 ``utf-8'' 编码，尤其是中文文档}。
+表示该文档使用 ``UTF-8'' 编码\footnote{目前建议用户多用 ``UTF-8'' 编码，尤其是中文文档}。
 \begin{lstlisting}
   % !TeX program = xelatex
 \end{lstlisting}
@@ -324,6 +324,13 @@ TeXworks支持从模板新建文档，在\texttt{文件}菜单中可见。
   % !TeX spellcheck = <language_code>
 \end{lstlisting}
 表示该文档使用 \texttt{<language\_code>} 进行拼写检查，它的具体名称请用户到\texttt{编辑} --> \texttt{拼写}中查看。
+
+\subsubsection{转编码}
+实际上转编码是很多编辑器都具备的功能。
+在TeXworks右下角有三个按钮，左边按钮控制换行符类型，中间按钮控制文档编码，右边按钮控制行跳转。
+目前大部分中文用户主要面临的是``UTF-8''和``GBK''之间的转换。
+如果文档是``GBK''编码，使用TeXworks打开文件后，文档会出现乱码。
+这时，点中间按钮，选择编码类型``GBK''，再点击按钮，选择\texttt{使用所选编码重载文档}，若文档中乱码消失，则再次点击按钮，选择``UTF-8''，最后保存文档，完成转码工作。
 
 除以上内容外，TeXworks 还支持正则表达式、自定义快捷键等。
 这些内容都写在 TeXworks 自带的手册中。
@@ -363,6 +370,13 @@ TeXstudio 默认使用德语进行拼写检查，在右下角将 \texttt{de\_DE}
 \subsubsection{渲染方式}
 TeXstudio 默认渲染方式对中文括号的支持不够好。
 可以在 \texttt{Options -> Configure TeXstudio -> Adv. Editor -> Hacks/Workarounds} 中取消 \texttt{Try to automatically choose best display options}，然后在 \texttt{Render Mode} 中选择 \texttt{Qt}。
+
+\subsubsection{转编码}
+TeXstudio右下角有一处显示文档编码 (Encoding)。
+依旧以``UTF-8''和``GBK''之间的转换为例。
+如果文档是``GBK''编码，使用TeXstudio打开文件后，点击 \texttt{Encoding} 处，选择 \texttt{More Encodings}。
+打开窗口后，选择``GBK / ...''，点击 \texttt{Reload With}，若这时文档没有乱码，再点击 \texttt{Encoding -> More Encodings}，选择``UTF-8''，点击 \texttt{Change To}，保存文件，完成转码。
+
 
 其他有关 \texttt{texstudio} 的用法，用户也可以参阅手册进行学习。
 
