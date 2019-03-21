@@ -39,8 +39,8 @@
 \end{abstract}
 
 \section{安装 \TeX{} Live}
-首先用户下载 \TeX{} Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{镜像文件}。
-下载完毕后，可以将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载，无需使用其他软件，第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO}。
+首先用户下载 \TeX{} Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{镜像文件（iso文件）}。
+下载完毕后，可以将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载，无需使用其他软件，第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO。镜像文件也可直接被解压缩，这里不鼓励解压缩的操作}。
 假设加载后的路径为 \texttt{X:\textbackslash texlive}。
 
 接下来，用户打开 \texttt{cmd} 窗口\footnote{在 Windows 搜索栏里面搜 cmd，系统显示“命令提示符”即为 \texttt{cmd} 窗口}，执行以下代码
@@ -58,7 +58,7 @@
   cd /d X:\texlive
 \end{lstlisting}
 切换路径。
-接下来执行
+接下来执行\footnote{强烈建议用户在操作系统中显示文件后缀名，文件夹上方\texttt{查看 -> 选项 -> 查看 -> 高级设置}中取消\texttt{隐藏已知文件类型的扩展名}}
 \begin{lstlisting}[language = bash]
   install-tl-windows.bat --no-gui
 \end{lstlisting}
@@ -116,7 +116,7 @@
   
   Enter command:
 \end{lstlisting}
-这时，用户可先执行 \texttt{D} 来更改安装路径，也可直接执行 \texttt{I} 在默认路径中安装 \TeX{} Live。
+这时，用户可先执行 \texttt{D} 来更改安装路径，也可直接执行 \texttt{I} 在默认路径中直接安装 \TeX{} Live。
 执行 \texttt{D} 后，用户可看到
 \begin{lstlisting}
   ==============================================================================
