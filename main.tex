@@ -378,6 +378,12 @@ TeXstudio右下角有一处显示文档编码 (Encoding)。
 如果文档是``GBK''编码，使用TeXstudio打开文件后，点击 \texttt{Encoding} 处，选择 \texttt{More Encodings}。
 打开窗口后，选择``GBK / ...''，点击 \texttt{Reload With}，若这时文档没有乱码，再点击 \texttt{Encoding -> More Encodings}，选择``UTF-8''，点击 \texttt{Change To}，保存文件，完成转码。
 
+\subsubsection{自定义命令并生成按钮}
+TeXstudio 允许用户自定义命令，并将命令做成按钮放置于面板上。
+例如，在 \texttt{Options -> Configure TeXstudio -> Build -> User commands} 中，填写名称 \texttt{User1:Build-xe-view} 和功能 \texttt{latexmk -pdfxe -synctex=1 -interaction=nonstopmode -silent \% | txs:///view-pdf-internal}，点击 \texttt{OK}。
+接下来我们在 \texttt{Tools -> User} 中即可看到自定义的命令和相应快捷键。
+再打开 \texttt{Options -> Configure TeXstudio -> Toolbars}，在两个下拉菜单中分别选择 \texttt{Tools} 和 \texttt{All menus}，在右边找到 \texttt{Tools -> User -> Build-xe-view} 并将其添加至左端，点击 \texttt{OK}。
+这时，在面板中将添加新的按钮。
 
 其他有关 \texttt{texstudio} 的用法，用户也可以参阅手册进行学习。
 
