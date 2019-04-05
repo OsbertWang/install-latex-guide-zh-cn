@@ -30,7 +30,6 @@
 
 \renewmenumacro{\menu}[>]{angularmenus}
 \renewmenumacro{\keys}[+]{shadowedroundedkeys}
-\renewmenumacro{\directory}{pathswithfolder}
 
 \title{\bfseries 一份简短的安装 \LaTeX{} 的介绍}
 \author{啸行\thanks{\url{ranwang.osbert@outlook.com}}}
@@ -48,7 +47,6 @@
 本文所涉及到的代码还请用户多多动手，不要简单地复制粘贴；红色文字都是可点的超链接，可直接跳转。
 \menu{菜单} 表示软件菜单。
 \keys{k} 表示键盘按键。
-\directory{filename.tex} 表示文件。
 
 \end{abstract}
 
@@ -130,8 +128,8 @@
   
   Enter command:
 \end{lstlisting}
-这时，用户可先执行 \keys{D} 来更改安装路径，也可直接执行 \keys{I} 在默认路径中直接安装 \TeX{} Live。
-执行 \keys{D} 后，用户可看到
+这时，用户可先执行 \texttt{D} 来更改安装路径，也可直接执行 \texttt{I} 在默认路径中直接安装 \TeX{} Live。
+执行 \texttt{D} 后，用户可看到
 \begin{lstlisting}
   ==============================================================================
   Directories customization:
@@ -155,15 +153,15 @@
   
   Enter command:
 \end{lstlisting}
-这时执行数字 \keys{1}，将看到
+这时执行数字 \texttt{1}，将看到
 \begin{lstlisting}
   New value for TEXDIR [C:/texlive/2018]:
 \end{lstlisting}
 即可更改路径，如 \texttt{D:/texlive/2018}。
-接下来，执行 \keys{R} 即可回到初始的安装界面。
+接下来，执行 \texttt{R} 即可回到初始的安装界面。
 其他操作用户可通过阅读英文自行执行，这里不再赘述。
 至此，用户只需耐心等待安装完成。
-安装完成后，执行 \keys{e} \keys{x} \keys{i} \keys{t} 退出命令行，再打开，执行
+安装完成后，执行 \texttt{exit} 退出命令行，再打开，执行
 \begin{lstlisting}
   tex -v
 \end{lstlisting}
@@ -243,13 +241,13 @@
 升级宏包完成后，用户可以编译文档。
 在这里，我依旧执拗地使用命令行来完成这一过程。
 
-首先，用户需要在指定位置\footnote{以下称工作路径}建立一个 \directory{main.tex} 文件：
+首先，用户需要在指定位置\footnote{以下称工作路径}建立一个 \texttt{tex} 文件：
 \begin{lstlisting}[language = bash]
   mkdir E:\work_latex
   cd /d E:\work_latex
   notepad main.tex
 \end{lstlisting}
-第1行表示创建一个工作路径 \texttt{E:\textbackslash work\_latex}，第2行表示进入工作路径，第3行表示用记事本打开 \directory{main.tex} 文件，若文件不存在，系统将询问用户是否创建该文件。
+第1行表示创建一个工作路径 \texttt{E:\textbackslash work\_latex}，第2行表示进入工作路径，第3行表示用记事本打开 \texttt{main.tex} 文件，若文件不存在，系统将询问用户是否创建该文件。
 在打开的记事本中输入一个最小实例
 \begin{lstlisting}[language = TeX]
   \documentclass{article}
@@ -263,12 +261,12 @@
   pdflatex main
 \end{lstlisting}
 等待系统完成编译过程。
-待编译完成后，我们即可看到在 \texttt{E:\textbackslash work\_latex} 中出现了 \directory{main.pdf} 文件和其他同名的辅助文件 \directory{main.aux} 与 \directory{main.log}。
+待编译完成后，我们即可看到在 \texttt{E:\textbackslash work\_latex} 中出现了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}。
 
-总结一下，在使用 \LaTeX{} 时，用户首先要在工作路径\footnote{建议不同的工程放入不同的工作路径}中编写好一个 \directory{*.tex} 文件。
-当 \directory{*.tex} 文件编写完毕，我们即可使用编译命令\footnote{目前常用的编译命令为 \texttt{pdflatex} 和 \texttt{xelatex}}，将 \directory{*.tex} 文件编译成 \directory{*.pdf} 文件。
+总结一下，在使用 \LaTeX{} 时，用户首先要在工作路径\footnote{建议不同的工程放入不同的工作路径}中编写好一个 \texttt{tex} 文件。
+当 \texttt{tex} 文件编写完毕，我们即可使用编译命令\footnote{目前常用的编译命令为 \texttt{pdflatex} 和 \texttt{xelatex}}，将 \texttt{tex} 文件编译成 \texttt{pdf} 文件。
 
-编译命令其实有很多可选参数，如用户能够从 \directory{*.pdf} 文件跳回 \directory{*.tex} 文件，便是因为执行编译命令时添加了参数
+编译命令其实有很多可选参数，如用户能够从 \texttt{pdf} 文件跳回 \texttt{tex} 文件，便是因为执行编译命令时添加了参数
 \begin{lstlisting}
   pdflatex -synctex=1 main
 \end{lstlisting}
@@ -282,10 +280,10 @@
 \begin{lstlisting}
   pdflatex -synctex=1 -interaction=nonstopmode main
 \end{lstlisting}
-来编译文档，并在有需要时完成其他步骤\footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译，详情见相关文档}。
+来编译文档 \texttt{main.tex}，并在有需要时完成其他步骤\footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译，详情见相关文档}。
 
 \section{使用编辑器}
-在实际操作中，用户会发觉使用记事本编写 \directory{*.tex} 文件十分不便，因此很多用户都将其他编辑器作为自己的首选。
+在实际操作中，用户会发觉使用记事本编写 \texttt{tex} 文件十分不便，因此很多用户都将其他编辑器作为自己的首选。
 这里向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 TeXworks 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{TeXstudio}。
 其他编辑器，因作者能力有限，无法一一列举，还请自己在网上寻求更多帮助。
 
@@ -313,8 +311,7 @@ TeXworks支持从模板新建文档，在 \menu{文件} 菜单中可见。
 \subsubsection{拼写检查}
 默认情况，Texworks没有搭载拼写检查字典，需要用户自己配置。
 首先，访问 \href{http://wiki.openoffice.org/wiki/Dictionaries}{openoffice} 下载词典。
-接下来将词典安装到 \texttt{<resources>\textbackslash dictionaries}。
-\texttt{<resources>} 的具体位置可以在 \menu{帮助 > TeXworks 配置与资源} 中找到。
+接下来将词典安装到 \texttt{<resources>\textbackslash dictionaries} \footnote{\texttt{<resources>} 的具体位置可以在 \menu{帮助 > TeXworks 配置与资源} 中找到}。
 安装完成后，在 \menu{编辑 > 拼写} 中选择即可。
 
 \subsubsection{魔法注释}
@@ -324,7 +321,7 @@ TeXworks支持从模板新建文档，在 \menu{文件} 菜单中可见。
 \begin{lstlisting}
   % !TeX root = ../mainfile.tex
 \end{lstlisting}
-即可告诉系统上一级目录中的 \directory{mainfile.tex} 是主文档\footnote{主文档和子文档的更多内容请参考 \texttt{\textbackslash include} 和 \texttt{\textbackslash input} 的用法}。
+即可告诉系统上一级目录中的 \texttt{main.tex} 是主文档\footnote{主文档和子文档的更多内容请参考 \texttt{\textbackslash include} 和 \texttt{\textbackslash input} 的用法}。
 \begin{lstlisting}
   % !TeX encoding = UTF8
 \end{lstlisting}
@@ -361,14 +358,13 @@ TeXworks支持从模板新建文档，在 \menu{文件} 菜单中可见。
 在 \menu{Options > configure TeXstudio} 中勾选 \menu{Show Advanced Options}，然后在 \menu{Adv. Editor > show line numbers} 选择。
 
 \subsubsection{调整缩进}
-在 \menu{Options > Editor > Indentation Mode} 处可以选择是否保持缩进，勾选旁边的 \menu{Replace Indentation Tab by Spaces} 可以让缩进完全变为空格。
+在 \menu{Options > Editor > Indentation Mode} 处可以选择是否保持缩进，勾选 \menu{Replace Indentation Tab by Spaces} 可以让缩进完全变为空格。
 
 在 \menu{Options > Adv. Editor > Appearance} 中可以更改 \menu{Tab Widths}。
 
 \subsubsection{自动补全}
 TeXstudio 自动补全功能会先通过用户引用的宏包来判断代码是否需要自动补全，而它的自动补全内容全部被写入了 \href{https://github.com/texstudio-org/texstudio/tree/master/completion}{cwl 文件} 中。
-用户可以根据自己的需要更改 cwl 文件，然后将其放入 \texttt{<settings directory>\textbackslash completion\textbackslash user} 文件夹。
-点击 \menu{Help > Check LaTeX Installation}，在生成的 \directory{System Report.txt} 中找到 \directory{texstudio.ini} 文件所在文件夹即为 \texttt{<settings directory>}。
+用户可以根据自己的需要更改 cwl 文件，然后将其放入 \texttt{<settings directory>\textbackslash completion\textbackslash user} 文件夹 \footnote{点击 \menu{Help > Check LaTeX Installation}，在生成的 \texttt{System Report.txt} 中找到 \texttt{texstudio.ini} 文件，其所在文件夹即为 \texttt{<settings directory>}}。
 
 \subsubsection{拼写检查}
 TeXstudio 默认使用德语进行拼写检查，在右下角将 \texttt{de\_DE} 改为 \texttt{en\_US} 即可进行英文拼写检查，
@@ -378,11 +374,11 @@ TeXstudio 默认使用德语进行拼写检查，在右下角将 \texttt{de\_DE}
 \begin{lstlisting}
   % !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode %.tex]
 \end{lstlisting}
-表示使用 \texttt{latexmk} 编译命令，使用 \texttt{-xelatex -synctex=1 -interaction=nonstopmode} 作为参数，而 \texttt{\{\}} 表示无视编辑器赋予该命令的其他参数。
+表示使用 \texttt{latexmk} 编译命令，\texttt{\{\}} 表示无视编辑器赋予该命令的一切参数，而 \texttt{[]} 表示添加其中的参数进行编译，本例中添加 \texttt{-xelatex -synctex=1 -interaction=nonstopmode} 作为参数。
 
 \subsubsection{渲染方式}
 TeXstudio 默认渲染方式对中文括号的支持不够好。
-可以在 \menu{Options > Configure TeXstudio > Adv. Editor > Hacks/Workarounds} 中取消 \menu{Try to automatically choose best display options}，然后在选择 \menu{Disable cache of character width} 和 \menu{Disable fixed pitch mdoe}。
+在 \menu{Options > Configure TeXstudio > Adv. Editor > Hacks/Workarounds} 中取消 \menu{Try to automatically choose best display options}，选择 \menu{Disable cache of character width} 和 \menu{Disable fixed pitch mdoe}。
 
 \subsubsection{转编码}
 TeXstudio右下角有一处显示文档编码 (Encoding)。
