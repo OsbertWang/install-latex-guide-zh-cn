@@ -44,7 +44,7 @@
 有关 Mik\TeX{} 的安装，可以参考 \href{https://camuseblog.top/2019-03-02-/MiKTeX/}{MiK\TeX{} 的基本使用}。
 建议用户阅读 \href{http://www.latexstudio.net/archives/11469.html}{\LaTeXe{} 安装 \& 新手指点 FAQ} 和 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-ch} 以更全面地了解基础内容。
 本文还将简要介绍两款常见编辑器，其他编辑器如 \href{https://github.com/EthanDeng/vscode-latex}{VS code} 和 \href{https://github.com/EthanDeng/sublime-text-latex}{Sublime Text}，用户可自行了解它们的使用方法。
-\textbf{本文所涉及到的代码需结合上下文说明，不能简单地复制粘贴}。
+本文所涉及到的代码需结合上下文说明，不能简单地复制粘贴。
 红色文字都是可点的超链接，可直接跳转。
 \menu{菜单} 表示软件菜单。
 \keys{k} 表示键盘按键。
@@ -53,7 +53,7 @@
 
 \section{安装 \TeX{} Live}
 首先用户下载 \TeX{} Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{iso 镜像文件}。
-下载完毕后，可以将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载，无需使用其他软件，第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO。镜像文件也可直接被解压缩，这里不鼓励解压缩的操作}。
+下载完毕后，可以将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载，无需使用其他软件；在安装了解压缩软件后，镜像文件依然可以通过文件夹上方 \menu{主页 > 打开 > Windows 资源管理器} 加载；这里不鼓励解压缩的操作；第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO}。
 假设加载后的路径为 \texttt{X:\textbackslash texlive}，其中 \texttt{X} 表示盘符，如 \texttt{C}、\texttt{D}、\texttt{E} 等。
 
 接下来，用户打开 \textsf{cmd} 窗口\footnote{在 Windows 搜索栏里面搜 cmd，系统显示“命令提示符”即为 \textsf{cmd} 窗口}，执行以下代码
@@ -61,23 +61,19 @@
   echo %path%
 \end{lstlisting}
 查看环境变量。
-若 \texttt{C:\textbackslash Windows\textbackslash system32} 不在结果中\footnote{这里默认系统盘为\textsf{C}盘}，则需要在 \textsf{cmd} 中继续执行
-\begin{lstlisting}[language = bash]
-  path=C:\Windows\system32;%path%
-\end{lstlisting}
-将 \texttt{C:\textbackslash Windows\textbackslash system32} 添加到环境变量中。
-接下来，在关闭了国内第三方安全软件的前提下，在\textsf{cmd} 窗口中执行
+若 \texttt{C:\textbackslash Windows\textbackslash system32} 不在结果中\footnote{这里默认系统盘为\textsf{C}盘}，则关闭 \textsf{cmd} 窗口，将 \texttt{C:\textbackslash Windows\textbackslash system32} 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}。
+接下来，在关闭了国内第三方安全软件的前提下，再打开 \textsf{cmd} 窗口并执行
 \begin{lstlisting}[language = bash]
   cd /d X:\texlive
 \end{lstlisting}
-切换路径\footnote{注意将 \texttt{X} 替换为 \texttt{C}、\texttt{D}、\texttt{E} 等盘符}。
+切换路径。
 接下来执行\footnote{强烈建议用户在操作系统中显示文件后缀名，文件夹上方 \menu{查看 > 显示/隐藏} 中选择 \menu{文件扩展名}}
 \begin{lstlisting}[language = bash]
   install-tl-windows.bat --no-gui
 \end{lstlisting}
 即可进入安装流程。
 
-此安装方法所采取的是纯命令行操作，因此用户将看到如下的结果\footnote{有部分用户反应，使用命令行安装时，系统会提示用户无权限（Permission），对于这种情况，可以右键“命令提示符”，选择“以管理员身份运行”}
+此安装方法所采取的是纯命令行操作，因此用户将看到如下的结果\footnote{有部分用户反应，使用命令行安装时，系统会提示用户无权限（Permission），对于这种情况，可以右键 \menu{命令提示符}，选择 \menu{以管理员身份运行}}
 \begin{lstlisting}
   =====================> TeX Live installation procedure <=====================
   
@@ -162,7 +158,7 @@
 接下来，执行 \texttt{R} 即可回到初始的安装界面。
 其他操作用户可通过阅读英文自行执行，这里不再赘述。
 至此，用户只需耐心等待安装完成。
-安装完成后，执行 \texttt{exit} 退出命令行，再打开，执行
+安装完成后，关闭再打开 \textsf{cmd} 窗口，执行
 \begin{lstlisting}
   tex -v
 \end{lstlisting}
@@ -179,7 +175,7 @@
   named COPYING and the TeX source.
   Primary author of TeX: D.E. Knuth.
 \end{lstlisting}
-即可认为安装顺利完成。
+即可认为安装顺利完成 \footnote{有用户反应安装后环境变量未发生变化，则可手动添加 \texttt{<TEXDIR>\textbackslash bin\textbackslash win32} 至环境变量，\texttt{<TEXDIR>} 需与你方才的安装地址一致}。
 
 \section{卸载 \TeX{} Live}
 有些时候，如跨版本升级 \TeX{} Live， 用户需要卸载 \TeX{} Live。
