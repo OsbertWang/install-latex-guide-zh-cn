@@ -418,6 +418,16 @@ TeXstudio 允许用户自定义命令, 并将命令做成按钮放置于面板�
 再打开 \menu{Options > Configure TeXstudio > Toolbars}, 在两个下拉菜单中分别选择 \menu{Tools} 和 \menu{All menus}, 在右边找到 \menu{Tools > User > Build-xe-view} 并将其添加至左端, 点击 \menu{OK}. 
 这时, 在面板中将添加新的按钮. 
 
+\subsubsection{生成宏指令}
+TeXstudio 允许用户生成宏指令.
+在 \menu{Macros > Edit Macros} 中, 用户可以根据自己的需要, 给出宏指令的名称、快捷键、内容等等.
+例如我们将 \texttt{latexmk-pdf} 填写在 \menu{name} 中,
+将 \texttt{\% !TeX TXS-program:compile = txs:///latexmk/\{\}[-pdf -synctex=1 -interaction=nonstopmode -silent \%]} 填写在 \menu{LaTeX Content} 中,
+再将 \texttt{Shift+F1} 填写在 \menu{Shortcut}.
+设置完毕后，点击 \menu{OK}.
+这时, 我们可以看到 \menu{Macros > latexmk-pdf} 出现.
+在文档特定位置点击它或者直接使用 \keys{\shift + F1}, 即可看到魔法注释出现.
+
 其他有关 \texttt{texstudio} 的用法, 用户也可以参阅手册进行学习. 
 
 \section{总结}
