@@ -1,7 +1,7 @@
 % !TeX document-id = {9518a27b-c930-4bf6-a805-aa54f9dee147}
 % !TeX TXS-program:compile=txs:///latexmk/{}[-pdfxe -synctex=1 -interaction=nonstopmode -silent %]
 
-\documentclass{ctexart}
+\documentclass{ctexrep}
 \usepackage[margin=1in]{geometry}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -9,6 +9,11 @@
 \usepackage[os=win,hyperrefcolorlinks]{menukeys}
 
 \ctexset{
+  chapter ={
+    format = \huge\bfseries\raggedright,
+    number = \arabic{chapter},
+    name   = {},
+  },
   section/format = \Large\bfseries\raggedright
 }
 
@@ -40,7 +45,7 @@
 
 \begin{abstract}
 在 QQ 群 91940767 时, 经常有群友咨询如何安装 \LaTeX.
-本文将介绍 Windows 10 系统中安装 \TeX{}~Live、升级宏包、编译简易文档、使用编辑器的相关操作, 并多以介绍命令行操作为主.
+本文将介绍 Windows 10 系统和 Ubuntu 系统中安装 \TeX{}~Live、升级宏包、编译简易文档、使用编辑器的相关操作, 并多以介绍命令行操作为主.
 有关 Mik\TeX{} 的安装, 可以参考 \href{https://camuseblog.top/2019-03-02-/MiKTeX/}{MiK\TeX{} 的基本使用}.
 建议用户阅读 \href{http://www.latexstudio.net/archives/11469.html}{\LaTeXe{} 安装 \& 新手指点 FAQ} 和 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-ch} 以更全面地了解基础内容.
 本文还将简要介绍两款常见编辑器, 其他编辑器如 \href{https://github.com/EthanDeng/vscode-latex}{VS code} 和 \href{https://github.com/EthanDeng/sublime-text-latex}{Sublime Text}, 用户可自行了解它们的使用方法.
@@ -48,8 +53,11 @@
 红色文字都是可点的超链接, 可直接跳转.
 \menu{菜单} 表示软件菜单.
 \keys{k} 表示键盘按键.
-
 \end{abstract}
+
+\tableofcontents
+
+\chapter{Windows 系统}
 
 \section{安装 \TeX{} Live}
 首先用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{iso 镜像文件},
@@ -428,9 +436,19 @@ TeXstudio 允许用户生成宏指令.
 这时, 我们可以看到 \menu{Macros > latexmk-pdf} 出现.
 在文档特定位置点击它或者直接使用 \keys{\shift + F1}, 即可看到魔法注释出现.
 
-其他有关 \texttt{texstudio} 的用法, 用户也可以参阅手册进行学习. 
+\chapter{Ubuntu 系统}
 
-\section{总结}
+\section{安装 \TeX{} Live}
+
+Ubuntu 源内自带了 \TeX{} Live, 因此用户完全可以使用以下命令进行安装源内的完整版
+\begin{lstlisting}[language=sh]
+  sudo apt-get install texlive-full
+\end{lstlisting}
+在这里, 我并不反对用户使用源内的版本, 但这并不是本文的核心内容.
+
+如前所述, Ubuntu 用户可以使用镜像进行安装.
+
+\chapter{总结}
 本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
 若用户在阅读本文档的过程中有任何意见和建议, 请发邮件或在 GitHub 中提 issue\footnote{\url{https://github.com/OsbertWang/install_latex}}. 
 
