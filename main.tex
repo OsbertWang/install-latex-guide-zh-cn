@@ -57,7 +57,7 @@
 
 \tableofcontents
 
-\chapter{Windows 系统}
+\chapter{Windows 10 系统}
 
 \section{安装 \TeX{} Live}
 首先用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{iso 镜像文件},
@@ -436,17 +436,53 @@ TeXstudio 允许用户生成宏指令.
 这时, 我们可以看到 \menu{Macros > latexmk-pdf} 出现.
 在文档特定位置点击它或者直接使用 \keys{\shift + F1}, 即可看到魔法注释出现.
 
-\chapter{Ubuntu 系统}
+\chapter{Ubuntu 18.04 系统}
 
 \section{安装 \TeX{} Live}
 
-Ubuntu 源内自带了 \TeX{} Live, 因此用户完全可以使用以下命令进行安装源内的完整版
+\subsection{用源安装}
+
+Ubuntu 源内自带了 \TeX{} Live, 因此用户可以在 \textsf{Terminal}\footnote{点击鼠标右键即可看到打开 Terminal 窗口的选项} 中使用以下命令进行安装源内的完整版
 \begin{lstlisting}[language=sh]
   sudo apt-get install texlive-full
 \end{lstlisting}
 在这里, 我并不反对用户使用源内的版本, 但这并不是本文的核心内容.
 
-如前所述, Ubuntu 用户可以使用镜像进行安装.
+\subsection{用镜像安装}
+
+为使用户顺利使用 \TeX{} Live 2019, 建议用户首先卸载从源内安装的 \TeX{} Live.
+
+下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{iso 镜像文件} 的方法如前所述.
+下载完毕后, 打开 \textsf{Terminal} 窗口, 使用如下代码加载光盘镜像至 \texttt{/mnt/texlive} 文件夹
+\begin{lstlisting}
+  mkdir /mnt/texlive
+  sudo mount -o loop texlive.iso /mnt/texlive
+\end{lstlisting}
+接下来执行
+\begin{lstlisting}
+  sudo /mnt/texlive/install-tl
+\end{lstlisting}
+进行安装.
+这里强烈建议用户直接点击 \keys{I} 使用默认配置安装.
+如果用户对于 Ubuntu 系统比较了解, 可以根据提示，更改安装设置.
+安装完毕后, 将加载的光盘镜像弹出
+\begin{lstlisting}
+  sudo unmount /mnt/texlive
+\end{lstlisting}
+
+安装完成后, 用户需要设置环境变量.
+继续在 \textsf{Terminal} 中执行
+\begin{lstlisting}
+  sudo gedit ~/.bashrc
+\end{lstlisting}
+在打开的文件末尾添加
+\begin{lstlisting}
+  # Add Tex Live to the PATH, MANPATH, INFOPATH
+  export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
+\end{lstlisting}
+并保存退出.
 
 \chapter{总结}
 本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
