@@ -484,6 +484,20 @@ Ubuntu 源内自带了 \TeX{} Live, 因此用户可以在 \textsf{Terminal}\foot
 \end{lstlisting}
 并保存退出.
 
+\section{卸载 \TeX{} Live}
+
+如果是从源内安装, 在 \textsf{terminal} 中输入
+\begin{lstlisting}
+  sudo apt autoremove texlive-*
+\end{lstlisting}
+进行卸载, 其中 \texttt{*} 代表源中的 \TeX{} Live 包.
+
+如果是从光盘镜像安装, 只需要直接删除 \texttt{/usr/local/texlive/2019} 文件夹即可
+\begin{lstlisting}
+  sudo rm -r /usr/local/texlive/2019
+\end{lstlisting}
+当然还要清理掉环境变量.
+
 \chapter{总结}
 本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
 若用户在阅读本文档的过程中有任何意见和建议, 请发邮件或在 GitHub 中提 issue\footnote{\url{https://github.com/OsbertWang/install_latex}}. 
