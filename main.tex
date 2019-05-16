@@ -440,26 +440,17 @@ TeXstudio 允许用户生成宏指令.
 
 \section{安装 \TeX{} Live}
 
-\subsection{用源安装}
+这里只阐述如何用镜像安装.
+为使用户顺利使用 \TeX{} Live 2019, 建议用户首先卸载从源内安装的 \TeX{} Live 的相关包.
 
-Ubuntu 源内自带了 \TeX{} Live, 因此用户可以在 \textsf{Terminal}\footnote{点击鼠标右键即可看到打开 Terminal 窗口的选项} 中使用以下命令进行安装源内的完整版
-\begin{lstlisting}[language=sh]
-  sudo apt-get install texlive-full
-\end{lstlisting}
-在这里, 我并不反对用户使用源内的版本, 但这并不是本文的核心内容.
-
-\subsection{用镜像安装}
-
-为使用户顺利使用 \TeX{} Live 2019, 建议用户首先卸载从源内安装的 \TeX{} Live.
-
-下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{iso 镜像文件} 的方法如前所述.
+下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{iso 镜像文件} 的方法如前所述, 可选择国内源以加快下载速度.
 下载完毕后, 打开 \textsf{Terminal} 窗口, 使用如下代码加载光盘镜像至 \texttt{\~{}/Downloads/texlive} 文件夹
-\begin{lstlisting}
+\begin{lstlisting}[language = bash]
   mkdir ~/Downloads/texlive
   sudo mount ./texlive.iso ~/Downloads/texlive
 \end{lstlisting}
 接下来执行
-\begin{lstlisting}
+\begin{lstlisting}[language = bash]
   sudo ~/Downloads/texlive/install-tl
 \end{lstlisting}
 进行安装.
@@ -517,13 +508,13 @@ Ubuntu 源内自带了 \TeX{} Live, 因此用户可以在 \textsf{Terminal}\foot
 这里强烈建议用户直接点击 \keys{I} 使用默认配置安装.
 如果用户对于 Ubuntu 系统比较了解, 可以根据提示，更改安装设置.
 安装完毕后, 将加载的光盘镜像弹出
-\begin{lstlisting}
+\begin{lstlisting}[language = bash]
   sudo umount ~/Downloads/texlive
 \end{lstlisting}
 
 安装完成后, 用户需要设置环境变量.
 继续在 \textsf{Terminal} 中执行
-\begin{lstlisting}
+\begin{lstlisting}[language = bash]
   sudo gedit ~/.bashrc
 \end{lstlisting}
 在打开的文件末尾添加
@@ -534,20 +525,156 @@ Ubuntu 源内自带了 \TeX{} Live, 因此用户可以在 \textsf{Terminal}\foot
   export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
+这时再打开 \textsf{Terminal} 执行
+\begin{lstlisting}
+  tex -v
+\end{lstlisting}
+将显示
+\begin{lstlisting}
+  TeX 3.14159265 (TeX Live 2019)
+  kpathsea version 6.3.1
+  Copyright 2019 D.E. Knuth.
+  There is NO warranty.  Redistribution of this software is
+  covered by the terms of both the TeX copyright and
+  the Lesser GNU General Public License.
+  For more information about these matters, see the file
+  named COPYING and the TeX source.
+  Primary author of TeX: D.E. Knuth.
+\end{lstlisting}
+即为安装成功.
 
 \section{卸载 \TeX{} Live}
 
-如果是从源内安装, 在 \textsf{terminal} 中输入
-\begin{lstlisting}
-  sudo apt autoremove texlive-*
+如果要卸载从源内安装的 \TeX{} Live, 个人比较推荐使用 synaptic package manager.
+\textsf{terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo apt install synaptic
 \end{lstlisting}
-进行卸载, 其中 \texttt{*} 代表源中的 \TeX{} Live 包.
+即可安装.
+安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
 
 如果是从光盘镜像安装, 只需要直接删除 \texttt{/usr/local/texlive/2019} 文件夹即可
-\begin{lstlisting}
-  sudo rm -r /usr/local/texlive/2019
+\begin{lstlisting}[language = bash]
+  sudo rm -rf /usr/local/texlive/2019
 \end{lstlisting}
 当然还要清理掉环境变量.
+
+\section{升级宏包}
+
+首先在 \textsf{terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo visudo
+\end{lstlisting}
+将
+\begin{lstlisting}
+  /usr/local/texlive/2019/bin/x86_64-linux:
+\end{lstlisting}
+添加在 \texttt{secure\_path} 中.
+然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
+
+接下来在 \textsf{terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo tlmgr option repository ctan
+\end{lstlisting}
+更改源, \texttt{ctan} 也可以改成其他地址, 详情见 Windows 10 系统升级宏包部分.
+接下来, 用户执行命令
+\begin{lstlisting}[language = bash]
+  sudo tlmgr update --list
+\end{lstlisting}
+可查看目前源上可升级的宏包都有哪些. 
+高级用户可以根据自己的需求选择升级特定宏包, 而初级用户建议直接升级全部宏包. 
+用户只需执行
+\begin{lstlisting}[language = bash]
+  sudo tlmgr update --self --all
+\end{lstlisting}
+同时升级 \texttt{tlmgr} 本身和全部宏包. 
+
+\section{安装宏包}
+
+Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只需注意权限, 例如
+\begin{lstlisting}[language = bash]
+  sudo tlmgr install mcmthesis
+\end{lstlisting}
+即安装了 mcmthesis.
+
+\section{编译文件}
+
+首先, 用户需要在工作路径建立一个 \texttt{tex} 文件.
+在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  mkdir ~/Documents/work_latex
+  cd ~/Documents/work_latex/
+  gedit main.tex
+\end{lstlisting}
+在打开的文件输入一个最小实例
+\begin{lstlisting}[language = TeX]
+  \documentclass{article}
+  \begin{document}
+    Hello \LaTeX{} World!
+  \end{document}
+\end{lstlisting}
+保存并退出. 
+接下来执行
+\begin{lstlisting}
+  pdflatex main
+\end{lstlisting}
+等待系统完成编译过程. 
+待编译完成后, 我们即可看到在 \texttt{~/Documents/work\_latex} 中出现了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}. 
+执行
+\begin{lstlisting}
+  evince main.pdf
+\end{lstlisting}
+即可打开 \texttt{pdf} 文件.
+
+编译命令可添加参数, 这里与 Windows 10 中的情形一致, 不再赘述.
+
+\section{使用编辑器}
+
+简化起见, 这里只介绍如何使用 TeXstudio.
+
+根据官网推荐, 我们安装源内的 TeXstudio.
+%由于网络问题, 直接安装速度比较慢, 因此我们首先更换 Ubuntu 18.04 的源至清华大学.
+%在 \textsf{Terminal} 中执行
+%\begin{lstlisting}[language = bash]
+%  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+%\end{lstlisting}
+%备份 \texttt{sources.list} 文件.
+%接下来执行
+%\begin{lstlisting}[language = bash]
+%  sudo gedit /etc/apt/sources.list
+%\end{lstlisting}
+%将文件替换为以下内容\footnote{本段文字可至 \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站} 获取}
+%\begin{lstlisting}
+%  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+%  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+%  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+%  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+%  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+%  
+%  # 预发布软件源，不建议启用
+%  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+%\end{lstlisting}
+在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo apt install texstudio
+\end{lstlisting}
+即可安装.
+注意安装过程中会产生一些依赖, 它们包括了源内的 \TeX{} live 包, 如 \texttt{tex-common}, \texttt{texlive-base}, \texttt{texlive-binaries}, \texttt{texlive-latex-base} 和 \texttt{texlive-latex-recommended}.
+用户需要卸载它们.
+
+用户可以在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  texstudio main.pdf
+\end{lstlisting}
+使用 TeXstudio 编辑文档.
+也可直接双击 \texttt{main.tex} 文件.
+
+注意, 在双击打开时, 用户需要在 \menu{Options > Configure TeXstudio} 中 点击 \menu{Show Advanced Options}, 接下来在 \menu{Build > Build Options > Commands (\${}PATH)} 中添加 \texttt{/usr/local/texlive/2019/bin/x86\_64-linux}.
 
 \chapter{总结}
 本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
