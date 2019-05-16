@@ -453,21 +453,72 @@ Ubuntu 源内自带了 \TeX{} Live, 因此用户可以在 \textsf{Terminal}\foot
 为使用户顺利使用 \TeX{} Live 2019, 建议用户首先卸载从源内安装的 \TeX{} Live.
 
 下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{iso 镜像文件} 的方法如前所述.
-下载完毕后, 打开 \textsf{Terminal} 窗口, 使用如下代码加载光盘镜像至 \texttt{/mnt/texlive} 文件夹
+下载完毕后, 打开 \textsf{Terminal} 窗口, 使用如下代码加载光盘镜像至 \texttt{\~{}/Downloads/texlive} 文件夹
 \begin{lstlisting}
-  mkdir /mnt/texlive
-  sudo mount -o loop texlive.iso /mnt/texlive
+  mkdir ~/Downloads/texlive
+  sudo mount ./texlive.iso ~/Downloads/texlive
 \end{lstlisting}
 接下来执行
 \begin{lstlisting}
-  sudo /mnt/texlive/install-tl
+  sudo ~/Downloads/texlive/install-tl
 \end{lstlisting}
 进行安装.
+在屏幕上应该能见到以下内容
+\begin{lstlisting}
+  ======================> TeX Live installation procedure <=====================
+  
+  ======>   Letters/digits in <angle brackets> indicate   <=======
+  ======>   menu items for actions or customizations      <=======
+  
+   Detected platform: GNU/Linux on x86_64
+   
+   <B> set binary platforms: 1 out of 5
+  
+   <S> set installation scheme: scheme-full
+  
+   <C> set installation collections:
+       40 collections out of 41, disk space required: 5845 MB
+  
+   <D> set directories:
+     TEXDIR (the main TeX directory):
+       /usr/local/texlive/2019
+     TEXMFLOCAL (directory for site-wide local files):
+       /usr/local/texlive/texmf-local
+     TEXMFSYSVAR (directory for variable and automatically generated data):
+       /usr/local/texlive/2019/texmf-var
+     TEXMFSYSCONFIG (directory for local config):
+       /usr/local/texlive/2019/texmf-config
+     TEXMFVAR (personal directory for variable and automatically generated data):
+       ~/.texlive2019/texmf-var
+     TEXMFCONFIG (personal directory for local config):
+       ~/.texlive2019/texmf-config
+     TEXMFHOME (directory for user-specific files):
+       ~/texmf
+  
+   <O> options:
+     [ ] use letter size instead of A4 by default
+     [X] allow execution of restricted list of programs via \write18
+     [X] create all format files
+     [X] install macro/font doc tree
+     [X] install macro/font source tree
+     [ ] create symlinks to standard directories
+     [X] after install, set CTAN as source for package updates
+  
+   <V> set up for portable installation
+  
+  Actions:
+   <I> start installation to hard disk
+   <P> save installation profile to 'texlive.profile' and exit
+   <H> help
+   <Q> quit
+  
+  Enter command: 
+\end{lstlisting}
 这里强烈建议用户直接点击 \keys{I} 使用默认配置安装.
 如果用户对于 Ubuntu 系统比较了解, 可以根据提示，更改安装设置.
 安装完毕后, 将加载的光盘镜像弹出
 \begin{lstlisting}
-  sudo unmount /mnt/texlive
+  sudo umount ~/Downloads/texlive
 \end{lstlisting}
 
 安装完成后, 用户需要设置环境变量.
