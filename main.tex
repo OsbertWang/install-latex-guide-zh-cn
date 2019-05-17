@@ -633,37 +633,43 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 简化起见, 这里只介绍如何使用 TeXstudio.
 
 根据官网推荐, 我们安装源内的 TeXstudio.
-%由于网络问题, 直接安装速度比较慢, 因此我们首先更换 Ubuntu 18.04 的源至清华大学.
-%在 \textsf{Terminal} 中执行
-%\begin{lstlisting}[language = bash]
-%  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-%\end{lstlisting}
-%备份 \texttt{sources.list} 文件.
-%接下来执行
-%\begin{lstlisting}[language = bash]
-%  sudo gedit /etc/apt/sources.list
-%\end{lstlisting}
-%将文件替换为以下内容\footnote{本段文字可至 \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站} 获取}
-%\begin{lstlisting}
-%  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-%  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
-%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
-%  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
-%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
-%  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
-%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
-%  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
-%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
-%  
-%  # 预发布软件源，不建议启用
-%  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
-%  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
-%\end{lstlisting}
+由于网络问题, 直接安装速度比较慢, 因此我们首先更换 Ubuntu 18.04 的源至清华大学.
+在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+\end{lstlisting}
+备份 \texttt{sources.list} 文件.
+接下来执行
+\begin{lstlisting}[language = bash]
+  sudo gedit /etc/apt/sources.list
+\end{lstlisting}
+将文件替换为以下内容\footnote{本段文字可至 \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站} 获取}
+\begin{lstlisting}
+  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+  
+  # 预发布软件源，不建议启用
+  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+\end{lstlisting}
+然后执行
+\begin{lstlisting}[language=bash]
+  sudo apt upgrate
+\end{lstlisting}
+至此换源完毕.
+
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
   sudo apt install texstudio
 \end{lstlisting}
-即可安装.
+即可安装 TeXstudio.
 注意安装过程中会产生一些依赖, 它们包括了源内的 \TeX{} live 包, 如 \texttt{tex-common}, \texttt{texlive-base}, \texttt{texlive-binaries}, \texttt{texlive-latex-base} 和 \texttt{texlive-latex-recommended}.
 用户需要卸载它们.
 
