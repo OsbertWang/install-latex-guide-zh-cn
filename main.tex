@@ -60,14 +60,14 @@
 \chapter{Windows 10 系统}
 
 \section{安装 \TeX{} Live}
-首先用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{iso 镜像文件},
-也可以找国内的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}: \href{http://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive.iso}{兰州大学},
-\href{http://mirrors.cqu.edu.cn/CTAN/systems/texlive/Images/texlive.iso}{重庆大学},
-\href{http://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/texlive.iso}{上海科技大学},
-\href{http://mirrors.huaweicloud.com/repository/toolkit/CTAN/systems/texlive/Images/texlive.iso}{华为云},
-\href{http://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive.iso}{上海交通大学},
-\href{http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive.iso}{清华大学},
-\href{http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive.iso}{中国科学技术大学}.
+首先用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件},
+也可以找国内的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}: \href{http://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{兰州大学},
+\href{http://mirrors.cqu.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{重庆大学},
+\href{http://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/texlive2019.iso}{上海科技大学},
+\href{http://mirrors.huaweicloud.com/repository/toolkit/CTAN/systems/texlive/Images/texlive2019.iso}{华为云},
+\href{http://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso}{上海交通大学},
+\href{http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{清华大学},
+\href{http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{中国科学技术大学}.
 下载完毕后, 可以将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载, 无需使用其他软件；在安装了解压缩软件后, 镜像文件依然可以通过文件夹上方 \menu{主页 > 打开 > Windows 资源管理器} 加载；这里不鼓励解压缩的操作；第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO}. 
 假设加载后的路径为 \texttt{X:\textbackslash texlive}, 其中 \texttt{X} 表示盘符, 如 \texttt{C}、\texttt{D}、\texttt{E} 等. 
 
@@ -443,7 +443,7 @@ TeXstudio 允许用户生成宏指令.
 这里只阐述如何用镜像安装.
 为使用户顺利使用 \TeX{} Live 2019, 建议用户首先卸载从源内安装的 \TeX{} Live 的相关包.
 
-下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive.iso}{iso 镜像文件} 的方法如前所述, 可选择国内源以加快下载速度.
+下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件} 的方法如前所述, 可选择国内源以加快下载速度.
 下载完毕后, 打开 \textsf{Terminal} 窗口, 使用如下代码加载光盘镜像至 \texttt{\~{}/Downloads/texlive} 文件夹
 \begin{lstlisting}[language = bash]
   mkdir ~/Downloads/texlive
