@@ -77,6 +77,7 @@
 \end{lstlisting}
 查看环境变量. 
 若 \texttt{C:\textbackslash Windows\textbackslash system32} 不在结果中\footnote{这里默认系统盘为\textsf{C}盘}, 则关闭 \textsf{cmd} 窗口, 将 \texttt{C:\textbackslash Windows\textbackslash system32} 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}. 
+另外, 如果环境变量中有 \texttt{mingw} 相关的内容, 也请暂时删除\footnote{具体原因参见 \href{https://tex.stackexchange.com/questions/445086/error-installing-latest-version-of-tex-live-on-windows-10}{stackexchange} 的解释}.
 接下来, 在关闭了国内第三方安全软件的前提下, 再打开 \textsf{cmd} 窗口并执行
 \begin{lstlisting}[language = bash]
   cd /d X:
