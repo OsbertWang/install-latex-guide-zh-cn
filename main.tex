@@ -554,9 +554,10 @@ TeXstudio 允许用户生成宏指令.
 即可安装.
 安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
 
-如果是从光盘镜像安装, 只需要直接删除 \texttt{/usr/local/texlive/2019} 文件夹即可
+如果是从光盘镜像安装, 只需要直接删除文件夹即可
 \begin{lstlisting}[language = bash]
   sudo rm -rf /usr/local/texlive/2019
+  rm -rf ~/.texlive
 \end{lstlisting}
 当然还要清理掉环境变量.
 
