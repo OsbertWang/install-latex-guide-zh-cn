@@ -425,7 +425,7 @@ TeXstudio右下角有一处显示文档编码 (Encoding).
 
 \subsubsection{自定义命令并生成按钮}
 TeXstudio 允许用户自定义命令, 并将命令做成按钮放置于面板上. 
-例如, 在 \menu{Options > Configure TeXstudio > Build > User commands} 中, 填写名称 \texttt{User1:Build-xe-view} 和功能 \texttt{latexmk -pdfxe -silent -synctex=1 -interaction=nonstopmode \% | txs:///view-pdf-internal}, 点击 \menu{OK}. 
+例如, 在 \menu{Options > Configure TeXstudio > Build > User commands} 中, 填写名称 \texttt{User1:Build-xe-view} 和功能 \texttt{latexmk -pdfxe -silent -synctex=1 -interaction=nonstopmode \% | txs:///view-pdf-internal --embedded}, 点击 \menu{OK}. 
 接下来我们在 \menu{Tools > User} 中即可看到自定义的命令和相应快捷键. 
 再打开 \menu{Options > Configure TeXstudio > Toolbars}, 在两个下拉菜单中分别选择 \menu{Tools} 和 \menu{All menus}, 在右边找到 \menu{Tools > User > Build-xe-view} 并将其添加至左端, 点击 \menu{OK}. 
 这时, 在面板中将添加新的按钮. 
