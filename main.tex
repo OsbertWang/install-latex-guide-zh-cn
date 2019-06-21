@@ -717,4 +717,39 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
 若用户在阅读本文档的过程中有任何意见和建议, 请发邮件或在 GitHub 中提 issue\footnote{\url{https://github.com/OsbertWang/install_latex}}. 
 
+%\chapter{WSL 下安装}
+%在 windows 系统下, 我自己硬盘中有两个分区, 分别是 \lstinline|C:\| 和 \lstinline|D:\|.
+%挂载 texlive2019.iso 到 \lstinline|F:\|.
+%接下来执行 \lstinline|bash| 打开 wsl, 执行 \lstinline|ls /mnt| 会看到
+%\begin{lstlisting}[frame=single]
+%c  d
+%\end{lstlisting}
+%也就是说在主系统下挂载的镜像文件并没有被 wsl 认可.
+%这种情况下需要自己先建一个文件夹:
+%\begin{lstlisting}[frame=single]
+%sudo mkdir /mnt/f
+%\end{lstlisting}
+%然后使用以下命令挂载
+%\begin{lstlisting}[frame=single]
+%sudo mount -t drvfs F: /mnt/f
+%\end{lstlisting}
+%之后再执行
+%\begin{lstlisting}[frame=single]
+%ls /mnt/f
+%\end{lstlisting}
+%就会看到
+%\begin{lstlisting}[frame=single]
+%LICENSE.CTAN       archive      install-tl-advanced.bat  release-texlive.txt  tlpkg
+%LICENSE.TL         autorun.inf  install-tl-windows.bat   source
+%README             index.html   readme-html.dir          texlive-doc
+%README.usergroups  install-tl   readme-txt.dir           tl-tray-menu.exe
+%\end{lstlisting}
+%解除挂载的命令是
+%\begin{lstlisting}[frame=single]
+%sudo umount /mnt/f
+%\end{lstlisting}
+%然后可以删除文件夹
+%\begin{lstlisting}[frame=single]
+%sudo rmdir /mnt/f
+%\end{lstlisting}
 \end{document}
