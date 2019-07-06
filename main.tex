@@ -479,6 +479,11 @@ TeXstudio 允许用户生成宏指令.
 完成以上设置后,
 关闭窗口.
 这时, 用户使用快捷键 \keys{F5} 和 \keys{F7} 均可打开 SumatraPDF 并且实现了正向搜索.
+如果有人喜欢在编译时添加参数 \texttt{--outdir=temp},
+那么可以将 \texttt{user0:sumatrapdf} 改为
+\begin{lstlisting}
+  dde:///"<SumatraPDFDIR>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?a)temp\?m.pdf","?c:a)temp\?m.tex",@,0,0,1)]
+\end{lstlisting}
 
 用 SumatraPDF 打开编译完的 PDF 文件, 在 \menu{Settings > Options > Set inverse search command line} 中输入
 \begin{lstlisting}
