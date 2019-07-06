@@ -451,19 +451,42 @@ TeXstudio 允许用户生成宏指令.
 例如我们将 \texttt{latexmk-pdf} 填写在 \menu{name} 中,
 将 \texttt{\% !TeX TXS-program:compile = txs:///latexmk/\{\}[-pdf -synctex=1 -interaction=nonstopmode -silent \%]} 填写在 \menu{LaTeX Content} 中,
 再将 \texttt{Shift+F1} 填写在 \menu{Shortcut}.
-设置完毕后，点击 \menu{OK}.
+设置完毕后, 点击 \menu{OK}.
 这时, 我们可以看到 \menu{Macros > latexmk-pdf} 出现.
 在文档特定位置点击它或者直接使用 \keys{\shift + F1}, 即可看到魔法注释出现.
 
 \subsubsection{更改颜色方案}
-有一些用户喜欢将 TeXstudio 的颜色方案更改为深色.
-手动修改一些颜色不方便的话, 我们可以从网上找到一些现成的颜色方案,
-例如 \href{https://tex.stackexchange.com/questions/108315/how-can-i-set-a-dark-theme-in-texstudio}{stackexchange} 网站和 \href{https://robjhyndman.com/download/rjh.txsprofile}{某些用户的博客}.
-更改方案只需要打开 \texttt{ini} 文件，
+有一些用户喜欢深色的颜色方案.
+手动修改颜色不方便的话, 我们可以从网上找到一些现成的颜色方案,
+例如 \href{https://tex.stackexchange.com/questions/108315/how-can-i-set-a-dark-theme-in-texstudio}{stackexchange 网站} 和 \href{https://robjhyndman.com/hyndsight/dark-themes-for-writing/}{某些用户的博客}.
+更改方案只需要打开 \texttt{ini} 文件,
 将这些颜色方案复制到 \texttt{[formats]} 部分.
-\texttt{ini} 文件位置也比较容易找到.
-在 \menu{Help > Check LaTeX Installation} 中有提供它的具体位置.
+在 \menu{Help > Check LaTeX Installation} 中有 \texttt{ini} 文件的具体位置.
 
+\subsubsection{调用外部 PDF 阅读器}
+以 \href{https://www.sumatrapdfreader.org/free-pdf-reader.html}{SumatraPDF} 为例,
+用户直接安装或下载便携版均可,
+假定它在本地的位置为 \texttt{<SumatraPDFDIR>}.
+打开 \menu{Options > Configure TeXstudio} 窗口,
+激活 \menu{Show Advanced Options},
+之后在 \menu{Build > User commands} 中添加
+\begin{lstlisting}
+  dde:///"<SumatraPDFDIR>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf","?c:am.tex",@,0,0,1)]
+\end{lstlisting}
+将其命名为 \texttt{user0:sumatrapdf}.
+接下来, 在 \menu{Build > Build \& View} 中将 \texttt{txs:///compile | txs:///view} 改为 \texttt{txs:///compile | txs:///user0}.
+最后, 在 \menu{Menus} 中将 \texttt{\&View} 的命令由 \texttt{txs:///view} 改为 \texttt{txs:///user0}.
+完成以上设置后,
+关闭窗口.
+这时, 用户使用快捷键 \keys{F5} 和 \keys{F7} 均可打开 SumatraPDF 并且实现了正向搜索.
+
+用 SumatraPDF 打开编译完的 PDF 文件, 在 \menu{Settings > Options > Set inverse search command line} 中输入
+\begin{lstlisting}
+  "<TeXstudioDIR>\texstudio.exe" "%f" -line %l
+\end{lstlisting}
+其中, \texttt{<TeXstudioDIR>} 是 TeXstudio 在本地的位置.
+至此完成了逆向搜索,
+双击 PDF 文件便可回到 TeXstudio 中对应代码的行首. 
 
 \chapter{Ubuntu 18.04 系统}
 
@@ -546,7 +569,7 @@ TeXstudio 允许用户生成宏指令.
   Enter command: 
 \end{lstlisting}
 这里强烈建议用户直接点击 \keys{I} 使用默认配置安装.
-如果用户对于 Ubuntu 系统比较了解, 可以根据提示，更改安装设置.
+如果用户对于 Ubuntu 系统比较了解, 可以根据提示, 更改安装设置.
 安装完毕后, 将加载的光盘镜像弹出
 \begin{lstlisting}[language = bash]
   sudo umount ~/Downloads/texlive
@@ -695,7 +718,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \end{lstlisting}
 将文件替换为以下内容\footnote{本段文字可至 \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站} 获取}
 \begin{lstlisting}
-  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+  # 默认注释了源码镜像以提高 apt update 速度, 如有需要可自行取消注释
   deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
   # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
   deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
@@ -705,7 +728,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
   deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
   # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
   
-  # 预发布软件源，不建议启用
+  # 预发布软件源, 不建议启用
   # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
   # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
 \end{lstlisting}
