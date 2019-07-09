@@ -68,7 +68,8 @@
 \href{http://mirrors.huaweicloud.com/repository/toolkit/CTAN/systems/texlive/Images/texlive2019.iso}{华为云},
 \href{http://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso}{上海交通大学},
 \href{http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{清华大学},
-\href{http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{中国科学技术大学}.
+\href{http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{中国科学技术大学},
+\href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2019.iso}{腾讯云}.
 下载完毕后, 用户打开 \textsf{cmd} 窗口\footnote{在 Windows 搜索栏里面搜 cmd, 系统显示“命令提示符”即为 \textsf{cmd} 窗口}, 执行以下代码
 \begin{lstlisting}[language = bash]
   echo %path%
@@ -249,7 +250,11 @@
 \end{lstlisting}
 中国科技大学
 \begin{lstlisting}[language=bash]
-  tlmgr option repository http://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet/
+  tlmgr option repository http://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet
+\end{lstlisting}
+腾讯云
+\begin{lstlisting}[language=bash]
+  tlmgr option repository https://mirrors.cloud.tencent.com/CTAN/systems/texlive/tlnet
 \end{lstlisting}
 接下来, 用户执行命令
 \begin{lstlisting}[language=bash]
