@@ -435,8 +435,11 @@ TeXworks支持从模板新建文档, 在 \menu{文件} 菜单中可见.
 
 同时按 \keys{Ctrl + Alt} 便可通过鼠标左键进行块选择.
 
-\subsubsection{自动补全}
-TeXstudio 自动补全功能会先通过用户引用的宏包来判断代码是否需要自动补全, 而它的自动补全内容全部被写入了 \href{https://github.com/texstudio-org/texstudio/tree/master/completion}{cwl 文件} 中. 
+\subsubsection{自动补全和未识别代码}
+TeXstudio 自动补全功能会先通过用户引用的宏包来判断代码是否需要自动补全, 
+同时它也可以以此判定用户输入的命令是否正确,
+即命令出现红色背景.
+TeXstudio 能够识别的命令全部被写入了 \href{https://github.com/texstudio-org/texstudio/tree/master/completion}{cwl 文件} 中. 
 用户可以根据自己的需要更改 cwl 文件, 然后将其放入 \texttt{<settings directory>\textbackslash completion\textbackslash user} 文件夹 \footnote{点击 \menu{Help > Check LaTeX Installation}, 在生成的 \texttt{System Report.txt} 中找到 \texttt{texstudio.ini} 文件, 其所在文件夹即为 \texttt{<settings directory>}}. 
 自动补全后有可能生成文本框, 使用 \keys{\ctrl + \arrowkey{>}} 可以跳转至下一个文本框；\keys{\ctrl + \arrowkey{<}} 则可以跳转至下一个. 
 
