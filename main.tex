@@ -76,7 +76,7 @@
 \end{lstlisting}
 查看环境变量. 
 若 \texttt{C:\textbackslash Windows\textbackslash system32} 不在结果中\footnote{这里默认系统盘为\textsf{C}盘}, 则关闭 \textsf{cmd} 窗口, 将 \texttt{C:\textbackslash Windows\textbackslash system32} 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
-\textbf{根据以往经验, 安装过 CTeX 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
+\textbf{根据以往经验, 安装过 C\TeX{} 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
 另外, 如果环境变量中有 \texttt{mingw} 相关的内容, 也请暂时删除\footnote{具体原因参见 \href{https://tex.stackexchange.com/questions/445086/error-installing-latest-version-of-tex-live-on-windows-10}{stackexchange} 的解释, 待安装结束后, 再将 \texttt{mingw} 环境变量添加至 \TeX{} Live 的环境变量之后.}.
 继续打开 \textsf{cmd} 窗口依次执行以下代码\footnote{这里假设镜像文件下载到本地的地址是 \texttt{C:\textbackslash Users\textbackslash Downloads}}
 \begin{lstlisting}[language = bash]
@@ -145,7 +145,7 @@
   [X] adjust search path
   [1] add menu items, shortcuts, etc.
   [1] update file associations
-  [X] install TeXworks front end
+  [X] install \TeX works front end
   [X] after install, use tlnet on CTAN for package updates
   
   <V> set up for portable installation
@@ -346,16 +346,16 @@
 
 \section{使用编辑器}
 在实际操作中, 用户会发觉使用记事本编写 \texttt{tex} 文件十分不便, 因此很多用户都将其他编辑器作为自己的首选. 
-这里向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 TeXworks 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{TeXstudio}. 
+这里向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 \TeX works 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{\TeX studio}. 
 其他编辑器, 因作者能力有限, 无法一一列举, 还请自己在网上寻求更多帮助. 
 
-\subsection{TeXworks}
-TeXworks 是一款轻量级的 \LaTeX 编辑器, 非常适合入门级用户使用\footnote{很多用户在编写 \texttt{tex} 文件时喜欢借助其他工具, 这不是个好习惯, 这里鼓励用户多手动敲代码}. 
+\subsection{\TeX works}
+\TeX works 是一款轻量级的 \LaTeX 编辑器, 非常适合入门级用户使用\footnote{很多用户在编写 \texttt{tex} 文件时喜欢借助其他工具, 这不是个好习惯, 这里鼓励用户多手动敲代码}. 
 
-和大多数国产软件不同, TeXworks 不会自动在桌面生成快捷方式, 新人往往不知道如何打开它. 
-实际上 TeXworks 在 \TeX{} Live 安装路径的 \texttt{\textbackslash bin\textbackslash win32} 中, 可在 \textsf{cmd} 中执行 \texttt{texworks} 打开, 也可直接在 Windows 搜索栏里搜 texworks 打开. 
+和大多数国产软件不同, \TeX works 不会自动在桌面生成快捷方式, 新人往往不知道如何打开它. 
+实际上 \TeX works 在 \TeX{} Live 安装路径的 \texttt{\textbackslash bin\textbackslash win32} 中, 可在 \textsf{cmd} 中执行 \texttt{texworks} 打开, 也可直接在 Windows 搜索栏里搜 \TeX works 打开. 
 
-刚开始使用 TeXworks 的用户不必过多配置, 在默认状态下打开软件、编写代码、保存文件后, 用户可使用 TeXworks 的“排版”按钮进行文档编译而不必回到命令行\footnote{实际上编辑器的按钮也是调用命令行来编译文档, TeXworks 默认排版快捷键是 \texttt{ctrl + T}}. 
+刚开始使用 \TeX works 的用户不必过多配置, 在默认状态下打开软件、编写代码、保存文件后, 用户可使用 \TeX works 的“排版”按钮进行文档编译而不必回到命令行\footnote{实际上编辑器的按钮也是调用命令行来编译文档, \TeX works 默认排版快捷键是 \texttt{ctrl + T}}. 
 按钮旁边是编译命令菜单, 用户可根据需要自行选择. 
 
 下面介绍几个常用的功能. 
@@ -365,13 +365,13 @@ TeXworks 是一款轻量级的 \LaTeX 编辑器, 非常适合入门级用户使�
 
 \subsubsection{自动补全}
 自动补全主要是 \keys{tab} 键的功能, 使用前需确定 \menu{首选项 > 编辑器} 中是否勾选了 \menu{启动自动补全}. 
-有关自动补全的更多内容用户可参考 \href{https://github.com/EthanDeng/texworks-autocomplete}{TeXworks 的自动补全功能}. 
+有关自动补全的更多内容用户可参考 \href{https://github.com/EthanDeng/\TeX works-autocomplete}{\TeX works 的自动补全功能}. 
 
 \subsubsection{使用模板}
-TeXworks支持从模板新建文档, 在 \menu{文件} 菜单中可见. 
+\TeX works支持从模板新建文档, 在 \menu{文件} 菜单中可见. 
 
 \subsubsection{拼写检查}
-默认情况, Texworks没有搭载拼写检查字典, 需要用户自己配置. 
+默认情况, \TeX works没有搭载拼写检查字典, 需要用户自己配置. 
 首先, 访问 \href{http://wiki.openoffice.org/wiki/Dictionaries}{openoffice} 下载词典. 
 接下来将词典安装到 \texttt{<resources>\textbackslash dictionaries} \footnote{\texttt{<resources>} 的具体位置可以在 \menu{帮助 > TeXworks 配置与资源} 中找到}. 
 安装完成后, 在 \menu{编辑 > 拼写} 中选择即可. 
@@ -399,18 +399,18 @@ TeXworks支持从模板新建文档, 在 \menu{文件} 菜单中可见.
 
 \subsubsection{转编码}
 实际上转编码是很多编辑器都具备的功能. 
-在TeXworks右下角有三个按钮, 左边按钮控制换行符类型, 中间按钮控制文档编码, 右边按钮控制行跳转. 
+在\TeX works右下角有三个按钮, 左边按钮控制换行符类型, 中间按钮控制文档编码, 右边按钮控制行跳转. 
 目前大部分中文用户主要面临的是``UTF-8''和``GBK''之间的转换. 
-如果文档是``GBK''编码, 使用TeXworks打开文件后, 文档会出现乱码. 
+如果文档是``GBK''编码, 使用\TeX works打开文件后, 文档会出现乱码. 
 这时, 点中间按钮, 选择编码类型``GBK'', 再点击按钮, 选择 \menu{使用所选编码重载文档}, 若文档中乱码消失, 则再次点击按钮, 选择``UTF-8'', 最后保存文档, 完成转码工作. 
 
-除以上内容外, TeXworks 还支持正则表达式、自定义快捷键等. 
-这些内容都写在 TeXworks 自带的手册中. 
+除以上内容外, \TeX works 还支持正则表达式、自定义快捷键等. 
+这些内容都写在 \TeX works 自带的手册中. 
 手册不长, 用户可以通读一遍以了解更多内容. 
 
-\subsection{TeXstudio}
-相较于 TeXworks, TeXstudio 功能更丰富, 用法更多.
-在使用 TeXstudio 前, 用户一定要查询 \texttt{system32} 是否在环境变量中.
+\subsection{\TeX studio}
+相较于 \TeX works, \TeX studio 功能更丰富, 用法更多.
+在使用 \TeX studio 前, 用户一定要查询 \texttt{system32} 是否在环境变量中.
 具体方法在前面已有说明, 此处不再赘述.
 
 \subsubsection{更改默认编译命令}
@@ -436,42 +436,42 @@ TeXworks支持从模板新建文档, 在 \menu{文件} 菜单中可见.
 同时按 \keys{Ctrl + Alt} 便可通过鼠标左键进行块选择.
 
 \subsubsection{自动补全和未识别代码}
-TeXstudio 自动补全功能会先通过用户引用的宏包来判断代码是否需要自动补全, 
+\TeX studio 自动补全功能会先通过用户引用的宏包来判断代码是否需要自动补全, 
 同时它也可以以此判定用户输入的命令是否正确,
 即命令出现红色背景.
-TeXstudio 能够识别的命令全部被写入了 \href{https://github.com/texstudio-org/texstudio/tree/master/completion}{cwl 文件} 中. 
-用户可以根据自己的需要更改 cwl 文件, 然后将其放入 \texttt{<settings directory>\textbackslash completion\textbackslash user} 文件夹 \footnote{点击 \menu{Help > Check LaTeX Installation}, 在生成的 \texttt{System Report.txt} 中找到 \texttt{texstudio.ini} 文件, 其所在文件夹即为 \texttt{<settings directory>}}. 
+\TeX studio 能够识别的命令全部被写入了 \href{https://github.com/texstudio-org/texstudio/tree/master/completion}{cwl 文件} 中. 
+用户可以根据自己的需要更改 cwl 文件, 然后将其放入 \texttt{<settings directory>\textbackslash completion\textbackslash user} 文件夹\footnote{点击 \menu{Help > Check LaTeX Installation}, 在生成的 \texttt{System Report.txt} 中找到 \texttt{texstudio.ini} 文件, 其所在文件夹即为 \texttt{<settings directory>}}. 
 自动补全后有可能生成文本框, 使用 \keys{\ctrl + \arrowkey{>}} 可以跳转至下一个文本框；\keys{\ctrl + \arrowkey{<}} 则可以跳转至下一个. 
 
 \subsubsection{拼写检查}
-TeXstudio 默认使用德语进行拼写检查, 在右下角将 \texttt{de\_DE} 改为 \texttt{en\_US} 即可进行英文拼写检查, 
+\TeX studio 默认使用德语进行拼写检查, 在右下角将 \texttt{de\_DE} 改为 \texttt{en\_US} 即可进行英文拼写检查, 
 
 \subsubsection{魔法注释}
-除了像 TeXworks 中使用魔法注释外, TeXstudio 还有很多其他的魔法注释, 例如
+除了像 \TeX works 中使用魔法注释外, \TeX studio 还有很多其他的魔法注释, 例如
 \begin{lstlisting}
   % !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode %.tex]
 \end{lstlisting}
 表示使用 \texttt{latexmk} 编译命令, \texttt{\{\}} 表示无视编辑器赋予该命令的一切参数, 而 \texttt{[]} 表示添加其中的参数进行编译, 本例中添加 \texttt{-xelatex -synctex=1 -interaction=nonstopmode} 作为参数. 
 
 \subsubsection{渲染方式}
-TeXstudio 默认渲染方式对中文括号的支持不够好. 
+\TeX studio 默认渲染方式对中文括号的支持不够好. 
 在 \menu{Options > Configure TeXstudio > Adv. Editor > Hacks/Workarounds} 中取消 \menu{Try to automatically choose best display options}, 选择 \menu{Disable cache of character width} 和 \menu{Disable fixed pitch mdoe}. 
 
 \subsubsection{转编码}
-TeXstudio右下角有一处显示文档编码 (Encoding). 
+\TeX studio右下角有一处显示文档编码 (Encoding). 
 依旧以``UTF-8''和``GBK''之间的转换为例. 
-如果文档是``GBK''编码, 使用TeXstudio打开文件后, 点击 \menu{Encoding} 处, 选择 \menu{More Encodings}. 
+如果文档是``GBK''编码, 使用\TeX studio打开文件后, 点击 \menu{Encoding} 处, 选择 \menu{More Encodings}. 
 打开窗口后, 选择``GBK / ...'', 点击 \menu{Reload With}, 若这时文档没有乱码, 再点击 \menu{Encoding > More Encodings}, 选择``UTF-8'', 点击 \menu{Change To}, 保存文件, 完成转码. 
 
 \subsubsection{自定义命令并生成按钮}
-TeXstudio 允许用户自定义命令, 并将命令做成按钮放置于面板上. 
+\TeX studio 允许用户自定义命令, 并将命令做成按钮放置于面板上. 
 例如, 在 \menu{Options > Configure TeXstudio > Build > User commands} 中, 填写名称 \texttt{User1:Build-xe-view} 和功能 \texttt{latexmk -pdfxe -silent -synctex=1 -interaction=nonstopmode \% | txs:///view-pdf-internal --embedded}, 点击 \menu{OK}. 
 接下来我们在 \menu{Tools > User} 中即可看到自定义的命令和相应快捷键. 
 再打开 \menu{Options > Configure TeXstudio > Toolbars}, 在两个下拉菜单中分别选择 \menu{Tools} 和 \menu{All menus}, 在右边找到 \menu{Tools > User > Build-xe-view} 并将其添加至左端, 点击 \menu{OK}. 
 这时, 在面板中将添加新的按钮. 
 
 \subsubsection{生成宏指令}
-TeXstudio 允许用户生成宏指令.
+\TeX studio 允许用户生成宏指令.
 在 \menu{Macros > Edit Macros} 中, 用户可以根据自己的需要, 给出宏指令的名称、快捷键、内容等等.
 例如我们将 \texttt{latexmk-pdf} 填写在 \menu{name} 中,
 将 \texttt{\% !TeX TXS-program:compile = txs:///latexmk/\{\}[-pdf -synctex=1 -interaction=nonstopmode -silent \%]} 填写在 \menu{LaTeX Content} 中,
@@ -514,9 +514,9 @@ TeXstudio 允许用户生成宏指令.
 \begin{lstlisting}
   "<TeXstudioDIR>\texstudio.exe" "%f" -line %l
 \end{lstlisting}
-其中, \texttt{<TeXstudioDIR>} 是 TeXstudio 在本地的位置.
+其中, \texttt{<TeXstudioDIR>} 是 \TeX studio 在本地的位置.
 至此完成了逆向搜索,
-双击 PDF 文件便可回到 TeXstudio 中对应代码的行首. 
+双击 PDF 文件便可回到 \TeX studio 中对应代码的行首. 
 
 \chapter{Ubuntu 18.04 系统}
 
@@ -733,9 +733,9 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 
 \section{使用编辑器}
 
-简化起见, 这里只介绍如何使用 TeXstudio.
+简化起见, 这里只介绍如何使用 \TeX studio.
 
-根据官网推荐, 我们安装源内的 TeXstudio.
+根据官网推荐, 我们安装源内的 \TeX studio.
 由于网络问题, 直接安装速度比较慢, 因此我们首先更换 Ubuntu 18.04 的源至清华大学.
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
@@ -772,7 +772,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \begin{lstlisting}[language = bash]
   sudo apt install texstudio
 \end{lstlisting}
-即可安装 TeXstudio.
+即可安装 \TeX studio.
 注意安装过程中会产生一些依赖, 它们包括了源内的 \TeX{} live 包, 如 \texttt{tex-common}, \texttt{texlive-base}, \texttt{texlive-binaries}, \texttt{texlive-latex-base} 和 \texttt{texlive-latex-recommended}.
 用户需要卸载它们.
 
@@ -780,7 +780,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \begin{lstlisting}[language = bash]
   texstudio main.tex
 \end{lstlisting}
-使用 TeXstudio 编辑文档.
+使用 \TeX studio 编辑文档.
 也可直接双击 \texttt{main.tex} 文件.
 
 注意, 在双击打开时, 用户需要在 \menu{Options > Configure TeXstudio} 中 点击 \menu{Show Advanced Options}, 接下来在 \menu{Build > Build Options > Commands (\${}PATH)} 中添加 \texttt{/usr/local/texlive/2019/bin/x86\_64-linux}.
