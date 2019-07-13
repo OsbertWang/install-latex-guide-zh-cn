@@ -2,6 +2,7 @@
 % !TeX TXS-program:compile=txs:///latexmk/{}[-pdfxe -synctex=1 -interaction=nonstopmode -silent %]
 
 \documentclass{ctexrep}
+\usepackage{accsupp}
 \usepackage[margin=1in]{geometry}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -26,13 +27,17 @@
   tabsize         = 4,
   gobble          = 2,
   numbers         = left,
-  numberstyle     = \tiny,
+  numberstyle     = \tiny\emptyaccsupp,
   frame           = single,
   xleftmargin     = \ccwd,
   numbersep       = \ccwd,
-  columns         = fullflexible
+  columns         = fullflexible,
 %  emphstyle       = {\color{blue}\small\ttfamily},
 %  emph            = {mkdir,rmdir,sudo,mount,umount,rm},
+}
+
+\newcommand\emptyaccsupp[1]{%
+  \BeginAccSupp{ActualText={}}#1\EndAccSupp{}%
 }
 
 \renewmenumacro{\menu}[>]{angularmenus}
