@@ -414,17 +414,26 @@ TeXworks支持从模板新建文档, 在 \menu{文件} 菜单中可见.
 具体方法在前面已有说明, 此处不再赘述.
 
 \subsubsection{更改默认编译命令}
+
 在 \menu{Options > configure TeXstudio > build > default compiler} 中选择默认编译命令. 
 
-另外如果有用户喜欢用 \texttt{latexmk} 和 \texttt{biblatex}, 可以考虑在 \menu{Options > configure TeXstudio > build > Build Options} 中取消 \menu{Check and update bibliography before compiling}. 
+另外如果有用户喜欢用 \texttt{latexmk} 和 \texttt{biblatex}, 可以考虑在 \menu{Options > Configure TeXstudio > build > Build Options} 中取消 \menu{Check and update bibliography before compiling}. 
 
 \subsubsection{显示行号}
-在 \menu{Options > configure TeXstudio} 中勾选 \menu{Show Advanced Options}, 然后在 \menu{Adv. Editor > show line numbers} 选择. 
+
+在 \menu{Options > configure TeXstudio} 中勾选 \menu{Show Advanced Options},
+然后在 \menu{Adv. Editor > show line numbers} 选择. 
 
 \subsubsection{调整缩进}
-在 \menu{Options > Editor > Indentation Mode} 处可以选择是否保持缩进, 勾选 \menu{Replace Indentation Tab by Spaces} 可以让缩进完全变为空格. 
 
-在 \menu{Options > Adv. Editor > Appearance} 中可以更改 \menu{Tab Widths}. 
+在 \menu{Options > Configure TeXstudio > Editor > Indentation Mode} 处可以选择是否保持缩进.
+如果需要让缩进完全变为空格, 勾选 \menu{Replace Indentation Tab by Spaces}.
+
+在 \menu{Adv. Editor > Appearance} 中可以更改 \menu{Tab Widths}.
+
+\subsubsection{块选择模式}
+
+同时按 \keys{Ctrl + Alt} 便可通过鼠标左键进行块选择.
 
 \subsubsection{自动补全}
 TeXstudio 自动补全功能会先通过用户引用的宏包来判断代码是否需要自动补全, 而它的自动补全内容全部被写入了 \href{https://github.com/texstudio-org/texstudio/tree/master/completion}{cwl 文件} 中. 
