@@ -6,7 +6,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{listings}
 \usepackage{xcolor}
-\usepackage{hyperref}
+\usepackage[pdfpagelayout=SinglePage]{hyperref}
 \usepackage[os=win,hyperrefcolorlinks]{menukeys}
 
 \ctexset{
@@ -217,7 +217,7 @@
 即可认为安装顺利完成 \footnote{有用户反应安装后环境变量未发生变化, 则可手动添加 \texttt{<TEXDIR>\textbackslash bin\textbackslash win32} 至环境变量, \texttt{<TEXDIR>} 需与你方才的安装地址一致}. 
 
 \section{卸载 \TeX{} Live}
-有些时候, 如跨版本升级 \TeX{} Live,  用户需要卸载 \TeX{} Live. 
+在跨版本升级 \TeX{} Live 时, 我喜欢卸载旧版 \TeX{} Live. 
 相较于安装, 卸载稍容易一些. 
 用户找卸载批命令文件, 如 \texttt{C:\textbackslash texlive\textbackslash 2019\textbackslash tlpkg\textbackslash installer\textbackslash uninst.bat}. 
 双击或在 \textsf{cmd} 中运行均可. 
