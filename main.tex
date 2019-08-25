@@ -770,7 +770,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \end{lstlisting}
 然后执行
 \begin{lstlisting}[language = bash]
-  sudo apt upgrade
+  sudo apt-get update && sudo apt-get upgrade
 \end{lstlisting}
 至此换源完毕.
 
@@ -807,7 +807,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 方法同前.
 
 在正式安装前,
-用户需要在 WSL 中执行 
+用户需要在 WSL 中执行\footnote{为避免安装速度过慢, 推荐更改 \texttt{sources.list} 文件; 在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索文件 \texttt{sources.list}, 找到路径在 \menu{... > rootfs > etc > apt} 的文件, 备份后使用编辑器打开并进行更改, 更改内容见前文 Ubuntu 部分} 
 \begin{lstlisting}[language=bash]
   sudo apt install libfontconfig1
 \end{lstlisting}
@@ -992,12 +992,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \section{使用编辑器}
 
 使用 WSL 时,
-推荐用户在主系统中使用 \href{https://code.visualstudio.com/}{VS Code} 的 \textsf{Remote WSL} 插件.
-%这里也介绍此情形下如何使用 \TeX studio.
-%
-%在主系统中安装 \TeX studio.
-%
-%注意, 在双击打开时, 用户需要在 \menu{Options > Configure TeXstudio} 中 点击 \menu{Show Advanced Options}, 接下来在 \menu{Build > Build Options > Commands (\${}PATH)} 中添加 \texttt{/usr/local/texlive/2019/bin/x86\_64-linux}.
+推荐用户在主系统中使用 \href{https://code.visualstudio.com/}{VS Code} 的 \texttt{Remote WSL} 插件.
 
 \chapter{总结和展望}
 
