@@ -886,7 +886,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 将加载的光盘镜像弹出.
 
 安装完成后, 用户需要设置环境变量.
-继续在 WSL 中执行\footnote{这里使用了 vim, 如果用户不习惯使用它, 也可在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索文件 \texttt{.bashrc}, 找到路径在 \menu{... > rootfs > home > username} 的文件, 使用编辑器打开并进行更改}
+继续在 WSL 中执行\footnote{这里使用了 vim, 如果用户不习惯使用它, 也可在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索文件 \texttt{.bashrc}, 找到路径在 \texttt{...\textbackslash rootfs\textbackslash home\textbackslash username} 的文件, 使用编辑器打开并进行更改}
 \begin{lstlisting}[language = bash]
   sudo vim ~/.bashrc
 \end{lstlisting}
@@ -993,6 +993,10 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 
 使用 WSL 时,
 推荐用户在主系统中使用 \href{https://code.visualstudio.com/}{VS Code} 的 \texttt{Remote WSL} 插件.
+
+若需要使用 \TeX studio, 则需要将 \texttt{bash.exe} 及其绝对路径写入编译命令中.
+使用 everything 搜索时会发现多个 \texttt{bash.exe}, 这里我们选择在路径 \texttt{C:\textbackslash Windows\textbackslash WinSxS...} 下的 \texttt{bash.exe}.
+若该路径下仍有多个 \texttt{bash.exe}, 则挑选与 \texttt{C:\textbackslash Windows\textbackslash System32} 同等大小的.
 
 \chapter{总结和展望}
 
