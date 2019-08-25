@@ -532,7 +532,7 @@
 为使用户顺利使用 \TeX{} Live 2019, 建议用户首先卸载从源内安装的 \TeX{} Live 的相关包.
 
 下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件} 的方法如前所述, 可选择国内源以加快下载速度.
-下载完毕后, 打开 \textsf{Terminal} 窗口, 一次执行以下命令
+下载完毕后, 打开 \textsf{Terminal} 窗口, 执行以下命令
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
   md5sum texlive2019.iso
@@ -770,7 +770,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \end{lstlisting}
 然后执行
 \begin{lstlisting}[language = bash]
-  sudo apt upgrate
+  sudo apt upgrade
 \end{lstlisting}
 至此换源完毕.
 
@@ -791,22 +791,216 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 
 注意, 在双击打开时, 用户需要在 \menu{Options > Configure TeXstudio} 中 点击 \menu{Show Advanced Options}, 接下来在 \menu{Build > Build Options > Commands (\${}PATH)} 中添加 \texttt{/usr/local/texlive/2019/bin/x86\_64-linux}.
 
-\chapter{总结和展望}
+\chapter{Windows Subsystem for Linux}
 
-本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
-若用户在阅读本文档的过程中有任何意见和建议, 请发邮件或在 GitHub 中提 issue. 
+目前微软推出了 Windows Subsystem for Linux (WSL) 供开发人员使用.
+在这里简要介绍如何在 WSL 中安装 \TeX{} Live.
+我选择的是微软商店中的 Ubuntu.
+此篇安装教程仅供参考.
 
-未来文档中可能会增加在 Ubuntu 18.04 in WSL 中安装 \TeX{} LiVe 的详尽内容.
-目前已知, 在 Windows 10 中将镜像挂载到 \texttt{X:\textbackslash}, 而后使用如下命令可在 WSL 中找到挂载的光盘镜像:
+\section{安装 \TeX{} Live}
+
+在主系统\footnote{在 Windows 10 中直接进行的操作即为在主系统中的操作}中下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件},
+可选择国内源以加快下载速度,
+方法如前所述.
+下载完毕后, 在 \textsf{cmd} 中验证文件是否正常,
+方法同前.
+
+在正式安装前,
+用户需要在 WSL 中执行 
+\begin{lstlisting}[language=bash]
+  sudo apt install libfontconfig1
+\end{lstlisting}
+接下来, 在主系统中将镜像挂载,
+例如挂载到 \texttt{X:\textbackslash},
+而后进入 WSL 并执行如下命令:
 \begin{lstlisting}[language = bash]
   sudo mkdir /mnt/x
   sudo mount -t drvfs X: /mnt/x
 \end{lstlisting}
-添加后可仿照 Ubuntu 18.04 的流程进行安装.
+如此便可在 WSL 中找到挂载的光盘镜像.
+之后执行
+\begin{lstlisting}[language = bash]
+  sudo /mnt/x/install-tl
+\end{lstlisting}
+进行安装.
+在屏幕上应该能见到以下内容
+\begin{lstlisting}
+  ======================> TeX Live installation procedure <=====================
 
-安装完成后可使用如下命令弹出光盘镜像和删除文件夹:
+  ======>   Letters/digits in <angle brackets> indicate   <=======
+  ======>   menu items for actions or customizations      <=======
+  
+  Detected platform: GNU/Linux on x86_64
+  
+  <B> set binary platforms: 1 out of 5
+  
+  <S> set installation scheme: scheme-full
+  
+  <C> set installation collections:
+  40 collections out of 41, disk space required: 5845 MB
+  
+  <D> set directories:
+  TEXDIR (the main TeX directory):
+  /usr/local/texlive/2019
+  TEXMFLOCAL (directory for site-wide local files):
+  /usr/local/texlive/texmf-local
+  TEXMFSYSVAR (directory for variable and automatically generated data):
+  /usr/local/texlive/2019/texmf-var
+  TEXMFSYSCONFIG (directory for local config):
+  /usr/local/texlive/2019/texmf-config
+  TEXMFVAR (personal directory for variable and automatically generated data):
+  ~/.texlive2019/texmf-var
+  TEXMFCONFIG (personal directory for local config):
+  ~/.texlive2019/texmf-config
+  TEXMFHOME (directory for user-specific files):
+  ~/texmf
+
+  <O> options:
+  [ ] use letter size instead of A4 by default
+  [X] allow execution of restricted list of programs via \write18
+  [X] create all format files
+  [X] install macro/font doc tree
+  [X] install macro/font source tree
+  [ ] create symlinks to standard directories
+  [X] after install, set CTAN as source for package updates
+  
+  <V> set up for portable installation
+  
+  Actions:
+  <I> start installation to hard disk
+  <P> save installation profile to 'texlive.profile' and exit
+  <H> help
+  <Q> quit
+  
+  Enter command: 
+\end{lstlisting}
+用户直接点击 \keys{I} 使用默认配置安装.
+如果用户对于 WSL 比较了解, 可以根据提示, 更改安装设置.
+安装完毕后,
+在 WSL 中执行
 \begin{lstlisting}[language = bash]
   sudo umount /mnt/x
   sudo rmdir /mnt/x
 \end{lstlisting}
+将加载的光盘镜像弹出.
+
+安装完成后, 用户需要设置环境变量.
+继续在 WSL 中执行\footnote{这里使用了 vim, 如果用户不习惯使用它, 也可在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索文件 \texttt{.bashrc}, 找到路径在 \menu{... > rootfs > home > username} 的文件, 使用编辑器打开并进行更改}
+\begin{lstlisting}[language = bash]
+  sudo vim ~/.bashrc
+\end{lstlisting}
+在打开的文件末尾添加
+\begin{lstlisting}
+  # Add Tex Live to the PATH, MANPATH, INFOPATH
+  export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
+\end{lstlisting}
+并保存退出.
+退出 WSL 在进入, 执行
+\begin{lstlisting}[language=bash]
+  tex -v
+\end{lstlisting}
+将显示
+\begin{lstlisting}
+  TeX 3.14159265 (TeX Live 2019)
+  kpathsea version 6.3.1
+  Copyright 2019 D.E. Knuth.
+  There is NO warranty.  Redistribution of this software is
+  covered by the terms of both the TeX copyright and
+  the Lesser GNU General Public License.
+  For more information about these matters, see the file
+  named COPYING and the TeX source.
+  Primary author of TeX: D.E. Knuth.
+\end{lstlisting}
+即为安装成功.
+
+\section{卸载 \TeX{} Live}
+
+直接删除文件夹即可
+\begin{lstlisting}[language = bash]
+  sudo rm -rf /usr/local/texlive/2019
+  rm -rf ~/.texlive
+\end{lstlisting}
+当然还要清理掉环境变量.
+
+\section{升级宏包}
+
+在 WSL 中执行
+\begin{lstlisting}[language = bash]
+  sudo visudo
+\end{lstlisting}
+将
+\begin{lstlisting}
+  /usr/local/texlive/2019/bin/x86_64-linux:
+\end{lstlisting}
+添加在 \texttt{secure\_path} 中.
+然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
+
+接下来在 WSL 中执行
+\begin{lstlisting}[language = bash]
+  sudo tlmgr option repository ctan
+\end{lstlisting}
+更改源, \texttt{ctan} 也可以改成其他地址, 详情见 Windows 10 系统升级宏包部分.
+接下来, 用户执行命令
+\begin{lstlisting}[language = bash]
+  sudo tlmgr update --list
+\end{lstlisting}
+可查看目前源上可升级的宏包都有哪些. 
+高级用户可以根据自己的需求选择升级特定宏包, 而初级用户建议直接升级全部宏包. 
+用户只需执行
+\begin{lstlisting}[language = bash]
+  sudo tlmgr update --self --all
+\end{lstlisting}
+同时升级 \texttt{tlmgr} 本身和全部宏包. 
+
+\section{安装宏包}
+
+这里只介绍安装 CTAN 中的宏包方法.
+例如
+\begin{lstlisting}[language = bash]
+  sudo tlmgr install mcmthesis
+\end{lstlisting}
+即安装了 CTAN 中的 mcmthesis.
+
+\section{编译文件}
+
+在这里, 我们假设已经有了一个最小实例 \texttt{main.tex}\footnote{可以在主系统中建立文件, 也可通过 WSL 命令行建立},
+内容为
+\begin{lstlisting}[language = {[LaTeX]TeX}]
+  \documentclass{article}
+  \begin{document}
+  Hello \LaTeX{} World!
+  \end{document}
+\end{lstlisting}
+接下来在 WSL 中执行
+\begin{lstlisting}[language=bash]
+  pdflatex main
+\end{lstlisting}
+等待系统完成编译过程. 
+也可以在 \textsf{cmd} 中执行
+\begin{lstlisting}[language=bash]
+  bash -i -c "pdflatex main"
+\end{lstlisting}
+实现编译.
+待编译完成后, 可看到在工作路径中生成了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}.
+在主系统中可以打开 \texttt{main.pdf} 查看内容.
+
+编译命令可添加参数, 这里不再赘述.
+
+\section{使用编辑器}
+
+使用 WSL 时,
+推荐用户在主系统中使用 \href{https://code.visualstudio.com/}{VS Code} 的 \textsf{Remote WSL} 插件.
+%这里也介绍此情形下如何使用 \TeX studio.
+%
+%在主系统中安装 \TeX studio.
+%
+%注意, 在双击打开时, 用户需要在 \menu{Options > Configure TeXstudio} 中 点击 \menu{Show Advanced Options}, 接下来在 \menu{Build > Build Options > Commands (\${}PATH)} 中添加 \texttt{/usr/local/texlive/2019/bin/x86\_64-linux}.
+
+\chapter{总结和展望}
+
+本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
+若用户在阅读本文档的过程中有任何意见和建议, 请发邮件或在 GitHub 中提 issue. 
 \end{document}
