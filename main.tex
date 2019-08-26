@@ -995,11 +995,38 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 推荐用户在主系统中使用 \href{https://code.visualstudio.com/}{VS Code} 的 \texttt{Remote WSL} 插件.
 
 若需要使用 \TeX studio, 则需要将 \texttt{bash.exe} 及其绝对路径写入编译命令中.
-使用 everything 搜索时会发现多个 \texttt{bash.exe}, 这里我们选择在路径 \texttt{C:\textbackslash Windows\textbackslash WinSxS...} 下的 \texttt{bash.exe}.
+使用 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索时会发现多个 \texttt{bash.exe}, 这里我们选择在路径 \texttt{C:\textbackslash Windows\textbackslash WinSxS...} 下的 \texttt{bash.exe}.
 若该路径下仍有多个 \texttt{bash.exe}, 则挑选与 \texttt{C:\textbackslash Windows\textbackslash System32} 同等大小的.
+
+具体来讲, 仿照前述建立用户自定义命令的方法,
+在我的电脑中设置 \menu{Options > Configure TeXstudio > Build > User commands} 中, 填写名称 \texttt{User4:bash} 和功能 \texttt{"C:\textbackslash Windows\textbackslash WinSxS\textbackslash...\textbackslash bash.exe" -i -c "latexmk -xelatex -synctex=1 -interaction=nonstopmode -halt-on-error -file-line-error ?me)"}\footnote{这里省略了中间路径, 用户根据自己的情形进行补充即可}, 点击 \menu{OK}. 
+接下来打开 \menu{Options > Configure TeXstudio > Toolbars}, 在两个下拉菜单中分别选择 \menu{Tools} 和 \menu{All menus}, 在右边找到 \menu{Tools > User > bash} 并将其添加至左端, 点击 \menu{OK}. 
+这时, 在面板中将添加新的按钮. 
+
+\section{尚未圆满解决的问题}
+
+将 \TeX Live 安装至 WSL 仍有两个悬而未决的问题.
+
+首先, 由于 WSL 默认是无窗口化的纯命令行,
+因此用户无法直接通过命令 \texttt{texdoc} 打开相应的手册.
+目前可以考虑添加选项找到相关手册名称,
+如 \texttt{texdoc -l ctex} 可找到与 \texttt{ctex} 相关手册名.
+接下来回到主系统中使用 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索,
+在主系统中打开.
+
+其次, 由于路径表达方式不同, \TeX studio 无法正常使用正反搜索.
+
+以上问题的一个可选择解决方案是在 WSL 中添加窗口化插件,
+这样可直接将 \TeX studio 和阅读器安装至 WSL.
+更进一步的解决方案, 有待有志之士努力进行新的开发.
 
 \chapter{总结和展望}
 
 本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
-若用户在阅读本文档的过程中有任何意见和建议, 请发邮件或在 GitHub 中提 issue. 
+若用户在阅读本文档的过程中有任何意见和建议, 请发邮件或在 GitHub 中提 issue.
+
+在目前的版本中, 本文使用 WSL 方法进行编译.
+目前感受是该方法较之 Windows 10 系统中的编译更快.
+其他方面并未进行比较.
+希望阅读本文的用户能够尽快上手.
 \end{document}
