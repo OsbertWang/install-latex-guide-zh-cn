@@ -733,7 +733,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 有些用户反应安装完毕后无法使用 \texttt{xelatex} 命令.
 这里或许是因为 libfontconfig 缺失, 用户可在命令行中执行 
 \begin{lstlisting}[language=bash]
-  sudo apt install libfontconfig1
+  sudo apt-get install libfontconfig1
 \end{lstlisting}
 进行安装.
 
@@ -809,7 +809,9 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 在正式安装前,
 用户需要在 WSL 中执行\footnote{为避免安装速度过慢, 推荐更改 \texttt{sources.list} 文件; 在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索文件 \texttt{sources.list}, 找到路径在 \menu{... > rootfs > etc > apt} 的文件, 备份后使用编辑器打开并进行更改, 更改内容见前文 Ubuntu 部分} 
 \begin{lstlisting}[language=bash]
-  sudo apt install libfontconfig1
+  sudo apt-get install libfontconfig1
+  sudo apt-get install ttf-mscorefonts-installer
+  sudo apt-get install fontconfig
 \end{lstlisting}
 接下来, 在主系统中将镜像挂载,
 例如挂载到 \texttt{X:\textbackslash},
@@ -1024,6 +1026,17 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 
 本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
 若用户在阅读本文档的过程中有任何意见和建议, 请发邮件或在 GitHub 中提 issue.
+
+有用户指出,
+WSL 中安装字体比较麻烦.
+这里引用 \href{https://www.jianshu.com/p/e7f12b8c8602}{Ubuntu系统字体命令和字体的安装} 一文,
+希望能够提供一些帮助.
+可惜的是,
+本文关于命令 \texttt{chmod} 的用法是错误的.
+我的用法是
+\begin{lstlisting}[language=bash]
+  sudo chmod -R myfonts 755
+\end{lstlisting}
 
 在目前的版本中, 本文使用 WSL 方法进行编译.
 目前感受是该方法较之 Windows 10 系统中的编译更快.
