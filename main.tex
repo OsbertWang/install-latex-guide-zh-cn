@@ -220,7 +220,12 @@
 在跨版本升级 \TeX{} Live 时, 我喜欢卸载旧版 \TeX{} Live. 
 相较于安装, 卸载稍容易一些. 
 用户找卸载批命令文件, 如 \texttt{C:\textbackslash texlive\textbackslash 2019\textbackslash tlpkg\textbackslash installer\textbackslash uninst.bat}. 
-双击或在 \textsf{cmd} 中运行均可. 
+双击或在 \textsf{cmd} 中运行均可.
+
+\section{跨版本升级 \TeX{} Live}
+目前在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org} 上面提供的说法是:
+Windows 没有类似 Unix 的升级程序,
+需要进行新安装\footnote{原文是: There is no comparable upgrade procedure for Windows. Doing a new installation is necessary.}.
 
 \section{升级宏包}
 安装完成后, 用户可以升级宏包以获得更好的使用体验. 
@@ -659,6 +664,12 @@
 \end{lstlisting}
 当然还要清理掉环境变量.
 
+\section{跨版本升级 \TeX{} Live}
+在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org} 网站上提供了相应的方法.
+但网站也声明:
+默认情况下,
+请通过执行新安装来获取新版本的 \TeX{} Live\footnote{原文是: By default, please get the new TL by doing a new installation instead of proceeding here.}.
+
 \section{升级宏包}
 
 首先在 \textsf{terminal} 中执行
@@ -880,12 +891,12 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 用户直接点击 \keys{I} 使用默认配置安装.
 如果用户对于 WSL 比较了解, 可以根据提示, 更改安装设置.
 安装完毕后,
-在 WSL 中执行
+为了将加载的光盘镜像弹出,
+需继续在 WSL 中执行
 \begin{lstlisting}[language = bash]
   sudo umount /mnt/x
   sudo rmdir /mnt/x
 \end{lstlisting}
-将加载的光盘镜像弹出.
 
 安装完成后, 用户需要设置环境变量.
 继续在 WSL 中执行\footnote{这里使用了 vim, 如果用户不习惯使用它, 也可在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索文件 \texttt{.bashrc}, 找到路径在 \texttt{...\textbackslash rootfs\textbackslash home\textbackslash username} 的文件, 使用编辑器打开并进行更改}
@@ -926,6 +937,9 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
   rm -rf ~/.texlive
 \end{lstlisting}
 当然还要清理掉环境变量.
+
+\section{跨版本升级 \TeX{} Live}
+WSL 中的方法同 Ubuntu 中的方法.
 
 \section{升级宏包}
 
@@ -1007,7 +1021,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 
 \section{尚未圆满解决的问题}
 
-将 \TeX Live 安装至 WSL 仍有两个悬而未决的问题.
+将 \TeX{} Live 安装至 WSL 仍有两个悬而未决的问题.
 
 首先, 由于 WSL 默认是无窗口化的纯命令行,
 因此用户无法直接通过命令 \texttt{texdoc} 打开相应的手册.
@@ -1031,11 +1045,28 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 WSL 中安装字体比较麻烦.
 这里引用 \href{https://www.jianshu.com/p/e7f12b8c8602}{Ubuntu系统字体命令和字体的安装} 一文,
 希望能够提供一些帮助.
-可惜的是,
-本文关于命令 \texttt{chmod} 的用法是错误的.
-我的用法是
+
+首先获取需要安装的字体文件,
+假设文件保存在 \verb|~/fonts/|.
+然后在 \texttt{/usr/share/fonts/} 文件夹中创建新的文件夹,
+例如 \texttt{myfonts}
+\begin{lstlisting}[language=bash]
+  cd /usr/share/fonts/
+  sudo mkdir myfonts
+\end{lstlisting}
+接下来将获取的字体文件复制到 \texttt{myfonts} 中
+\begin{lstlisting}[language=bash]
+  sudo cp ~/fonts/* /usr/share/fonts/myfonts/ 
+\end{lstlisting}
+然后修改字体文件的权限
 \begin{lstlisting}[language=bash]
   sudo chmod -R 755 myfonts
+\end{lstlisting}
+最后建立字体缓存
+\begin{lstlisting}[language=bash]
+  mkfontscale
+  mkfontdir
+  fc-cache -fv
 \end{lstlisting}
 
 在目前的版本中, 本文使用 WSL 方法进行编译.
