@@ -216,6 +216,53 @@
 \end{lstlisting}
 即可认为安装顺利完成 \footnote{有用户反应安装后环境变量未发生变化, 则可手动添加 \texttt{<TEXDIR>\textbackslash bin\textbackslash win32} 至环境变量, \texttt{<TEXDIR>} 需与你方才的安装地址一致}. 
 
+\subsection{下载镜像一直不成功的处理办法}
+
+目前发现有些用户使用 \textsf{edge} 浏览器时无法正常下载镜像文件.
+这时,
+用户可以选择使用 \href{https://eternallybored.org/misc/wget/}{wget} 对镜像进行下载.
+具体用法是:
+将 \textsf{wget} 所在目录添加到环境变量中.
+打开 \textsf{cmd} 窗口执行以下代码
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+即可下载最近的镜像.
+类似地,
+也可以指定国内的源进行下载:\\
+兰州大学
+\begin{lstlisting}[language = bash]
+  wget http://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+重庆大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.cqu.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+上海科技大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+华为云
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.huaweicloud.com/repository/toolkit/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+上海交通大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+清华大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+中国科学技术大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+腾讯云
+\begin{lstlisting}[language = bash]
+  wget https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+
 \section{卸载 \TeX{} Live}
 在跨版本升级 \TeX{} Live 时, 我喜欢卸载旧版 \TeX{} Live. 
 相较于安装, 卸载稍容易一些. 
