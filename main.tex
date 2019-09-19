@@ -303,6 +303,13 @@
 相较于安装, 卸载稍容易一些. 
 用户找卸载批命令文件, 如 \texttt{C:\textbackslash texlive\textbackslash 2019\textbackslash tlpkg\textbackslash installer\textbackslash uninst.bat}. 
 双击或在 \textsf{cmd} 中运行均可.
+如果想知道 \TeX{} Live 大致被安装在哪里,
+可以在命令行输入
+\begin{lstlisting}[language=bash]
+  kpsewhich -var-value TEXMFDIST
+\end{lstlisting}
+来查 \texttt{TEXMFDIST} 的具体路径,
+该路径的上一级路径即为 \TeX{} Live 的安装路径.
 
 \section{跨版本升级 \TeX{} Live}
 目前在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org} 上面提供的说法是:
