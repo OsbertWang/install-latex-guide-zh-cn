@@ -45,48 +45,17 @@
 
 \title{\bfseries 一份简短的安装 \LaTeX{} 的介绍\thanks{\url{https://github.com/OsbertWang/install_latex}}}
 \author{啸行\thanks{\url{ranwang.osbert@outlook.com}}}
-\date{版本: 5.6}
-%\renewcommand{\maketitle}{%
-%  \begin{titlepage}
-%    \renewcommand{\thefootnote}{\fnsymbol{footnote}} 
-%    \centering
-%    
-%    \vspace*{\baselineskip}
-%    
-%    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
-%    \rule{\textwidth}{0.4pt}
-%    
-%    \vspace{0.75\baselineskip}
-%    
-%    {\LARGE\bfseries 一份简短的安装 \LaTeX{} 的介绍\footnotemark[1]\\}
-%    
-%    \vspace{0.75\baselineskip}
-%    
-%    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
-%    \rule{\textwidth}{1.6pt}
-%    
-%    \vspace{3\baselineskip}
-%    
-%    {\Large 啸行\footnotemark[2]}
-%    
-%    \vspace{2\baselineskip}
-%    
-%    {\large 版本：5.6}
-%    
-%    \vspace{0.5\baselineskip}
-%    
-%    \vfill
-%    \footnotetext[1]{\url{https://github.com/OsbertWang/install_latex}}
-%    \footnotetext[2]{\url{ranwang.osbert@outlook.com}}
-%  \end{titlepage}
-%}
+\date{%
+  \today\\[1\ccwd]
+  v5.7
+}
 
 \begin{document}
   
 \maketitle
 
 \begin{abstract}
-在 QQ 群 91940767 时, 经常有群友咨询如何安装 \LaTeX.
+在 QQ 群 91940767、478023327 和 640633524 时, 经常有群友咨询如何安装 \LaTeX.
 本文将介绍在\textbf{未安装其他 \LaTeX{} 发行版的前提下} Windows 10 系统和 Ubuntu 系统中安装 \TeX{}~Live、升级宏包、编译简易文档、使用编辑器的相关操作, 并多以介绍命令行操作为主.
 有关 Mik\TeX{} 的安装, 可以参考 \href{https://camuseblog.top/2019-03-02-/MiKTeX/}{MiK\TeX{} 的基本使用}.
 建议用户阅读 \href{http://www.latexstudio.net/archives/11469.html}{\LaTeXe{} 安装 \& 新手指点 FAQ} 和 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-ch} 以更全面地了解基础内容.
@@ -309,7 +278,12 @@
   kpsewhich -var-value TEXMFDIST
 \end{lstlisting}
 来查 \texttt{TEXMFDIST} 的具体路径,
-该路径的上一级路径即为 \TeX{} Live 的安装路径.
+该路径的上一级路径即为 \TeX{} Live 的安装路径%
+\footnote{%
+  除这里提供的 \texttt{TEXMFDIST}, 还有很多其他变量, 可在
+  \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}
+  第 2.3 节处找到
+}.
 
 \section{跨版本升级 \TeX{} Live}
 目前在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org} 上面提供的说法是:
