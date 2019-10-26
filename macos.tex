@@ -1,0 +1,79 @@
+\chapter{macOS}
+
+\section{安装 Homebrew}
+
+强烈推荐用户使用 \href{https://brew.sh}{Homebrew}. Homebrew 是一个包管理, 类似 Ubuntu 上面的
+\texttt{apt-get}. 安装教程可以在其网站找到, 这里简单列出来：
+\begin{lstlisting}[language=bash]
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+\end{lstlisting}
+将以上命令粘贴至终端\footnote{打开方法为: \keys{\cmdmac + \SPACE}, 输入 terminal 并打开 \menu{终端} 应用}.
+脚本会在执行前暂停, 并说明它将做什么. 依据屏幕指令执行即可.
+
+中国大陆用户可以更改镜像以提高访问速度. 以中国科学技术大学镜像源为例:
+\begin{lstlisting}[language=bash]
+  cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+  git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+  cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
+  git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+  echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
+  source ~/.bash_profile
+\end{lstlisting}
+如果是 zsh 用户, 最后两行请替换为
+\begin{lstlisting}[language=bash]
+  echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.zshrc
+  source ~/.zshrc
+\end{lstlisting}
+
+\section{安装 Mac\TeX}
+
+Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些辅助程序. 如果已经安装了 Homebrew,
+只需在终端输入一行命令即可完成安装:
+\begin{lstlisting}[language=bash]
+  brew cask reinstall mactex
+\end{lstlisting}
+如有输入密码等提示, 请根据屏幕指示操作.至于环境变量等繁琐细节, Homebrew 会自动进行处理,
+无须用户干预.
+
+完整的 Mac\TeX{} 会比较大. 如果磁盘空间实在紧张, 也可以考虑安装 Basic\TeX:
+\begin{lstlisting}[language=bash]
+  brew cask reinstall basictex
+\end{lstlisting}
+安装完成后 Basic\TeX{} 依然会缺很多包, 手动安装会比较麻烦, 所以不推荐没有经验的用户尝试.
+
+\section{升级}
+
+如果只需要升级宏包, 那么依旧可以使用 \texttt{tlmgr}. 使用方法与 Ubuntu 上一致, 这里不再重复.
+一般来说, 也需要使用 \texttt{sudo} 获取管理员权限后才能完成安装.
+
+如果是跨版本升级 (Mac\TeX{} 的版本与 \TeX{} Live 保持一致), 则可以在 Homebrew 中完成:
+\begin{lstlisting}[language=bash]
+  brew update
+  brew cask upgrade mactex
+\end{lstlisting}
+
+\section{使用编辑器}
+
+\subsection{\TeX Shop}
+
+Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆), 通常在安装完毕后便可立即使用.
+打开编辑器, 输入最小示例
+\begin{lstlisting}[language = {[LaTeX]TeX}]
+  \documentclass{article}
+  \begin{document}
+    Hello \LaTeX{} World!
+  \end{document}
+\end{lstlisting}
+保存之后, 将排版程序 (工具栏上面左数第二个下拉菜单) 由默认的 \menu{LaTeX} 切换到 \menu{pdflatexmk},
+再点击旁边的排版 \menu{排版} (\menu{Typeset}), 待编译完成后会弹出 PDF 预览界面.
+
+编译中文文档, 通常需要将排版程序切换到 \menu{XeLaTeX}.
+注意可能需要多次编译以生成正确的交叉引用等内容.
+
+\subsection{\TeX studio}
+
+如果希望使用 \TeX studio 等其他编辑器, 也可以通过 Homebrew 安装:
+\begin{lstlisting}[language=bash]
+  brew cask reinstall basictex
+\end{lstlisting}
+注意因为网络问题可能会下载失败. 这时可能需要从其他途径获得安装包并手工安装, 此处不再赘述.
