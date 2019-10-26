@@ -1,0 +1,37 @@
+\chapter{总结和展望}
+
+本文是个人最近一段时间的使用总结, 其中难免有不甚合理或晦涩难懂的部分. 
+若用户在阅读本文档的过程中有任何意见和建议, 请发邮件或在 GitHub 中提 issue.
+
+有用户指出,
+WSL 中安装字体比较麻烦.
+这里引用 \href{https://www.jianshu.com/p/e7f12b8c8602}{Ubuntu系统字体命令和字体的安装} 一文,
+希望能够提供一些帮助.
+
+首先获取需要安装的字体文件,
+假设文件保存在 \verb|~/fonts/|.
+然后在 \texttt{/usr/share/fonts/} 文件夹中创建新的文件夹,
+例如 \texttt{myfonts}
+\begin{lstlisting}[language=bash]
+  cd /usr/share/fonts/
+  sudo mkdir myfonts
+\end{lstlisting}
+接下来将获取的字体文件复制到 \texttt{myfonts} 中
+\begin{lstlisting}[language=bash]
+  sudo cp ~/fonts/* /usr/share/fonts/myfonts/ 
+\end{lstlisting}
+然后修改字体文件的权限
+\begin{lstlisting}[language=bash]
+  sudo chmod -R 755 myfonts
+\end{lstlisting}
+最后建立字体缓存
+\begin{lstlisting}[language=bash]
+  mkfontscale
+  mkfontdir
+  fc-cache -fv
+\end{lstlisting}
+
+在目前的版本中, 本文使用 WSL 方法进行编译.
+目前感受是该方法较之 Windows 10 系统中的编译更快.
+其他方面并未进行比较.
+希望阅读本文的用户能够尽快上手.
