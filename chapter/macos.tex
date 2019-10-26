@@ -1,9 +1,12 @@
-\chapter{macOS}
+% !TeX root = ../main.tex
+
+\chapter{macOS}\label{chap:macOS}
 
 \section{安装 Homebrew}
 
-强烈推荐用户使用 \href{https://brew.sh}{Homebrew}. Homebrew 是一个包管理, 类似 Ubuntu 上面的
-\texttt{apt-get}. 安装教程可以在其网站找到, 这里简单列出来：
+强烈建议用户使用 \href{https://brew.sh}{Homebrew}.
+Homebrew 是一个包管理, 类似 Ubuntu 上面的 \texttt{apt-get}.
+安装教程可以在其网站找到, 这里简单列出来：
 \begin{lstlisting}[language=bash]
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 \end{lstlisting}
@@ -30,14 +33,14 @@
 Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些辅助程序. 如果已经安装了 Homebrew,
 只需在终端输入一行命令即可完成安装:
 \begin{lstlisting}[language=bash]
-  brew cask reinstall mactex
+  brew cask install mactex
 \end{lstlisting}
 如有输入密码等提示, 请根据屏幕指示操作.至于环境变量等繁琐细节, Homebrew 会自动进行处理,
 无须用户干预.
 
 完整的 Mac\TeX{} 会比较大. 如果磁盘空间实在紧张, 也可以考虑安装 Basic\TeX:
 \begin{lstlisting}[language=bash]
-  brew cask reinstall basictex
+  brew cask install basictex
 \end{lstlisting}
 安装完成后 Basic\TeX{} 依然会缺很多包, 手动安装会比较麻烦, 所以不推荐没有经验的用户尝试.
 
@@ -72,8 +75,8 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
 
 \subsection{\TeX studio}
 
-如果希望使用 \TeX studio 等其他编辑器, 也可以通过 Homebrew 安装:
+如果希望使用 \TeX studio, 也可以通过 Homebrew 安装:
 \begin{lstlisting}[language=bash]
-  brew cask reinstall basictex
+  brew cask install texstudio
 \end{lstlisting}
 注意因为网络问题可能会下载失败. 这时可能需要从其他途径获得安装包并手工安装, 此处不再赘述.

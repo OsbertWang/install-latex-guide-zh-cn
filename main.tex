@@ -1,5 +1,5 @@
 % !TeX document-id = {9518a27b-c930-4bf6-a805-aa54f9dee147}
-% !TeX TXS-program:compile=txs:///latexmk/{}[-pdfxe -synctex=1 -interaction=nonstopmode -silent %]
+% !TeX TXS-program:compile=txs:///latexmk/{}[-pdfxe -synctex=1 -interaction=nonstopmode -file-line-error -silent %]
 
 \documentclass[fontset=fandol]{ctexrep}
 \usepackage{accsupp}
@@ -21,7 +21,7 @@
 \lstset{
   backgroundcolor = \color{lightgray!30},
   keywordstyle    = \color{blue},
-  stringstyle     = \color{purple!40},
+  stringstyle     = \color{brown!70},
   basicstyle      = {\small\ttfamily},
   breaklines      = true,
   tabsize         = 4,
@@ -63,15 +63,23 @@
 除在本地安装发行版之外, 本文还将额外补充使用 \href{http://www.overleaf.com}{Overleaf} 的相关内容.
 本文所涉及到的代码需结合上下文说明, 不能简单地复制粘贴. 红色文字都是可点的超链接, 可直接跳转.
 \menu{菜单} 表示软件菜单. \keys{k} 表示键盘按键.
+
+本手册发布后,
+Dongsheng Deng\footnote{\url{https://github.com/EthanDeng}},
+muzimuzhi\footnote{\url{https://github.com/muzimuzhi}},
+Xiangdong Zeng\footnote{\url{https://github.com/stone-zeng}}
+对本手册提出了很好的建议, 并提供了帮助，
+其中, 有关 macOS 的内容最初由 Xiangdong Zeng 草拟完成.
+在此一并感谢.
 \end{abstract}
 
 \tableofcontents
 
-\input{windows.tex}
-\input{ubuntu.tex}
-\input{wsl.tex}
-\input{macos.tex}
-\input{overleaf.tex}
-\input{summary.tex}
+\input{./chapter/windows.tex}
+\input{./chapter/ubuntu.tex}
+\input{./chapter/wsl.tex}
+\input{./chapter/macos.tex}
+\input{./chapter/overleaf.tex}
+\input{./chapter/summary.tex}
 
 \end{document}
