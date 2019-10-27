@@ -10,7 +10,9 @@ Homebrew 是一个包管理, 类似 Ubuntu 上面的 \texttt{apt-get}.
 \begin{lstlisting}[language=bash]
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 \end{lstlisting}
-将以上命令粘贴至终端\footnote{打开方法为: \keys{\cmdmac + \SPACE}, 输入 terminal 并打开 \menu{终端} 应用}.
+将以上命令在\textsf{终端}\footnote{%
+  打开方法为: \keys{\cmdmac + \SPACE}, 输入 terminal 并打开 \menu{终端} 应用}%
+执行.
 脚本会在执行前暂停, 并说明它将做什么. 依据屏幕指令执行即可.
 
 中国大陆用户可以更改镜像以提高访问速度. 以中国科学技术大学镜像源为例:
@@ -31,7 +33,7 @@ Homebrew 是一个包管理, 类似 Ubuntu 上面的 \texttt{apt-get}.
 \section{安装 Mac\TeX}
 
 Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些辅助程序. 如果已经安装了 Homebrew,
-只需在终端输入一行命令即可完成安装:
+只需在\textsf{终端}执行以下命令即可完成安装:
 \begin{lstlisting}[language=bash]
   brew cask install mactex
 \end{lstlisting}
@@ -44,30 +46,58 @@ Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些
 \end{lstlisting}
 安装完成后 Basic\TeX{} 依然会缺很多包, 手动安装会比较麻烦, 所以不推荐没有经验的用户尝试.
 
-\section{升级}
+\section{卸载 Mac\TeX}
 
-如果只需要升级宏包, 那么依旧可以使用 \texttt{tlmgr}. 使用方法与 Ubuntu 上一致, 这里不再重复.
-一般来说, 也需要使用 \texttt{sudo} 获取管理员权限后才能完成安装.
+如果用户借助 Homebrew cask 安装了 Mac\TeX,
+那么卸载工作可能会稍显麻烦.
+这里引用 \href{https://github.com/Homebrew/homebrew-cask/issues/32073}{Github} 上的讨论.
+用户可以根据这里的内容卸载 Mac\TeX.
 
-如果是跨版本升级 (Mac\TeX{} 的版本与 \TeX{} Live 保持一致), 则可以在 Homebrew 中完成:
+\section{跨版本升级 Mac\TeX}
+
+跨版本升级 (Mac\TeX{} 的版本与 \TeX{} Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
 \begin{lstlisting}[language=bash]
   brew update
   brew cask upgrade mactex
 \end{lstlisting}
+
+\section{升级宏包}
+
+升级宏包依旧可以使用 \texttt{tlmgr}.
+使用方法与 Ubuntu 上一致, 这里不再重复.
+一般来说, 也需要使用 \texttt{sudo} 获取管理员权限后才能完成安装.
+
+\section{安装宏包}
+
+安装 CTAN 中的宏包方法与 Ubuntu 上一致.
+
+\section{编译文件}
+
+在这里, 假设已经有了一个最小示例 \texttt{main.tex},
+内容为
+\begin{lstlisting}[language = {[LaTeX]TeX}]
+  \documentclass{article}
+  \begin{document}
+  Hello \LaTeX{} World!
+  \end{document}
+\end{lstlisting}
+接下来在\textsf{终端}中执行
+\begin{lstlisting}[language=bash]
+  pdflatex main
+\end{lstlisting}
+等待系统完成编译过程. 
+待编译完成后, 可看到在工作路径中生成了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}.
+可以打开 \texttt{main.pdf} 查看内容.
+
+编译命令可添加参数, 这里不再赘述.
 
 \section{使用编辑器}
 
 \subsection{\TeX Shop}
 
 Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆), 通常在安装完毕后便可立即使用.
-打开编辑器, 输入最小示例
-\begin{lstlisting}[language = {[LaTeX]TeX}]
-  \documentclass{article}
-  \begin{document}
-    Hello \LaTeX{} World!
-  \end{document}
-\end{lstlisting}
-保存之后, 将排版程序 (工具栏上面左数第二个下拉菜单) 由默认的 \menu{LaTeX} 切换到 \menu{pdflatexmk},
+通过编辑器打开 \texttt{main.tex},
+将排版程序 (工具栏上面左数第二个下拉菜单) 由默认的 \menu{LaTeX} 切换到 \menu{pdflatexmk},
 再点击旁边的排版 \menu{排版} (\menu{Typeset}), 待编译完成后会弹出 PDF 预览界面.
 
 编译中文文档, 通常需要将排版程序切换到 \menu{XeLaTeX}.
@@ -80,3 +110,9 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
   brew cask install texstudio
 \end{lstlisting}
 注意因为网络问题可能会下载失败. 这时可能需要从其他途径获得安装包并手工安装, 此处不再赘述.
+
+\subsubsection{无法显示文字}
+
+\TeX studio 在 macOS 下有可能无法显示文字,
+这是其他系统下目前没有发现的问题.
+具体解决方法见\href{https://zhuanlan.zhihu.com/p/80728204}{李阿玲在知乎的回答}.
