@@ -30,6 +30,15 @@ Homebrew 是一个包管理, 类似 Ubuntu 上面的 \texttt{apt-get}.
   source ~/.zshrc
 \end{lstlisting}
 
+\subsection{Xcode}
+
+根据 \href{https://docs.brew.sh/Xcode\#supported-xcode-versions}{Homebrew 网站}的提示\footnote{原文是 Homebrew supports and recommends the latest Xcode and/or Command Line Tools available for your platform},
+推荐用户在安装 Homebrew 前先安装 Xcode.
+在\textsf{终端} 执行以下命令即可:
+\begin{lstlisting}[language=bash]
+  xcode-select --install
+\end{lstlisting}
+
 \section{安装 Mac\TeX}
 
 Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些辅助程序. 如果已经安装了 Homebrew,
