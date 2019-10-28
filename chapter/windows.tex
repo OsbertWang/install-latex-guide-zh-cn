@@ -351,12 +351,35 @@ Windows 没有类似 Unix 的升级程序,
 来编译文档 \texttt{main.tex}, 并在有需要时完成其他步骤\footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译, 详情见相关文档}. 
 
 \section{使用编辑器}
-在实际操作中, 用户会发觉使用记事本编写 \texttt{tex} 文件十分不便, 因此很多用户都将其他编辑器作为自己的首选. 
-这里向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 \TeX works 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{\TeX studio}. 
-其他编辑器, 因作者能力有限, 无法一一列举, 还请自己在网上寻求更多帮助. 
+在实际操作中, 用户会发觉使用记事本编写 \texttt{tex} 文件十分不便, 因此很多用户都将其他编辑器作为自己的首选.  表~\ref{tab:editor} 是 \href{https://ddswhu.me/}{ddswhu} 在 \LaTeX{} 小圈子内部对 \LaTeX{} 编辑器所进行的用户体验调查的结果, 比较主观, 仅供参考.
+
+\begin{table}[htbp]
+  \centering
+  \caption{\LaTeX{} 编辑器对比}
+    \begin{tabular}{cccccc}
+    \toprule
+             &  WinEdt      &  \TeX{}studio  & \TeX{}works   &  Sublime Text &  VS Code     \\
+    \midrule
+    主流系统  &  Win          &  全平台        & Linux/Win     &  全平台        &  全平台       \\
+    软件类型  &  商业软件      &  开源软件       & 开源软件       &  商业软件       &  商业软件     \\
+    软件价格  &  219 元       &  0             &  0            &  80 刀        &  0           \\
+    代码高亮  &  \stars{2.7}  &  \stars{3.2}  &  \stars{1.5}  &  \stars{4.3}  &  \stars{4.5}  \\
+    颜色主题  &  \stars{2.3}  &  \stars{2.2}  &  \stars{1.0}  &  \stars{4.0}  &  \stars{4.0}  \\
+    自动补全  &  \stars{2.7}  &  \stars{3.4}  &  \stars{2.0}  &  \stars{3.5}  &  \stars{4.0}  \\
+    代码片段  &  \stars{2.7}  &  \stars{2.4}  &  \stars{0.5}  &  \stars{3.8}  &  \stars{4.0}  \\
+    辅助输入  &  \stars{4.0}  &  \stars{3.4}  &  \stars{0.5}  &  \stars{2.3}  &  \stars{3.3}  \\
+    开发完成  &  \stars{4.0}  &  \stars{3.8}  &  \stars{4.5}  &  \stars{3.5}  &  \stars{4.0}  \\
+    推荐指数  &  \stars{2.7}  &  \stars{4.0}  &  \stars{1.5}  &  \stars{3.0}  &  \stars{4.3}  \\
+    \bottomrule
+    \end{tabular}%
+  \label{tab:editor}%
+\end{table}%
+
+本文向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 \TeX works 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{\TeX studio}. 
+其他编辑器, 因本人并不常用, 无法一一介绍, 还请自己在网上寻求更多帮助. 
 
 \subsection{\TeX works}
-\TeX works 是一款轻量级的 \LaTeX 编辑器, 非常适合入门级用户使用\footnote{很多用户在编写 \texttt{tex} 文件时喜欢借助其他工具, 这不是个好习惯, 这里鼓励用户多手动敲代码}. 
+\TeX works 是一款轻量级的 \LaTeX 编辑器, 个人认为非常适合入门级用户使用\footnote{很多用户在编写 \texttt{tex} 文件时喜欢借助其他工具, 这不是个好习惯, 这里鼓励用户多手动敲代码}. 
 
 和大多数国产软件不同, \TeX works 不会自动在桌面生成快捷方式, 新人往往不知道如何打开它. 
 实际上 \TeX works 在 \TeX{} Live 安装路径的 \texttt{\textbackslash bin\textbackslash win32} 中, 可在 \textsf{cmd} 中执行 \texttt{texworks} 打开, 也可直接在 Windows 搜索栏里搜 \TeX works 打开. 
