@@ -90,29 +90,3 @@ Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些
 可以打开 \texttt{main.pdf} 查看内容.
 
 编译命令可添加参数, 这里不再赘述.
-
-\section{使用编辑器}
-
-\subsection{\TeX Shop}
-
-Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆), 通常在安装完毕后便可立即使用.
-通过编辑器打开 \texttt{main.tex},
-将排版程序 (工具栏上面左数第二个下拉菜单) 由默认的 \menu{LaTeX} 切换到 \menu{pdflatexmk},
-再点击旁边的排版 \menu{排版} (\menu{Typeset}), 待编译完成后会弹出 PDF 预览界面.
-
-编译中文文档, 通常需要将排版程序切换到 \menu{XeLaTeX}.
-注意可能需要多次编译以生成正确的交叉引用等内容.
-
-\subsection{\TeX studio}
-
-如果希望使用 \TeX studio, 也可以通过 Homebrew 安装:
-\begin{lstlisting}[language=bash]
-  brew cask install texstudio
-\end{lstlisting}
-注意因为网络问题可能会下载失败. 这时可能需要从其他途径获得安装包并手工安装, 此处不再赘述.
-
-\subsubsection{无法显示文字}
-
-\TeX studio 在 macOS 下有可能无法显示文字,
-这是其他系统下目前没有发现的问题.
-具体解决方法见\href{https://zhuanlan.zhihu.com/p/80728204}{李阿玲在知乎的文章}.
