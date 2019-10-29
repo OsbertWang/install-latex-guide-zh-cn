@@ -1,0 +1,227 @@
+% !TeX root = ../main.tex
+
+\chapter{Ubuntu 18.04 系统}
+
+\section{安装 \TeX{} Live}
+
+这里只阐述如何用镜像安装.
+为使用户顺利使用 \TeX{} Live 2019, 建议用户首先卸载从源内安装的 \TeX{} Live 的相关包.
+
+下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件} 的方法如前所述, 可选择国内源以加快下载速度.
+下载完毕后, 打开 \textsf{Terminal} 窗口, 执行以下命令
+\begin{lstlisting}[language = bash]
+  cd ~/Downloads
+  md5sum texlive2019.iso
+\end{lstlisting}
+若显示
+\begin{lstlisting}
+  f13ffe81840bb37de855bf7445e1d29a  texlive2019.iso
+\end{lstlisting}
+则镜像文件下载正确.
+
+接下来, 使用如下代码加载光盘镜像至 \texttt{\~{}/Downloads/texlive} 文件夹
+\begin{lstlisting}[language = bash]
+  mkdir ~/Downloads/texlive
+  sudo mount ./texlive2019.iso ~/Downloads/texlive
+\end{lstlisting}
+接下来执行
+\begin{lstlisting}[language = bash]
+  sudo ~/Downloads/texlive/install-tl
+\end{lstlisting}
+进行安装.
+在屏幕上应该能见到以下内容
+\begin{lstlisting}
+  ======================> TeX Live installation procedure <=====================
+  
+  ======>   Letters/digits in <angle brackets> indicate   <=======
+  ======>   menu items for actions or customizations      <=======
+  
+   Detected platform: GNU/Linux on x86_64
+   
+   <B> set binary platforms: 1 out of 5
+  
+   <S> set installation scheme: scheme-full
+  
+   <C> set installation collections:
+       40 collections out of 41, disk space required: 5845 MB
+  
+   <D> set directories:
+     TEXDIR (the main TeX directory):
+       /usr/local/texlive/2019
+     TEXMFLOCAL (directory for site-wide local files):
+       /usr/local/texlive/texmf-local
+     TEXMFSYSVAR (directory for variable and automatically generated data):
+       /usr/local/texlive/2019/texmf-var
+     TEXMFSYSCONFIG (directory for local config):
+       /usr/local/texlive/2019/texmf-config
+     TEXMFVAR (personal directory for variable and automatically generated data):
+       ~/.texlive2019/texmf-var
+     TEXMFCONFIG (personal directory for local config):
+       ~/.texlive2019/texmf-config
+     TEXMFHOME (directory for user-specific files):
+       ~/texmf
+  
+   <O> options:
+     [ ] use letter size instead of A4 by default
+     [X] allow execution of restricted list of programs via \write18
+     [X] create all format files
+     [X] install macro/font doc tree
+     [X] install macro/font source tree
+     [ ] create symlinks to standard directories
+     [X] after install, set CTAN as source for package updates
+  
+   <V> set up for portable installation
+  
+  Actions:
+   <I> start installation to hard disk
+   <P> save installation profile to 'texlive.profile' and exit
+   <H> help
+   <Q> quit
+  
+  Enter command: 
+\end{lstlisting}
+这里强烈建议用户直接点击 \keys{I} 使用默认配置安装.
+如果用户对于 Ubuntu 系统比较了解, 可以根据提示, 更改安装设置.
+安装完毕后, 将加载的光盘镜像弹出
+\begin{lstlisting}[language = bash]
+  sudo umount ~/Downloads/texlive
+\end{lstlisting}
+
+安装完成后, 用户需要设置环境变量.
+继续在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo gedit ~/.bashrc
+\end{lstlisting}
+在打开的文件末尾添加
+\begin{lstlisting}
+  # Add Tex Live to the PATH, MANPATH, INFOPATH
+  export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
+\end{lstlisting}
+并保存退出.
+这时再打开 \textsf{Terminal} 执行
+\begin{lstlisting}[language=bash]
+  tex -v
+\end{lstlisting}
+将显示
+\begin{lstlisting}
+  TeX 3.14159265 (TeX Live 2019)
+  kpathsea version 6.3.1
+  Copyright 2019 D.E. Knuth.
+  There is NO warranty.  Redistribution of this software is
+  covered by the terms of both the TeX copyright and
+  the Lesser GNU General Public License.
+  For more information about these matters, see the file
+  named COPYING and the TeX source.
+  Primary author of TeX: D.E. Knuth.
+\end{lstlisting}
+即为安装成功.
+
+\section{卸载 \TeX{} Live}
+
+如果要卸载从源内安装的 \TeX{} Live, 个人比较推荐使用 synaptic package manager.
+\textsf{terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo apt install synaptic
+\end{lstlisting}
+即可安装.
+安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
+
+如果是从光盘镜像安装, 只需要直接删除文件夹即可.
+可先在\textsf{terminal} 中执行
+\begin{lstlisting}[language = bash]
+  kpsewhich -var-value TEXMFROOT
+\end{lstlisting}
+来查询安装路径,
+进而通过 \texttt{sudo rm -rf} 进行删除.
+默认安装的用户直接运行
+\begin{lstlisting}[language = bash]
+  sudo rm -rf /usr/local/texlive/2019
+  rm -rf ~/.texlive
+\end{lstlisting}
+当然删除后还要清理掉环境变量.
+
+\section{跨版本升级 \TeX{} Live}
+在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org} 网站上提供了相应的方法.
+但网站也声明:
+默认情况下,
+请通过执行新安装来获取新版本的 \TeX{} Live\footnote{原文是: By default, please get the new TL by doing a new installation instead of proceeding here.}.
+
+\section{升级宏包}
+
+首先在 \textsf{terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo visudo
+\end{lstlisting}
+将
+\begin{lstlisting}
+  /usr/local/texlive/2019/bin/x86_64-linux:
+\end{lstlisting}
+添加在 \texttt{secure\_path} 中.
+然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
+
+接下来在 \textsf{terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo tlmgr option repository ctan
+\end{lstlisting}
+更改源, \texttt{ctan} 也可以改成其他地址, 详情见 Windows 10 系统升级宏包部分.
+接下来, 用户执行命令
+\begin{lstlisting}[language = bash]
+  sudo tlmgr update --list
+\end{lstlisting}
+可查看目前源上可升级的宏包都有哪些. 
+高级用户可以根据自己的需求选择升级特定宏包, 而初级用户建议直接升级全部宏包. 
+用户只需执行
+\begin{lstlisting}[language = bash]
+  sudo tlmgr update --self --all
+\end{lstlisting}
+同时升级 \texttt{tlmgr} 本身和全部宏包. 
+
+\section{安装宏包}
+
+Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只需注意权限, 例如
+\begin{lstlisting}[language = bash]
+  sudo tlmgr install mcmthesis
+\end{lstlisting}
+即安装了 mcmthesis.
+
+\section{编译文件}
+
+首先, 用户需要在工作路径建立一个 \texttt{tex} 文件.
+在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  mkdir ~/Documents/work_latex
+  cd ~/Documents/work_latex/
+  gedit main.tex
+\end{lstlisting}
+在打开的文件输入一个最小示例
+\begin{lstlisting}[language = {[LaTeX]TeX}]
+  \documentclass{article}
+  \begin{document}
+    Hello \LaTeX{} World!
+  \end{document}
+\end{lstlisting}
+保存并退出. 
+接下来执行
+\begin{lstlisting}
+  pdflatex main
+\end{lstlisting}
+等待系统完成编译过程. 
+待编译完成后, 我们即可看到在 \texttt{\~{}/Documents/work\_latex} 中出现了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}. 
+执行
+\begin{lstlisting}[language=bash]
+  evince main.pdf
+\end{lstlisting}
+即可打开 \texttt{pdf} 文件.
+
+编译命令可添加参数, 这里与 Windows 10 中的情形一致, 不再赘述.
+
+\subsection{无法使用 \texttt{xelatex} 命令}
+
+有些用户反映安装完毕后无法使用 \texttt{xelatex} 命令.
+这里或许是因为 libfontconfig 缺失, 用户可在命令行中执行 
+\begin{lstlisting}[language=bash]
+  sudo apt-get install libfontconfig1
+\end{lstlisting}
+进行安装.

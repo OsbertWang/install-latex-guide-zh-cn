@@ -1,0 +1,101 @@
+% !TeX root = ../main.tex
+
+\chapter{macOS}\label{chap:macOS}
+
+\section{安装 Homebrew}
+
+强烈建议用户使用 \href{https://brew.sh}{Homebrew}.
+Homebrew 是一个包管理, 类似 Ubuntu 上面的 \texttt{apt-get}.
+安装教程可以在其网站找到, 这里简单列出来：
+\begin{lstlisting}[language=bash]
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+\end{lstlisting}
+将以上命令在\textsf{终端}\footnote{%
+  打开方法为: \keys{\cmdmac + \SPACE}, 输入 terminal 并打开 \menu{终端} 应用}%
+执行.
+脚本会在执行前暂停, 并说明它将做什么. 依据屏幕指令执行即可.
+
+中国大陆用户可以更改镜像以提高访问速度. 以中国科学技术大学镜像源为例:
+\begin{lstlisting}[language=bash]
+  cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+  git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+  cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
+  git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+  echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
+  source ~/.bash_profile
+\end{lstlisting}
+如果是 zsh 用户, 最后两行请替换为
+\begin{lstlisting}[language=bash]
+  echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.zshrc
+  source ~/.zshrc
+\end{lstlisting}
+
+\subsection{Xcode}
+
+根据 \href{https://docs.brew.sh/Xcode\#supported-xcode-versions}{Homebrew 网站}的提示\footnote{原文是 Homebrew supports and recommends the latest Xcode and/or Command Line Tools available for your platform},
+推荐用户在安装 Homebrew 前先安装 Xcode.
+在\textsf{终端} 执行以下命令即可:
+\begin{lstlisting}[language=bash]
+  xcode-select --install
+\end{lstlisting}
+
+\section{安装 Mac\TeX}
+
+Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些辅助程序. 如果已经安装了 Homebrew,
+只需在\textsf{终端}执行以下命令即可完成安装:
+\begin{lstlisting}[language=bash]
+  brew cask install mactex
+\end{lstlisting}
+如有输入密码等提示, 请根据屏幕指示操作.至于环境变量等繁琐细节, Homebrew 会自动进行处理,
+无须用户干预.
+
+完整的 Mac\TeX{} 会比较大. 如果磁盘空间实在紧张, 也可以考虑安装 Basic\TeX:
+\begin{lstlisting}[language=bash]
+  brew cask install basictex
+\end{lstlisting}
+安装完成后 Basic\TeX{} 依然会缺很多包, 手动安装会比较麻烦, 所以不推荐没有经验的用户尝试.
+
+\section{卸载 Mac\TeX}
+
+如果用户借助 Homebrew cask 安装了 Mac\TeX,
+那么卸载工作可能会稍显麻烦.
+这里引用 \href{https://github.com/Homebrew/homebrew-cask/issues/32073}{Github} 上的讨论.
+用户可以根据这里的内容卸载 Mac\TeX.
+
+\section{跨版本升级 Mac\TeX}
+
+跨版本升级 (Mac\TeX{} 的版本与 \TeX{} Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
+\begin{lstlisting}[language=bash]
+  brew update
+  brew cask upgrade mactex
+\end{lstlisting}
+
+\section{升级宏包}
+
+升级宏包依旧可以使用 \texttt{tlmgr}.
+使用方法与 Ubuntu 上一致, 这里不再重复.
+一般来说, 也需要使用 \texttt{sudo} 获取管理员权限后才能完成安装.
+
+\section{安装宏包}
+
+安装 CTAN 中的宏包方法与 Ubuntu 上一致.
+
+\section{编译文件}
+
+在这里, 假设已经有了一个最小示例 \texttt{main.tex},
+内容为
+\begin{lstlisting}[language = {[LaTeX]TeX}]
+  \documentclass{article}
+  \begin{document}
+  Hello \LaTeX{} World!
+  \end{document}
+\end{lstlisting}
+接下来在\textsf{终端}中执行
+\begin{lstlisting}[language=bash]
+  pdflatex main
+\end{lstlisting}
+等待系统完成编译过程. 
+待编译完成后, 可看到在工作路径中生成了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}.
+可以打开 \texttt{main.pdf} 查看内容.
+
+编译命令可添加参数, 这里不再赘述.

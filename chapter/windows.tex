@@ -1,0 +1,353 @@
+% !TeX root = ../main.tex
+
+\chapter{Windows 10 系统}
+
+\section{安装 \TeX{} Live}
+首先用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件},
+也可以找国内的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}: \href{http://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{兰州大学},
+\href{http://mirrors.cqu.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{重庆大学},
+\href{http://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/texlive2019.iso}{上海科技大学},
+\href{http://mirrors.huaweicloud.com/repository/toolkit/CTAN/systems/texlive/Images/texlive2019.iso}{华为云},
+\href{http://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso}{上海交通大学},
+\href{http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{清华大学},
+\href{http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{中国科学技术大学},
+\href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2019.iso}{腾讯云}.
+下载完毕后, 用户打开 \textsf{cmd} 窗口\footnote{在 Windows 搜索栏里面搜 cmd, 系统显示“命令提示符”即为 \textsf{cmd} 窗口}, 执行以下代码
+\begin{lstlisting}[language = bash]
+  echo %path%
+\end{lstlisting}
+查看环境变量. 
+若 \texttt{C:\textbackslash Windows\textbackslash system32} 不在结果中\footnote{这里默认系统盘为\textsf{C}盘}, 则关闭 \textsf{cmd} 窗口, 将 \texttt{C:\textbackslash Windows\textbackslash system32} 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
+\textbf{根据以往经验, 安装过 C\TeX{} 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
+另外, 如果环境变量中有 \texttt{mingw} 相关的内容, 也请暂时删除\footnote{具体原因参见 \href{https://tex.stackexchange.com/questions/445086/error-installing-latest-version-of-tex-live-on-windows-10}{stackexchange} 的解释, 待安装结束后, 再将 \texttt{mingw} 环境变量添加至 \TeX{} Live 的环境变量之后.}.
+继续打开 \textsf{cmd} 窗口依次执行以下代码\footnote{这里假设镜像文件下载到本地的地址是 \texttt{C:\textbackslash Users\textbackslash Downloads}}
+\begin{lstlisting}[language = bash]
+  cd /d C:\Users\Downloads
+  certutil -hashfile texlive2019.iso md5
+\end{lstlisting}
+若系统显示
+\begin{lstlisting}
+  MD5 的 texlive2019.iso 哈希:
+  f13ffe81840bb37de855bf7445e1d29a
+  CertUtil: -hashfile 命令成功完成
+\end{lstlisting}
+则表明下载的镜像文件正常.
+
+接下来, 将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载, 无需使用其他软件；在安装了解压缩软件后, 镜像文件依然可以通过文件夹上方 \menu{主页 > 打开 > Windows 资源管理器} 加载；这里不鼓励解压缩的操作；第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO}. 
+假设加载后的路径为 \texttt{X:\textbackslash}, 其中 \texttt{X} 表示盘符, 如 \texttt{C}、\texttt{D}、\texttt{E} 等. 
+在关闭了国内第三方安全软件的前提下, 再打开 \textsf{cmd} 窗口并执行
+\begin{lstlisting}[language = bash]
+  cd /d X:
+\end{lstlisting}
+切换路径. 
+接下来执行\footnote{强烈建议用户在操作系统中显示文件后缀名, 文件夹上方 \menu{查看 > 显示/隐藏} 中选择 \menu{文件扩展名}}
+\begin{lstlisting}[language = bash]
+  install-tl-windows.bat --no-gui
+\end{lstlisting}
+即可进入安装流程. 
+
+此安装方法所采取的是纯命令行操作, 因此用户将看到如下的结果\footnote{有部分用户反映, 使用命令行安装时, 系统会提示用户无权限（Permission）, 对于这种情况, 可以右键 \menu{命令提示符}, 选择 \menu{以管理员身份运行}}
+\begin{lstlisting}
+  =====================> TeX Live installation procedure <=====================
+  
+  ======>   Letters/digits in <angle brackets> indicate   <=======
+  ======>   menu items for actions or customizations      <=======
+  
+  Detected platform: Windows
+  
+  <B> set binary platforms: 1 out of 5
+  
+  <S> set installation scheme: scheme-full
+  
+  <C> set installation collections:
+  41 collections out of 41, disk space required: 6021 MB
+  
+  <D> set directories:
+  TEXDIR (the main TeX directory):
+  C:/texlive/2019
+  TEXMFLOCAL (directory for site-wide local files):
+  C:/texlive/texmf-local
+  TEXMFSYSVAR (directory for variable and automatically generated data):
+  C:/texlive/2019/texmf-var
+  TEXMFSYSCONFIG (directory for local config):
+  C:/texlive/2019/texmf-config
+  TEXMFVAR (personal directory for variable and automatically generated data):
+  ~/.texlive2019/texmf-var
+  TEXMFCONFIG (personal directory for local config):
+  ~/.texlive2019/texmf-config
+  TEXMFHOME (directory for user-specific files):
+  ~/texmf
+  
+  <O> options:
+  [ ] use letter size instead of A4 by default
+  [X] allow execution of restricted list of programs via \write18
+  [X] create all format files
+  [X] install macro/font doc tree
+  [X] install macro/font source tree
+  [X] adjust search path
+  [1] add menu items, shortcuts, etc.
+  [1] update file associations
+  [X] install \TeX works front end
+  [X] after install, use tlnet on CTAN for package updates
+  
+  <V> set up for portable installation
+  
+  Actions:
+  <I> start installation to hard disk
+  <P> save installation profile to 'texlive.profile' and exit
+  <H> help
+  <Q> quit
+  
+  Enter command:
+\end{lstlisting}
+这时, 用户可先执行 \texttt{D} 来更改安装路径, 也可直接执行 \texttt{I} 在默认路径中直接安装 \TeX{} Live. 
+执行 \texttt{D} 后, 用户可看到
+\begin{lstlisting}
+  ==============================================================================
+  Directories customization:
+  
+  <1> TEXDIR:       C:/texlive/2019
+  support tree: C:/texlive/2019/texmf-dist
+  
+  <2> TEXMFLOCAL:     C:/texlive/texmf-local
+  <3> TEXMFSYSVAR:    C:/texlive/2019/texmf-var
+  <4> TEXMFSYSCONFIG: C:/texlive/2019/texmf-config
+  
+  <5> TEXMFVAR:       ~/.texlive2019/texmf-var
+  <6> TEXMFCONFIG:    ~/.texlive2019/texmf-config
+  <7> TEXMFHOME:      ~/texmf
+  
+  Note: ~ will expand to %USERPROFILE%
+  
+  Actions:
+  <R> return to main menu
+  <Q> quit
+  
+  Enter command:
+\end{lstlisting}
+这时执行数字 \texttt{1}, 将看到
+\begin{lstlisting}
+  New value for TEXDIR [C:/texlive/2019]:
+\end{lstlisting}
+即可更改路径, 如 \texttt{D:/texlive/2019}. 
+接下来, 执行 \texttt{R} 即可回到初始的安装界面. 
+其他操作用户可通过阅读英文自行执行, 这里不再赘述. 
+至此, 用户只需耐心等待安装完成, 并且不要点击 \textsf{cmd} 窗口\footnote{Windows 10 默认采取快速编辑模式, 一旦点击 \textsf{cmd} 窗口, 将显示``选择命令提示符''而导致进程暂停}. 
+安装完成后, 关闭再打开 \textsf{cmd} 窗口, 执行
+\begin{lstlisting}[language = bash]
+  tex -v
+\end{lstlisting}
+以验证安装是否成功\footnote{正常安装 \TeX{} Live 后, 环境变量会变化, 关闭原 \textsf{cmd} 窗口再重新打开才能获取新的环境变量}. 
+结果显示为
+\begin{lstlisting}
+  TeX 3.14159265 (TeX Live 2019/W32TeX)
+  kpathsea version 6.3.0
+  Copyright 2019 D.E. Knuth.
+  There is NO warranty.  Redistribution of this software is
+  covered by the terms of both the TeX copyright and
+  the Lesser GNU General Public License.
+  For more information about these matters, see the file
+  named COPYING and the TeX source.
+  Primary author of TeX: D.E. Knuth.
+\end{lstlisting}
+即可认为安装顺利完成%
+\footnote{若未能正确显示结果, 则可能是因为环境变量未改变,
+用户可手动添加 \texttt{<TEXDIR>\textbackslash bin\textbackslash win32} 至环境变量, \texttt{<TEXDIR>} 需与你方才的安装地址一致}. 
+
+\subsection{下载镜像一直不成功的处理办法}
+
+目前发现有些用户使用 \textsf{edge} 浏览器时无法正常下载镜像文件.
+这时,
+用户可以选择使用 \href{https://eternallybored.org/misc/wget/}{wget} 对镜像进行下载.
+具体用法是:
+将 \textsf{wget} 所在目录添加到环境变量中.
+打开 \textsf{cmd} 窗口执行以下代码
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+即可下载最近的镜像.
+类似地,
+也可以指定国内的源进行下载:\\
+兰州大学
+\begin{lstlisting}[language = bash]
+  wget http://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+重庆大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.cqu.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+上海科技大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+华为云
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.huaweicloud.com/repository/toolkit/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+上海交通大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+清华大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+中国科学技术大学
+\begin{lstlisting}[language = bash]
+  wget http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+腾讯云
+\begin{lstlisting}[language = bash]
+  wget https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
+
+\section{卸载 \TeX{} Live}
+在跨版本升级 \TeX{} Live 时, 我喜欢卸载旧版 \TeX{} Live. 
+相较于安装, 卸载稍容易一些. 
+用户找卸载批命令文件, 如 \texttt{C:\textbackslash texlive\textbackslash 2019\textbackslash tlpkg\textbackslash installer\textbackslash uninst.bat}. 
+双击或在 \textsf{cmd} 中运行均可.
+如果想知道 \TeX{} Live 被安装在哪里,
+可以在命令行输入
+\begin{lstlisting}[language=bash]
+  kpsewhich -var-value TEXMFROOT
+\end{lstlisting}
+来查 \texttt{TEXMFROOT} 的值,
+该值即为 \TeX{} Live 的安装路径%
+\footnote{%
+  除这里提供的 \texttt{TEXMFROOT}, 还有很多其他变量, 可在
+  \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}
+  第 2.3 节处找到
+}.
+
+\section{跨版本升级 \TeX{} Live}
+目前在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org} 上面提供的说法是:
+Windows 没有类似 Unix 的升级程序,
+需要进行新安装\footnote{原文是: There is no comparable upgrade procedure for Windows. Doing a new installation is necessary.}.
+
+\section{升级宏包}
+安装完成后, 用户可以升级宏包以获得更好的使用体验. 
+下面将介绍使用命令行升级宏包的方法. 
+打开 \textsf{cmd} 窗口, 首先执行下面命令指定升级使用的镜像源. 
+\texttt{ctan} 表示系统在升级时将自动寻求最近的源进行下载. 
+\begin{lstlisting}[language=bash]
+  tlmgr option repository ctan
+\end{lstlisting}
+用户同样可以指定其他的镜像源, 例如兰州大学
+\begin{lstlisting}[language=bash]
+  tlmgr option repository http://mirror.lzu.edu.cn/CTAN/systems/texlive/tlnet
+\end{lstlisting}
+重庆大学
+\begin{lstlisting}[language=bash]
+  tlmgr option repository http://mirrors.cqu.edu.cn/CTAN/systems/texlive/tlnet
+\end{lstlisting}
+上海科技大学
+\begin{lstlisting}[language=bash]
+  tlmgr option repository http://mirrors-wan.geekpie.club/CTAN/systems/texlive/tlnet
+\end{lstlisting}
+华为云
+\begin{lstlisting}[language=bash]
+  tlmgr option repository http://mirrors.huaweicloud.com/repository/toolkit/CTAN/systems/texlive/tlnet
+\end{lstlisting}
+上海交通大学
+\begin{lstlisting}[language=bash]
+  tlmgr option repository http://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet
+\end{lstlisting}
+清华大学
+\begin{lstlisting}[language=bash]
+  tlmgr option repository http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet
+\end{lstlisting}
+中国科技大学
+\begin{lstlisting}[language=bash]
+  tlmgr option repository http://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet
+\end{lstlisting}
+腾讯云
+\begin{lstlisting}[language=bash]
+  tlmgr option repository https://mirrors.cloud.tencent.com/CTAN/systems/texlive/tlnet
+\end{lstlisting}
+接下来, 用户执行命令
+\begin{lstlisting}[language=bash]
+  tlmgr update --list
+\end{lstlisting}
+可查看目前源上可升级的宏包都有哪些. 
+高级用户可以根据自己的需求选择升级特定宏包, 而初级用户建议直接升级全部宏包. 
+用户只需执行
+\begin{lstlisting}[language=bash]
+  tlmgr update --self --all
+\end{lstlisting}
+同时升级 \texttt{tlmgr} 本身和全部宏包. 
+
+部分用户会碰到升级不成功的情况, 这些情况我们将一一给出处理办法. 
+
+\subsection{\texttt{tlmgr} 本身无法成功升级}
+
+遇到这种情况时, 用户需自行下载 \href{http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe}{update-tlmgr-latest.exe}, 然后再执行升级命令即可. 
+
+\subsection{升级到一半停止}
+
+这种情况下, 用户需要执行另外一个命令继续升级
+\begin{lstlisting}
+  tlmgr update --reinstall-forcibly-removed --all
+\end{lstlisting}
+
+\subsection{电脑不能联网}
+首先找其他人到 \href{https://ctan.org/pkg}{CTAN} 下载对应包 (pkg) 的 tar.gz 文件.
+接下来将 tar.gz 文件复制到本地, 并且执行
+\begin{lstlisting}
+   tlmgr install --file <DIR>\pkgname.tar.gz
+\end{lstlisting}
+这里的 \texttt{<DIR>} 指的是 tar.gz 文件所在路径.
+
+\section{安装宏包}
+在默认状态下, 用户将完整安装 \TeX{} Live, 因此用户极少碰到需要手动安装宏包的情形. 
+同时, 在 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-ch} 中也明确提到, \textbf{如非万不得已, 尽量不要手动安装宏包}. 
+因此在这里我只介绍从源处安装宏包的命令. 
+假设用户想安装 \texttt{mcmthesis} 宏包, 只需在 \textsf{cmd} 窗口执行
+\begin{lstlisting}[language=bash]
+  tlmgr install mcmthesis
+\end{lstlisting}
+需要注意的是, 用户一定要清楚所要安装的宏包名称, 并且在安装宏包前先确保镜像源设置正确. 
+
+\section{编译文档}
+升级宏包完成后, 用户可以编译文档. 
+在这里, 我依旧执拗地使用命令行来完成这一过程. 
+
+首先, 用户需要在指定位置\footnote{以下称工作路径}建立一个 \texttt{tex} 文件：
+\begin{lstlisting}[language = bash]
+  mkdir E:\work_latex
+  cd /d E:\work_latex
+  notepad main.tex
+\end{lstlisting}
+第1行表示创建一个工作路径 \texttt{E:\textbackslash work\_latex}, 第2行表示进入工作路径, 第3行表示用记事本打开 \texttt{main.tex} 文件, 若文件不存在, 系统将询问用户是否创建该文件. 
+在打开的记事本中输入一个最小示例
+\begin{lstlisting}[language={[LaTeX]TeX}]
+  \documentclass{article}
+  \begin{document}
+    Hello \LaTeX{} World!
+  \end{document}
+\end{lstlisting}
+保存并退出. 
+接下来执行
+\begin{lstlisting}[language=bash]
+  pdflatex main
+\end{lstlisting}
+等待系统完成编译过程. 
+待编译完成后, 我们即可看到在 \texttt{E:\textbackslash work\_latex} 中出现了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}. 
+
+总结一下, 在使用 \LaTeX{} 时, 用户首先要在工作路径\footnote{建议不同的工程放入不同的工作路径}中编写好一个 \texttt{tex} 文件. 
+当 \texttt{tex} 文件编写完毕, 我们即可使用编译命令\footnote{目前常用的编译命令为 \texttt{pdflatex} 和 \texttt{xelatex}}, 将 \texttt{tex} 文件编译成 \texttt{pdf} 文件. 
+
+编译命令其实有很多可选参数, 如用户能够从 \texttt{pdf} 文件跳回 \texttt{tex} 文件, 便是因为执行编译命令时添加了参数
+\begin{lstlisting}[language=bash]
+  pdflatex -synctex=1 main
+\end{lstlisting}
+此外还有很多其他参数, 用户若感兴趣, 可自行阅读手册. 
+
+在很多时候, 我个人更倾向于使用 \texttt{latexmk} 来编译 \texttt{tex} 文档, 如执行
+\begin{lstlisting}[language=bash]
+  latexmk -pdf -synctex=1 -interaction=nonstopmode main
+\end{lstlisting}
+意味着使用 
+\begin{lstlisting}[language=bash]
+  pdflatex -synctex=1 -interaction=nonstopmode main
+\end{lstlisting}
+来编译文档 \texttt{main.tex}, 并在有需要时完成其他步骤\footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译, 详情见相关文档}. 
