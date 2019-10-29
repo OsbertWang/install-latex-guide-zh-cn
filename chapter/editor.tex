@@ -82,6 +82,8 @@
 相较于 \TeX works, \TeX studio 功能更丰富, 用法更多.
 在使用 \TeX studio 前, 用户一定要查询 \texttt{system32} 是否在环境变量中.
 具体方法在前面已有说明, 此处不再赘述.
+以下有关 \TeX studio 的用法介绍,
+还请用户提前在 \menu{Options > configure TeXstudio} 中勾选 \menu{Show Advanced Options}.
 
 \subsubsection{更改默认编译命令}
 
@@ -91,8 +93,7 @@
 
 \subsubsection{显示行号}
 
-在 \menu{Options > configure TeXstudio} 中勾选 \menu{Show Advanced Options},
-然后在 \menu{Adv. Editor > show line numbers} 选择. 
+在 \menu{Adv. Editor > show line numbers} 选择行号如何显示.
 
 \subsubsection{调整缩进}
 
@@ -165,7 +166,7 @@
 
 有一些用户喜欢深色的颜色方案.
 手动修改颜色不方便的话, 我们可以从网上找到一些现成的颜色方案,
-例如 \href{https://tex.stackexchange.com/questions/108315/how-can-i-set-a-dark-theme-in-texstudio}{stackexchange 网站} 和 \href{https://robjhyndman.com/hyndsight/dark-themes-for-writing/}{某些用户的博客}.
+例如 \href{https://tex.stackexchange.com/questions/108315/how-can-i-set-a-dark-theme-in-texstudio}{stackexchange 网站}和\href{https://robjhyndman.com/hyndsight/dark-themes-for-writing/}{某些用户的博客}.
 更改方案只需要打开 \texttt{ini} 文件,
 将这些颜色方案复制到 \texttt{[formats]} 部分.
 在 \menu{Help > Check LaTeX Installation} 中有 \texttt{ini} 文件的具体位置.
@@ -176,8 +177,7 @@
 用户直接安装或下载便携版均可,
 假定它在本地的位置为 \texttt{<SumatraPDFDIR>}.
 打开 \menu{Options > Configure TeXstudio} 窗口,
-激活 \menu{Show Advanced Options},
-之后在 \menu{Build > User commands} 中添加
+在 \menu{Build > User commands} 中添加
 \begin{lstlisting}
   dde:///"<SumatraPDFDIR>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf","?c:am.tex",@,0,0,1)]
 \end{lstlisting}
