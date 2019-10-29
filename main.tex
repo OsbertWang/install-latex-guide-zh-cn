@@ -49,28 +49,44 @@
 
 \usepackage{booktabs}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric,calc}
-\newcommand\stars[1]{
-  \pgfmathsetmacro\pgfxa{#1+1}
-  \tikzstyle{scorestars}=[star, star points=5, star point ratio=2.25, draw,inner sep=0.14em,anchor=outer point 3,draw=gray,scale=0.8]
-  \begin{tikzpicture}[baseline]
-    \foreach \i in {1,...,5} {
-      \pgfmathparse{(\i<=#1?"gray":"white")}
-      \edef\starcolor{\pgfmathresult}
-      \draw (\i*0.8em,0) node[name=star\i,scorestars,fill=\starcolor]  {};
-     }
-     \pgfmathparse{(#1>int(#1)?int(#1+1):0}
-     \let\partstar=\pgfmathresult
-     \ifnum\partstar>0
-       \pgfmathsetmacro\starpart{#1-(int(#1))}
-       \path [clip] ($(star\partstar.outer point 3)!(star\partstar.outer point 2)!(star\partstar.outer point 4)$) rectangle 
-      ($(star\partstar.outer point 2 |- star\partstar.outer point 1)!\starpart!(star\partstar.outer point 1 -| star\partstar.outer point 5)$);
-       \fill (\partstar*0.8em,0) node[scorestars,fill=gray]  {};
-     \fi
-  
-  \end{tikzpicture}
+\usetikzlibrary{shapes.geometric, calc}
+
+\tikzset{
+  score stars/.style={
+    % shape
+    star, star points=5, star point ratio=2.25, scale=0.8,
+    % color
+    draw=gray, fill=#1,
+    % others
+    inner sep=0.14em, anchor=outer point 3
+  }
 }
 
+\newcommand\stars[1]{%
+  \begin{tikzpicture}
+    % Draw five stars. For #1 = "2.3", fill the 1st and 2nd stars as gray,
+    % and fill the 3rd to 5th stars as white.
+    \foreach \i in {1, ..., 5} {
+      \pgfmathsetmacro\starcolor{\i<=#1 ? "gray" : "white"}
+      \node[score stars=\starcolor] (star\i) at (\i*0.8em, 0) {};
+    }
+    % For #1 = "2.3", let \partstar = "3" and \starpart = "0.3".
+    % Then fill the left 30% part of the 3rd star as gray after clipping.
+    \pgfmathsetmacro\partstar{#1>int(#1) ? int(#1+1) : 0}
+    \ifnum\partstar>0
+      \pgfmathsetmacro\starpart{#1-(int(#1))}
+      \coordinate (upper left)
+        at (star\partstar.outer point 2 |- star\partstar.outer point 1);
+      \coordinate (upper right)
+        at (star\partstar.outer point 5 |- star\partstar.outer point 1);
+      \coordinate (lower right)
+        at (star\partstar.outer point 5 |- star\partstar.outer point 4);
+      \clip (upper left) rectangle
+            ({$ (upper left)!\starpart!(upper right) $} |- lower right);
+      \node[score stars=gray] at (\partstar*0.8em, 0) {};
+    \fi
+  \end{tikzpicture}%
+}
 
 \begin{document}
   
