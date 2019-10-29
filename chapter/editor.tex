@@ -175,11 +175,12 @@
 
 以 \href{https://www.sumatrapdfreader.org/free-pdf-reader.html}{SumatraPDF} 为例,
 用户直接安装或下载便携版均可,
-假定它在本地的位置为 \texttt{<SumatraPDFDIR>}.
+假定它在本地的位置为 \texttt{<SumatraPDFDIR>},
+而 \TeX studio 在本地的位置是 \texttt{<TeXstudioDIR>}.
 打开 \menu{Options > Configure TeXstudio} 窗口,
 在 \menu{Build > User commands} 中添加
 \begin{lstlisting}
-  dde:///"<SumatraPDFDIR>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf","?c:am.tex",@,0,0,1)]
+  "<SumatraPDFDIR>\SumatraPDF.exe" -reuse-instance -forward-search ?c:am.tex @ -inverse-search "<TeXstudioDIR>\texstudio.exe %%f -line %%l" ?am.pdf
 \end{lstlisting}
 将其命名为 \texttt{user0:sumatrapdf}.
 接下来, 在 \menu{Build > Build \& View} 中将 \texttt{txs:///compile | txs:///view} 改为 \texttt{txs:///compile | txs:///user0}.
@@ -190,16 +191,21 @@
 如果有人喜欢在编译时添加参数 \texttt{--outdir=temp},
 那么可以将 \texttt{user0:sumatrapdf} 改为
 \begin{lstlisting}
-  dde:///"<SumatraPDFDIR>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?a)temp\?m.pdf","?c:a)temp\?m.tex",@,0,0,1)]
+  "<SumatraPDFDIR>\SumatraPDF.exe" -reuse-instance -forward-search ?c:am.tex @ -inverse-search "<TeXstudioDIR>\texstudio.exe %%f -line %%l" ?a)temp\?m.pdf
 \end{lstlisting}
 
-用 SumatraPDF 打开编译完的 PDF 文件, 在 \menu{Settings > Options > Set inverse search command line} 中输入
+如果以上设置没能正确实现正反向搜索,
+那么可以将 \texttt{user0:sumatrapdf} 改为
+\begin{lstlisting}
+  dde:///"<SumatraPDFDIR>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf","?c:am.tex",@,0,0,1)]
+\end{lstlisting}
+其他不变.
+而后用 SumatraPDF 打开编译完的 PDF 文件, 在 \menu{Settings > Options > Set inverse search command line} 中输入
 \begin{lstlisting}
   "<TeXstudioDIR>\texstudio.exe" "%f" -line %l
 \end{lstlisting}
-其中, \texttt{<TeXstudioDIR>} 是 \TeX studio 在本地的位置.
 至此完成了逆向搜索,
-双击 PDF 文件便可回到 \TeX studio 中对应代码的行首. 
+双击 PDF 文件便可回到 \TeX studio 中对应代码的行首.
 
 \section{Ubuntu 18.04 系统}
 
