@@ -311,9 +311,9 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
 
 显然, 能够支持 \LaTeX{} 的编辑器并不局限于本手册所介绍的几款.
 表~\ref{tab:editor} 是 \href{https://ddswhu.me/}{ddswhu} 在 \LaTeX{}
-小圈子内部对 \LaTeX{} 编辑器所进行的用户体验调查的结果, 比较主观, 仅供参考.
-对自己网络非常自信的用户也可以参考 \href{https://en.wikipedia.org/wiki/Comparison_of_TeX_editors}{wikipedia}
+小圈子内部对 \LaTeX{} 编辑器所进行的用户体验调查的结果, 比较主观, 仅供参考. 其中 Sublime Text 和 Visual Studio Code 为文本编辑器, 它们需要借助插件才能支持 \LaTeX{} 编译. 对自己网络非常自信的用户也可以参考 \href{https://en.wikipedia.org/wiki/Comparison_of_TeX_editors}{wikipedia}
 上的对比结果.
+
 
 \begin{table}[htbp]
   \centering
@@ -321,10 +321,14 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
     \begin{tabular}{cccccc}
     \toprule
              &  WinEdt      &  \TeX{}studio  & \TeX{}works   &  Sublime Text &  VS Code     \\
+             \cline{5-6}
+    插件依赖  &        &   &  &  \href{https://latextools.readthedocs.io/en/latest/}{\LaTeX{}Tools} &  \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}   \\
     \midrule
     主流系统  &  Win          &  全平台        & Linux/Win     &  全平台        &  全平台       \\
     软件类型  &  商业软件      &  开源软件       & 开源软件       &  商业软件       &  商业软件     \\
-    软件价格  &  219 元       &  0             &  0            &  80 美元       &  0           \\
+    软件价格  &  \href{https://item.taobao.com/item.htm?id=551105790596}{219 元}       &  0             &  0            &  \href{https://www.sublimehq.com/store/text}{80 美元}        &  0           \\
+    授权方式  &  终身/教育     &               &               &  终身/个人      &               \\
+    % 附加信息  &  教育版本      &               &               &  三年更新       &               \\
     代码高亮  &  \stars{2.7}  &  \stars{3.2}  &  \stars{1.5}  &  \stars{4.3}  &  \stars{4.5}  \\
     颜色主题  &  \stars{2.3}  &  \stars{2.2}  &  \stars{1.0}  &  \stars{4.0}  &  \stars{4.0}  \\
     自动补全  &  \stars{2.7}  &  \stars{3.4}  &  \stars{2.0}  &  \stars{3.5}  &  \stars{4.0}  \\
