@@ -33,7 +33,70 @@ WSL 中安装字体比较麻烦.
   fc-cache -fv
 \end{lstlisting}
 
-在目前的版本中, 本文使用 WSL 方法进行编译.
+在目前的版本中, 本文在 WSL 中进行编译.
 目前感受是该方法较之 Windows 10 系统中的编译更快.
 其他方面并未进行比较.
-希望阅读本文的用户能够尽快上手.
+由于 \TeX studio 在 WSL 中无法正常正反搜索,
+因此我使用了 VS Code 配合 LaTeX-Workshop 和 Romote-WSL 来编写文档.
+这里将个人使用的相关配置附上.
+\begin{lstlisting}
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmkpdf",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "-pdf",
+        "%DOCFILE%"
+      ]
+    },
+    {
+        "name": "latexmkxe",
+        "command": "latexmk",
+        "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "-pdfxe",
+          "%DOCFILE%"
+        ]
+      },
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmkpdf",
+      "tools": [
+        "latexmkpdf"
+      ]
+    },
+    {
+        "name": "latexmkxe",
+        "tools": [
+          "latexmkxe"
+        ]
+      },
+  ],
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.view.pdf.viewer": "tab"
+  // "latex-workshop.view.pdf.viewer": "external",
+  // "latex-workshop.view.pdf.ref.viewer": "external",
+  // "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFROOT>/SumatraPDF.exe",
+  // "latex-workshop.view.pdf.external.viewer.args": [
+  //   "-inverse-search",
+  //   "\"<VSCodeROOT>/Code.exe\" \"<VSCodeROOT>/resources/app/out/cli.js\" -r -g \"%f:%l\"",
+  //   "%PDF%"
+  // ],
+  // "latex-workshop.view.pdf.external.synctex.command":"<SumatraPDFROOT>/SumatraPDF.exe",
+  // "latex-workshop.view.pdf.external.synctex.args":[
+  //   "-forward-search",
+  //   "%TEX%",
+  //   "%LINE%",
+  //   "%PDF%",
+  // ],
+\end{lstlisting}
+注意更换 \texttt{<SumatraPDFROOT>} 和 \texttt{<VSCodeROOT>}.
+希望阅读本文的用户能够尽快上手使用 \LaTeX.
