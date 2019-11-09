@@ -7,7 +7,7 @@
 在实际操作中, 用户会发觉使用记事本编写 \texttt{tex} 文件十分不便,
 因此很多用户都将其他编辑器作为自己的首选.
 本文向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 \TeX works 和功能更加丰富的 \href{https://github.com/texstudio-org/texstudio/releases}{\TeX studio}. 
-其他编辑器, 因本人并不常用, 无法一一介绍, 还请自己在网上寻求更多帮助. 
+其他编辑器无法一一介绍, 还请自己在网上寻求更多帮助. 
 
 \subsection{\TeX works}
 
@@ -268,7 +268,10 @@
 \section{Windows Subsystem for Linux}
 
 使用 WSL 时,
-推荐用户在主系统中使用 \href{https://code.visualstudio.com/}{VS Code} 的 \texttt{Remote WSL} 插件.
+推荐用户在主系统中使用 \href{https://code.visualstudio.com/}{VS Code} 的 \href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{Remote WSL}
+插件来配合
+\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}
+编辑文件.
 
 若需要使用 \TeX studio, 则需要将 \texttt{bash.exe} 及其绝对路径写入编译命令中.
 使用 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索时会发现多个 \texttt{bash.exe}, 这里我们选择在路径 \texttt{C:\textbackslash Windows\textbackslash WinSxS...} 下的 \texttt{bash.exe}.

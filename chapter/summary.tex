@@ -37,8 +37,14 @@ WSL 中安装字体比较麻烦.
 目前感受是该方法较之 Windows 10 系统中的编译更快.
 其他方面并未进行比较.
 由于 \TeX studio 在 WSL 中无法正常正反搜索,
-因此我使用了 VS Code 配合 LaTeX-Workshop 和 Romote-WSL 来编写文档.
-这里将个人使用的相关配置附上.
+因此我使用了 VS Code 配合
+\href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{Remote WSL}
+和
+\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}
+来编写文档.
+这里将个人使用的相关配置附上,
+其中注释的部分是调用外部 SumatraPDF 阅读器的配置,
+用户可参考 \href{https://wenda.latexstudio.net/article-5055.html}{SumatraPDF 阅读器该怎么设置——以 TeXStudio 和 VS Code 为例}来了解更多内容.
 \begin{lstlisting}
   "latex-workshop.latex.tools": [
     {
