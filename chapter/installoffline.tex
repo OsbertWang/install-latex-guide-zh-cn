@@ -1,0 +1,31 @@
+% !TeX root = ../main.tex
+
+\chapter{离线安装宏包}
+
+有些电脑无法联网,
+因此升级宏包就成了麻烦事.
+这里介绍离线升级标准 \TeX{} Live 的包 (pkg) 的方法,
+主要是用 \texttt{tlmgr} 的 \texttt{--file} 参数来实现.
+
+首先在能够联网的电脑上访问
+\href{https://ctan.org/tex-archive/systems/texlive/tlnet/archive}{archive}
+页面, 下载 \texttt{<archivename>.tar.xz} 文件.
+文件列表很长, 加载需花费些时间.
+注意 \texttt{<archivename>} 未必是 \href{https://ctan.org/pkg/}{pkg} 上的 \texttt{<pkgname>},
+例如在 \texttt{pkg} 上的
+\href{https://ctan.org/pkg/lshort-zh-cn}{lshort-zh-cn}
+对应着 \texttt{archive} 上的
+\href{http://mirrors.ctan.org/systems/texlive/tlnet/archive/lshort-chinese.tar.xz}{lshort-chinese.tar.xz}
+和
+\href{http://mirrors.ctan.org/systems/texlive/tlnet/archive/lshort-chinese.doc.tar.xz}{lshort-chinese.doc.tar.xz}.
+
+这里多解释一点 \texttt{<archivename>}.
+前面已经看到一个 \texttt{<pkgname>} 可能会对应多个 \texttt{<archivename>},
+但基本上 \texttt{<archivename>} 的命名规则是 \texttt{<xxx>},
+\texttt{<xxx.source>} 和 \texttt{<xxx.doc>}.
+\texttt{<xxx>} 是必装的宏包文件;
+\texttt{<xxx.source>} 是选择安装的源码, 如 \texttt{dtx} 文件;
+\texttt{<xxx.doc>} 是选择安装的文档, 如 \texttt{pdf} 文件等.
+这三者未必同时存在, 例如前面提到的 \texttt{lshort-chinese}.
+
+另外, 如果需要安装的是一个可执行文件, 那还可能涉及到对操作系统的判断.

@@ -289,14 +289,6 @@ Windows 没有类似 Unix 的升级程序,
   tlmgr update --reinstall-forcibly-removed --all
 \end{lstlisting}
 
-\subsection{电脑不能联网}
-首先找其他人到 \href{https://ctan.org/pkg}{CTAN} 下载对应包 (pkg) 的 tar.gz 文件.
-接下来将 tar.gz 文件复制到本地, 并且执行
-\begin{lstlisting}
-   tlmgr install --file <DIR>\pkgname.tar.gz
-\end{lstlisting}
-这里的 \texttt{<DIR>} 指的是 tar.gz 文件所在路径.
-
 \section{安装宏包}
 在默认状态下, 用户将完整安装 \TeX{} Live, 因此用户极少碰到需要手动安装宏包的情形. 
 同时, 在 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-ch} 中也明确提到, \textbf{如非万不得已, 尽量不要手动安装宏包}. 
