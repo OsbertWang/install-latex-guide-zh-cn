@@ -5,7 +5,7 @@
 有些电脑无法联网,
 因此升级宏包就成了麻烦事.
 这里介绍离线升级标准 \TeX{} Live 的包 (pkg) 的方法,
-主要是用 \texttt{tlmgr} 的 \texttt{--file} 参数来实现.
+主要是用 \texttt{tlmgr install} 的 \texttt{--file} 参数来实现.
 
 首先在能够联网的电脑上访问
 \href{https://ctan.org/tex-archive/systems/texlive/tlnet/archive}{archive}
@@ -28,4 +28,24 @@
 \texttt{<xxx.doc>} 是选择安装的文档, 如 \texttt{pdf} 文件等.
 这三者未必同时存在, 例如前面提到的 \texttt{lshort-chinese}.
 
-另外, 如果需要安装的是一个可执行文件, 那还可能涉及到对操作系统的判断.
+另外, 如果需要安装的是一个可执行文件, 例如 \texttt{pdftex} 或 \texttt{xetex},
+那么会涉及到根据操作系统进行下载的相关判断.
+如果要升级本地已安装的可执行文件, 可以在命令行输入以下语句查询:
+\begin{lstlisting}[language=bash, title={\small\sffamily Windows 系统}]
+  tlmgr info --only-installed | findstr "pdftex"
+\end{lstlisting}
+\begin{lstlisting}[language=bash, title={\small\sffamily Ubuntu 和 Mac 系统}]
+  tlmgr info --only-installed | grep 'pdftex'
+\end{lstlisting}
+在输出结果中可看到带系统信息的名称.
+如果是升级本地未安装的可执行文件,
+那么用户就需要自行判断.
+
+下载正确的 \texttt{<archivename>.tar.xz} 后,
+可先检查一下该压缩文件中是否包含了 \texttt{tlpobj} 文件.
+之后将压缩文件拷贝到未联网电脑上,
+在命令行执行
+\begin{lstlisting} 
+  tlmgr install --file <archivename>.tar.gz 
+\end{lstlisting}
+系统便可自行安装.
