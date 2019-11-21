@@ -180,7 +180,7 @@
 打开 \menu{Options > Configure TeXstudio} 窗口,
 在 \menu{Build > User commands} 中添加
 \begin{lstlisting}
-  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:am.tex @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" ?am.pdf
+  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?m.pdf"
 \end{lstlisting}
 将其命名为 \texttt{user0:sumatrapdf}.
 接下来, 在 \menu{Build > Build \& View} 中将 \texttt{txs:///compile | txs:///view} 改为 \texttt{txs:///compile | txs:///user0}.
@@ -191,13 +191,13 @@
 如果有人喜欢在编译时添加参数 \texttt{--outdir=temp},
 那么可以将 \texttt{user0:sumatrapdf} 改为
 \begin{lstlisting}
-  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:am.tex @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" ?a)temp\?m.pdf
+  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?r)temp\?m.pdf"
 \end{lstlisting}
 
 如果以上设置没能正确实现正反向搜索,
 那么可以将 \texttt{user0:sumatrapdf} 改为
 \begin{lstlisting}
-  dde:///"<SumatraPDFROOT>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf","?c:am.tex",@,0,0,1)]
+  dde:///"<SumatraPDFROOT>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?m.pdf",?c:rme",@,0,0,1)]
 \end{lstlisting}
 其他不变.
 而后用 SumatraPDF 打开编译完的 PDF 文件, 在 \menu{Settings > Options > Set inverse search command line} 中输入
