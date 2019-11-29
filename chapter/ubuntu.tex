@@ -87,7 +87,7 @@
   sudo umount ~/Downloads/texlive
 \end{lstlisting}
 
-安装完成后, 用户需要设置环境变量.
+默认安装完成后, 用户需要设置环境变量.
 继续在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
   sudo gedit ~/.bashrc
@@ -117,6 +117,19 @@
   Primary author of TeX: D.E. Knuth.
 \end{lstlisting}
 即为安装成功.
+
+接下来处理字体.
+首先将配置文件复制到系统,
+在 \textsf{Terminal} 执行
+\begin{lstlisting}[language=bash]
+  sudo cp /usr/local/texlive/2019/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+\end{lstlisting}
+接下来刷新字体缓存,
+继续在 \textsf{Terminal} 执行
+\begin{lstlisting}[language=bash]
+  fc-cache -fsv
+\end{lstlisting}
+这样一来, \TeX{} Live 中的字体才能够被正确调用.
 
 \section{卸载 \TeX{} Live}
 

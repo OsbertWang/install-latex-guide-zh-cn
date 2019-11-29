@@ -98,7 +98,7 @@
   sudo rmdir /mnt/x
 \end{lstlisting}
 
-安装完成后, 用户需要设置环境变量.
+默认安装完成后, 用户需要设置环境变量.
 继续在 \textsf{bash} 中执行\footnote{这里使用了 vim, 如果用户不习惯使用它, 也可在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索文件 \texttt{.bashrc}, 找到路径在 \texttt{...\textbackslash rootfs\textbackslash home\textbackslash username} 的文件, 使用编辑器打开并进行更改}
 \begin{lstlisting}[language = bash]
   sudo vim ~/.bashrc
@@ -128,6 +128,18 @@
   Primary author of TeX: D.E. Knuth.
 \end{lstlisting}
 即为安装成功.
+
+接下来仿照 Ubuntu 18.04 处理字体.
+首先将配置文件复制到系统,
+在 \textsf{Terminal} 执行
+\begin{lstlisting}[language=bash]
+  sudo cp /usr/local/texlive/2019/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+\end{lstlisting}
+接下来刷新字体缓存,
+继续在 \textsf{Terminal} 执行
+\begin{lstlisting}[language=bash]
+  fc-cache -fsv
+\end{lstlisting}
 
 \section{卸载 \TeX{} Live}
 
