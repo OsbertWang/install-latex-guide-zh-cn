@@ -1,4 +1,4 @@
-# 一份简短的安装 LaTeX 的介绍
+# 一份简短的关于 LaTeX 安装的介绍
 
 本文将介绍 Windows 10、Ubuntu 18.04 和 macOS 系统中安装 TeX Live (macOS 中介绍 MacTeX)、升级宏包、编译简易文档的相关操作, 并多以介绍命令行操作为主.
 同时简要介绍不同操作系统下几款常见编辑器的使用方法, 并额外补充了一些使用 [Overleaf](www.overleaf.com) 的相关内容.
