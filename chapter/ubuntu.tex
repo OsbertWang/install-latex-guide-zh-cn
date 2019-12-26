@@ -5,9 +5,12 @@
 \section{安装 \TeX{} Live}
 
 这里只阐述如何用镜像安装.
-为使用户顺利使用 \TeX{} Live 2019, 建议用户首先卸载从源内安装的 \TeX{} Live 的相关包.
+为使用户顺利使用 \TeX{} Live 2019,
+建议用户首先卸载从源内安装的 \TeX{} Live 的相关包,
+具体方法见 \ref{sec:ubuntu:uninstall}~节.
 
-下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件} 的方法如前所述, 可选择国内源以加快下载速度.
+下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件}
+的方法如前所述, 可选择国内源以加快下载速度.
 下载完毕后, 打开 \textsf{Terminal} 窗口, 执行以下命令
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
@@ -80,7 +83,7 @@
   
   Enter command: 
 \end{lstlisting}
-这里强烈建议用户直接点击 \keys{I} 使用默认配置安装.
+这里建议用户点击键盘 \keys{I} 使用默认配置安装.
 如果用户对于 Ubuntu 系统比较了解, 可以根据提示, 更改安装设置.
 安装完毕后, 将加载的光盘镜像弹出
 \begin{lstlisting}[language = bash]
@@ -104,7 +107,7 @@
 \begin{lstlisting}[language=bash]
   tex -v
 \end{lstlisting}
-将显示
+若显示
 \begin{lstlisting}
   TeX 3.14159265 (TeX Live 2019)
   kpathsea version 6.3.1
@@ -120,7 +123,7 @@
 
 接下来处理字体.
 首先将配置文件复制到系统,
-在 \textsf{Terminal} 执行
+在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language=bash]
   sudo cp /usr/local/texlive/2019/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
@@ -132,23 +135,37 @@
 这样一来, \TeX{} Live 中的字体才能够被正确调用.
 更多内容请参考 \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\TeX{} live 指南}.
 
-\section{卸载 \TeX{} Live}
+\section{卸载 \TeX{} Live}\label{sec:ubuntu:uninstall}
 
 如果要卸载从源内安装的 \TeX{} Live, 个人比较推荐使用 synaptic package manager.
 \textsf{terminal} 中执行
 \begin{lstlisting}[language = bash]
-  sudo apt install synaptic
+  sudo apt-get install synaptic
 \end{lstlisting}
 即可安装.
 安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
+当然, 用户也可以直接使用
+\begin{lstlisting}[language = bash]
+  dpkg -l | grep 'TeX Live'
+\end{lstlisting}
+找到相应的包名 \texttt{<package name>}, 之后使用类似
+\begin{lstlisting}[language = bash]
+  sudo apt-get remove --purge <package name>
+\end{lstlisting}
+的命令删除各个包.
+删除时系统会提示使用
+\begin{lstlisting}[language = bash]
+  sudo apt-get autoremove <package name>
+\end{lstlisting}
+来删除相应的依赖包.
 
-如果是从光盘镜像安装, 只需要直接删除文件夹即可.
+如果是从光盘镜像安装, 只需直接删除文件夹即可.
 可先在\textsf{terminal} 中执行
 \begin{lstlisting}[language = bash]
   kpsewhich -var-value TEXMFROOT
 \end{lstlisting}
 来查询安装路径,
-进而通过 \texttt{sudo rm -rf} 进行删除.
+进而通过 \texttt{sudo rm -rf} 命令进行删除.
 默认安装的用户直接运行
 \begin{lstlisting}[language = bash]
   sudo rm -rf /usr/local/texlive/2019
@@ -157,10 +174,14 @@
 当然删除后还要清理掉环境变量.
 
 \section{跨版本升级 \TeX{} Live}
-在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org} 网站上提供了相应的方法.
+
+在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org}
+网站上提供了相应的方法.
 但网站也声明:
 默认情况下,
-请通过执行新安装来获取新版本的 \TeX{} Live\footnote{原文是: By default, please get the new TL by doing a new installation instead of proceeding here.}.
+请通过执行新安装来获取新版本的 \TeX{} Live%
+\footnote{原文是: By default,
+please get the new TL by doing a new installation instead of proceeding here}.
 
 \section{升级宏包}
 
@@ -185,8 +206,9 @@
   sudo tlmgr update --list
 \end{lstlisting}
 可查看目前源上可升级的宏包都有哪些. 
-高级用户可以根据自己的需求选择升级特定宏包, 而初级用户建议直接升级全部宏包. 
-用户只需执行
+高级用户可以根据自己的需求选择升级特定宏包.
+建议初级用户直接升级全部宏包,
+只需执行
 \begin{lstlisting}[language = bash]
   sudo tlmgr update --self --all
 \end{lstlisting}
@@ -222,12 +244,32 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
   pdflatex main
 \end{lstlisting}
 等待系统完成编译过程. 
-待编译完成后, 我们即可看到在 \texttt{\~{}/Documents/work\_latex} 中出现了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}. 
+待编译完成后,
+我们即可看到在 \texttt{\~{}/Documents/work\_latex} 中出现了
+\texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与
+\texttt{main.log}. 
 执行
 \begin{lstlisting}[language=bash]
   evince main.pdf
 \end{lstlisting}
 即可打开 \texttt{pdf} 文件.
+
+对于中文文档, 可以在 \texttt{gedit} 中编写以下最小示例%
+\footnote{gedit 默认使用 UTF-8 编码}%
+\begin{lstlisting}[language={[LaTeX]TeX}]
+  \documentclass[UTF8]{ctexart}
+  \begin{document}
+    你好 \LaTeX{} 世界！
+  \end{document}
+\end{lstlisting}
+保存并退出.
+接下来执行
+\begin{lstlisting}[language=bash]
+  xelatex main
+\end{lstlisting}
+等待系统完成编译过程.
+\texttt{xelatex} 可以使用系统内安装的字体,
+安装字体的方法可参考附录~\ref{chp:moreonwsl}.
 
 编译命令可添加参数, 这里与 Windows 10 中的情形一致, 不再赘述.
 
