@@ -9,8 +9,9 @@
 建议用户首先卸载从源内安装的 \TeX{} Live 的相关包,
 具体方法见 \ref{sec:ubuntu:uninstall}~节.
 
-下载 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件}
-的方法如前所述, 可选择国内源以加快下载速度.
+下载
+\href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件}
+的方法如前所述, 可选择国内源以加快下载速度, 见 \ref{sec:windows:install}~节.
 下载完毕后, 打开 \textsf{Terminal} 窗口, 执行以下命令
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
@@ -97,7 +98,7 @@
 \end{lstlisting}
 在打开的文件末尾添加
 \begin{lstlisting}
-  # Add Tex Live to the PATH, MANPATH, INFOPATH
+  # Add TeX Live to the PATH, MANPATH, INFOPATH
   export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
   export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
   export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
@@ -173,7 +174,7 @@
 \end{lstlisting}
 当然删除后还要清理掉环境变量.
 
-\section{跨版本升级 \TeX{} Live}
+\section{跨版本升级 \TeX{} Live}\label{sec:ubuntu:version}
 
 在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org}
 网站上提供了相应的方法.
@@ -183,9 +184,10 @@
 \footnote{原文是: By default,
 please get the new TL by doing a new installation instead of proceeding here}.
 
-\section{升级宏包}
+\section{升级宏包}\label{sec:ubuntu:update}
 
-首先在 \textsf{terminal} 中执行
+首次升级前,
+在 \textsf{terminal} 中执行
 \begin{lstlisting}[language = bash]
   sudo visudo
 \end{lstlisting}
@@ -200,7 +202,7 @@ please get the new TL by doing a new installation instead of proceeding here}.
 \begin{lstlisting}[language = bash]
   sudo tlmgr option repository ctan
 \end{lstlisting}
-更改源, \texttt{ctan} 也可以改成其他地址, 详情见 Windows 10 系统升级宏包部分.
+更改源, \texttt{ctan} 也可以改成其他地址, 详情见 \ref{sec:windows:update}~节.
 接下来, 用户执行命令
 \begin{lstlisting}[language = bash]
   sudo tlmgr update --list
@@ -214,7 +216,7 @@ please get the new TL by doing a new installation instead of proceeding here}.
 \end{lstlisting}
 同时升级 \texttt{tlmgr} 本身和全部宏包. 
 
-\section{安装宏包}
+\section{安装宏包}\label{sec:ubuntu:installpackage}
 
 Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只需注意权限, 例如
 \begin{lstlisting}[language = bash]
@@ -271,7 +273,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \texttt{xelatex} 可以使用系统内安装的字体,
 安装字体的方法可参考附录~\ref{chp:moreonwsl}.
 
-编译命令可添加参数, 这里与 Windows 10 中的情形一致, 不再赘述.
+编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致.
 
 \subsection{无法使用 \texttt{xelatex} 命令}
 
