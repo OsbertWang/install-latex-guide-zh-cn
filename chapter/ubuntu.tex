@@ -275,7 +275,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 
 编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致.
 
-\subsection{无法使用 \texttt{xelatex} 命令}
+\subsection{无法使用 \texttt{xelatex} 命令}\label{subsec:ubuntu:xelatexfail}
 
 有些用户反映安装完毕后无法使用 \texttt{xelatex} 命令.
 这里或许是因为 libfontconfig 缺失, 用户可在命令行中执行 
@@ -283,3 +283,38 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
   sudo apt-get install libfontconfig1
 \end{lstlisting}
 进行安装.
+
+为提升安装速度, 可考虑更换 Ubuntu 源, 例如更换至清华大学.
+在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+\end{lstlisting}
+备份 \texttt{sources.list} 文件.
+接下来执行
+\begin{lstlisting}[language = bash]
+  sudo gedit /etc/apt/sources.list
+\end{lstlisting}
+将文件替换为以下内容%
+\footnote{本段文字可至%
+  \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
+  获取}
+\begin{lstlisting}
+  # 默认注释了源码镜像以提高 apt update 速度, 如有需要可自行取消注释
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+  
+  # 预发布软件源, 不建议启用
+  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+\end{lstlisting}
+然后执行
+\begin{lstlisting}[language = bash]
+  sudo apt-get update && sudo apt-get upgrade
+\end{lstlisting}
+至此换源完毕.

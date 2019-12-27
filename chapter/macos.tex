@@ -73,21 +73,22 @@ Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些
 \section{升级宏包}
 
 升级宏包依旧可以使用 \texttt{tlmgr}.
-使用方法与 Ubuntu 上一致, 这里不再重复.
+使用方法与 \ref{sec:ubuntu:update}~节类似, 这里不再重复.
 一般来说, 也需要使用 \texttt{sudo} 获取管理员权限后才能完成安装.
 
 \section{安装宏包}
 
-安装 CTAN 中的宏包方法与 Ubuntu 上一致.
+安装 CTAN 中的宏包方法与 \ref{sec:ubuntu:installpackage}~节一致.
 
 \section{编译文件}
 
-在这里, 假设已经有了一个最小示例 \texttt{main.tex},
+在这里, 假设已经有了一个最小示例 \texttt{main.tex}%
+\footnote{注意建立最小示例前先确定工作路径},
 内容为
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   \documentclass{article}
   \begin{document}
-  Hello \LaTeX{} World!
+    Hello \LaTeX{} World!
   \end{document}
 \end{lstlisting}
 接下来在\textsf{终端}中执行
@@ -98,4 +99,20 @@ Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些
 待编译完成后, 可看到在工作路径中生成了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}.
 可以打开 \texttt{main.pdf} 查看内容.
 
-编译命令可添加参数, 这里不再赘述.
+对于中文文档, 可以在主系统编写以下最小示例%
+\footnote{macOS 的编辑器默认使用 UTF-8}%
+\begin{lstlisting}[language={[LaTeX]TeX}]
+  \documentclass[UTF8]{ctexart}
+  \begin{document}
+    你好 \LaTeX{} 世界！
+  \end{document}
+\end{lstlisting}
+保存并退出.
+接下来在 \textsf{终端} 中进入工作路径,
+执行
+\begin{lstlisting}[language=bash]
+  xelatex main
+\end{lstlisting}
+等待系统完成编译过程.
+
+编译命令的相关参数, 这里不再赘述.

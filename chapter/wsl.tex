@@ -15,8 +15,9 @@
 \footnote{在 Windows 10 中直接进行的操作即为在主系统中的操作}%
 中下载
 \href{http://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件},
-可选择国内源以加快下载速度, 方法见 \ref{sec:windows:install}~节.
-下载完毕后, 在 \textsf{cmd} 中验证文件是否正常, 方法同前.
+可选择国内源以加快下载速度.
+下载完毕后, 在 \textsf{cmd} 中验证文件是否正常.
+换源下载及文件验证方法见 \ref{sec:windows:install}~节.
 
 在正式安装前,
 用户需要在 \textsf{bash} 中执行%
@@ -25,7 +26,7 @@
 搜索文件 \texttt{sources.list},
 找到路径在 \menu{... > etc > apt} 的文件,
 备份后使用编辑器打开并进行更改,
-更改内容见 \ref{sec:texstudio:ubuntu}~节} 
+更改内容见 \ref{subsec:ubuntu:xelatexfail}~节} 
 \begin{lstlisting}[language=bash]
   sudo apt-get install libfontconfig1
   sudo apt-get install ttf-mscorefonts-installer
@@ -192,7 +193,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   \documentclass{article}
   \begin{document}
-  Hello \LaTeX{} World!
+    Hello \LaTeX{} World!
   \end{document}
 \end{lstlisting}
 接下来在 \textsf{bash} 中进入工作路径,
