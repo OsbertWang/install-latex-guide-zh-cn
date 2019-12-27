@@ -96,7 +96,8 @@ Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些
   pdflatex main
 \end{lstlisting}
 等待系统完成编译过程. 
-待编译完成后, 可看到在工作路径中生成了 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}.
+待编译完成后, 可看到在工作路径中生成了 \texttt{main.pdf}
+文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}.
 可以打开 \texttt{main.pdf} 查看内容.
 
 对于中文文档, 可以在主系统编写以下最小示例%
@@ -114,5 +115,9 @@ Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些
   xelatex main
 \end{lstlisting}
 等待系统完成编译过程.
+\texttt{xelatex} 可调用系统字体,
+为系统安装字体的方法请参考
+\href{https://support.apple.com/en-us/HT201749}{How to install and remove fonts on your Mac}.
+安装完成后, 刷新字体缓存.
 
 编译命令的相关参数, 这里不再赘述.
