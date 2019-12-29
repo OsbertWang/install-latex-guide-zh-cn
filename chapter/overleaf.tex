@@ -14,6 +14,8 @@ Overleaf 是全球范围内首屈一指的在线 \LaTeX{} 编辑平台.
 2019年9月23日,
 它将后台的 \TeX{} Live 升级为 2018 版本,
 并且为用户提供了思源宋体和思源黑体这两种开源中文字体.
+更多预先安装到 Overleaf 的中文字体见
+\href{https://www.overleaf.com/learn/latex/Questions/What_OTF/TTF_fonts_are_supported_via_fontspec%3F#Fonts_for_CJK}{这里}.
 
 遗憾的是,
 国内网络环境会对 Overleaf 所使用的 reCaptcha 造成影响.
@@ -35,13 +37,12 @@ Overleaf 是全球范围内首屈一指的在线 \LaTeX{} 编辑平台.
 新建项目是用户首先使用的功能.
 Overleaf 提供了多种渠道为用户新建项目:
 可以通过 Overleaf 中的模板,
-也可以通过用户本地的 \textsf{zip} 压缩文件包.
+也可以通过上传本地的 \textsf{zip} 压缩文件包.
 
 新建项目后,
 用户便可进入编辑界面.
-在编辑界面
-用户需要先在左上角 \menu{Menu} 中选择合适的编译命令.
-由于默认字体等原因,
+在编辑界面用户需要先在左上角 \menu{Menu} 中选择合适的编译命令.
+由于默认字体和文件编码等原因,
 强烈建议用户在处理中文文档时使用 \texttt{XeLaTeX}.
 编写文档后,
 用户可通过鼠标点击按钮进行编译,
@@ -50,8 +51,8 @@ Overleaf 提供了多种渠道为用户新建项目:
 用户编写的文件会保存在网站.
 编写完成后,
 用户只需点击 \menu{Menu} 旁的箭头回到项目列表.
-这时可以看到新增项目右侧有三个图标,
-它们分别是 \menu{Copy}、\menu{Download} 和 \menu{Archive}.
+这时可以看到新增项目右侧有四个图标,
+它们分别是 \menu{Copy}、\menu{Download}、\menu{Archive} 和 \menu{Trash}.
 用户可根据自己的需求点击合适的图标.
 
 \section{升级项目}
@@ -60,8 +61,8 @@ Overleaf 将后台 \TeX{} Live 升级为 2018 版本后,
 用户新建项目默认使用 \TeX{} Live 2018,
 而老项目还是使用 \TeX{} Live 2017.
 如果用户打算使用 \TeX{} Live 2018,
-只需将项目复选框选择,
-而后在右上角位置找到 \menu{More > Make a copy},
+只需将项目复制一个新的副本,
+即点击 \menu{Copy}.
 这样创建的副本便可以使用 \TeX{} Live 2018.
 如果用户是从 Github 上面导入的项目,
 建议再次导入.
