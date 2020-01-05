@@ -20,19 +20,24 @@
 换源下载及文件验证方法见 \ref{sec:windows:install}~节.
 
 在正式安装前,
-用户需要在 \textsf{bash} 中执行%
-\footnote{为避免安装速度过慢, 推荐更改 \texttt{sources.list} 文件;
-在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything}
-搜索文件 \texttt{sources.list},
-找到路径在 \menu{... > etc > apt} 的文件,
-备份后使用编辑器打开并进行更改,
-更改内容见 \ref{subsec:ubuntu:xelatexfail}~节} 
+用户需要在 \textsf{bash} 中执行
 \begin{lstlisting}[language=bash]
   sudo apt-get install libfontconfig1
   sudo apt-get install ttf-mscorefonts-installer
   sudo apt-get install fontconfig
 \end{lstlisting}
 这些命令是为了处理日后使用中可能出现的字体问题.
+为避免安装速度过慢,
+可仿照 \ref{subsec:ubuntu:xelatexfail}~节更改文件 \texttt{sources.list}.
+注意 WSL 中无法启动 \textsf{gedit},
+因此需要将其替换为 \textsf{vim},
+即
+\begin{lstlisting}[language=bash]
+  sudo vim /etc/apt/sources.list
+\end{lstlisting}
+不熟悉 \textsf{vim} 的用户,
+可参考 \ref{subsec:no-vim}~节.
+
 接下来, 在主系统中将镜像挂载,
 例如挂载到 \texttt{X:\textbackslash},
 而后进入 \textsf{bash} 并执行如下命令
@@ -107,13 +112,7 @@
 弹出已加载的光盘镜像.
 
 默认安装完成后, 用户需要设置环境变量.
-继续在 \textsf{bash} 中执行%
-\footnote{这里使用了 vim,
-如果用户不习惯使用它, 也可在主系统中通过
-\href{https://www.voidtools.com/zh-cn/}{everything}
-搜索文件 \texttt{.bashrc}, 找到路径在
-\menu{... > home > username}
-的文件, 使用编辑器打开并进行更改}%
+继续在 \textsf{bash} 中执行
 \begin{lstlisting}[language = bash]
   sudo vim ~/.bashrc
 \end{lstlisting}
@@ -125,6 +124,7 @@
   export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
+同样, 不熟悉 \textsf{vim} 的用户可参考 \ref{subsec:no-vim}~节.
 退出 WSL 再进入, 执行
 \begin{lstlisting}[language=bash]
   tex -v
@@ -154,6 +154,27 @@
 \begin{lstlisting}[language=bash]
   sudo fc-cache -fsv
 \end{lstlisting}
+
+\subsection{不懂 \textsf{vim} 的处理方法}\label{subsec:no-vim}
+
+\textsf{vim} 的使用方法与目前很多流行的编辑器不同,
+因此这里给出不用 \textsf{vim} 的处理方法.
+
+首先更改 \texttt{sources.list}.
+假设已经将 \texttt{sources.list} 备份,
+而后在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything}
+搜索文件 \texttt{sources.list},
+找到路径在 \menu{... > etc > apt} 的文件,
+省略号表示 \menu{etc} 前那段很长的路径.
+使用常用的编辑器打开 \texttt{sources.list} 并进行更改即可,
+更改内容同 \ref{subsec:ubuntu:xelatexfail}~节.
+
+接下来更改 \texttt{.bashrc}.
+同样也是在主系统中通过
+\href{https://www.voidtools.com/zh-cn/}{everything}
+搜索文件 \texttt{.bashrc},
+找到路径在 \menu{... > home > username} 的文件,
+使用常用的编辑器打开并进行更改.
 
 \section{卸载 \TeX{} Live}
 
@@ -241,7 +262,29 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 将 \TeX{} Live 安装至 WSL 仍有悬而未决的问题.
 由于 \textsf{bash} 默认是无窗口化的纯命令行,
 因此用户无法直接通过命令 \texttt{texdoc} 打开相应的手册.
-目前可以考虑添加选项找到相关手册名称,
-如 \texttt{texdoc -l ctex} 可找到与 \texttt{ctex} 相关手册名.
-接下来回到主系统中使用 \href{https://www.voidtools.com/zh-cn/}{everything} 搜索,
-在主系统中打开.
+这里给出两种方法.
+
+先找到手册所在路径,
+例如寻找 \textsf{lshort-zh-cn}
+\begin{lstlisting}[language=bash]
+  texdoc -l lshort-zh-cn
+\end{lstlisting}
+系统会显示
+\begin{lstlisting}
+   1 /usr/local/texlive/2019/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf
+     = [zh] The document itself
+  Enter number of file to view, RET to view 1, anything else to skip:
+\end{lstlisting}
+这时按其他键 (如 \keys{x}) 退出.
+然后分别执行
+\begin{lstlisting}[language=bash]
+  cd /usr/local/texlive/2019/texmf-dist/doc/latex/lshort-chinese/
+  explorer.exe .
+\end{lstlisting}
+主系统的资源管理器便会打开.
+这时用户便可以在主系统中使用 pdf 阅读器打开手册进行阅读.
+
+另一种方法还是使用 \href{https://www.voidtools.com/zh-cn/}{everything}.
+通过 \texttt{texdoc -l} 找到相应文件名,
+而后直接搜索.
+具体方法这里不再赘述.
