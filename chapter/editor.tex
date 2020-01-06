@@ -173,7 +173,7 @@
 
 除了像 \TeX works 中使用魔法注释外, \TeX studio 还有很多其他的魔法注释, 例如
 \begin{lstlisting}
-  % !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode ?me)]
+  % !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode ?me"]
 \end{lstlisting}
 表示使用 \texttt{latexmk} 编译命令,
 \texttt{\{\}} 表示无视编辑器赋予该命令的一切参数,
@@ -205,7 +205,7 @@
 填写名称 \texttt{User1:Build-xe-view}
 和对应的功能
 \begin{lstlisting}
-  latexmk -pdfxe -silent -synctex=1 -interaction=nonstopmode ?me) | txs:///view-pdf-internal --embedded
+  latexmk -pdfxe -silent -synctex=1 -interaction=nonstopmode ?me" | txs:///view-pdf-internal --embedded
 \end{lstlisting}
 点击 \menu{OK}. 
 接下来我们在 \menu{Tools > User} 中即可看到自定义的命令和相应快捷键.
@@ -225,7 +225,7 @@
 例如我们将 \texttt{latexmk-pdf} 填写在 \menu{name} 中,
 将
 \begin{lstlisting}
-  % !TeX TXS-program:compile = txs:///latexmk/{}[-pdf -synctex=1 -interaction=nonstopmode ?me)]
+  % !TeX TXS-program:compile = txs:///latexmk/{}[-pdf -synctex=1 -interaction=nonstopmode ?me"]
 \end{lstlisting}
 填写在 \menu{LaTeX Content} 中,
 再将 \texttt{Shift+F1} 填写在 \menu{Shortcut}.
