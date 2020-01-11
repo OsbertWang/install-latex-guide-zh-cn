@@ -14,7 +14,8 @@
 \href{https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso}{上海交通大学},
 \href{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{清华大学},
 \href{https://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{中国科学技术大学},
-\href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2019.iso}{腾讯云}.
+\href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2019.iso}{腾讯云}
+\href{https://mirror.bjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso}{北京交通大学}.
 下载完毕后, 用户打开 \textsf{cmd} 窗口\footnote{在 Windows 搜索栏里面搜 cmd, 系统显示“命令提示符”即为 \textsf{cmd} 窗口},
 执行以下代码
 \begin{lstlisting}[language = bash]
@@ -225,6 +226,10 @@
 \begin{lstlisting}[language = bash]
   wget https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2019.iso
 \end{lstlisting}
+北京交通大学
+\begin{lstlisting}[language = bash]
+  wget https://mirror.bjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso
+\end{lstlisting}
 
 \section{卸载 \TeX{} Live}
 
@@ -297,6 +302,10 @@ Doing a new installation is necessary.}.
 \begin{lstlisting}[language=bash]
   tlmgr option repository https://mirrors.cloud.tencent.com/CTAN/systems/texlive/tlnet
 \end{lstlisting}
+北京交通大学
+\begin{lstlisting}[language=bash]
+  tlmgr option repository https://mirror.bjtu.edu.cn/ctan/systems/texlive/tlnet
+\end{lstlisting}
 接下来, 用户执行命令
 \begin{lstlisting}[language=bash]
   tlmgr update --list
@@ -315,8 +324,10 @@ Doing a new installation is necessary.}.
 \subsection{\texttt{tlmgr} 本身无法成功升级}
 
 遇到这种情况时, 用户需自行下载
-\href{http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe}{update-tlmgr-latest.exe},
-然后再执行升级命令即可. 
+\href{https://mirrors.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe}{update-tlmgr-latest.exe},
+然后再执行升级命令即可%
+\footnote{这里依旧让系统自动选择镜像源,
+用户可以自行选择国内镜像以加快下载速度}. 
 
 \subsection{升级到一半停止}
 
