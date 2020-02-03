@@ -4,7 +4,9 @@
 
 \section{安装 \TeX{} Live}\label{sec:windows:install}
 
-首先用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
+在安装 \TeX{} Live 之前,
+在文件夹菜单栏 \menu{查看 > 显示/隐藏} 中选择 \menu{文件扩展名}.
+用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件},
 也可以找国内的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}:
 \href{https://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{兰州大学},
@@ -14,10 +16,16 @@
 \href{https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso}{上海交通大学},
 \href{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{清华大学},
 \href{https://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2019.iso}{中国科学技术大学},
-\href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2019.iso}{腾讯云}
+\href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2019.iso}{腾讯云},
 \href{https://mirror.bjtu.edu.cn/ctan/systems/texlive/Images/texlive2019.iso}{北京交通大学}.
-下载完毕后, 用户打开 \textsf{cmd} 窗口\footnote{在 Windows 搜索栏里面搜 cmd, 系统显示“命令提示符”即为 \textsf{cmd} 窗口},
-执行以下代码
+假设镜像文件被下载到本地后存放路径为 \texttt{X:\textbackslash Y}%
+\footnote{这里, \texttt{X} 表示盘符,
+如 \texttt{C}、\texttt{D}、\texttt{E} 等;
+\texttt{Y} 表示文件夹;
+默认路径名称为不带空格的英文}.
+下载完毕后, 用户打开 \textsf{cmd} 窗口\footnote{在 Windows 搜索栏中搜 cmd,
+点击 ``命令提示符''},
+执行
 \begin{lstlisting}[language = bash]
   echo %path%
 \end{lstlisting}
@@ -32,14 +40,13 @@
 也请暂时删除\footnote{具体原因参见
 \href{https://tex.stackexchange.com/questions/445086/error-installing-latest-version-of-tex-live-on-windows-10}{stackexchange} 
 的解释, 待安装结束后, 再将 \texttt{mingw} 或 \texttt{jdk} 环境变量添加至 \TeX{} Live 的环境变量之后}.
-另外国内常见的 2345 好压也会对安装构成影响,
+同时国内常见的 2345 好压也会对安装构成影响,
 建议删除它并在安装 \TeX{} Live 后更换其他同类软件%
-\footnote{个人推荐 \href{http://www.winrar.com.cn/}{WinRAR}
+\footnote{推荐 \href{http://www.winrar.com.cn/}{WinRAR}
 或 \href{https://www.7-zip.org/}{7-Zip}}.
-继续打开 \textsf{cmd} 窗口依次执行以下代码\footnote{这里假设镜像文件下载到本地的地址是
-\texttt{C:\textbackslash Users\textbackslash Downloads}}
+继续打开 \textsf{cmd} 窗口依次执行以下代码
 \begin{lstlisting}[language = bash]
-  cd /d C:\Users\Downloads
+  cd /d X:\Y
   certutil -hashfile texlive2019.iso md5
 \end{lstlisting}
 若系统显示
@@ -50,27 +57,26 @@
 \end{lstlisting}
 则表明下载的镜像文件正常.
 
-接下来, 将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载,
-无需使用其他软件；在安装了解压缩软件后, 镜像文件依然可以通过文件夹上方
-\menu{主页 > 打开 > Windows 资源管理器} 加载；这里不鼓励解压缩的操作,
-第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO}. 
-假设加载后的路径为 \texttt{X:\textbackslash}, 其中 \texttt{X} 表示盘符,
-如 \texttt{C}、\texttt{D}、\texttt{E} 等. 
+接下来, 将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载;
+受某些压缩软件影响双击失效时,
+可通过文件夹菜单栏
+\menu{主页 > 打开 > Windows 资源管理器} 加载;
+第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO;
+不鼓励解压缩镜像文件}. 
+假设加载后的路径为 \texttt{Z:\textbackslash}. 
 在卸载了国内第三方安全软件的前提下, 再打开 \textsf{cmd} 窗口并执行
 \begin{lstlisting}[language = bash]
-  cd /d X:
+  cd /d Z:
 \end{lstlisting}
 切换路径. 
-接下来执行\footnote{强烈建议用户在操作系统中显示文件后缀名,
-文件夹上方 \menu{查看 > 显示/隐藏} 中选择 \menu{文件扩展名}}
+接下来执行
 \begin{lstlisting}[language = bash]
   install-tl-windows.bat --no-gui
 \end{lstlisting}
-即可进入安装流程. 
-
-此安装方法所采取的是纯命令行操作, 因此用户将看到如下的结果\footnote{有部分用户反映,
-使用命令行安装时, 系统会提示用户无权限 (Permission),
-对于这种情况, 可以右键 \menu{命令提示符}, 选择 \menu{以管理员身份运行}}
+即可看到如下结果%
+\footnote{若系统提示用户无权限 (Permission),
+可以右键 ``命令提示符'',
+选择 \menu{以管理员身份运行}}
 \begin{lstlisting}
   =====================> TeX Live installation procedure <=====================
   
@@ -155,19 +161,20 @@
   New value for TEXDIR [C:/texlive/2019]:
 \end{lstlisting}
 即可更改路径, 如 \texttt{D:/texlive/2019},
-\textbf{更改后的路径应该是不带空格的英文路径}.
+\textbf{更改后的路径名称要求是不带空格的英文}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面. 
-其他操作用户可通过阅读英文自行执行, 这里不再赘述. 
+用户可通过阅读英文执行其他操作, 这里不再赘述. 
 至此, 用户只需耐心等待安装完成, 并且不要点击 \textsf{cmd} 窗口%
 \footnote{Windows 10 默认采取快速编辑模式, 一旦点击 \textsf{cmd} 窗口,
 将显示``选择命令提示符''而导致进程暂停}. 
-安装完成后, 关闭再打开 \textsf{cmd} 窗口, 执行
+安装完成后, 关闭再打开 \textsf{cmd} 窗口%
+\footnote{正常安装 \TeX{} Live 后, 环境变量会变化,
+关闭原 \textsf{cmd} 窗口再重新打开才能获取新的环境变量},
+执行
 \begin{lstlisting}[language = bash]
   tex -v
 \end{lstlisting}
-以验证安装是否成功\footnote{正常安装 \TeX{} Live 后, 环境变量会变化,
-关闭原 \textsf{cmd} 窗口再重新打开才能获取新的环境变量}. 
-结果显示为
+显示
 \begin{lstlisting}
   TeX 3.14159265 (TeX Live 2019/W32TeX)
   kpathsea version 6.3.0
