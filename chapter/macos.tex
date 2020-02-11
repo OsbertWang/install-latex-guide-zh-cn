@@ -82,7 +82,7 @@ Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些
 
 \section{编译文件}
 
-在这里, 假设已经有了一个最小示例 \texttt{main.tex}%
+假设已经用 TextEdit.app 或其他文本编辑器编写以下示例 \texttt{main.tex}%
 \footnote{注意建立最小示例前先确定工作路径},
 内容为
 \begin{lstlisting}[language = {[LaTeX]TeX}]
@@ -100,8 +100,8 @@ Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些
 文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}.
 可以打开 \texttt{main.pdf} 查看内容.
 
-对于中文文档, 可以在主系统编写以下最小示例%
-\footnote{macOS 的编辑器默认使用 UTF-8}%
+对于中文文档, 可以编写以下最小示例%
+\footnote{注意使用 UTF-8 编码}%
 \begin{lstlisting}[language={[LaTeX]TeX}]
   \documentclass[UTF8]{ctexart}
   \begin{document}
@@ -109,7 +109,7 @@ Mac\TeX{} 是 \TeX{} Live 在 macOS 下的再打包版本, 额外加入了一些
   \end{document}
 \end{lstlisting}
 保存并退出.
-接下来在 \textsf{终端} 中进入工作路径,
+接下来在\textsf{终端}中进入工作路径,
 执行
 \begin{lstlisting}[language=bash]
   xelatex main
