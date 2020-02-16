@@ -6,6 +6,7 @@
 
 在安装 \TeX{} Live 之前,
 在文件夹菜单栏 \menu{查看 > 显示/隐藏} 中选择 \menu{文件扩展名}.
+
 用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2019.iso}{iso 镜像文件},
 也可以找国内的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}:
@@ -23,8 +24,11 @@
 如 \texttt{C}、\texttt{D}、\texttt{E} 等;
 \texttt{Y} 表示文件夹;
 默认路径名称为不带空格的英文}.
-下载完毕后, 用户打开 \textsf{cmd} 窗口\footnote{在 Windows 搜索栏中搜 cmd,
-点击 ``命令提示符''},
+下载完毕后, 用户打开 \textsf{cmd} 窗口%
+\footnote{在搜索栏中搜 \textsf{cmd},
+点击 ``命令提示符'';
+或在任意文件夹中按 \keys{\ctrl + L},
+输入 \textsf{cmd}},
 执行
 \begin{lstlisting}[language = bash]
   echo %path%
