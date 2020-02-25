@@ -250,9 +250,12 @@
 
 在跨版本升级 \TeX{} Live 时, 通常需要卸载旧版 \TeX{} Live. 
 用户只需执行\footnote{双击或在 \texttt{cmd} 中执行}卸载批处理文件即可实现卸载, 如
-\texttt{C:\textbackslash texlive\textbackslash
-2019\textbackslash tlpkg\textbackslash installer\textbackslash uninst.bat}. 
+\begin{lstlisting}[language=bash]
+  C:\texlive\2019\tlpkg\installer\uninst.bat
+\end{lstlisting}
+如果执行以上批处理文件出错,
 用户也可直接删除安装文件夹,
+用户文件夹中的 \texttt{.texlive2019} 子文件夹.
 之后再清理 \TeX{} Live 的环境变量.
 在命令行执行
 \begin{lstlisting}[language=bash]
