@@ -283,7 +283,9 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 将 \TeX{} Live 安装至 WSL 仍有悬而未决的问题.
 由于 \textsf{bash} 默认是无窗口化的纯命令行,
 因此用户无法直接通过命令 \texttt{texdoc} 打开相应的手册.
-这里给出两种方法.
+这里给出几种方法.
+
+\subsubsection{explorer 浏览}
 
 先找到手册所在路径,
 例如寻找 \textsf{lshort-zh-cn}
@@ -305,7 +307,14 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 主系统的资源管理器便会打开.
 这时用户便可以在主系统中使用 pdf 阅读器打开手册进行阅读.
 
-另一种方法还是使用 \href{https://www.voidtools.com/zh-cn/}{everything}.
+\subsubsection{everything 搜索}
+
+使用 \href{https://www.voidtools.com/zh-cn/}{everything}.
 通过 \texttt{texdoc -l} 找到相应文件名,
 而后直接搜索.
 具体方法这里不再赘述.
+
+\subsubsection{借助其他工具}
+
+目前有很多开源的 WSL 辅助程序,
+相关讨论见本手册的 \href{https://github.com/OsbertWang/install-latex/issues/13}{issue}.
