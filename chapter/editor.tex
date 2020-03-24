@@ -12,7 +12,7 @@
 (github 上有%
 \href{https://github.com/texstudio-org/texstudio}{源码}%
 和%
-\href{https://github.com/texstudio-org/texstudio/releases}{可执行文件}). 
+\href{https://github.com/texstudio-org/texstudio/releases}{可执行文件}).
 其他编辑器无法一一介绍, 还请自己在网上寻求更多帮助. 
 
 \subsection{\TeX works}
@@ -113,7 +113,9 @@ Windows 10 中字体列表见%
 
 除以上内容外, \TeX works 还支持正则表达式、自定义快捷键等. 
 这些内容都写在 \TeX works 自带的手册中. 
-手册不长, 用户可以通读一遍以了解更多内容. 
+手册不长, 用户可以通读一遍以了解更多内容.
+很多功能可以通过\textbf{菜单栏}找到,
+因此建议用户稍微了解一下它的菜单栏.
 
 \subsection{\TeX studio}
 
@@ -144,6 +146,7 @@ Windows 10 中字体列表见%
 \menu{Side Panel} 和 \menu{Messages / Log file}.
 打开 \menu{Side Panel},
 点击软件左侧边栏第 3 个图标 \menu{Symbols}.
+
 
 \subsubsection{插入、改写调整}
 
@@ -203,7 +206,10 @@ Windows 10 中字体列表见%
 表示使用 \texttt{latexmk} 编译命令,
 \texttt{\{\}} 表示无视编辑器赋予该命令的一切参数,
 而 \texttt{[]} 表示添加其中的参数进行编译,
-本例中添加 \texttt{-xelatex -synctex=1 -interaction=nonstopmode} 作为参数. 
+本例中添加 \texttt{-xelatex -synctex=1 -interaction=nonstopmode} 作为参数.
+如果用户不清楚魔法注释都可以写哪些类型,
+可以点击 \menu{LaTeX > Add magic comments} 查看五种魔法注释类型.
+更多内容需要阅读软件手册.
 
 \subsubsection{渲染方式}
 
@@ -215,13 +221,14 @@ Windows 10 中字体列表见%
 
 \subsubsection{转编码}
 
-\TeX studio右下角有一处显示文档编码 (Encoding). 
+\TeX studio 右下角有一处显示文档编码 (Encoding). 
 依旧以``UTF-8''和``GBK''之间的转换为例. 
-如果文档是``GBK''编码, 使用\TeX studio打开文件后,
-点击 \menu{Encoding} 处, 选择 \menu{More Encodings}. 
+如果文档是``GBK''编码, 使用 \TeX studio 打开文件后,
+点击 \menu{Encoding} 处, 选择 \menu{More Encodings}.
 打开窗口后, 选择``GBK / ...'', 点击 \menu{Reload With}.
 若这时文档没有乱码, 再点击 \menu{Encoding > More Encodings},
-选择``UTF-8'', 点击 \menu{Change To}, 保存文件, 完成转码. 
+选择``UTF-8'', 点击 \menu{Change To}, 保存文件, 完成转码.
+在 \menu{Edit > Setup Encoding ...} 处同样可以打开编码窗口.
 
 \subsubsection{自定义命令并生成按钮}
 
