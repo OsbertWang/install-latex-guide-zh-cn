@@ -92,40 +92,40 @@
   
   Detected platform: Windows
   
-  <B> set binary platforms: 1 out of 5
+  <B> set binary platforms: 1 out of 6
   
   <S> set installation scheme: scheme-full
   
   <C> set installation collections:
-  41 collections out of 41, disk space required: 6021 MB
+      41 collections out of 41, disk space required: 6702 MB
   
   <D> set directories:
-  TEXDIR (the main TeX directory):
-  C:/texlive/2019
-  TEXMFLOCAL (directory for site-wide local files):
-  C:/texlive/texmf-local
-  TEXMFSYSVAR (directory for variable and automatically generated data):
-  C:/texlive/2019/texmf-var
-  TEXMFSYSCONFIG (directory for local config):
-  C:/texlive/2019/texmf-config
-  TEXMFVAR (personal directory for variable and automatically generated data):
-  ~/.texlive2020/texmf-var
-  TEXMFCONFIG (personal directory for local config):
-  ~/.texlive2020/texmf-config
-  TEXMFHOME (directory for user-specific files):
-  ~/texmf
+    TEXDIR (the main TeX directory):
+      C:/texlive/2020
+    TEXMFLOCAL (directory for site-wide local files):
+      C:/texlive/texmf-local
+    TEXMFSYSVAR (directory for variable and automatically generated data):
+      C:/texlive/2020/texmf-var
+    TEXMFSYSCONFIG (directory for local config):
+      C:/texlive/2020/texmf-config
+    TEXMFVAR (personal directory for variable and automatically generated data):
+      ~/.texlive2020/texmf-var
+    TEXMFCONFIG (personal directory for local config):
+      ~/.texlive2020/texmf-config
+    TEXMFHOME (directory for user-specific files):
+      ~/texmf
   
   <O> options:
-  [ ] use letter size instead of A4 by default
-  [X] allow execution of restricted list of programs via \write18
-  [X] create all format files
-  [X] install macro/font doc tree
-  [X] install macro/font source tree
-  [X] adjust search path
-  [1] add menu items, shortcuts, etc.
-  [1] update file associations
-  [X] install \TeX works front end
-  [X] after install, use tlnet on CTAN for package updates
+    [ ] use letter size instead of A4 by default
+    [X] allow execution of restricted list of programs via \write18
+    [X] create all format files
+    [X] install macro/font doc tree
+    [X] install macro/font source tree
+    [X] adjust search path
+    [1] add menu items, shortcuts, etc.
+    [1] update file associations
+    [X] install TeXworks front end
+    [X] after install, set CTAN as source for package updates
   
   <V> set up for portable installation
   
@@ -144,12 +144,12 @@
   ==============================================================================
   Directories customization:
   
-  <1> TEXDIR:       C:/texlive/2019
-  support tree: C:/texlive/2019/texmf-dist
+  <1> TEXDIR:       C:/texlive/2020
+      main tree:    C:/texlive/2020/texmf-dist
   
   <2> TEXMFLOCAL:     C:/texlive/texmf-local
-  <3> TEXMFSYSVAR:    C:/texlive/2019/texmf-var
-  <4> TEXMFSYSCONFIG: C:/texlive/2019/texmf-config
+  <3> TEXMFSYSVAR:    C:/texlive/2020/texmf-var
+  <4> TEXMFSYSCONFIG: C:/texlive/2020/texmf-config
   
   <5> TEXMFVAR:       ~/.texlive2020/texmf-var
   <6> TEXMFCONFIG:    ~/.texlive2020/texmf-config
@@ -165,9 +165,9 @@
 \end{lstlisting}
 这时按键盘 \keys{1}, 将看到
 \begin{lstlisting}
-  New value for TEXDIR [C:/texlive/2019]:
+  New value for TEXDIR [C:/texlive/2020]:
 \end{lstlisting}
-即可更改路径, 如 \texttt{D:/texlive/2019},
+即可更改路径, 如 \texttt{D:/texlive/2020},
 \textbf{更改后的路径名称要求是不带空格的英文}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面. 
 用户可通过阅读英文执行其他操作, 这里不再赘述. 
@@ -183,9 +183,9 @@
 \end{lstlisting}
 显示
 \begin{lstlisting}
-  TeX 3.14159265 (TeX Live 2019/W32TeX)
-  kpathsea version 6.3.0
-  Copyright 2019 D.E. Knuth.
+  TeX 3.14159265 (TeX Live 2020/W32TeX)
+  kpathsea version 6.3.2
+  Copyright 2020 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -268,7 +268,7 @@
 \footnote{双击或在 \texttt{cmd} 中执行}%
 安装路径中的卸载批处理文件即可实现卸载, 如
 \begin{lstlisting}[language=bash]
-  C:\texlive\2019\tlpkg\installer\uninst.bat
+  C:\texlive\2020\tlpkg\installer\uninst.bat
 \end{lstlisting}
 如果执行以上批处理文件出错,
 用户也可直接删除安装文件夹,
