@@ -270,10 +270,21 @@
 \begin{lstlisting}[language=bash]
   C:\texlive\2020\tlpkg\installer\uninst.bat
 \end{lstlisting}
-如果执行以上批处理文件出错,
-用户也可直接删除安装文件夹,
-用户文件夹中的 \texttt{.texlive2020} 子文件夹.
-之后再清理 \TeX{} Live 的环境变量.
+结束以上步骤后,
+手动删除用户文件夹中的 \texttt{.texlive2020} 子文件夹.
+
+\subsection{手动卸载}
+
+如果执行批处理文件 \texttt{uninst.bat} 出错,
+用户也可手动删除安装文件夹,
+之后再清理 \TeX{} Live 的环境变量,
+并且清理注册表
+\begin{lstlisting}
+  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2020
+  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2020
+  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2020
+\end{lstlisting}
+
 
 \section{跨版本升级 \TeX{} Live}
 
