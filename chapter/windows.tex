@@ -10,15 +10,21 @@
 用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2020.iso}{iso 镜像文件},
 也可以找国内的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}:
-\href{https://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{兰州大学},
-\href{https://mirrors.cqu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{重庆大学},
-\href{https://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/texlive2020.iso}{上海科技大学},
-\href{https://mirrors.huaweicloud.com/CTAN/systems/texlive/Images/texlive2020.iso}{华为云},
-\href{https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2020.iso}{上海交通大学},
 \href{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{清华大学},
+\href{https://mirrors.bit.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{北京理工大学},
+\href{https://mirror.bjtu.edu.cn/ctan/systems/texlive/Images/texlive2020.iso}{北京交通大学},
+% \href{https://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/texlive2020.iso}{上海科技大学},
+\href{https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2020.iso}{上海交通大学},
 \href{https://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{中国科学技术大学},
+% \href{https://mirrors.zju.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{浙江大学},
+\href{https://mirrors.nju.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{南京大学},
+\href{http://mirrors.hust.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{华中科技大学},
+\href{https://mirrors.cqu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{重庆大学},
+% \href{https://mirror.neu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{东北大学}
+\href{https://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{兰州大学},
 \href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2020.iso}{腾讯云},
-\href{https://mirror.bjtu.edu.cn/ctan/systems/texlive/Images/texlive2020.iso}{北京交通大学}.
+\href{https://mirrors.huaweicloud.com/CTAN/systems/texlive/Images/texlive2020.iso}{华为云},
+\href{https://mirrors.aliyun.com/CTAN/systems/texlive/Images/texlive2020.iso}{阿里云}.
 假设镜像文件被下载到本地后存放路径为 \texttt{X:\textbackslash Y}%
 \footnote{这里, \texttt{X} 表示盘符,
 如 \texttt{C}、\texttt{D}、\texttt{E} 等;
@@ -211,43 +217,13 @@
 \end{lstlisting}
 即可下载最近的镜像.
 类似地,
-也可以指定国内的源进行下载:\\
-兰州大学
-\begin{lstlisting}[language = bash]
-  wget https://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso
-\end{lstlisting}
-重庆大学
-\begin{lstlisting}[language = bash]
-  wget https://mirrors.cqu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso
-\end{lstlisting}
-上海科技大学
-\begin{lstlisting}[language = bash]
-  wget https://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/texlive2020.iso
-\end{lstlisting}
-华为云
-\begin{lstlisting}[language = bash]
-  wget https://mirrors.huaweicloud.com/CTAN/systems/texlive/Images/texlive2020.iso
-\end{lstlisting}
-上海交通大学
-\begin{lstlisting}[language = bash]
-  wget https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2020.iso
-\end{lstlisting}
-清华大学
+也可以指定国内的源进行下载,
+例如选择清华大学镜像
 \begin{lstlisting}[language = bash]
   wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso
 \end{lstlisting}
-中国科学技术大学
-\begin{lstlisting}[language = bash]
-  wget https://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso
-\end{lstlisting}
-腾讯云
-\begin{lstlisting}[language = bash]
-  wget https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2020.iso
-\end{lstlisting}
-北京交通大学
-\begin{lstlisting}[language = bash]
-  wget https://mirror.bjtu.edu.cn/ctan/systems/texlive/Images/texlive2020.iso
-\end{lstlisting}
+其他国内镜像只需要将链接替换即可,
+链接在 \ref{sec:windows:install} 节都已给出.
 
 \section{卸载 \TeX{} Live}
 
