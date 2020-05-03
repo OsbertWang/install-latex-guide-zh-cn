@@ -7,24 +7,11 @@
 在安装 \TeX{} Live 之前,
 在文件夹菜单栏 \menu{查看 > 显示/隐藏} 中选择 \menu{文件扩展名}.
 
-用户可以从最近的镜像\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
+用户可以从最近的 CTAN 源\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2020.iso}{iso 镜像文件},
-也可以找国内的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}:
-\href{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{清华大学},
-\href{https://mirrors.bit.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{北京理工大学},
-\href{https://mirror.bjtu.edu.cn/ctan/systems/texlive/Images/texlive2020.iso}{北京交通大学},
-% \href{https://mirrors-wan.geekpie.club/CTAN/systems/texlive/Images/texlive2020.iso}{上海科技大学},
-\href{https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/Images/texlive2020.iso}{上海交通大学},
-\href{https://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{中国科学技术大学},
-% \href{https://mirrors.zju.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{浙江大学},
-\href{https://mirrors.nju.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{南京大学},
-\href{http://mirrors.hust.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{华中科技大学},
-\href{https://mirrors.cqu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{重庆大学},
-% \href{https://mirror.neu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{东北大学}
-\href{https://mirror.lzu.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso}{兰州大学},
-\href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/Images/texlive2020.iso}{腾讯云},
-\href{https://mirrors.huaweicloud.com/CTAN/systems/texlive/Images/texlive2020.iso}{华为云},
-\href{https://mirrors.aliyun.com/CTAN/systems/texlive/Images/texlive2020.iso}{阿里云}.
+也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
+通过大陆地区的源下载 iso 文件的方法请参考附录~\ref{chp:appendix:mirror}.
+
 假设镜像文件被下载到本地后存放路径为 \texttt{X:\textbackslash Y}%
 \footnote{这里, \texttt{X} 表示盘符,
 如 \texttt{C}、\texttt{D}、\texttt{E} 等;
@@ -206,7 +193,7 @@
 
 \subsection{下载镜像一直不成功的处理办法}
 
-目前发现有些用户使用 \textsf{edge} 浏览器时无法正常下载镜像文件.
+目前发现有些用户使用某些浏览器时无法正常下载镜像文件.
 这时,
 用户可以选择使用 \href{https://eternallybored.org/misc/wget/}{wget} 对镜像进行下载.
 具体用法是:
@@ -223,7 +210,7 @@
   wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso
 \end{lstlisting}
 其他国内镜像只需要将链接替换即可,
-链接在 \ref{sec:windows:install} 节都已给出.
+链接和方法请参考附录~\ref{chp:appendix:mirror}.
 
 \section{卸载 \TeX{} Live}
 
@@ -281,22 +268,23 @@ Doing a new installation is necessary.}.
   tlmgr option repository ctan
 \end{lstlisting}
 用户同样可以指定其他的镜像源,
-方法是将上述的 \texttt{ctan} 改为以下网址:
-\href{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet}{清华大学},
-\href{https://mirrors.bit.edu.cn/CTAN/systems/texlive/tlnet}{北京理工大学},
-\href{https://mirror.bjtu.edu.cn/ctan/systems/texlive/tlnet}{北京交通大学},
-% \href{https://mirrors-wan.geekpie.club/CTAN/systems/texlive/tlnet}{上海科技大学},
-\href{https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet}{上海交通大学},
-\href{https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet}{中国科学技术大学},
-% \href{https://mirrors.zju.edu.cn/CTAN/systems/texlive/tlnet}{浙江大学},
-\href{https://mirrors.nju.edu.cn/CTAN/systems/texlive/tlnet}{南京大学},
-\href{http://mirrors.hust.edu.cn/CTAN/systems/texlive/tlnet}{华中科技大学},
-\href{https://mirrors.cqu.edu.cn/CTAN/systems/texlive/tlnet}{重庆大学},
-% \href{https://mirror.neu.edu.cn/CTAN/systems/texlive/tlnet}{东北大学}
-\href{https://mirror.lzu.edu.cn/CTAN/systems/texlive/tlnet}{兰州大学},
-\href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/tlnet}{腾讯云},
-\href{https://mirrors.huaweicloud.com/CTAN/systems/texlive/tlnet}{华为云},
-\href{https://mirrors.aliyun.com/CTAN/systems/texlive/tlnet}{阿里云}.
+方法见附录~\ref{chp:appendix:mirror}.
+% 方法是将上述的 \texttt{ctan} 改为以下网址:
+% \href{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet}{清华大学},
+% \href{https://mirrors.bit.edu.cn/CTAN/systems/texlive/tlnet}{北京理工大学},
+% \href{https://mirror.bjtu.edu.cn/ctan/systems/texlive/tlnet}{北京交通大学},
+% % \href{https://mirrors-wan.geekpie.club/CTAN/systems/texlive/tlnet}{上海科技大学},
+% \href{https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet/}{上海交通大学},
+% \href{https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet}{中国科学技术大学},
+% % \href{https://mirrors.zju.edu.cn/CTAN/systems/texlive/tlnet}{浙江大学},
+% \href{https://mirrors.nju.edu.cn/CTAN/systems/texlive/tlnet}{南京大学},
+% \href{http://mirrors.hust.edu.cn/CTAN/systems/texlive/tlnet}{华中科技大学},
+% \href{https://mirrors.cqu.edu.cn/CTAN/systems/texlive/tlnet}{重庆大学},
+% % \href{https://mirror.neu.edu.cn/CTAN/systems/texlive/tlnet}{东北大学}
+% \href{https://mirror.lzu.edu.cn/CTAN/systems/texlive/tlnet}{兰州大学},
+% \href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/tlnet}{腾讯云},
+% \href{https://mirrors.huaweicloud.com/CTAN/systems/texlive/tlnet}{华为云},
+% \href{https://mirrors.aliyun.com/CTAN/systems/texlive/tlnet}{阿里云}.
 接下来, 用户执行命令
 \begin{lstlisting}[language=bash]
   tlmgr update --list
