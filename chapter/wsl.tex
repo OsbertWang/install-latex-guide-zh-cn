@@ -114,7 +114,7 @@
 默认安装完成后, 用户需要设置环境变量.
 继续在 \textsf{bash} 中执行
 \begin{lstlisting}[language = bash]
-  sudo vim ~/.bashrc
+  vim ~/.bashrc
 \end{lstlisting}
 在打开的文件末尾添加
 \begin{lstlisting}
@@ -143,7 +143,7 @@
 \end{lstlisting}
 即为安装成功.
 
-接下来仿照 Ubuntu 18.04 处理字体.
+接下来仿照 Ubuntu 20.04 处理字体.
 首先将配置文件复制到系统,
 在 \textsf{Terminal} 执行
 \begin{lstlisting}[language=bash]
@@ -261,25 +261,25 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 
 编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致, 不再赘述.
 
-\subsection{\LaTeXe 版本不匹配导致 \texttt{xelatex} 失败}
+% \subsection{\LaTeXe 版本不匹配导致 \texttt{xelatex} 失败}
 
-在 WSL 中将 \TeX{} Live 安装至默认路径时,
-使用 \texttt{xelatex} 编译文档,
-系统有时会提示目前 \LaTeXe 的版本低于某宏包的要求版本.
-这种情况是由于 \textsf{fmt} 文件未能更新所导致.
-此时可考虑在命令行运行
-\begin{lstlisting}[language=bash]
-  fmtutil-user --byfmt xelatex
-\end{lstlisting}
-待结束后再用 \texttt{xelatex} 编译文档.
-更多内容参考
-\href{https://github.com/CTeX-org/forum/issues/70}{github 上的讨论}.
+% 在 WSL 中将 \TeX{} Live 安装至默认路径时,
+% 使用 \texttt{xelatex} 编译文档,
+% 系统有时会提示目前 \LaTeXe 的版本低于某宏包的要求版本.
+% 这种情况是由于 \textsf{fmt} 文件未能更新所导致.
+% 此时可考虑在命令行运行
+% \begin{lstlisting}[language=bash]
+%   fmtutil-user --byfmt xelatex
+% \end{lstlisting}
+% 待结束后再用 \texttt{xelatex} 编译文档.
+% 更多内容参考
+% \href{https://github.com/CTeX-org/forum/issues/70}{github 上的讨论}.
 
-另外也可考虑重装 \texttt{xetex}.
-在命令行执行
-\begin{lstlisting}[language=bash]
-  sudo tlmgr install --reinstall xetex
-\end{lstlisting}
+% 另外也可考虑重装 \texttt{xetex}.
+% 在命令行执行
+% \begin{lstlisting}[language=bash]
+%   sudo tlmgr install --reinstall xetex
+% \end{lstlisting}
 
 \section{尚未圆满解决的问题}
 

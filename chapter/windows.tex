@@ -269,22 +269,7 @@ Doing a new installation is necessary.}.
 \end{lstlisting}
 用户同样可以指定其他的镜像源,
 方法见附录~\ref{chp:appendix:mirror}.
-% 方法是将上述的 \texttt{ctan} 改为以下网址:
-% \href{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet}{清华大学},
-% \href{https://mirrors.bit.edu.cn/CTAN/systems/texlive/tlnet}{北京理工大学},
-% \href{https://mirror.bjtu.edu.cn/ctan/systems/texlive/tlnet}{北京交通大学},
-% % \href{https://mirrors-wan.geekpie.club/CTAN/systems/texlive/tlnet}{上海科技大学},
-% \href{https://mirrors.sjtug.sjtu.edu.cn/ctan/systems/texlive/tlnet/}{上海交通大学},
-% \href{https://mirrors.ustc.edu.cn/CTAN/systems/texlive/tlnet}{中国科学技术大学},
-% % \href{https://mirrors.zju.edu.cn/CTAN/systems/texlive/tlnet}{浙江大学},
-% \href{https://mirrors.nju.edu.cn/CTAN/systems/texlive/tlnet}{南京大学},
-% \href{http://mirrors.hust.edu.cn/CTAN/systems/texlive/tlnet}{华中科技大学},
-% \href{https://mirrors.cqu.edu.cn/CTAN/systems/texlive/tlnet}{重庆大学},
-% % \href{https://mirror.neu.edu.cn/CTAN/systems/texlive/tlnet}{东北大学}
-% \href{https://mirror.lzu.edu.cn/CTAN/systems/texlive/tlnet}{兰州大学},
-% \href{https://mirrors.cloud.tencent.com/CTAN/systems/texlive/tlnet}{腾讯云},
-% \href{https://mirrors.huaweicloud.com/CTAN/systems/texlive/tlnet}{华为云},
-% \href{https://mirrors.aliyun.com/CTAN/systems/texlive/tlnet}{阿里云}.
+
 接下来, 用户执行命令
 \begin{lstlisting}[language=bash]
   tlmgr update --list
@@ -412,3 +397,22 @@ Doing a new installation is necessary.}.
 来编译文档 \texttt{main.tex}, 并在有需要时完成其他步骤%
 \footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译,
 详情见相关文档}. 
+
+\subsection{\LaTeXe 版本不匹配导致 \texttt{xelatex} 失败}
+
+使用 \texttt{xelatex} 编译文档,
+系统有时会提示目前 \LaTeXe 的版本低于某宏包的要求版本.
+这种情况是由于 \textsf{fmt} 文件未能更新所导致.
+此时可考虑在命令行运行
+\begin{lstlisting}[language=bash]
+  fmtutil-user --byfmt xelatex
+\end{lstlisting}
+待结束后再用 \texttt{xelatex} 编译文档.
+更多内容参考
+\href{https://github.com/CTeX-org/forum/issues/70}{github 上的讨论}.
+
+另外也可考虑重装 \texttt{xetex}.
+在命令行执行
+\begin{lstlisting}[language=bash]
+  sudo tlmgr install --reinstall xetex
+\end{lstlisting}

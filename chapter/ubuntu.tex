@@ -1,6 +1,6 @@
 % !TeX root = ../main.tex
 
-\chapter{Ubuntu 18.04 系统}
+\chapter{Ubuntu 20.04 系统}
 
 \section{安装 \TeX{} Live}
 
@@ -94,7 +94,7 @@
 默认安装完成后, 用户需要设置环境变量.
 继续在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
-  sudo gedit ~/.bashrc
+  gedit ~/.bashrc
 \end{lstlisting}
 在打开的文件末尾添加
 \begin{lstlisting}
@@ -301,19 +301,19 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
   \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
   获取}
 \begin{lstlisting}
-  # 默认注释了源码镜像以提高 apt update 速度, 如有需要可自行取消注释
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
   
-  # 预发布软件源, 不建议启用
-  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+  # 预发布软件源，不建议启用
+  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
 \end{lstlisting}
 然后执行
 \begin{lstlisting}[language = bash]
