@@ -12,7 +12,8 @@
 也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
 通过大陆地区的源下载 iso 文件的方法请参考附录~\ref{chp:appendix:mirror}.
 
-假设镜像文件被下载到本地后存放路径为 \texttt{X:\textbackslash Y}%
+假设镜像文件被下载到本地后,
+其存放路径为 \texttt{X:\textbackslash Y}%
 \footnote{这里, \texttt{X} 表示盘符,
 如 \texttt{C}、\texttt{D}、\texttt{E} 等;
 \texttt{Y} 表示文件夹;
@@ -56,25 +57,30 @@
 \end{lstlisting}
 则表明下载的镜像文件正常.
 
-接下来, 将镜像文件加载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载;
+接下来开始安装.
+推荐用户先手动建立 \TeX{} Live 的安装路径 (文件夹) 再进行安装,
+注意路径的名称是\textbf{不带空格的英文},
+默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2020}.
+将镜像文件挂载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载;
 受某些压缩软件影响双击失效时,
 可通过文件夹菜单栏
 \menu{主页 > 打开 > Windows 资源管理器} 加载;
 第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO;
 不鼓励解压缩镜像文件}. 
-假设加载后的路径为 \texttt{Z:\textbackslash}. 
+假设加载后的路径为 \texttt{Z:\textbackslash}.
 在卸载了国内第三方安全软件的前提下,
-以管理员身份打开 \textsf{cmd} 窗口并执行%
-\footnote{点击 \keys{\faWindows},
-输入 \textsf{cmd},
-点击 \keys{\ctrl + \shift + \enter}}
+% 以管理员身份打开 \textsf{cmd} 窗口并执行%
+% \footnote{点击 \keys{\faWindows},
+% 输入 \textsf{cmd},
+% 点击 \keys{\ctrl + \shift + \enter}}
+打开 \textsf{cmd} 窗口并执行
+% \begin{lstlisting}[language = bash]
+%   cd /d Z:
+% \end{lstlisting}
+% 切换路径. 
+% 接下来执行
 \begin{lstlisting}[language = bash]
-  cd /d Z:
-\end{lstlisting}
-切换路径. 
-接下来执行
-\begin{lstlisting}[language = bash]
-  install-tl-windows.bat --no-gui
+  Z:\install-tl-windows.bat --no-gui
 \end{lstlisting}
 即可看到如下结果
 \begin{lstlisting}
@@ -131,7 +137,7 @@
   Enter command:
 \end{lstlisting}
 这时, 用户可按键盘 \keys{D} 来更改安装路径,
-也可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX{} Live. 
+也可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX{} Live.
 按 \keys{D} 后, 用户可看到
 \begin{lstlisting}
   ==============================================================================
@@ -160,8 +166,7 @@
 \begin{lstlisting}
   New value for TEXDIR [C:/texlive/2020]:
 \end{lstlisting}
-即可更改路径, 如 \texttt{D:/texlive/2020},
-\textbf{更改后的路径名称要求是不带空格的英文}.
+这时可更改路径, 如 \texttt{D:/texlive/2020}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面. 
 用户可通过阅读英文执行其他操作, 这里不再赘述. 
 至此, 用户只需耐心等待安装完成, 并且不要点击 \textsf{cmd} 窗口%
@@ -189,7 +194,9 @@
 即可认为安装顺利完成%
 \footnote{若未能正确显示结果, 则可能是因为环境变量未改变,
 用户可手动添加 \texttt{<TEXDIR>\textbackslash bin\textbackslash win32} 至环境变量,
-\texttt{<TEXDIR>} 需与你方才的安装地址一致}. 
+\texttt{<TEXDIR>} 需与你方才的安装路径一致}.
+弹出前面加载的光盘镜像,
+安装到此结束.
 
 \subsection{下载镜像一直不成功的处理办法}
 
@@ -212,6 +219,17 @@
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
 
+\subsection{需要管理员权限的处理办法}
+
+有些用户反馈安装过程中需要管理员权限.
+以管理员身份打开 \textsf{cmd} 窗口的方法是点击 \keys{\faWindows},
+输入 \textsf{cmd},
+按 \keys{\ctrl + \shift + \enter} 三个键.
+一般而言,
+在系统盘内直接安装 \TeX{} Live 会碰到此类问题,
+因此鼓励用户在安装前先手动建立安装路径.
+直接使用管理员身份打开 \textsf{cmd} 窗口进行安装可能会对以后的升级造成影响.
+
 \section{卸载 \TeX{} Live}
 
 在跨版本升级 \TeX{} Live 时, 通常需要卸载旧版 \TeX{} Live.
@@ -228,13 +246,13 @@
 }. 
 接下来,
 用户只需执行%
-\footnote{双击或在 \texttt{cmd} 中执行}%
-安装路径中的卸载批处理文件即可实现卸载, 如
+\footnote{双击或在 \texttt{cmd} 中运行}%
+安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
 \begin{lstlisting}[language=bash]
   C:\texlive\2020\tlpkg\installer\uninst.bat
 \end{lstlisting}
 结束以上步骤后,
-手动删除用户文件夹中的 \texttt{.texlive2020} 子文件夹.
+手动删除用户文件夹中的 \texttt{.texlive2020}.
 
 \subsection{手动卸载}
 

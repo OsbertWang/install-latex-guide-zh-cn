@@ -11,7 +11,7 @@
 
 下载
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2020.iso}{iso 镜像文件}
-的方法如前所述, 可选择国内源以加快下载速度, 见 \ref{sec:windows:install}~节.
+的方法见 \ref{sec:windows:install}~节.
 下载完毕后, 打开 \textsf{Terminal} 窗口, 执行以下命令
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
@@ -23,14 +23,14 @@
 \end{lstlisting}
 则镜像文件下载正确.
 
-接下来, 使用如下代码加载光盘镜像至 \texttt{\~{}/Downloads/texlive} 文件夹
+接下来挂载光盘镜像
 \begin{lstlisting}[language = bash]
-  mkdir ~/Downloads/texlive
-  sudo mount ./texlive2020.iso ~/Downloads/texlive
+  sudo mkdir /mnt/texlive
+  sudo mount ./texlive2020.iso /mnt/texlive
 \end{lstlisting}
 接下来执行
 \begin{lstlisting}[language = bash]
-  sudo ~/Downloads/texlive/install-tl
+  sudo /mnt/texlive/install-tl
 \end{lstlisting}
 进行安装.
 在屏幕上应该能见到以下内容
@@ -84,11 +84,16 @@
   
   Enter command: 
 \end{lstlisting}
-这里建议用户点击键盘 \keys{I} 使用默认配置安装.
-如果用户对于 Ubuntu 系统比较了解, 可以根据提示, 更改安装设置.
-安装完毕后, 将加载的光盘镜像弹出
+点击键盘 \keys{I} 进行默认安装.
+如果用户对于 Ubuntu 系统比较了解,
+可以根据提示,
+更改安装设置,
+如安装路径等.
+为简化起见,
+以下内容我们均认为用户采用默认安装.
+安装完毕后, 将挂载的光盘镜像弹出
 \begin{lstlisting}[language = bash]
-  sudo umount ~/Downloads/texlive
+  sudo umount /mnt/texlive
 \end{lstlisting}
 
 默认安装完成后, 用户需要设置环境变量.
@@ -123,18 +128,25 @@
 即为安装成功.
 
 接下来处理字体.
-首先将配置文件复制到系统,
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language=bash]
   sudo cp /usr/local/texlive/2020/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
-接下来刷新字体缓存,
-继续在 \textsf{Terminal} 执行
+将配置文件复制到系统,
+然后继续在 \textsf{Terminal} 执行
 \begin{lstlisting}[language=bash]
   sudo fc-cache -fsv
 \end{lstlisting}
+刷新字体缓存.
 这样一来, \TeX{} Live 中的字体才能够被正确调用.
 更多内容请参考 \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\TeX{} live 指南}.
+
+如果用户更改了安装路径,
+要注意将
+\begin{lstlisting}
+  /usr/local/texlive/2020/
+\end{lstlisting}
+在各处替换.
 
 \section{卸载 \TeX{} Live}\label{sec:ubuntu:uninstall}
 
@@ -195,7 +207,8 @@ please get the new TL by doing a new installation instead of proceeding here}.
 \begin{lstlisting}
   /usr/local/texlive/2020/bin/x86_64-linux:
 \end{lstlisting}
-添加在 \texttt{secure\_path} 中.
+添加在 \texttt{secure\_path} 中%
+\footnote{这里只讨论默认安装的情况}.
 然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
 
 接下来在 \textsf{terminal} 中执行
@@ -204,15 +217,14 @@ please get the new TL by doing a new installation instead of proceeding here}.
 \end{lstlisting}
 让系统自动选择源,
 同样可以使用大陆地区的源升级,
-详情见 \ref{sec:windows:update}~节.
-接下来, 用户执行命令
+详情见附录~\ref{chp:appendix:mirror}.
+执行命令
 \begin{lstlisting}[language = bash]
   sudo tlmgr update --list
 \end{lstlisting}
 可查看目前源上可升级的宏包都有哪些. 
 高级用户可以根据自己的需求选择升级特定宏包.
-建议初级用户直接升级全部宏包,
-只需执行
+建议初级用户执行
 \begin{lstlisting}[language = bash]
   sudo tlmgr update --self --all
 \end{lstlisting}
@@ -280,7 +292,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \subsection{无法使用 \texttt{xelatex} 命令}\label{subsec:ubuntu:xelatexfail}
 
 有些用户反映安装完毕后无法使用 \texttt{xelatex} 命令.
-这里或许是因为 libfontconfig 缺失, 用户可在命令行中执行 
+这或许是因为缺失 libfontconfig , 用户可在命令行中执行 
 \begin{lstlisting}[language=bash]
   sudo apt-get install libfontconfig1
 \end{lstlisting}

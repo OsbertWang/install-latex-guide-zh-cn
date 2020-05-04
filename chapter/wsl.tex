@@ -104,6 +104,8 @@
 \end{lstlisting}
 用户直接点击 \keys{I} 使用默认配置安装.
 如果用户对于 WSL 比较了解, 可以根据提示, 更改安装设置.
+为简化起见,
+以下内容均认为用户进行默认安装.
 安装完毕后, 需继续在 \textsf{bash} 中执行
 \begin{lstlisting}[language = bash]
   sudo umount /mnt/x
@@ -149,32 +151,60 @@
 \begin{lstlisting}[language=bash]
   sudo cp /usr/local/texlive/2020/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
-接下来刷新字体缓存,
-继续在 \textsf{Terminal} 执行
+然后在 \textsf{Terminal} 执行
 \begin{lstlisting}[language=bash]
   sudo fc-cache -fsv
 \end{lstlisting}
+刷新字体缓存.
 
 \subsection{不懂 \textsf{vim} 的处理方法}\label{subsec:no-vim}
 
 \textsf{vim} 的使用方法与目前很多流行的编辑器不同,
 因此这里给出不用 \textsf{vim} 的处理方法.
+该方法借助 \href{https://github.com/EthanDeng/vscode-latex}{VS Code} 的 Remote-WSL 插件实现.
 
-首先更改 \texttt{sources.list}.
-假设已经将 \texttt{sources.list} 备份,
-而后在主系统中通过 \href{https://www.voidtools.com/zh-cn/}{everything}
-搜索文件 \texttt{sources.list},
-找到路径在 \menu{... > etc > apt} 的文件,
-省略号表示 \menu{etc} 前那段很长的路径.
-使用常用的编辑器打开 \texttt{sources.list} 并进行更改即可,
-更改内容同 \ref{subsec:ubuntu:xelatexfail}~节.
+先来更改 \texttt{.bashrc}
+将 \texttt{.bashrc} 备份为 \texttt{.bashrc.bak}
+\begin{lstlisting}[language=bash]
+  cat ~/.bashrc > ~/.bashrc.bak
+\end{lstlisting}
+用 VS Code 打开文档
+\begin{lstlisting}[language=bash]
+  code ~/.bashrc
+\end{lstlisting}
+并对其中内容进行更改并保存.
+若更改错误,
+可以执行
+\begin{lstlisting}[language=bash]
+  cat ~/.bashrc.bak > ~/.bashrc
+\end{lstlisting}
+恢复文档.
 
-接下来更改 \texttt{.bashrc}.
-同样也是在主系统中通过
-\href{https://www.voidtools.com/zh-cn/}{everything}
-搜索文件 \texttt{.bashrc},
-找到路径在 \menu{... > home > username} 的文件,
-使用常用的编辑器打开并进行更改.
+接下来更改 \texttt{sources.list}.
+将 \texttt{sources.list} 备份为 \texttt{sources.list.bak}
+\begin{lstlisting}[language=bash]
+  sudo cat /etc/apt/sources.list > /etc/apt/sources.list.bak
+\end{lstlisting}
+用 VS Code 打开文档
+\begin{lstlisting}[language=bash]
+  code /etc/apt/sources.list
+\end{lstlisting}
+并对其中内容进行更改,
+并且另存为
+\begin{lstlisting}
+  ~/sources.list.sav  
+\end{lstlisting}
+在 \textsf{bash} 中执行
+\begin{lstlisting}[language=bash]
+  sudo cat ~/sources.list.sav > /etc/apt/sources.list
+\end{lstlisting}
+替换文档.
+若发现文档有错误,
+执行
+\begin{lstlisting}[language=bash]
+  sudo cat /etc/apt/sources.list.bak > /etc/apt/sources.list
+\end{lstlisting}
+恢复文档.
 
 \section{卸载 \TeX{} Live}
 
