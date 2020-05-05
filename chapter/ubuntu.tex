@@ -23,7 +23,7 @@
 \end{lstlisting}
 则镜像文件下载正确.
 
-接下来挂载光盘镜像
+将下载的光盘镜像进行挂载
 \begin{lstlisting}[language = bash]
   sudo mkdir /mnt/texlive
   sudo mount ./texlive2020.iso /mnt/texlive
@@ -91,12 +91,13 @@
 如安装路径等.
 为简化起见,
 以下内容我们均认为用户采用默认安装.
-安装完毕后, 将挂载的光盘镜像弹出
+安装完毕后, 将挂载的光盘镜像弹出并删除文件夹
 \begin{lstlisting}[language = bash]
   sudo umount /mnt/texlive
+  sudo rm /mnt/texlive
 \end{lstlisting}
 
-默认安装完成后, 用户需要设置环境变量.
+安装完成后, 用户需要设置环境变量.
 继续在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
   gedit ~/.bashrc
@@ -133,13 +134,13 @@
   sudo cp /usr/local/texlive/2020/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
 将配置文件复制到系统,
-然后继续在 \textsf{Terminal} 执行
+然后继续执行
 \begin{lstlisting}[language=bash]
   sudo fc-cache -fsv
 \end{lstlisting}
 刷新字体缓存.
 这样一来, \TeX{} Live 中的字体才能够被正确调用.
-更多内容请参考 \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\TeX{} live 指南}.
+更多内容请参考 \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}.
 
 如果用户更改了安装路径,
 要注意将
@@ -172,8 +173,9 @@
 \end{lstlisting}
 来删除相应的依赖包.
 
-如果是从光盘镜像安装, 只需直接删除文件夹即可.
-可先在\textsf{terminal} 中执行
+如果是从光盘镜像安装,
+直接删除文件夹即可.
+先在\textsf{terminal} 中执行
 \begin{lstlisting}[language = bash]
   kpsewhich -var-value TEXMFROOT
 \end{lstlisting}
@@ -243,8 +245,8 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 首先, 用户需要在工作路径建立一个 \texttt{tex} 文件.
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
-  mkdir ~/Documents/work_latex
-  cd ~/Documents/work_latex/
+  mkdir ~/Documents/work-latex
+  cd ~/Documents/work-latex/
   gedit main.tex
 \end{lstlisting}
 在打开的文件输入一个最小示例
@@ -261,7 +263,7 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \end{lstlisting}
 等待系统完成编译过程. 
 待编译完成后,
-我们即可看到在 \texttt{\~{}/Documents/work\_latex} 中出现了
+我们即可看到在 \texttt{\~{}/Documents/work-latex} 中出现了
 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与
 \texttt{main.log}. 
 执行
@@ -331,4 +333,10 @@ Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \begin{lstlisting}[language = bash]
   sudo apt-get update && sudo apt-get upgrade
 \end{lstlisting}
-至此换源完毕.
+换源并更新.
+若更改错误,
+可执行
+\begin{lstlisting}[language=bash]
+  sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
+\end{lstlisting}
+恢复文件.

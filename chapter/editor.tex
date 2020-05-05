@@ -371,19 +371,44 @@ Windows 10 中字体列表见%
 
 其他设置可参考前文, 这里不再赘述.
 
+\section{macOS}
+
+这里介绍两款 macOS 下的编辑器:
+\TeX Shop 和 \TeX studio.
+
+\subsection{\TeX Shop}
+
+Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆),
+通常在安装完毕后便可立即使用.
+通过编辑器打开 \texttt{main.tex},
+将排版程序 (工具栏上面左数第二个下拉菜单) 由默认的 \menu{LaTeX} 切换到
+\menu{pdflatexmk},
+再点击旁边的排版 \menu{排版} (\menu{Typeset}),
+待编译完成后会弹出 PDF 预览界面.
+
+编译中文文档, 通常需要将排版程序切换到 \menu{XeLaTeX}.
+注意可能需要多次编译以生成正确的交叉引用等内容.
+
+\subsection{\TeX studio}
+
+如果希望使用 \TeX studio, 也可以通过 Homebrew 安装:
+\begin{lstlisting}[language=bash]
+  brew cask install texstudio
+\end{lstlisting}
+注意因为网络问题可能会下载失败.
+这时可能需要从其他途径获得安装包并手工安装, 此处不再赘述.
+其他设置与 Windows 系统中大致相仿.
+
+\subsubsection{无法显示文字}
+
+\TeX studio 在 macOS 下有可能无法显示文字,
+这是其他系统下目前没有发现的问题.
+具体解决方法见%
+\href{https://zhuanlan.zhihu.com/p/80728204}{李阿玲在知乎的文章}.
+
 \section{Windows Subsystem for Linux}
 
-使用 WSL 时,
-推荐用户在主系统中使用
-\href{https://code.visualstudio.com/}{VS Code}
-的
-\href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{Remote WSL}
-插件来配合
-\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}
-编辑文件.
-参考配置文件见附录~\ref{chp:appendix:wsl}.
-
-若需要使用 \TeX studio,
+若使用 \TeX studio,
 则需要将 \texttt{bash.exe} 及其绝对路径写入编译命令中.
 使用
 \href{https://www.voidtools.com/zh-cn/}{everything}
@@ -418,40 +443,29 @@ Windows 10 中字体列表见%
 这样可直接将 \TeX studio 安装至 WSL,
 这里不讨论此方案的优劣.
 
-\section{macOS}
+\section{其他编辑器}
 
-macOS 下的编辑器, 这里介绍两款:
-\TeX Shop 和 \TeX studio.
+\href{https://code.visualstudio.com/}{VS Code} 目前已有插件
+\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{LaTeX Workshop}
+供用户使用.
+具体设置方式建议阅读插件手册,
+一些网友的教程可以参考,
+如
+\href{https://github.com/EthanDeng/vscode-latex}{EthanDeng 的教程}.
+另外,
+VS Code 的
+\href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{Remote-WSL}
+插件可以帮助用户更方便地使用 WSL.
+参考配置文件见附录~\ref{chp:appendix:wsl}.
 
-\subsection{\TeX Shop}
-
-Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆),
-通常在安装完毕后便可立即使用.
-通过编辑器打开 \texttt{main.tex},
-将排版程序 (工具栏上面左数第二个下拉菜单) 由默认的 \menu{LaTeX} 切换到
-\menu{pdflatexmk},
-再点击旁边的排版 \menu{排版} (\menu{Typeset}),
-待编译完成后会弹出 PDF 预览界面.
-
-编译中文文档, 通常需要将排版程序切换到 \menu{XeLaTeX}.
-注意可能需要多次编译以生成正确的交叉引用等内容.
-
-\subsection{\TeX studio}
-
-如果希望使用 \TeX studio, 也可以通过 Homebrew 安装:
-\begin{lstlisting}[language=bash]
-  brew cask install texstudio
-\end{lstlisting}
-注意因为网络问题可能会下载失败.
-这时可能需要从其他途径获得安装包并手工安装, 此处不再赘述.
-其他设置与 Windows 系统中大致相仿.
-
-\subsubsection{无法显示文字}
-
-\TeX studio 在 macOS 下有可能无法显示文字,
-这是其他系统下目前没有发现的问题.
-具体解决方法见%
-\href{https://zhuanlan.zhihu.com/p/80728204}{李阿玲在知乎的文章}.
+\href{https://www.vim.org/}{Vim} 是一款优秀的编辑器,
+它的用法较目前常见的编辑器有很大不同,
+因此用户上手时容易感觉无所适从,
+但熟练掌握用法后,
+用户将很容易对其进行定制.
+\href{http://vim-latex.sourceforge.net/}{Vim-LaTeX}
+尝试提供一套全面的工具来查看、编辑和编译LaTeX文档,
+用户可以考虑使用.
 
 \section{多款编辑器对比参考}
 

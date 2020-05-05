@@ -136,8 +136,8 @@
   
   Enter command:
 \end{lstlisting}
-这时, 用户可按键盘 \keys{D} 来更改安装路径,
-也可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX{} Live.
+这时, 用户可可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX{} Live,
+也可按键盘 \keys{D} 来更改安装路径.
 按 \keys{D} 后, 用户可看到
 \begin{lstlisting}
   ==============================================================================
@@ -301,8 +301,6 @@ Doing a new installation is necessary.}.
 \end{lstlisting}
 同时升级 \texttt{tlmgr} 本身和全部宏包. 
 
-部分用户会碰到升级不成功的情况, 这些情况我们将一一给出处理办法. 
-
 \subsection{\texttt{tlmgr} 本身无法成功升级}
 
 遇到这种情况时, 用户需自行下载
@@ -338,11 +336,11 @@ Doing a new installation is necessary.}.
 
 首先, 用户需要在指定位置\footnote{以下称工作路径}建立一个 \texttt{tex} 文件：
 \begin{lstlisting}[language = bash]
-  mkdir E:\work_latex
-  cd /d E:\work_latex
+  mkdir D:\work-latex
+  cd /d D:\work-latex
   notepad main.tex
 \end{lstlisting}
-第1行表示创建一个工作路径 \texttt{E:\textbackslash work\_latex},
+第1行表示创建一个工作路径 \texttt{D:\textbackslash work-latex},
 第2行表示进入工作路径, 第3行表示用记事本打开 \texttt{main.tex} 文件,
 若文件不存在, 系统将询问用户是否创建该文件%
 \footnote{Windows 10 较新版本可能对中文名友好一些,
@@ -360,7 +358,7 @@ Doing a new installation is necessary.}.
   pdflatex main
 \end{lstlisting}
 等待系统完成编译过程. 
-待编译完成后, 我们即可看到在 \texttt{E:\textbackslash work\_latex}
+待编译完成后, 我们即可看到在 \texttt{D:\textbackslash work-latex}
 中出现了 \texttt{main.pdf} 文件和其他同名的辅助文件
 \texttt{main.aux} 与 \texttt{main.log}. 
 

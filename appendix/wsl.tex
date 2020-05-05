@@ -32,6 +32,13 @@ WSL (本质上是 Ubuntu) 中安装字体比较麻烦.
   fc-cache -fv
 \end{lstlisting}
 
+实际上有部分字体可直接使用源进行安装,
+如安装 \texttt{Noto CJK}
+\begin{lstlisting}[language=bash]
+  sudo apt-get install fonts-noto-cjk
+  sudo apt-get install fonts-noto-cjk-extra
+\end{lstlisting}
+
 在目前的版本中, 本文在 WSL 中进行编译.
 目前感受是该方法较之 Windows 10 系统中的编译更快.
 其他方面并未进行比较.
@@ -44,7 +51,7 @@ WSL (本质上是 Ubuntu) 中安装字体比较麻烦.
 这里将个人使用的相关配置附上,
 其中注释的部分是调用外部 SumatraPDF 阅读器的配置,
 用户可参考
-\href{https://wenda.latexstudio.net/article-5055.html}{SumatraPDF 阅读器该怎么设置——以 TeXStudio 和 VS Code 为例}%
+\href{https://github.com/OsbertWang/latex-editor-sumatrapdf}{latex-editor-sumatrapdf}%
 来了解更多内容.
 
 \begin{lstlisting}
