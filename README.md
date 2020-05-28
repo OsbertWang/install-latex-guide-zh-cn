@@ -8,5 +8,10 @@
 本文所涉及到的代码还请用户多多动手, 不要简单地复制粘贴.
 
 若需要编译源文件，请确保安装 fandol 字体, 并使用 `xelatex` 命令.
+推荐 TeX Live 用户使用如下命令
+```
+latexmk -xelatex -synctex=1 main
+```
+无法使用 `latexmk` 的用户可以根据自己的操作系统执行 `make.bat` 或 `make`.
 
 若需要本项目编译完成的 PDF 文件, 可至 [Releases](https://github.com/OsbertWang/install-latex/releases/latest) 处下载.
