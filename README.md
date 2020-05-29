@@ -7,7 +7,7 @@
 
 本文所涉及到的代码还请用户多多动手, 不要简单地复制粘贴.
 
-若需要编译源文件，请确保安装 fandol 字体, 并使用 `xelatex` 命令.
+若需要编译源文件, 请确保安装 fandol 字体, 并使用 `xelatex` 命令.
 推荐 TeX Live 用户使用如下命令
 ```
 latexmk -xelatex -synctex=1 main

@@ -44,7 +44,10 @@
 建议删除它并在安装 \TeX{} Live 后更换其他同类软件%
 \footnote{推荐 \href{http://www.winrar.com.cn/}{WinRAR}
 或 \href{https://www.7-zip.org/}{7-Zip}}.
-继续打开 \textsf{cmd} 窗口依次执行以下代码
+
+下面我们要确保下载到的 iso 文件没有损坏, 一种常用做法是检查其 MD5 值.
+当然, 如果确信自己下载到的文件没有问题, 也可以跳过这一步.
+打开 \textsf{cmd} 窗口依次执行以下代码
 \begin{lstlisting}[language = bash]
   cd /d X:\Y
   certutil -hashfile texlive2020.iso md5
