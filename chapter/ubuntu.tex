@@ -234,11 +234,26 @@ please get the new TL by doing a new installation instead of proceeding here}.
 
 \section{安装宏包}\label{sec:ubuntu:installpackage}
 
-Ubuntu 18.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只需注意权限, 例如
+Ubuntu 20.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只需注意权限, 例如
 \begin{lstlisting}[language = bash]
   sudo tlmgr install mcmthesis
 \end{lstlisting}
 即安装了 mcmthesis.
+
+\section{调出宏包手册}\label{sec:ubuntu:texdoc}
+
+与 Windows 10 类似,
+当正确安装后,
+用户可以调出宏包手册以查阅相应内容.
+例如在 \textsf{terminal} 中执行
+\begin{lstlisting}[language=bash]
+  texdoc texlive-zh-cn
+\end{lstlisting}
+或
+\begin{lstlisting}[language=bash]
+  texdoc lshort-zh-cn
+\end{lstlisting}
+就可分别调出 \texttt{texlive-zh-cn.pdf} 和 \texttt{lshort-zh-cn.pdf}.
 
 \section{编译文件}
 
