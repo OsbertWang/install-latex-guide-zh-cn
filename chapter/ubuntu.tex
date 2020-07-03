@@ -12,7 +12,8 @@
 下载
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2020.iso}{iso 镜像文件}
 的方法见 \ref{sec:windows:install}~节.
-下载完毕后, 打开 \textsf{Terminal} 窗口, 执行以下命令
+下载完毕后, 打开 \textsf{Terminal} 窗口验证 MD5 值,
+即执行以下命令
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
   md5sum texlive2020.iso
@@ -22,6 +23,16 @@
   a31c500c7830d901363c5fa0e65cc18d  texlive2020.iso
 \end{lstlisting}
 则镜像文件下载正确.
+同样可验证 SHA512 值,
+执行
+\begin{lstlisting}[language = bash]
+  cd ~/Downloads
+  sha512sum texlive2020.iso
+\end{lstlisting}
+正确的返回结果为
+\begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
+  7c94bbcff5318e540dc0b03010896185d8985bcc2c2ac11906e831ec583fd574bf9720fce5efc29470c80bafe12f42ddaa392b96c460a27eda94f93c12e7b57d  texlive2020.iso
+\end{lstlisting}
 
 将下载的光盘镜像进行挂载
 \begin{lstlisting}[language = bash]

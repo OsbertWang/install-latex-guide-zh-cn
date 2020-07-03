@@ -59,6 +59,21 @@
   CertUtil: -hashfile 命令成功完成
 \end{lstlisting}
 则表明下载的镜像文件正常.
+除 MD5 值外,
+还可检查 SHA512 值.
+依然是在 \textsf{cmd} 执行
+\begin{lstlisting}[language = bash]
+  cd /d X:\Y
+  certutil -hashfile texlive2020.iso sha512
+\end{lstlisting}
+若系统显示
+\begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
+  SHA512 的 texlive2020.iso 哈希:
+  7c94bbcff5318e540dc0b03010896185d8985bcc2c2ac11906e831ec583fd574bf9720fce5efc29470c80bafe12f42ddaa392b96c460a27eda94f93c12e7b57d
+  CertUtil: -hashfile 命令成功完成
+\end{lstlisting}
+即为验证成功.
+
 
 接下来开始安装.
 推荐用户先手动建立 \TeX{} Live 的安装路径 (文件夹) 再进行安装,
