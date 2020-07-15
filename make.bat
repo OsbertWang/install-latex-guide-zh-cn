@@ -1,6 +1,6 @@
 @echo off
 cd %~dp0
-set INSTALLLATEX=main
+set INSTALLLATEX=install-latex
 set PDF=%INSTALLLATEX%.pdf
 set TEMP=%INSTALLLATEX%.xdv %INSTALLLATEX%.aux %INSTALLLATEX%.log %INSTALLLATEX%.toc %INSTALLLATEX%.out %INSTALLLATEX%.synctex.gz ^
          .\appendix\*.aux .\chapter\*.aux
