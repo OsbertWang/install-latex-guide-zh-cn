@@ -16,7 +16,11 @@ latexmk -xelatex -synctex=1 install-latex
 
 若需要本项目编译完成的 PDF 文件, 可至 [Releases](https://github.com/OsbertWang/install-latex/releases/latest) 处下载.
 
-# A short introduction to LaTeX installation
+# 开源协议
+
+本次工作将遵循协议 LaTeX Project Public License，v1.3c 或其后版本.
+
+# Install-LaTeX (A short introduction to LaTeX installation )
 
 This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading macro packages, and compiling simple documents on Windows 10, Ubuntu 20.04, and macOS systems, and mainly introducing command line operations.
 At the same time, it briefly introduces the use of several common editors under different operating systems, and additionally adds some related content using [Overleaf] (www.overleaf.com).
@@ -33,3 +37,7 @@ latexmk -xelatex -synctex=1 install-latex
 Users who cannot use `latexmk` can execute `make.bat` or `make` according to their operating system.
 
 If you need the PDF file compiled by this project, you can download it from [Releases](https://github.com/OsbertWang/install-latex/releases/latest).
+
+# License
+
+This work is released under the LaTeX Project Public License, v1.3c or later.
