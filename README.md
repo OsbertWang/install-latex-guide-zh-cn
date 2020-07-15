@@ -23,9 +23,9 @@ latexmk -xelatex -synctex=1 install-latex
 # Install-LaTeX (A short introduction to LaTeX installation)
 
 This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading macro packages, and compiling simple documents on Windows 10, Ubuntu 20.04, and macOS systems, and mainly introducing command line operations.
-At the same time, it briefly introduces the use of several common editors under different operating systems, and additionally adds some related content using [Overleaf] (www.overleaf.com).
+At the same time, it briefly introduces the use of several common editors under different operating systems, and additionally adds some related content using [Overleaf](www.overleaf.com).
 
-Users are advised to read [texlive-zh-cn] (https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf) and [lshort-zh-cn] (http: //mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf) for a more comprehensive understanding of the basic content.
+Users are advised to read [texlive-zh-cn](https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf) and [lshort-zh-cn](http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf) for a more comprehensive understanding of the basic content.
 
 The code involved in this article also asks users to do more, don't simply copy and paste.
 
