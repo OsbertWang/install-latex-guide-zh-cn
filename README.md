@@ -1,3 +1,25 @@
+# Install-LaTeX (A short introduction to LaTeX installation)
+
+This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 10, Ubuntu 20.04, and macOS systems, and mainly introducing command line operations.
+At the same time, it briefly introduces the use of several common editors under different operating systems, and additionally adds some related content using [Overleaf](www.overleaf.com).
+
+Users are advised to read [texlive-zh-cn](https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf) and [lshort-zh-cn](http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf) for a more comprehensive understanding of the basic content.
+
+The code involved in this article also asks users to do more, don't simply copy and paste.
+
+If you need to compile the source files, please make sure to install the fandol font and use the xelatex command.
+TeX Live users are recommended to use the following commands
+```
+latexmk -xelatex -synctex=1 install-latex
+```
+Users who cannot use `latexmk` can execute `make.bat` or `make` according to their operating system.
+
+If you need the PDF file compiled by this project, you can download it from [Releases](https://github.com/OsbertWang/install-latex/releases/latest).
+
+# License
+
+This work is released under the LaTeX Project Public License, v1.3c or later.
+
 # 一份简短的关于 LaTeX 安装的介绍
 
 本文将介绍 Windows 10、Ubuntu 20.04 和 macOS 系统中安装 TeX Live (macOS 中介绍 MacTeX)、升级宏包、编译简易文档的相关操作, 并多以介绍命令行操作为主.
@@ -19,25 +41,3 @@ latexmk -xelatex -synctex=1 install-latex
 # 开源协议
 
 本次工作将遵循协议 LaTeX Project Public License，v1.3c 或其后版本.
-
-# Install-LaTeX (A short introduction to LaTeX installation)
-
-This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading macro packages, and compiling simple documents on Windows 10, Ubuntu 20.04, and macOS systems, and mainly introducing command line operations.
-At the same time, it briefly introduces the use of several common editors under different operating systems, and additionally adds some related content using [Overleaf](www.overleaf.com).
-
-Users are advised to read [texlive-zh-cn](https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf) and [lshort-zh-cn](http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf) for a more comprehensive understanding of the basic content.
-
-The code involved in this article also asks users to do more, don't simply copy and paste.
-
-If you need to compile the source files, please make sure to install the fandol font and use the xelatex command.
-TeX Live users are recommended to use the following commands
-```
-latexmk -xelatex -synctex=1 install-latex
-```
-Users who cannot use `latexmk` can execute `make.bat` or `make` according to their operating system.
-
-If you need the PDF file compiled by this project, you can download it from [Releases](https://github.com/OsbertWang/install-latex/releases/latest).
-
-# License
-
-This work is released under the LaTeX Project Public License, v1.3c or later.
