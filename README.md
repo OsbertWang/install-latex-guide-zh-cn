@@ -20,7 +20,7 @@ latexmk -xelatex -synctex=1 install-latex
 
 本次工作将遵循协议 LaTeX Project Public License，v1.3c 或其后版本.
 
-# Install-LaTeX (A short introduction to LaTeX installation )
+# Install-LaTeX (A short introduction to LaTeX installation)
 
 This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading macro packages, and compiling simple documents on Windows 10, Ubuntu 20.04, and macOS systems, and mainly introducing command line operations.
 At the same time, it briefly introduces the use of several common editors under different operating systems, and additionally adds some related content using [Overleaf] (www.overleaf.com).
