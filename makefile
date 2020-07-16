@@ -1,4 +1,4 @@
-INSTALLLATEX  = install-latex
+INSTALLLATEX  = install-latex-zh-cn
 PDF       = $(INSTALLLATEX).pdf
 REQUIRE   = $(INSTALLLATEX).tex $(wildcard ./chapter/*.tex) $(wildcard ./appendix/*.tex)
 TEMP      = $(INSTALLLATEX).xdv $(INSTALLLATEX).aux $(INSTALLLATEX).log $(INSTALLLATEX).toc $(INSTALLLATEX).out $(INSTALLLATEX).synctex.gz \
