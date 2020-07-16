@@ -1,4 +1,4 @@
-# Install-LaTeX-zh-cn (A short introduction to LaTeX installation in Chinese)
+# Install-LaTeX-Guide-zh-cn (A short introduction to LaTeX installation written in Chinese)
 
 This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 10, Ubuntu 20.04, and macOS systems, and mainly introducing command line operations.
 At the same time, it briefly introduces the use of several common editors under different operating systems, and additionally adds some related content using [Overleaf](www.overleaf.com).
