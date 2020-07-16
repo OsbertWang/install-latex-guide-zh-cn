@@ -10,7 +10,7 @@ The code involved in this article also asks users to do more, don't simply copy 
 If you need to compile the source files, please make sure to install the fandol font and use the xelatex command.
 TeX Live users are recommended to use the following commands
 ```
-latexmk -xelatex -synctex=1 install-latex-zh-cn
+latexmk -xelatex -synctex=1 install-latex-guide-zh-cn
 ```
 Users who cannot use `latexmk` can execute `make.bat` or `make` according to their operating system.
 
@@ -32,7 +32,7 @@ This work is released under the LaTeX Project Public License, v1.3c or later.
 若需要编译源文件, 请确保安装 fandol 字体, 并使用 `xelatex` 命令.
 推荐 TeX Live 用户使用如下命令
 ```
-latexmk -xelatex -synctex=1 install-latex-zh-cn
+latexmk -xelatex -synctex=1 install-latex-guide-zh-cn
 ```
 无法使用 `latexmk` 的用户可以根据自己的操作系统执行 `make.bat` 或 `make`.
 
