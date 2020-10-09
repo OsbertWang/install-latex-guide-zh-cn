@@ -159,19 +159,7 @@
 
 \section{卸载 \TeX{} Live}
 
-直接删除文件夹即可.
-先在 \textsf{bash} 中执行
-\begin{lstlisting}[language = bash]
-  kpsewhich -var-value TEXMFROOT
-\end{lstlisting}
-来查询安装路径,
-进而通过 \texttt{sudo rm -rf} 进行删除.
-默认安装的用户直接运行
-\begin{lstlisting}[language = bash]
-  sudo rm -rf /usr/local/texlive/2020
-  rm -rf ~/.texlive2020
-\end{lstlisting}
-当然删除后还要清理掉环境变量.
+WSL 中的方法同 \ref{sec:ubuntu:uninstall}~节.
 
 \section{跨版本升级 \TeX{} Live}
 

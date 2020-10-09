@@ -251,6 +251,10 @@
 \section{卸载 \TeX{} Live}
 
 在跨版本升级 \TeX{} Live 时, 通常需要卸载旧版 \TeX{} Live.
+下面介绍几种卸载方法.
+
+\subsection{使用批处理文件}
+
 在命令行执行
 \begin{lstlisting}[language=bash]
   kpsewhich -var-value TEXMFROOT
@@ -273,6 +277,15 @@
 手动删除用户文件夹中的 \texttt{.texlive2020}.
 如果用户安装 \TeX{} Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
+
+\subsection{使用 \texttt{tlmgr} 工具}
+
+直接使用 \texttt{tlmgr} 工具卸载也可以.
+在命令行中执行
+\begin{lstlisting}[language=bash]
+  tlmgr remove --all
+\end{lstlisting}
+即可.
 
 \subsection{手动卸载}
 
