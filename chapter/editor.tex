@@ -359,6 +359,31 @@ Windows 10 中字体列表见%
   sudo apt-get update
   sudo apt-get install texstudio
 \end{lstlisting}
+鉴于网络原因,
+直接从 PPA 下载容易丢包.
+这里介绍中科大的\href{https://lug.ustc.edu.cn/wiki/mirrors/help/revproxy/}{反向镜像},
+将
+\begin{lstlisting}[language = bash]
+  /etc/apt/sources.list.d/
+\end{lstlisting}
+中文件的内容
+\begin{lstlisting}
+  http(s)://ppa.launchpad.net
+\end{lstlisting}
+改为
+\begin{lstlisting}
+  https://launchpad.proxy.ustclug.org
+\end{lstlisting}
+而后再
+\begin{lstlisting}[language = bash]
+  sudo apt update
+\end{lstlisting}
+即完成换源.
+有时地址太多而逐个换太麻烦,
+可以直接使用如下命令直接替换\footnote{参见 \url{https://mogeko.me/2018/035/}}
+\begin{lstlisting}[language = bash]
+  sudo find /etc/apt/sources.list.d/ -type f -name "*.list" -exec  sed  -i.bak -r  's#deb(-src)?\s*http(s)?://ppa.launchpad.net#deb\1 https\2://launchpad.proxy.ustclug.org#ig' {} \;
+\end{lstlisting}
 
 安装完毕后,
 用户可以在 \textsf{Terminal} 中执行
