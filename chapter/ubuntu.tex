@@ -160,6 +160,55 @@
 \end{lstlisting}
 在各处替换.
 
+\subsection{\texttt{fc-cache} 无法执行}
+
+这种情况往往是缺少了 fontconfig,
+用户可以在命令行中执行以下命令安装
+\begin{lstlisting}[language=bash]
+  sudo apt install fontconfig
+\end{lstlisting}
+
+为提升安装速度, 可考虑更换 Ubuntu 源, 例如更换至清华大学.
+在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+\end{lstlisting}
+备份 \texttt{sources.list} 文件.
+接下来执行
+\begin{lstlisting}[language = bash]
+  sudo gedit /etc/apt/sources.list
+\end{lstlisting}
+将文件替换为以下内容%
+\footnote{本段文字可至%
+  \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
+  获取}
+\begin{lstlisting}
+  # 默认注释了源码镜像以提高 apt update 速度, 如有需要可自行取消注释
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+  
+  # 预发布软件源, 不建议启用
+  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+\end{lstlisting}
+然后执行
+\begin{lstlisting}[language=bash]
+  sudo apt update && sudo apt upgrade
+\end{lstlisting}
+换源并更新.
+若更改错误,
+可执行
+\begin{lstlisting}[language=bash]
+  sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
+\end{lstlisting}
+恢复文件.
+
 \section{卸载 \TeX{} Live}\label{sec:ubuntu:uninstall}
 
 下面提供几种卸载方法,
@@ -170,7 +219,7 @@
 如果要卸载从源内安装的 \TeX{} Live, 个人比较推荐使用 synaptic package manager.
 \textsf{terminal} 中执行
 \begin{lstlisting}[language = bash]
-  sudo apt-get install synaptic
+  sudo apt install synaptic
 \end{lstlisting}
 即可安装.
 安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
@@ -180,12 +229,12 @@
 \end{lstlisting}
 找到相应的包名 \texttt{<package name>}, 之后使用类似
 \begin{lstlisting}[language = bash]
-  sudo apt-get remove --purge <package name>
+  sudo apt remove --purge <package name>
 \end{lstlisting}
 的命令删除各个包.
 删除时系统会提示使用
 \begin{lstlisting}[language = bash]
-  sudo apt-get autoremove <package name>
+  sudo apt autoremove <package name>
 \end{lstlisting}
 来删除相应的依赖包.
 
@@ -285,7 +334,6 @@ Ubuntu 20.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \texttt{lshort-zh-cn.pdf}
 或本手册.
 
-
 \section{编译文件}
 
 首先, 用户需要在工作路径建立一个 \texttt{tex} 文件.
@@ -340,49 +388,8 @@ Ubuntu 20.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \subsection{无法使用 \texttt{xelatex} 命令}\label{subsec:ubuntu:xelatexfail}
 
 有些用户反映安装完毕后无法使用 \texttt{xelatex} 命令.
-这或许是因为缺失 libfontconfig , 用户可在命令行中执行 
+这或许是因为缺失 libfontconfig, 用户可在命令行中执行 
 \begin{lstlisting}[language=bash]
-  sudo apt-get install libfontconfig1
+  sudo apt install libfontconfig1
 \end{lstlisting}
 进行安装.
-
-为提升安装速度, 可考虑更换 Ubuntu 源, 例如更换至清华大学.
-在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
-  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-\end{lstlisting}
-备份 \texttt{sources.list} 文件.
-接下来执行
-\begin{lstlisting}[language = bash]
-  sudo gedit /etc/apt/sources.list
-\end{lstlisting}
-将文件替换为以下内容%
-\footnote{本段文字可至%
-  \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
-  获取}
-\begin{lstlisting}
-  # 默认注释了源码镜像以提高 apt update 速度, 如有需要可自行取消注释
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
-  
-  # 预发布软件源, 不建议启用
-  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
-\end{lstlisting}
-然后执行
-\begin{lstlisting}[language = bash]
-  sudo apt-get update && sudo apt-get upgrade
-\end{lstlisting}
-换源并更新.
-若更改错误,
-可执行
-\begin{lstlisting}[language=bash]
-  sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
-\end{lstlisting}
-恢复文件.
