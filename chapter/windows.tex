@@ -493,3 +493,12 @@ Doing a new installation is necessary.}.
 \begin{lstlisting}[language=bash]
   tlmgr install --reinstall xetex
 \end{lstlisting}
+
+\subsection{编译出现 \texttt{l3backend-*} 问题}
+
+这是 \texttt{fmt} 文件未能更新所导致的问题.
+可以用
+\begin{lstlisting}[language=bash]
+  fmtutil-sys --all
+\end{lstlisting}
+刷新 \texttt{fmt} 文件后再编译 \texttt{tex} 文件.
