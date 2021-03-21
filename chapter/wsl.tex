@@ -172,6 +172,75 @@ WSL 中的方法同 \ref{sec:ubuntu:update}~节.
 
 WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 
+\section{调出宏包手册}
+
+由于 WSL 的 \textsf{bash} 默认是无窗口化的纯命令行,
+因此将 \TeX{} Live 安装至 WSL 后,
+用户无法直接通过命令 \texttt{texdoc} 打开相应的手册.
+下面几种方法均为收集而来的方案,
+其中比较推荐更改 \texttt{texdoc.cnf}.
+
+\subsubsection{更改 \texttt{texdoc.cnf}}
+
+此方案源自本手册的 \href{https://github.com/OsbertWang/install-latex-guide-zh-cn/issues/13}{issue}.
+首先在 \textsf{bash} 中执行
+\begin{lstlisting}[language=bash]
+  texdoc --files
+\end{lstlisting}
+系统返回类似如下内容
+\begin{lstlisting}[language=bash]
+  /mnt/d/texlive-wsl/2020/texmf-dist/scripts/texdoc/texdoclib.tlu 3.2.2
+  Configuration file(s):
+      active      /mnt/d/texlive-wsl/2020/texmf-dist/texdoc/texdoc.cnf
+  Recommended file(s) for personal settings:
+      /home/<username>/texmf/texdoc/texdoc.cnf
+\end{lstlisting}
+这里给出了 \texttt{texdoc} 的配置文件所在位置.
+打开用户文件夹下的配置文件
+\begin{lstlisting}[language=bash]
+  vim ~/texmf/texdoc/texdoc.cnf
+\end{lstlisting}
+在文件内写入
+\begin{lstlisting}
+  viewer_pdf = (powershell.exe -Command Start-Process $(wslpath -w %s)) &
+\end{lstlisting}
+并且保存退出.
+然后再执行 \texttt{texdoc} 即可打开相应文档.
+
+\subsubsection{explorer 浏览}
+
+先找到手册所在路径,
+例如寻找 \texttt{lshort-zh-cn}
+\begin{lstlisting}[language=bash]
+  texdoc -l lshort-zh-cn
+\end{lstlisting}
+系统会显示
+\begin{lstlisting}
+   1 /usr/local/texlive/2020/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf
+     = [zh] The document itself
+  Enter number of file to view, RET to view 1, anything else to skip:
+\end{lstlisting}
+这时按其他键 (如 \keys{x}) 退出.
+然后分别执行
+\begin{lstlisting}[language=bash]
+  cd /usr/local/texlive/2020/texmf-dist/doc/latex/lshort-chinese/
+  explorer.exe .
+\end{lstlisting}
+主系统的资源管理器便会打开.
+这时用户便可以在主系统中使用 pdf 阅读器打开手册进行阅读.
+
+\subsubsection{everything 搜索}
+
+使用 \href{https://www.voidtools.com/zh-cn/}{everything}.
+通过 \texttt{texdoc -l} 找到相应文件名,
+而后直接搜索.
+具体方法这里不再赘述.
+
+\subsubsection{借助其他工具}
+
+目前有很多开源的 WSL 辅助程序,
+相关讨论见本手册的 \href{https://github.com/OsbertWang/install-latex-guide-zh-cn/issues/13}{issue}.
+
 \section{编译文件}
 
 编译一个最小示例 \texttt{main.tex}.
@@ -241,75 +310,6 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 在 WSL 中安装字体的方法见附录~\ref{chp:appendix:wsl}.
 
 编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致, 不再赘述.
-
-\section{使用 \texttt{texdoc} 命令打开手册}
-
-由于 WSL 的 \textsf{bash} 默认是无窗口化的纯命令行,
-因此将 \TeX{} Live 安装至 WSL 后,
-用户无法直接通过命令 \texttt{texdoc} 打开相应的手册.
-下面几种方法均为收集而来的方案,
-其中比较推荐更改 \texttt{texdoc.cnf}.
-
-\subsubsection{更改 \texttt{texdoc.cnf}}
-
-此方案源自本手册的 \href{https://github.com/OsbertWang/install-latex-guide-zh-cn/issues/13}{issue}.
-首先在 \textsf{bash} 中执行
-\begin{lstlisting}[language=bash]
-  texdoc --files
-\end{lstlisting}
-系统返回类似如下内容
-\begin{lstlisting}[language=bash]
-  /mnt/d/texlive-wsl/2020/texmf-dist/scripts/texdoc/texdoclib.tlu 3.2.2
-  Configuration file(s):
-      active      /mnt/d/texlive-wsl/2020/texmf-dist/texdoc/texdoc.cnf
-  Recommended file(s) for personal settings:
-      /home/<username>/texmf/texdoc/texdoc.cnf
-\end{lstlisting}
-这里给出了 \texttt{texdoc} 的配置文件所在位置.
-打开用户文件夹下的配置文件
-\begin{lstlisting}[language=bash]
-  vim ~/texmf/texdoc/texdoc.cnf
-\end{lstlisting}
-在文件内写入
-\begin{lstlisting}
-  viewer_pdf = (powershell.exe -Command Start-Process $(wslpath -w %s)) &
-\end{lstlisting}
-并且保存退出.
-然后再执行 \texttt{texdoc} 即可打开相应文档.
-
-\subsubsection{explorer 浏览}
-
-先找到手册所在路径,
-例如寻找 \texttt{lshort-zh-cn}
-\begin{lstlisting}[language=bash]
-  texdoc -l lshort-zh-cn
-\end{lstlisting}
-系统会显示
-\begin{lstlisting}
-   1 /usr/local/texlive/2020/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf
-     = [zh] The document itself
-  Enter number of file to view, RET to view 1, anything else to skip:
-\end{lstlisting}
-这时按其他键 (如 \keys{x}) 退出.
-然后分别执行
-\begin{lstlisting}[language=bash]
-  cd /usr/local/texlive/2020/texmf-dist/doc/latex/lshort-chinese/
-  explorer.exe .
-\end{lstlisting}
-主系统的资源管理器便会打开.
-这时用户便可以在主系统中使用 pdf 阅读器打开手册进行阅读.
-
-\subsubsection{everything 搜索}
-
-使用 \href{https://www.voidtools.com/zh-cn/}{everything}.
-通过 \texttt{texdoc -l} 找到相应文件名,
-而后直接搜索.
-具体方法这里不再赘述.
-
-\subsubsection{借助其他工具}
-
-目前有很多开源的 WSL 辅助程序,
-相关讨论见本手册的 \href{https://github.com/OsbertWang/install-latex-guide-zh-cn/issues/13}{issue}.
 
 \section{不懂 \textsf{vim} 的处理方法}\label{sec:no-vim}
 
