@@ -5,39 +5,39 @@
 \section{安装 \TeX{} Live}
 
 这里只阐述如何用镜像安装.
-为使用户顺利使用 \TeX{} Live 2020,
+为使用户顺利使用 \TeX{} Live 2021,
 建议用户首先卸载从源内安装的 \TeX{} Live 的相关包,
 具体方法见 \ref{sec:ubuntu:uninstall}~节.
 
 下载
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2020.iso}{iso 镜像文件}
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2021.iso}{iso 镜像文件}
 的方法见 \ref{sec:windows:install}~节.
 下载完毕后, 打开 \textsf{Terminal} 窗口验证 MD5 值,
 即执行以下命令
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
-  md5sum texlive2020.iso
+  md5sum texlive2021.iso
 \end{lstlisting}
 若显示
 \begin{lstlisting}
-  a31c500c7830d901363c5fa0e65cc18d  texlive2020.iso
+  2893d180f1559a7bf80dfc0740f6b889  texlive2021.iso
 \end{lstlisting}
 则镜像文件下载正确.
 同样可验证 SHA512 值,
 执行
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
-  sha512sum texlive2020.iso
+  sha512sum texlive2021.iso
 \end{lstlisting}
 正确的返回结果为
 \begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
-  7c94bbcff5318e540dc0b03010896185d8985bcc2c2ac11906e831ec583fd574bf9720fce5efc29470c80bafe12f42ddaa392b96c460a27eda94f93c12e7b57d  texlive2020.iso
+  bad51ec47613cf295ed77472d10e517fe79e501f73ff918a1068f03ef43f4394ceb165051132bcbcb53a05650b77ea907f327c1799c38ae476ca38620aa7c1fe  texlive2021.iso
 \end{lstlisting}
 
 将下载的光盘镜像进行挂载
 \begin{lstlisting}[language = bash]
   sudo mkdir /mnt/texlive
-  sudo mount ./texlive2020.iso /mnt/texlive
+  sudo mount ./texlive2021.iso /mnt/texlive
 \end{lstlisting}
 接下来执行
 \begin{lstlisting}[language = bash]
@@ -62,17 +62,17 @@
   
    <D> set directories:
      TEXDIR (the main TeX directory):
-       /usr/local/texlive/2020
+       /usr/local/texlive/2021
      TEXMFLOCAL (directory for site-wide local files):
        /usr/local/texlive/texmf-local
      TEXMFSYSVAR (directory for variable and automatically generated data):
-       /usr/local/texlive/2020/texmf-var
+       /usr/local/texlive/2021/texmf-var
      TEXMFSYSCONFIG (directory for local config):
-       /usr/local/texlive/2020/texmf-config
+       /usr/local/texlive/2021/texmf-config
      TEXMFVAR (personal directory for variable and automatically generated data):
-       ~/.texlive2020/texmf-var
+       ~/.texlive2021/texmf-var
      TEXMFCONFIG (personal directory for local config):
-       ~/.texlive2020/texmf-config
+       ~/.texlive2021/texmf-config
      TEXMFHOME (directory for user-specific files):
        ~/texmf
   
@@ -116,9 +116,9 @@
 在打开的文件末尾添加
 \begin{lstlisting}
   # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
-  export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
+  export PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
 这时再打开 \textsf{Terminal} 执行
@@ -127,9 +127,9 @@
 \end{lstlisting}
 若显示
 \begin{lstlisting}
-  TeX 3.14159265 (TeX Live 2020)
+  TeX 3.14159265 (TeX Live 2021)
   kpathsea version 6.3.2
-  Copyright 2020 D.E. Knuth.
+  Copyright 2021 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -142,7 +142,7 @@
 接下来处理字体.
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language=bash]
-  sudo cp /usr/local/texlive/2020/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+  sudo cp /usr/local/texlive/2021/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
 将配置文件复制到系统,
 然后继续执行
@@ -156,7 +156,7 @@
 如果用户更改了安装路径,
 要注意将
 \begin{lstlisting}
-  /usr/local/texlive/2020/
+  /usr/local/texlive/2021/
 \end{lstlisting}
 在各处替换.
 
@@ -250,8 +250,8 @@
 进而通过 \texttt{sudo rm -rf} 命令进行删除.
 默认安装的用户直接运行
 \begin{lstlisting}[language = bash]
-  sudo rm -rf /usr/local/texlive/2020
-  rm -rf ~/.texlive2020
+  sudo rm -rf /usr/local/texlive/2021
+  rm -rf ~/.texlive2021
 \end{lstlisting}
 卸载完成后，可以进一步移除之前设置的环境变量.
 在 \textsf{Terminal} 中执行
@@ -261,9 +261,9 @@
 然后移除之前在文件末尾添加的
 \begin{lstlisting}
   # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
-  export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
+  export PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
 
@@ -295,7 +295,7 @@ please get the new TL by doing a new installation instead of proceeding here}.
 \end{lstlisting}
 将
 \begin{lstlisting}
-  /usr/local/texlive/2020/bin/x86_64-linux:
+  /usr/local/texlive/2021/bin/x86_64-linux:
 \end{lstlisting}
 添加在 \texttt{secure\_path} 中%
 \footnote{这里只讨论默认安装的情况}.
