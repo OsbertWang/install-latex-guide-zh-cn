@@ -200,9 +200,9 @@
 \end{lstlisting}
 显示
 \begin{lstlisting}
-  TeX 3.14159265 (TeX Live 2020/W32TeX)
-  kpathsea version 6.3.2
-  Copyright 2020 D.E. Knuth.
+  TeX 3.141592653 (TeX Live 2021/W32TeX)
+  kpathsea version 6.3.3
+  Copyright 2021 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -226,14 +226,14 @@
 将 \textsf{wget} 所在目录添加到环境变量中.
 打开 \textsf{cmd} 窗口执行以下代码
 \begin{lstlisting}[language = bash]
-  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2020.iso
+  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2021.iso
 \end{lstlisting}
 即可下载最近的镜像.
 类似地,
 也可以指定国内的源进行下载,
 例如选择清华大学镜像
 \begin{lstlisting}[language = bash]
-  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2020.iso
+  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2021.iso
 \end{lstlisting}
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
@@ -272,10 +272,10 @@
 \footnote{双击或在 \texttt{cmd} 中运行}%
 安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
 \begin{lstlisting}[language=bash]
-  C:\texlive\2020\tlpkg\installer\uninst.bat
+  C:\texlive\2021\tlpkg\installer\uninst.bat
 \end{lstlisting}
 结束以上步骤后,
-手动删除用户文件夹中的 \texttt{.texlive2020}.
+手动删除用户文件夹中的 \texttt{.texlive2021}.
 如果用户安装 \TeX{} Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
 
@@ -286,16 +286,18 @@
 之后再清理 \TeX{} Live 的环境变量,
 并且清理注册表
 \begin{lstlisting}
-  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2020
-  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2020
-  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2020
+  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2021
+  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2021
+  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2021
+  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2021
 \end{lstlisting}
 但若在安装时使用管理员权限``为所有人安装'',
 则注册表位置将变为
 \begin{lstlisting}
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2020
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2020
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2020
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2021
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2021
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2021
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2021
 \end{lstlisting}
 
 \section{跨版本升级 \TeX{} Live}
@@ -419,7 +421,7 @@ Doing a new installation is necessary.}.
 \footnote{自 Windows 10 1903 版本开始, 记事本默认使用 UTF-8 编码;
 若是之前的 Windows 10 版本, 请使用其他编辑器并规定文档编码为 UTF-8}%
 \begin{lstlisting}[language={[LaTeX]TeX}]
-  \documentclass[UTF8]{ctexart}
+  \documentclass[UTF8,fontset=windows]{ctexart}
   \begin{document}
     你好 \LaTeX{} 世界！
   \end{document}
