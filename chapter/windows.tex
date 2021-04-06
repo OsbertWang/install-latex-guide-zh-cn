@@ -8,7 +8,7 @@
 在文件夹菜单栏 \menu{查看 > 显示/隐藏} 中选择 \menu{文件扩展名}.
 
 用户可以从最近的 CTAN 源\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2020.iso}{iso 镜像文件},
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2021.iso}{iso 镜像文件},
 也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
 通过大陆地区的源下载 iso 文件的方法请参考附录~\ref{chp:appendix:mirror}.
 
@@ -50,12 +50,12 @@
 打开 \textsf{cmd} 窗口依次执行以下代码
 \begin{lstlisting}[language = bash]
   cd /d X:\Y
-  certutil -hashfile texlive2020.iso md5
+  certutil -hashfile texlive2021.iso md5
 \end{lstlisting}
 若系统显示
 \begin{lstlisting}
-  MD5 的 texlive2020.iso 哈希:
-  a31c500c7830d901363c5fa0e65cc18d
+  MD5 的 texlive2021.iso 哈希:
+  2893d180f1559a7bf80dfc0740f6b889
   CertUtil: -hashfile 命令成功完成
 \end{lstlisting}
 则表明下载的镜像文件正常.
@@ -64,12 +64,12 @@
 依然是在 \textsf{cmd} 执行
 \begin{lstlisting}[language = bash]
   cd /d X:\Y
-  certutil -hashfile texlive2020.iso sha512
+  certutil -hashfile texlive2021.iso sha512
 \end{lstlisting}
 若系统显示
 \begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
-  SHA512 的 texlive2020.iso 哈希:
-  7c94bbcff5318e540dc0b03010896185d8985bcc2c2ac11906e831ec583fd574bf9720fce5efc29470c80bafe12f42ddaa392b96c460a27eda94f93c12e7b57d
+  SHA512 的 texlive2021.iso 哈希:
+  bad51ec47613cf295ed77472d10e517fe79e501f73ff918a1068f03ef43f4394ceb165051132bcbcb53a05650b77ea907f327c1799c38ae476ca38620aa7c1fe
   CertUtil: -hashfile 命令成功完成
 \end{lstlisting}
 即为验证成功.
@@ -78,7 +78,7 @@
 接下来开始安装.
 推荐用户先手动建立 \TeX{} Live 的安装路径 (文件夹) 再进行安装,
 注意路径的名称是\textbf{不带空格的英文},
-默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2020}.
+默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2021}.
 将镜像文件挂载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载;
 受某些压缩软件影响双击失效时,
 可通过文件夹菜单栏
@@ -106,6 +106,7 @@
   
   ======>   Letters/digits in <angle brackets> indicate   <=======
   ======>   menu items for actions or customizations      <=======
+  = help>   https://tug.org/texlive/doc/install-tl.html   <=======
   
   Detected platform: Windows
   
@@ -114,21 +115,21 @@
   <S> set installation scheme: scheme-full
   
   <C> set installation collections:
-      41 collections out of 41, disk space required: 6702 MB
+      41 collections out of 41, disk space required: 7155 MB
   
   <D> set directories:
     TEXDIR (the main TeX directory):
-      C:/texlive/2020
+      C:/texlive/2021
     TEXMFLOCAL (directory for site-wide local files):
       C:/texlive/texmf-local
     TEXMFSYSVAR (directory for variable and automatically generated data):
-      C:/texlive/2020/texmf-var
+      C:/texlive/2021/texmf-var
     TEXMFSYSCONFIG (directory for local config):
-      C:/texlive/2020/texmf-config
+      C:/texlive/2021/texmf-config
     TEXMFVAR (personal directory for variable and automatically generated data):
-      ~/.texlive2020/texmf-var
+      ~/.texlive2021/texmf-var
     TEXMFCONFIG (personal directory for local config):
-      ~/.texlive2020/texmf-config
+      ~/.texlive2021/texmf-config
     TEXMFHOME (directory for user-specific files):
       ~/texmf
   
@@ -149,7 +150,6 @@
   Actions:
   <I> start installation to hard disk
   <P> save installation profile to 'texlive.profile' and exit
-  <H> help
   <Q> quit
   
   Enter command:
@@ -161,15 +161,15 @@
   ==============================================================================
   Directories customization:
   
-  <1> TEXDIR:       C:/texlive/2020
-      main tree:    C:/texlive/2020/texmf-dist
+  <1> TEXDIR:       C:/texlive/2021
+      main tree:    C:/texlive/2021/texmf-dist
   
   <2> TEXMFLOCAL:     C:/texlive/texmf-local
-  <3> TEXMFSYSVAR:    C:/texlive/2020/texmf-var
-  <4> TEXMFSYSCONFIG: C:/texlive/2020/texmf-config
+  <3> TEXMFSYSVAR:    C:/texlive/2021/texmf-var
+  <4> TEXMFSYSCONFIG: C:/texlive/2021/texmf-config
   
-  <5> TEXMFVAR:       ~/.texlive2020/texmf-var
-  <6> TEXMFCONFIG:    ~/.texlive2020/texmf-config
+  <5> TEXMFVAR:       ~/.texlive2021/texmf-var
+  <6> TEXMFCONFIG:    ~/.texlive2021/texmf-config
   <7> TEXMFHOME:      ~/texmf
   
   Note: ~ will expand to %USERPROFILE%
@@ -182,9 +182,9 @@
 \end{lstlisting}
 这时按键盘 \keys{1}, 将看到
 \begin{lstlisting}
-  New value for TEXDIR [C:/texlive/2020]:
+  New value for TEXDIR [C:/texlive/2021]:
 \end{lstlisting}
-这时可更改路径, 如 \texttt{D:/texlive/2020}.
+这时可更改路径, 如 \texttt{D:/texlive/2021}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面,
 再按键盘 \keys{I} 便可在刚才指定的路径安装.
 用户可通过阅读英文执行其他操作, 这里不再赘述. 
