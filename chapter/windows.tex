@@ -279,12 +279,8 @@
 如果用户安装 \TeX{} Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
 
-\subsection{手动卸载}
-
-如果执行批处理文件 \texttt{uninst.bat} 出错,
-用户也可手动删除安装文件夹,
-之后再清理 \TeX{} Live 的环境变量,
-并且清理注册表
+卸载后,
+用户需要清理注册表
 \begin{lstlisting}
   HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2021
   HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2021
@@ -299,6 +295,13 @@
   HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2021
   HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2021
 \end{lstlisting}
+
+\subsection{手动卸载}
+
+如果执行批处理文件 \texttt{uninst.bat} 出错,
+用户也可手动删除安装文件夹,
+之后再清理 \TeX{} Live 的环境变量,
+并且清理注册表.
 
 \section{跨版本升级 \TeX{} Live}
 
