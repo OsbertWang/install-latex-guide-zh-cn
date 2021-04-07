@@ -127,8 +127,8 @@
 \end{lstlisting}
 若显示
 \begin{lstlisting}
-  TeX 3.14159265 (TeX Live 2021)
-  kpathsea version 6.3.2
+  TeX 3.141592653 (TeX Live 2021)
+  kpathsea version 6.3.3
   Copyright 2021 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
@@ -382,7 +382,7 @@ Ubuntu 20.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 对于中文文档, 可以在 \texttt{gedit} 中编写以下最小示例%
 \footnote{gedit 默认使用 UTF-8 编码}%
 \begin{lstlisting}[language={[LaTeX]TeX}]
-  \documentclass[UTF8]{ctexart}
+  \documentclass[UTF8,fontset=fandol]{ctexart}
   \begin{document}
     你好 \LaTeX{} 世界！
   \end{document}
