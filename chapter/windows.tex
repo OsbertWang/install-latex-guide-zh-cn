@@ -74,7 +74,6 @@
 \end{lstlisting}
 即为验证成功.
 
-
 接下来开始安装.
 推荐用户先手动建立 \TeX{} Live 的安装路径 (文件夹) 再进行安装,
 注意路径的名称是\textbf{不带空格的英文},
@@ -87,16 +86,7 @@
 不鼓励解压缩镜像文件}. 
 假设加载后的路径为 \texttt{Z:\textbackslash}.
 在卸载了国内第三方安全软件的前提下,
-% 以管理员身份打开 \textsf{cmd} 窗口并执行%
-% \footnote{点击 \keys{\faWindows},
-% 输入 \textsf{cmd},
-% 点击 \keys{\ctrl + \shift + \enter}}
 打开 \textsf{cmd} 窗口并执行
-% \begin{lstlisting}[language = bash]
-%   cd /d Z:
-% \end{lstlisting}
-% 切换路径. 
-% 接下来执行
 \begin{lstlisting}[language = bash]
   Z:\install-tl-windows.bat --no-gui
 \end{lstlisting}
@@ -248,6 +238,23 @@
 在系统盘内直接安装 \TeX{} Live 会碰到此类问题,
 因此鼓励用户在安装前先手动建立安装路径.
 直接使用管理员身份打开 \textsf{cmd} 窗口进行安装可能会对以后的升级造成影响.
+
+\subsection{系统用中文作为用户名}
+
+很多中文 Windows 用户习惯于用中文作为用户名,
+但是这样会导致 \TeX{} Live 2021 安装失败.
+更改系统的 \texttt{TEMP} 和 \texttt{TMP} 这两个环境变量可以避免这样的问题.
+在 \textsf{cmd} 中执行
+\begin{lstlisting}
+  mkdir C:\temp
+  set TEMP=C:\temp
+  set TMP=C:\temp
+\end{lstlisting}
+便可更改这两个环境变量为 \texttt{C:\textbackslash temp}.
+更改后按照前述内容安装 \TeX{} Live 2021 即可.
+这样的更改是临时的,
+待 \textsf{cmd} 窗口关闭,
+环境变量将恢复为原始状态.
 
 \section{卸载 \TeX{} Live}
 
