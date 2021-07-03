@@ -217,7 +217,7 @@
 \subsection{卸载源内的版本}
 
 如果要卸载从源内安装的 \TeX{} Live, 个人比较推荐使用 synaptic package manager.
-\textsf{terminal} 中执行
+在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
   sudo apt install synaptic
 \end{lstlisting}
@@ -242,7 +242,7 @@
 
 如果是从光盘镜像安装,
 直接删除文件夹即可.
-先在\textsf{terminal} 中执行
+先在\textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
   kpsewhich -var-value TEXMFROOT
 \end{lstlisting}
@@ -289,7 +289,7 @@ please get the new TL by doing a new installation instead of proceeding here}.
 \section{升级宏包}\label{sec:ubuntu:update}
 
 首次升级前,
-在 \textsf{terminal} 中执行
+在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
   sudo visudo
 \end{lstlisting}
@@ -301,7 +301,7 @@ please get the new TL by doing a new installation instead of proceeding here}.
 \footnote{这里只讨论默认安装的情况}.
 然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
 
-接下来在 \textsf{terminal} 中执行
+接下来在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
   sudo tlmgr option repository ctan
 \end{lstlisting}
@@ -326,14 +326,14 @@ Ubuntu 20.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \begin{lstlisting}[language = bash]
   sudo tlmgr install mcmthesis
 \end{lstlisting}
-即安装了 mcmthesis.
+即安装了 \texttt{mcmthesis} 宏包.
 
 \section{调出宏包手册}\label{sec:ubuntu:texdoc}
 
 与 Windows 10 类似,
 当正确安装后,
 用户可以调出宏包手册以查阅相应内容.
-例如在 \textsf{terminal} 中执行
+例如在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language=bash]
   texdoc texlive-zh-cn
 \end{lstlisting}
