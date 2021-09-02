@@ -160,6 +160,38 @@
 \end{lstlisting}
 在各处替换.
 
+\subsection{在用户文件夹安装}\label{subsec:ubuntu-user-folder}
+
+如果有用户打算在用户文件夹安装 \TeX{} Live,
+那么可以不必调用权限,
+直接执行
+\begin{lstlisting}[language=bash]
+  /mnt/texlive/install-tl
+\end{lstlisting}
+只不过这时安装路径需要选择
+\begin{lstlisting}[language=bash]
+  ~/texlive/2021
+\end{lstlisting}
+安装完毕后,
+继续修改环境变量为
+\begin{lstlisting}
+  # Add TeX Live to the PATH, MANPATH, INFOPATH
+  export PATH=~/texlive/2021/bin/x86_64-linux:$PATH
+  export MANPATH=~/texlive/2021/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=~/texlive/2021/texmf-dist/doc/info:$INFOPATH
+\end{lstlisting}
+有关字体的处理变为
+\begin{lstlisting}[language=bash]
+  cp ~/texlive/2021/texmf-var/fonts/conf/texlive-fontconfig.conf ~/.fonts.conf/09-texlive.conf
+\end{lstlisting}
+然后执行
+\begin{lstlisting}[language=bash]
+  fc-cache -fv
+\end{lstlisting}
+实际上,
+无论将 \TeX{} Live 安装到哪里,
+字体的配置文件都可以仿照上面只复制于用户文件夹中.
+
 \subsection{\texttt{fc-cache} 无法执行}\label{subsec:fc-cache}
 
 这种情况往往是缺少了 fontconfig,
