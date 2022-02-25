@@ -58,6 +58,63 @@ Windows 10 中字体列表见%
 
 \TeX works支持从模板新建文档, 在 \menu{文件} 菜单中可见. 
 
+\subsubsection{更改编译命令设置}
+
+\TeX works 默认提供了若干编译命令,
+具体见 \menu{编辑 > 首选项 > 排版}.
+实际上,
+用户可以根据自己的需要,
+添加、更改其中的设置.
+首先明确 \TeX works 中已有一些定义,
+见表~\ref{tab:editor} \footnote{参考 \href{https://github.com/TeXworks/texworks/wiki/AdvancedTypesettingTools}{Advanced Typesetting Tools}.}.
+接下来可以定义 \texttt{latexmkpdf},
+它调用 \texttt{latexmk} 并使用 \texttt{pdflatex} 等命令编译文档.
+在 \menu{排版} 上点击 \menu{+},
+输入名称 \textsf{latexmkpdf} 和程序 \texttt{latexmk},
+相关参数需要再次点击 \menu{+} 来予以添加,
+例如添加以下这些
+\begin{lstlisting}
+  -e
+  $pdflatex=q/pdflatex $synctexoption %O %S/
+  -pdf
+  $fullname
+\end{lstlisting}
+这里的 \texttt{\$synctexoption} 和 \texttt{\$fullname} 均是 \TeX works 预定义的内容,
+而其他的 \texttt{-e}, \texttt{\$pdflatex=...} 和 \texttt{-pdf} 需要用户自己阅读 \texttt{latexmk} 手册了解.
+然后选择 \textsf{运行后查看 pdf 文件},
+再点击 \menu{OK},
+即可发现已经添加成功.
+之后用户可以调用 \texttt{latexmkpdf} 来编译文档.
+当然,
+在 \menu{排版} 处还可以将 \texttt{latexmkpdf} 设置为默认.
+
+类似地,
+如果要定义 \texttt{latexmkxe},
+可以考虑以下参数
+\begin{lstlisting}
+  -e
+  $xelatex=q/xelatex $synctexoption %O %S/
+  -xelatex
+  $fullname
+\end{lstlisting}
+程序依然是 \texttt{latexmk}.
+
+\begin{table}
+  \centering
+  \caption{\TeX works 已有定义}\label{tab:variables}
+  \begin{tabular}{p{0.15\linewidth}p{0.75\linewidth}}
+    \toprule
+    Option & Description\\
+    \midrule
+    \$synctexoption & expands to ``-synctex=1'' if your tools support SyncTeX\\
+    \$fullname & expands to the full name of your root document (e.g. rootfile.tex)\\
+    \$basename & expands to the name (without extension) of your root document (e.g. rootfile)\\
+    \$suffix & expands to the extension of your root document (e.g. tex)\\
+    \$directory & expands to the absolute path to the directory containing your root document\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 \subsubsection{拼写检查}
 
 默认情况, \TeX works没有搭载拼写检查字典, 需要用户自己配置. 
