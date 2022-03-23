@@ -2,11 +2,26 @@
 
 \chapter{macOS}\label{chap:macOS}
 
-\section{安装 Homebrew}
+在 Mac 平台上安装 MacTeX 有两种方式, 分别是 
+\begin{enumerate}
+  \item 普通方式: 将安装文件下载到本地, 然后按照安装提示进行安装;
+  \item 命令行方式: 先安装 Homebrew, 然后通过命令行进行在线安装.
+\end{enumerate}
 
-强烈建议用户使用 \href{https://brew.sh}{Homebrew}.
-Homebrew 是一个包管理, 类似 Ubuntu 上面的 \texttt{apt-get}.
-安装教程可以在其网站找到, 这里简单列出来：
+推荐前者, 主要原因是因为命令行方式依赖于本地网络, GitHub 无法访问会导致 Homebrew 难以安装, 此外很多用户对于命令行并不熟悉.
+
+\section{普通方式}
+
+以这种方式安装 MacTeX 只需要在 \href{https://tug.org/mactex/}{MacTeX 官网}或者 \href{https://ctan.org/mirrors}{CTAN 在国内的镜像}下载 MacTeX 的安装文件 \lstinline{MacTeX.pkg}，
+如清华的镜像地址: \href{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/mac/mactex/}{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/mac/mactex/}, 
+然后点击下载之后的 \lstinline{MacTeX.pkg}, 按照提示安装即可.
+
+\section{命令行方式安装}
+强烈建议用户使用 \href{https://brew.sh}{Homebrew}, Homebrew 是一个包管理工具, 类似 Ubuntu 上面的 \texttt{apt-get}.
+
+\subsection{安装 Homebrew}
+Homebrew 安装教程可以在其网站找到, 这里简单列出来：
+
 \begin{lstlisting}[language=bash]
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 \end{lstlisting}
@@ -30,7 +45,7 @@ Homebrew 是一个包管理, 类似 Ubuntu 上面的 \texttt{apt-get}.
   source ~/.zshrc
 \end{lstlisting}
 
-\subsection{Xcode}
+\subsubsection{Xcode}
 
 根据 \href{https://docs.brew.sh/Xcode\#supported-xcode-versions}{Homebrew 网站}的提示\footnote{原文是 Homebrew supports and recommends the latest Xcode and/or Command Line Tools available for your platform},
 推荐用户在安装 Homebrew 前先安装 Xcode.
