@@ -8,7 +8,7 @@
 在文件夹菜单栏 \menu{查看 > 显示/隐藏} 中选择 \menu{文件扩展名}.
 
 用户可以从最近的 CTAN 源\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2021.iso}{iso 镜像文件},
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2022.iso}{iso 镜像文件},
 也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
 通过大陆地区的源下载 iso 文件的方法请参考附录~\ref{chp:appendix:mirror}.
 
@@ -50,13 +50,13 @@
 打开 \textsf{cmd} 窗口依次执行以下代码
 \begin{lstlisting}[language = bash]
   cd /d X:\Y
-  certutil -hashfile texlive2021.iso md5
+  certutil -hashfile texlive2022.iso md5
 \end{lstlisting}
 若系统显示
 \begin{lstlisting}
-  MD5 的 texlive2021.iso 哈希:
-  2893d180f1559a7bf80dfc0740f6b889
-  CertUtil: -hashfile 命令成功完成
+  MD5 的 texlive2022.iso 哈希:
+  adadcf7ea5224f174ec2abcea6923a42
+  CertUtil: -hashfile 命令成功完成。
 \end{lstlisting}
 则表明下载的镜像文件正常.
 除 MD5 值外,
@@ -64,20 +64,20 @@
 依然是在 \textsf{cmd} 执行
 \begin{lstlisting}[language = bash]
   cd /d X:\Y
-  certutil -hashfile texlive2021.iso sha512
+  certutil -hashfile texlive2022.iso sha512
 \end{lstlisting}
 若系统显示
 \begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
-  SHA512 的 texlive2021.iso 哈希:
-  bad51ec47613cf295ed77472d10e517fe79e501f73ff918a1068f03ef43f4394ceb165051132bcbcb53a05650b77ea907f327c1799c38ae476ca38620aa7c1fe
-  CertUtil: -hashfile 命令成功完成
+  SHA512 的 texlive2022.iso 哈希:
+  b3d4d2e9b0e3d34a7ca0763fb5c669bb9a26518f86af5cc292c56f7d61ff25dc5fce3373f814d970d99b0d40df393ad594336cf1b35a95a9655289666d964d59
+  CertUtil: -hashfile 命令成功完成。
 \end{lstlisting}
 即为验证成功.
 
 接下来开始安装.
 推荐用户先手动建立 \TeX{} Live 的安装路径 (文件夹) 再进行安装,
 注意路径的名称是\textbf{不带空格的英文},
-默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2021}.
+默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2022}.
 假如系统用了中文作为用户名,
 那么用户需要先按照 \ref{sec:chinesename} 节的方法更改临时环境变量后再安装.
 将镜像文件挂载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可加载;
@@ -107,21 +107,21 @@
   <S> set installation scheme: scheme-full
   
   <C> set installation collections:
-      41 collections out of 41, disk space required: 7155 MB
+      41 collections out of 41, disk space required: 7462 MB
   
   <D> set directories:
     TEXDIR (the main TeX directory):
-      C:/texlive/2021
+      C:/texlive/2022
     TEXMFLOCAL (directory for site-wide local files):
       C:/texlive/texmf-local
     TEXMFSYSVAR (directory for variable and automatically generated data):
-      C:/texlive/2021/texmf-var
+      C:/texlive/2022/texmf-var
     TEXMFSYSCONFIG (directory for local config):
-      C:/texlive/2021/texmf-config
+      C:/texlive/2022/texmf-config
     TEXMFVAR (personal directory for variable and automatically generated data):
-      ~/.texlive2021/texmf-var
+      ~/.texlive2022/texmf-var
     TEXMFCONFIG (personal directory for local config):
-      ~/.texlive2021/texmf-config
+      ~/.texlive2022/texmf-config
     TEXMFHOME (directory for user-specific files):
       ~/texmf
   
@@ -153,15 +153,15 @@
   ==============================================================================
   Directories customization:
   
-  <1> TEXDIR:       C:/texlive/2021
-      main tree:    C:/texlive/2021/texmf-dist
+  <1> TEXDIR:       C:/texlive/2022
+      main tree:    C:/texlive/2022/texmf-dist
   
   <2> TEXMFLOCAL:     C:/texlive/texmf-local
-  <3> TEXMFSYSVAR:    C:/texlive/2021/texmf-var
-  <4> TEXMFSYSCONFIG: C:/texlive/2021/texmf-config
+  <3> TEXMFSYSVAR:    C:/texlive/2022/texmf-var
+  <4> TEXMFSYSCONFIG: C:/texlive/2022/texmf-config
   
-  <5> TEXMFVAR:       ~/.texlive2021/texmf-var
-  <6> TEXMFCONFIG:    ~/.texlive2021/texmf-config
+  <5> TEXMFVAR:       ~/.texlive2022/texmf-var
+  <6> TEXMFCONFIG:    ~/.texlive2022/texmf-config
   <7> TEXMFHOME:      ~/texmf
   
   Note: ~ will expand to %USERPROFILE%
@@ -174,9 +174,9 @@
 \end{lstlisting}
 这时按键盘 \keys{1}, 将看到
 \begin{lstlisting}
-  New value for TEXDIR [C:/texlive/2021]:
+  New value for TEXDIR [C:/texlive/2022]:
 \end{lstlisting}
-这时可更改路径, 如 \texttt{D:/texlive/2021}.
+这时可更改路径, 如 \texttt{D:/texlive/2022}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面,
 再按键盘 \keys{I} 便可在刚才指定的路径安装.
 用户可通过阅读英文执行其他操作, 这里不再赘述. 
@@ -192,9 +192,9 @@
 \end{lstlisting}
 显示
 \begin{lstlisting}
-  TeX 3.141592653 (TeX Live 2021/W32TeX)
-  kpathsea version 6.3.3
-  Copyright 2021 D.E. Knuth.
+  TeX 3.141592653 (TeX Live 2022)
+  kpathsea version 6.3.4
+  Copyright 2022 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -218,14 +218,14 @@
 将 \textsf{wget} 所在目录添加到环境变量中.
 打开 \textsf{cmd} 窗口执行以下代码
 \begin{lstlisting}[language = bash]
-  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2021.iso
+  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2022.iso
 \end{lstlisting}
 即可下载最近的镜像.
 类似地,
 也可以指定国内的源进行下载,
 例如选择清华大学镜像
 \begin{lstlisting}[language = bash]
-  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2021.iso
+  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2022.iso
 \end{lstlisting}
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
@@ -253,7 +253,7 @@
   set TMP=C:\temp
 \end{lstlisting}
 便可更改这两个环境变量为 \texttt{C:\textbackslash temp}.
-更改后按照前述内容安装 \TeX{} Live 2021 即可.
+更改后按照前述内容安装 \TeX{} Live 2022 即可.
 这样的更改是临时的,
 待 \textsf{cmd} 窗口关闭,
 环境变量将恢复为原始状态.
@@ -281,32 +281,32 @@
 \footnote{双击或在 \texttt{cmd} 中运行}%
 安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
 \begin{lstlisting}[language=bash]
-  C:\texlive\2021\tlpkg\installer\uninst.bat
+  C:\texlive\2022\tlpkg\installer\uninst.bat
 \end{lstlisting}
 结束以上步骤后,
-手动删除用户文件夹中的 \texttt{.texlive2021}.
+手动删除用户文件夹中的 \texttt{.texlive2022}.
 如果用户安装 \TeX{} Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
 
 卸载后,
 用户需要清理注册表
 \begin{lstlisting}
-  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2021
-  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2021
-  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2021
-  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2021
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2021_.jpg
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2021_.png
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2021_.sty
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2021_.tex
+  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2022
+  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2022
+  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2022
+  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2022
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2022_.jpg
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2022_.png
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2022_.sty
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2022_.tex
 \end{lstlisting}
 但若在安装时使用管理员权限``为所有人安装'',
 则注册表位置将变为
 \begin{lstlisting}
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2021
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2021
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2021
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2021
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2022
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2022
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2022
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2022
 \end{lstlisting}
 
 \subsection{手动卸载}
@@ -368,13 +368,9 @@ Doing a new installation is necessary.}.
 \subsection{升级宏包的必要性}
 
 自本手册撰写以来,
-每年镜像文件打包时都可能存在一些问题.
-使用镜像文件安装  \TeX{} Live 2021 后,
-系统平台无法被识别.
-该问题只见于 Windows 平台,
+每年镜像文件打包时都可能存在一些问题,
 具体讨论见%
 \href{https://github.com/CTeX-org/ctex-kit/issues/569}{这里}.
-目前这一问题已经可以通过更新宏包解决,
 用户安装完毕后,
 请按照本节提供的方法升级.
 
