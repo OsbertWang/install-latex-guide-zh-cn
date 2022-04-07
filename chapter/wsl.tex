@@ -37,14 +37,14 @@
 不熟悉 \textsf{vim} 的用户,
 可参考 \ref{sec:no-vim}~节.
 
-接下来, 在主系统中将镜像挂载,
+接下来, 在主系统中将镜像装载,
 例如挂载到 \texttt{X:\textbackslash},
 而后进入 \textsf{bash} 并执行如下命令
 \begin{lstlisting}[language = bash]
   sudo mkdir /mnt/x
   sudo mount -t drvfs X: /mnt/x
 \end{lstlisting}
-如此便可在 \textsf{bash} 中找到挂载的光盘镜像.
+如此便可在 \textsf{bash} 中找到装载的光盘镜像.
 之后执行
 \begin{lstlisting}[language = bash]
   sudo /mnt/x/install-tl
@@ -110,7 +110,7 @@
   sudo umount /mnt/x
   sudo rmdir /mnt/x
 \end{lstlisting}
-弹出已加载的光盘镜像.
+弹出已装载的光盘镜像.
 
 默认安装完成后, 用户需要设置环境变量.
 继续在 \textsf{bash} 中执行
