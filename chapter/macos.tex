@@ -99,6 +99,10 @@ Homebrew 安装教程可以在其网站找到, 这里简单列出来：
 
 \section{卸载 Mac\TeX}
 
+如果用户直接下载了 Mac\TeX{} 安装包进行安装,
+可以对照\href{https://www.tug.org/mactex/uninstalling.html}{这里}的介绍来卸载,
+通常我个人会比较建议在跨版本升级前卸载就版本.
+
 如果用户借助 Homebrew cask 安装了 Mac\TeX,
 那么卸载工作可能会稍显麻烦.
 这里引用 \href{https://github.com/Homebrew/homebrew-cask/issues/32073}{Github} 上的讨论.
@@ -106,6 +110,13 @@ Homebrew 安装教程可以在其网站找到, 这里简单列出来：
 
 \section{跨版本升级 Mac\TeX}
 
+如果用户直接下载了 Mac\TeX{} 安装包进行安装,
+可以先卸载旧版本,
+再安装新版本,
+或者干脆保留多个版本,
+具体见\href{https://www.tug.org/mactex/multipletexdistributions.html}{这里}.
+
+如果用户借助 Homebrew cask 安装了 Mac\TeX,
 跨版本升级 (Mac\TeX{} 的版本与 \TeX{} Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
 \begin{lstlisting}[language=bash]
   brew update
