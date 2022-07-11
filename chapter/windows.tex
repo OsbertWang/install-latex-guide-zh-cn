@@ -479,6 +479,12 @@ Doing a new installation is necessary.}.
 \begin{lstlisting}[language=bash]
   pdflatex -synctex=1 main
 \end{lstlisting}
+有些编译还需要额外调用系统命令,
+例如使用 \textsf{minted} 包就有这类要求,
+因此可以在执行编译时添加参数
+\begin{lstlisting}[language=bash]
+  pdflatex -shell-escape main
+\end{lstlisting}
 此外还有很多其他参数, 用户若感兴趣, 可自行阅读手册. 
 
 在很多时候, 我个人更倾向于使用 \texttt{latexmk} 来编译 \texttt{tex} 文档,
