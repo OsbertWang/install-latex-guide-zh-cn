@@ -1,14 +1,14 @@
 % !TeX root = ../install-latex-guide-zh-cn.tex
 
-\chapter{Windows 10 系统}
+\chapter{Windows 11 系统}
 
 \section{安装 \TeX{} Live}\label{sec:windows:install}
 
 在安装 \TeX{} Live 之前,
-在文件夹菜单栏 \menu{查看 > 显示/隐藏} 中选择 \menu{文件扩展名}.
+在文件夹菜单栏 \menu{查看 > 显示} 中选择 \menu{文件扩展名}.
 
 用户可以从最近的 CTAN 源\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2022.iso}{iso 镜像文件},
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2023.iso}{iso 镜像文件},
 也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
 通过大陆地区的源下载 iso 文件的方法请参考附录~\ref{chp:appendix:mirror}.
 
@@ -50,12 +50,12 @@
 打开 \textsf{cmd} 窗口依次执行以下代码
 \begin{lstlisting}[language = bash]
   cd /d X:\Y
-  certutil -hashfile texlive2022.iso md5
+  certutil -hashfile texlive2023.iso md5
 \end{lstlisting}
 若系统显示
 \begin{lstlisting}
-  MD5 的 texlive2022.iso 哈希:
-  adadcf7ea5224f174ec2abcea6923a42
+  MD5 的 texlive2023.iso 哈希:
+  787f087e71695eebd1caafdb2b286060
   CertUtil: -hashfile 命令成功完成。
 \end{lstlisting}
 则表明下载的镜像文件正常.
@@ -64,12 +64,12 @@
 依然是在 \textsf{cmd} 执行
 \begin{lstlisting}[language = bash]
   cd /d X:\Y
-  certutil -hashfile texlive2022.iso sha512
+  certutil -hashfile texlive2023.iso sha512
 \end{lstlisting}
 若系统显示
 \begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
-  SHA512 的 texlive2022.iso 哈希:
-  b3d4d2e9b0e3d34a7ca0763fb5c669bb9a26518f86af5cc292c56f7d61ff25dc5fce3373f814d970d99b0d40df393ad594336cf1b35a95a9655289666d964d59
+  SHA512 的 texlive2023.iso 哈希:
+  3a78cc59d562a9224543b90318ecb28d3ae7f975c2a031e15304a20b8fb0abac6e0ed63012c0bdf8f5edd39380caf122a17c948c05b28ea38fe90f2f0b19bdba
   CertUtil: -hashfile 命令成功完成。
 \end{lstlisting}
 即为验证成功.
@@ -77,13 +77,13 @@
 接下来开始安装.
 推荐用户先手动建立 \TeX{} Live 的安装路径 (文件夹) 再进行安装,
 注意路径的名称是\textbf{不带空格的英文},
-默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2022}.
+默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2023}.
 假如系统用了中文作为用户名,
 那么用户需要先按照 \ref{sec:chinesename} 节的方法更改临时环境变量后再安装.
-将镜像文件装载至虚拟光驱\footnote{Windows 10 默认双击镜像文件便可装载;
+将镜像文件装载至虚拟光驱\footnote{Windows 11 默认双击镜像文件便可装载;
 受某些压缩软件影响双击失效时,
 可在文件夹菜单栏
-\menu{管理 > 光盘映像工具 > 装载};
+\menu{装载};
 第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO;
 不鼓励解压缩镜像文件}. 
 假设加载后的路径为 \texttt{Z:\textbackslash}.
@@ -100,28 +100,28 @@
   ======>   menu items for actions or customizations      <=======
   = help>   https://tug.org/texlive/doc/install-tl.html   <=======
   
-  Detected platform: Windows
+  Detected platform: Windows (64-bit)
   
   <B> set binary platforms: 1 out of 6
   
   <S> set installation scheme: scheme-full
   
   <C> set installation collections:
-      41 collections out of 41, disk space required: 7462 MB
+      41 collections out of 41, disk space required: 7851 MB
   
   <D> set directories:
     TEXDIR (the main TeX directory):
-      C:/texlive/2022
+      C:/texlive/2023
     TEXMFLOCAL (directory for site-wide local files):
       C:/texlive/texmf-local
     TEXMFSYSVAR (directory for variable and automatically generated data):
-      C:/texlive/2022/texmf-var
+      C:/texlive/2023/texmf-var
     TEXMFSYSCONFIG (directory for local config):
-      C:/texlive/2022/texmf-config
+      C:/texlive/2023/texmf-config
     TEXMFVAR (personal directory for variable and automatically generated data):
-      ~/.texlive2022/texmf-var
+      ~/.texlive2023/texmf-var
     TEXMFCONFIG (personal directory for local config):
-      ~/.texlive2022/texmf-config
+      ~/.texlive2023/texmf-config
     TEXMFHOME (directory for user-specific files):
       ~/texmf
   
@@ -153,15 +153,15 @@
   ==============================================================================
   Directories customization:
   
-  <1> TEXDIR:       C:/texlive/2022
-      main tree:    C:/texlive/2022/texmf-dist
+  <1> TEXDIR:       C:/texlive/2023
+      main tree:    C:/texlive/2023/texmf-dist
   
   <2> TEXMFLOCAL:     C:/texlive/texmf-local
-  <3> TEXMFSYSVAR:    C:/texlive/2022/texmf-var
-  <4> TEXMFSYSCONFIG: C:/texlive/2022/texmf-config
+  <3> TEXMFSYSVAR:    C:/texlive/2023/texmf-var
+  <4> TEXMFSYSCONFIG: C:/texlive/2023/texmf-config
   
-  <5> TEXMFVAR:       ~/.texlive2022/texmf-var
-  <6> TEXMFCONFIG:    ~/.texlive2022/texmf-config
+  <5> TEXMFVAR:       ~/.texlive2023/texmf-var
+  <6> TEXMFCONFIG:    ~/.texlive2023/texmf-config
   <7> TEXMFHOME:      ~/texmf
   
   Note: ~ will expand to %USERPROFILE%
@@ -174,14 +174,14 @@
 \end{lstlisting}
 这时按键盘 \keys{1}, 将看到
 \begin{lstlisting}
-  New value for TEXDIR [C:/texlive/2022]:
+  New value for TEXDIR [C:/texlive/2023]:
 \end{lstlisting}
-这时可更改路径, 如 \texttt{D:/texlive/2022}.
+这时可更改路径, 如 \texttt{D:/texlive/2023}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面,
 再按键盘 \keys{I} 便可在刚才指定的路径安装.
 用户可通过阅读英文执行其他操作, 这里不再赘述. 
 至此, 用户只需耐心等待安装完成, 并且不要点击 \textsf{cmd} 窗口%
-\footnote{Windows 10 默认采取快速编辑模式, 一旦点击 \textsf{cmd} 窗口,
+\footnote{Windows 11 默认采取快速编辑模式, 一旦点击 \textsf{cmd} 窗口,
 将显示``选择命令提示符''而导致进程暂停}. 
 安装完成后, 关闭再打开 \textsf{cmd} 窗口%
 \footnote{正常安装 \TeX{} Live 后, 环境变量会变化,
