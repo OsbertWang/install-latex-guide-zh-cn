@@ -192,9 +192,9 @@
 \end{lstlisting}
 显示
 \begin{lstlisting}
-  TeX 3.141592653 (TeX Live 2022)
-  kpathsea version 6.3.4
-  Copyright 2022 D.E. Knuth.
+  TeX 3.141592653 (TeX Live 2023)
+  kpathsea version 6.3.5
+  Copyright 2023 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -218,14 +218,14 @@
 将 \textsf{wget} 所在目录添加到环境变量中.
 打开 \textsf{cmd} 窗口执行以下代码
 \begin{lstlisting}[language = bash]
-  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2022.iso
+  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2023.iso
 \end{lstlisting}
 即可下载最近的镜像.
 类似地,
 也可以指定国内的源进行下载,
 例如选择清华大学镜像
 \begin{lstlisting}[language = bash]
-  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2022.iso
+  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2023.iso
 \end{lstlisting}
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
@@ -281,32 +281,32 @@
 \footnote{双击或在 \texttt{cmd} 中运行}%
 安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
 \begin{lstlisting}[language=bash]
-  C:\texlive\2022\tlpkg\installer\uninst.bat
+  C:\texlive\2023\tlpkg\installer\uninst.bat
 \end{lstlisting}
 结束以上步骤后,
-手动删除用户文件夹中的 \texttt{.texlive2022}.
+手动删除用户文件夹中的 \texttt{.texlive2023}.
 如果用户安装 \TeX{} Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
 
 卸载后,
 用户需要清理注册表
 \begin{lstlisting}
-  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2022
-  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2022
-  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2022
-  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2022
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2022_.jpg
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2022_.png
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2022_.sty
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2022_.tex
+  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2023
+  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2023
+  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2023
+  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2023
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2023_.jpg
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2023_.png
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2023_.sty
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2023_.tex
 \end{lstlisting}
 但若在安装时使用管理员权限``为所有人安装'',
 则注册表位置将变为
 \begin{lstlisting}
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2022
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2022
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2022
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2022
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2023
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2023
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2023
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2023
 \end{lstlisting}
 
 \subsection{手动卸载}
@@ -423,7 +423,7 @@ Doing a new installation is necessary.}.
 第1行表示创建一个工作路径 \texttt{D:\textbackslash work-latex},
 第2行表示进入工作路径, 第3行表示用记事本打开 \texttt{main.tex} 文件,
 若文件不存在, 系统将询问用户是否创建该文件%
-\footnote{Windows 10 较新版本可能对中文名友好一些,
+\footnote{Windows 11 对中文名变得友好一些了,
 但这里不建议用户使用中文命名工作路径和文件名}.
 在打开的记事本中编写一个最小示例
 \begin{lstlisting}[language={[LaTeX]TeX}]
@@ -444,7 +444,9 @@ Doing a new installation is necessary.}.
 
 对于中文文档, 可以在记事本中编写以下最小示例%
 \footnote{自 Windows 10 1903 版本开始, 记事本默认使用 UTF-8 编码;
-若是之前的 Windows 10 版本, 请使用其他编辑器并规定文档编码为 UTF-8}%
+Windows 11 继承了这个特性.
+若使用其他编辑器,
+请注意规定文档编码为 UTF-8}%
 \begin{lstlisting}[language={[LaTeX]TeX}]
   \documentclass[UTF8,fontset=windows]{ctexart}
   \begin{document}
@@ -460,7 +462,7 @@ Doing a new installation is necessary.}.
 \texttt{xelatex} 编译命令配合 UTF-8 编码和 \texttt{ctex}
 宏集已经是\textbf{目前主流的中文处理手段}.
 \texttt{xelatex} 可以使用系统内安装的字体,
-用户在安装字体时需右键字体文件选择\textbf{为所有用户安装}.
+用户在安装字体时需右键字体文件的快捷菜单 \menu{显示更多选项 > 为所有用户安装}.
 
 总结一下, 在使用 \LaTeX{} 时, 用户首先要在工作路径%
 \footnote{建议不同的工程放入不同的工作路径}%
