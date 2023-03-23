@@ -33,85 +33,30 @@ WSL (本质上是 Ubuntu) 中安装字体比较麻烦.
 \end{lstlisting}
 
 实际上有部分字体可直接使用源进行安装,
-如安装 \texttt{Noto CJK}
+如安装字体 Noto CJK
 \begin{lstlisting}[language=bash]
-  sudo apt-get install fonts-noto-cjk
-  sudo apt-get install fonts-noto-cjk-extra
+  sudo apt install fonts-noto-cjk
+  sudo apt install fonts-noto-cjk-extra
 \end{lstlisting}
-
-由于 \TeX studio 在 WSL 中无法正常正反搜索,
-因此我使用了 VS Code 配合
-\href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{Remote WSL}
-和
-\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}
-来编写文档.
-这里将个人使用的相关配置附上,
-其中注释的部分是调用外部 SumatraPDF 阅读器的配置,
-用户可参考
-\href{https://github.com/OsbertWang/latex-editor-sumatrapdf}{latex-editor-sumatrapdf}
-来了解更多内容.
-
-\begin{lstlisting}
-  "latex-workshop.latex.tools": [
-    {
-      "name": "latexmkpdf",
-      "command": "latexmk",
-      "args": [
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-halt-on-error",
-        "-file-line-error",
-        "-pdf",
-        "%DOCFILE%"
-      ]
-    },
-    {
-        "name": "latexmkxe",
-        "command": "latexmk",
-        "args": [
-          "-synctex=1",
-          "-interaction=nonstopmode",
-          "-halt-on-error",
-          "-file-line-error",
-          "-xelatex",
-          "%DOCFILE%"
-        ]
-      },
-  ],
-  "latex-workshop.latex.recipes": [
-    {
-      "name": "latexmkpdf",
-      "tools": [
-        "latexmkpdf"
-      ]
-    },
-    {
-        "name": "latexmkxe",
-        "tools": [
-          "latexmkxe"
-        ]
-      },
-  ],
-  "latex-workshop.latex.autoBuild.run": "never",
-  "latex-workshop.view.pdf.viewer": "tab"
-  // "latex-workshop.view.pdf.viewer": "external",
-  // "latex-workshop.view.pdf.ref.viewer": "external",
-  // "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFROOT>/SumatraPDF.exe",
-  // "latex-workshop.view.pdf.external.viewer.args": [
-  //   "-inverse-search",
-  //   "\"<VSCodeROOT>/bin/code.cmd\" -r -g \"%f:%l\"",
-  //   "%PDF%"
-  // ],
-  // "latex-workshop.view.pdf.external.synctex.command":"<SumatraPDFROOT>/SumatraPDF.exe",
-  // "latex-workshop.view.pdf.external.synctex.args":[
-  //   "-forward-search",
-  //   "%TEX%",
-  //   "%LINE%",
-  //   "%PDF%",
-  // ],
+安装 Windows 系统中常见的字体 Andale Mono,
+Arial Black,
+Arial (Bold, Italic, Bold Italic),
+Comic Sans MS (Bold),
+Courier New (Bold, Italic, Bold Italic),
+Georgia (Bold, Italic, Bold Italic),
+Impact,
+Times New Roman (Bold, Italic, Bold Italic),
+Trebuchet (Bold, Italic, Bold Italic),
+Verdana (Bold, Italic, Bold Italic),
+Webdings
+\begin{lstlisting}[language=bash]
+  sudo apt install ttf-mscorefonts-installer
 \end{lstlisting}
-
-实际配置时,
-用户需要结合自身安装情况更换 \texttt{<SumatraPDFROOT>} 和 \texttt{<VSCodeROOT>},
-即 SumatraPDF 和 VS Code 各自的安装路径.
-希望阅读本文的用户能够尽快上手使用 \LaTeX.
+安装字体文泉驿正黑,
+文泉驿微米黑,
+文泉驿等宽微米黑,
+文泉驿点阵宋体,
+文泉驿点阵楷体
+\begin{lstlisting}[language=bash]
+  sudo apt install ttf-wqy-zenhei
+\end{lstlisting}
