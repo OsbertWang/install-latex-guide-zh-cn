@@ -4,7 +4,7 @@
 
 目前微软推出了 Windows Subsystem for Linux (WSL) 供开发人员使用.
 在这里简要介绍如何在 WSL 中安装 \TeX{} Live.
-我选择的是微软商店中的 Ubuntu.
+我选择的是 Windows 11 微软商店中的 Ubuntu.
 此篇安装教程仅供参考.
 这里称 WSL 中使用的命令行为 \textsf{bash}.
 \textbf{不建议}对操作系统了解不多的用户阅读本章内容.
@@ -22,19 +22,16 @@
 在正式安装前,
 用户需要在 \textsf{bash} 中执行
 \begin{lstlisting}[language=bash]
-  sudo apt install fontconfig
+  sudo apt install fontconfig gedit
 \end{lstlisting}
-这些命令是为了处理日后使用中可能出现的字体问题.
+以减少后续字体问题和文本编辑问题.
+在 Windows 11 中,
+WSL 已经能够自动完成可视化工作,
+这为一些用户提供了便利.
 为避免安装速度过慢,
-可仿照 \ref{subsec:fc-cache}~节更改文件 \texttt{sources.list}.
-注意 WSL 中无法启动 \textsf{gedit},
-因此需要将其替换为 \textsf{vim},
-即
-\begin{lstlisting}[language=bash]
-  sudo vim /etc/apt/sources.list
-\end{lstlisting}
-不熟悉 \textsf{vim} 的用户,
-可参考 \ref{sec:no-vim}~节.
+可仿照 \ref{sec:addition:source}~节更改文件 \texttt{sources.list}.
+不习惯在 \textsf{gedit} 中做文本操作的 Windows 用户,
+可参考 \ref{sec:vscode-wsl}~节.
 
 接下来, 在主系统中将镜像装载,
 例如挂载到 \texttt{X:\textbackslash},
@@ -114,7 +111,7 @@
 默认安装完成后, 用户需要设置环境变量.
 继续在 \textsf{bash} 中执行
 \begin{lstlisting}[language = bash]
-  vim ~/.bashrc
+  gedit ~/.bashrc
 \end{lstlisting}
 在打开的文件末尾添加
 \begin{lstlisting}
@@ -124,8 +121,10 @@
   export INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
-同样, 不熟悉 \textsf{vim} 的用户可参考 \ref{sec:no-vim}~节.
-退出 WSL 再进入, 执行
+同样,
+不习惯于 \textsf{gedit} 处理文本的 Windows 用户可参考 \ref{sec:vscode-wsl}~节.
+退出 WSL 再进入,
+执行
 \begin{lstlisting}[language=bash]
   tex -v
 \end{lstlisting}
@@ -149,7 +148,7 @@
 \begin{lstlisting}[language=bash]
   sudo cp /usr/local/texlive/2023/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
-然后在 \textsf{Terminal} 执行
+然后在 \textsf{bash} 执行
 \begin{lstlisting}[language=bash]
   sudo fc-cache -fsv
 \end{lstlisting}
@@ -275,7 +274,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \begin{lstlisting}[language=bash]
   mkdir /mnt/d/work-latex
   cd /mnt/d/work-latex
-  vim main.tex
+  gedit main.tex
 \end{lstlisting}
 建立文档,
 内容同上,
@@ -314,59 +313,6 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \href{https://github.com/OsbertWang/install-latex-guide-zh-cn/issues/14}{github 上的讨论},
 鉴于 WSL2 和主系统文件系统互访速度慢,
 该方法很可能拖慢 xelatex 速度},
-在 WSL 中安装字体的方法见附录~\ref{chp:appendix:wsl}.
+在 WSL 中安装字体的方法见 \ref{sec:addition:font}~节.
 
 编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致, 不再赘述.
-
-\section{不懂 \textsf{vim} 的处理方法}\label{sec:no-vim}
-
-\textsf{vim} 的使用方法与目前很多流行的编辑器不同,
-因此这里给出不用 \textsf{vim} 的处理方法.
-该方法借助 \href{https://code.visualstudio.com/}{VS Code} 的 \href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{WSL} 插件实现.
-
-先来更改 \texttt{.bashrc}.
-将 \texttt{.bashrc} 备份为 \texttt{.bashrc.bak}
-\begin{lstlisting}[language=bash]
-  cp ~/.bashrc ~/.bashrc.bak
-\end{lstlisting}
-用 VS Code 打开文档
-\begin{lstlisting}[language=bash]
-  code ~/.bashrc
-\end{lstlisting}
-并对其中内容进行更改并保存.
-若更改错误,
-可以执行
-\begin{lstlisting}[language=bash]
-  cp ~/.bashrc.bak ~/.bashrc
-\end{lstlisting}
-恢复文档.
-
-接下来更改 \texttt{sources.list}.
-将 \texttt{sources.list} 备份为 \texttt{sources.list.bak}
-\begin{lstlisting}[language=bash]
-  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-\end{lstlisting}
-用 VS Code 打开文档
-\begin{lstlisting}[language=bash]
-  code /etc/apt/sources.list
-\end{lstlisting}
-并对其中内容进行更改,
-并且另存为
-\begin{lstlisting}
-  ~/sources.list.sav
-\end{lstlisting}
-在 \textsf{bash} 中执行
-\begin{lstlisting}[language=bash]
-  sudo cp ~/sources.list.sav /etc/apt/sources.list
-\end{lstlisting}
-替换文档.
-若发现文档有错误,
-执行
-\begin{lstlisting}[language=bash]
-  sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
-\end{lstlisting}
-恢复文档.
-
-使用 VS Code 同样可以编写 \texttt{tex} 文件,
-这涉及到如何使用 \LaTeX{} 的编辑器,
-这里不做展开.

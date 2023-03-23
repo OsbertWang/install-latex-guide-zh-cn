@@ -405,11 +405,11 @@ Windows 11 中字体列表见%
 至此完成了逆向搜索,
 双击 PDF 文件便可回到 \TeX studio 中对应代码的行首.
 
-\section{Ubuntu 22.04 系统}
+\section{Ubuntu 22.04 系统}\label{sec:editor:ubuntu}
 
 简化起见, 这里只介绍如何使用 \TeX studio.
 根据官网推荐, 我们安装源内的 \TeX studio.
-安装前可参照 \ref{subsec:fc-cache}~节的介绍换源以增速.
+安装前可参照 \ref{sec:addition:source}~节的介绍换源以增速.
 
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language = bash]
@@ -417,7 +417,8 @@ Windows 11 中字体列表见%
 \end{lstlisting}
 即可安装 \TeX studio.
 注意安装过程中会产生一些依赖, 它们包括了源内的 \TeX{} live 包, 如 \texttt{tex-common}, \texttt{texlive-base}, \texttt{texlive-binaries}, \texttt{texlive-latex-base} 和 \texttt{texlive-latex-recommended}.
-用户需要卸载它们.
+用户需要卸载它们,
+参见 \ref{sec:ubuntu:uninstall}~节.
 
 当然用户也可以使用
 \href{https://code.launchpad.net/~sunderme/+archive/ubuntu/texstudio}{PPA}
@@ -429,30 +430,9 @@ Windows 11 中字体列表见%
   sudo apt install texstudio
 \end{lstlisting}
 鉴于网络原因,
-直接从 PPA 下载容易丢包.
-这里介绍中科大的\href{https://mirrors.ustc.edu.cn/}{反向代理},
-将
-\begin{lstlisting}[language = bash]
-  /etc/apt/sources.list.d/
-\end{lstlisting}
-中文件的内容
-\begin{lstlisting}
-  http(s)://ppa.launchpad.net
-\end{lstlisting}
-改为
-\begin{lstlisting}
-  https://launchpad.proxy.ustclug.org
-\end{lstlisting}
-而后再
-\begin{lstlisting}[language = bash]
-  sudo apt update
-\end{lstlisting}
-即完成换源.
-有时地址太多而逐个换太麻烦,
-可以直接使用如下命令直接替换\footnote{参见 \url{https://mogeko.me/posts/zh-cn/035/}}
-\begin{lstlisting}[language = bash]
-  sudo find /etc/apt/sources.list.d/ -type f -name "*.list" -exec  sed  -i.bak -r  's#deb(-src)?\s*http(s)?://ppa.launchpad.net#deb\1 https\2://launchpad.proxy.ustclug.org#ig' {} \;
-\end{lstlisting}
+直接从 PPA 下载容易丢包,
+因此可以使用反向代理,
+具体见 \ref{sec:addition:proxy}~节.
 
 安装完毕后,
 用户可以在 \textsf{Terminal} 中执行
@@ -469,7 +449,7 @@ Windows 11 中字体列表见%
 中添加路径,
 默认安装时为
 \begin{lstlisting}
-  /usr/local/texlive/2020/bin/x86_64-linux
+  /usr/local/texlive/2023/bin/x86_64-linux
 \end{lstlisting}
 
 其他设置可参考前文, 这里不再赘述.
@@ -511,97 +491,26 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
 
 \section{Windows Subsystem for Linux}\label{sec:editor:wsl}
 
-目前建议使用
-\href{https://code.visualstudio.com/}{VS Code}
-配合
-\href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{WSL}
-和
-\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}
-来编写文档.
-具体设置方式建议阅读插件手册,
-一些网友的教程可以参考,
-如
-\href{https://github.com/EthanDeng/vscode-latex}{EthanDeng 的教程}.
-以下配置为个人自用,
-仅供参考,
-其中注释的部分是调用外部 SumatraPDF 阅读器的配置,
-用户可参考
-\href{https://github.com/OsbertWang/latex-editor-sumatrapdf}{latex-editor-sumatrapdf}
-来了解更多内容.
-
-\begin{lstlisting}
-  "latex-workshop.latex.tools": [
-    {
-      "name": "latexmkpdf",
-      "command": "latexmk",
-      "args": [
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-halt-on-error",
-        "-file-line-error",
-        "-pdf",
-        "%DOCFILE%"
-      ]
-    },
-    {
-        "name": "latexmkxe",
-        "command": "latexmk",
-        "args": [
-          "-synctex=1",
-          "-interaction=nonstopmode",
-          "-halt-on-error",
-          "-file-line-error",
-          "-xelatex",
-          "%DOCFILE%"
-        ]
-      },
-  ],
-  "latex-workshop.latex.recipes": [
-    {
-      "name": "latexmkpdf",
-      "tools": [
-        "latexmkpdf"
-      ]
-    },
-    {
-        "name": "latexmkxe",
-        "tools": [
-          "latexmkxe"
-        ]
-      },
-  ],
-  "latex-workshop.latex.autoBuild.run": "never",
-  "latex-workshop.view.pdf.viewer": "tab"
-  // "latex-workshop.view.pdf.viewer": "external",
-  // "latex-workshop.view.pdf.ref.viewer": "external",
-  // "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFROOT>/SumatraPDF.exe",
-  // "latex-workshop.view.pdf.external.viewer.args": [
-  //   "-inverse-search",
-  //   "\"<VSCodeROOT>/bin/code.cmd\" -r -g \"%f:%l\"",
-  //   "%PDF%"
-  // ],
-  // "latex-workshop.view.pdf.external.synctex.command":"<SumatraPDFROOT>/SumatraPDF.exe",
-  // "latex-workshop.view.pdf.external.synctex.args":[
-  //   "-forward-search",
-  //   "%TEX%",
-  //   "%LINE%",
-  //   "%PDF%",
-  // ],
-\end{lstlisting}
-
-实际配置时,
-用户需要结合自身安装情况更换 \texttt{<SumatraPDFROOT>} 和 \texttt{<VSCodeROOT>},
-即 SumatraPDF 和 VS Code 各自的安装路径.
+简化起见,
+只介绍 \TeX studio 的用法.
+\TeX studio 在 WSL 中的安装与使用同 \ref{sec:editor:ubuntu}~节所介绍的一致.
+只不过此时只能使用 WSL 来安装、启动、编写和编译文件,
+在主系统中的 \TeX studio 无法在 WSL 起作用.
 
 \section{其他编辑器}
 
-在 \ref{sec:editor:wsl} 中介绍的
-\href{https://code.visualstudio.com/}{VS Code} 配置也可用于其他操作系统,
-核心都是借助插件
+\href{https://code.visualstudio.com/}{VS Code}
+配合插件
 \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{LaTeX Workshop}
-支持 \LaTeX 编译.
+可以作为一款跨平台的编辑器来使用,
+具体设置方式建议阅读插件手册,
+一些网友的教程可以参考,
+如
+\href{https://github.com/EthanDeng/vscode-latex}{EthanDeng}
+的教程.
 用户可以根据自己的实际需求、使用习惯和个人能力,
 自行决定是否使用.
+一份个人使用的配置单可参考 \ref{sec:addition:wsl-editor}~节.
 
 \href{https://www.vim.org/}{Vim} 是一款优秀的编辑器,
 它的用法较目前常见的编辑器有很大不同,

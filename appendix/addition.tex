@@ -1,0 +1,270 @@
+% !TeX root = ../install-latex-guide-zh-cn.tex
+
+\chapter{有关 Ubuntu 和 WSL 的补充}\label{chp:appendix:addition}
+
+\section{更换 Ubuntu 源}\label{sec:addition:source}
+
+鉴于大陆网络现状,
+建议更换 Ubuntu 源至国内,
+例如更换至清华大学.
+在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+\end{lstlisting}
+备份 \texttt{sources.list} 文件.
+接下来执行
+\begin{lstlisting}[language = bash]
+  sudo gedit /etc/apt/sources.list
+\end{lstlisting}
+将文件替换为以下内容%
+\footnote{本段文字可至%
+  \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
+  获取}
+\begin{lstlisting}
+  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+
+  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+
+  deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+  # deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+
+  # 预发布软件源，不建议启用
+  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
+  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
+\end{lstlisting}
+保存退出.
+再执行
+\begin{lstlisting}[language=bash]
+  sudo apt update && sudo apt upgrade
+\end{lstlisting}
+换源并更新.
+若更改错误,
+可执行
+\begin{lstlisting}[language=bash]
+  sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
+\end{lstlisting}
+恢复文件.
+
+\section{安装字体}\label{sec:addition:font}
+
+有用户指出,
+Ubuntu 中安装字体比较麻烦.
+这里引用
+\href{https://www.jianshu.com/p/e7f12b8c8602}{Ubuntu系统字体命令和字体的安装}
+一文.
+大致步骤如下.
+
+首先获取需要安装的字体文件,
+假设文件保存在 \verb|~/fonts/|.
+然后在 \texttt{/usr/share/fonts/} 文件夹中创建新的文件夹,
+例如 \texttt{myfonts}
+\begin{lstlisting}[language=bash]
+  cd /usr/share/fonts/
+  sudo mkdir myfonts
+\end{lstlisting}
+接下来将获取的字体文件复制到 \texttt{myfonts} 中
+\begin{lstlisting}[language=bash]
+  sudo cp ~/fonts/* /usr/share/fonts/myfonts/ 
+\end{lstlisting}
+然后修改字体文件的权限
+\begin{lstlisting}[language=bash]
+  sudo chmod -R 755 myfonts
+\end{lstlisting}
+最后建立字体缓存
+\begin{lstlisting}[language=bash]
+  mkfontscale
+  mkfontdir
+  fc-cache -fv
+\end{lstlisting}
+
+实际上有部分字体可直接使用源进行安装,
+如安装字体 Noto CJK
+\begin{lstlisting}[language=bash]
+  sudo apt install fonts-noto-cjk
+  sudo apt install fonts-noto-cjk-extra
+\end{lstlisting}
+安装 Windows 系统中常见的字体 Andale Mono,
+Arial Black,
+Arial (Bold, Italic, Bold Italic),
+Comic Sans MS (Bold),
+Courier New (Bold, Italic, Bold Italic),
+Georgia (Bold, Italic, Bold Italic),
+Impact,
+Times New Roman (Bold, Italic, Bold Italic),
+Trebuchet (Bold, Italic, Bold Italic),
+Verdana (Bold, Italic, Bold Italic),
+Webdings
+\begin{lstlisting}[language=bash]
+  sudo apt install ttf-mscorefonts-installer
+\end{lstlisting}
+安装字体文泉驿正黑,
+文泉驿微米黑,
+文泉驿等宽微米黑,
+文泉驿点阵宋体,
+文泉驿点阵楷体
+\begin{lstlisting}[language=bash]
+  sudo apt install ttf-wqy-zenhei
+\end{lstlisting}
+
+\section{反向代理 PPA}\label{sec:addition:proxy}
+
+这里介绍中科大的\href{https://mirrors.ustc.edu.cn/}{反向代理},
+将
+\begin{lstlisting}[language = bash]
+  /etc/apt/sources.list.d/
+\end{lstlisting}
+中文件的内容
+\begin{lstlisting}
+  http(s)://ppa.launchpad.net
+\end{lstlisting}
+改为
+\begin{lstlisting}
+  https://launchpad.proxy.ustclug.org
+\end{lstlisting}
+而后再
+\begin{lstlisting}[language = bash]
+  sudo apt update
+\end{lstlisting}
+即完成换源.
+有时地址太多而逐个换太麻烦,
+可以直接使用如下命令直接替换\footnote{参见 \url{https://mogeko.me/posts/zh-cn/035/}}
+\begin{lstlisting}[language = bash]
+  sudo find /etc/apt/sources.list.d/ -type f -name "*.list" -exec  sed  -i.bak -r  's#deb(-src)?\s*http(s)?://ppa.launchpad.net#deb\1 https\2://launchpad.proxy.ustclug.org#ig' {} \;
+\end{lstlisting}
+
+\section{使用 VS Code 的 WSL 插件编辑文本}\label{sec:vscode-wsl}
+
+在 \textsf{bash} 中编辑文本对于相当一部分 Windows 用户而言很不习惯,
+因此这里给出另一种处理方法.
+该方法借助 \href{https://code.visualstudio.com/}{VS Code} 的 \href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{WSL} 插件实现.
+在 VS Code 中安装该插件即可.
+
+更改 \texttt{sources.list}.
+在 \textsf{bash} 中将 \texttt{sources.list} 备份为 \texttt{sources.list.bak}
+\begin{lstlisting}[language=bash]
+  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+\end{lstlisting}
+用 VS Code 打开文档
+\begin{lstlisting}[language=bash]
+  code /etc/apt/sources.list
+\end{lstlisting}
+并对其中内容进行更改,
+并且另存为
+\begin{lstlisting}
+  ~/sources.list.sav
+\end{lstlisting}
+在 \textsf{bash} 中执行
+\begin{lstlisting}[language=bash]
+  sudo cp ~/sources.list.sav /etc/apt/sources.list
+\end{lstlisting}
+替换文档.
+若发现文档有错误,
+执行
+\begin{lstlisting}[language=bash]
+  sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
+\end{lstlisting}
+恢复文档.
+
+更改 \texttt{.bashrc}.
+在 \textsf{bash} 中将 \texttt{.bashrc} 备份为 \texttt{.bashrc.bak}
+\begin{lstlisting}[language=bash]
+  cp ~/.bashrc ~/.bashrc.bak
+\end{lstlisting}
+用 VS Code 打开文档
+\begin{lstlisting}[language=bash]
+  code ~/.bashrc
+\end{lstlisting}
+并对其中内容进行更改并保存.
+若更改错误,
+可以执行
+\begin{lstlisting}[language=bash]
+  cp ~/.bashrc.bak ~/.bashrc
+\end{lstlisting}
+恢复文档.
+
+\section{用 VS Code 作为 WSL 中的编辑器}\label{sec:addition:wsl-editor}
+
+这里介绍
+\href{https://code.visualstudio.com/}{VS Code}
+配合插件
+\href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{WSL}
+和
+\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}
+的方式.
+以下配置为个人自用,
+仅供参考,
+其中注释的部分是调用外部 SumatraPDF 阅读器的配置,
+用户可参考
+\href{https://github.com/OsbertWang/latex-editor-sumatrapdf}{latex-editor-sumatrapdf}
+来了解更多内容.
+
+\begin{lstlisting}
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmkpdf",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "-pdf",
+        "%DOCFILE%"
+      ]
+    },
+    {
+        "name": "latexmkxe",
+        "command": "latexmk",
+        "args": [
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "-file-line-error",
+          "-xelatex",
+          "%DOCFILE%"
+        ]
+      },
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmkpdf",
+      "tools": [
+        "latexmkpdf"
+      ]
+    },
+    {
+        "name": "latexmkxe",
+        "tools": [
+          "latexmkxe"
+        ]
+      },
+  ],
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.view.pdf.viewer": "tab"
+  // "latex-workshop.view.pdf.viewer": "external",
+  // "latex-workshop.view.pdf.ref.viewer": "external",
+  // "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFROOT>/SumatraPDF.exe",
+  // "latex-workshop.view.pdf.external.viewer.args": [
+  //   "-inverse-search",
+  //   "\"<VSCodeROOT>/bin/code.cmd\" -r -g \"%f:%l\"",
+  //   "%PDF%"
+  // ],
+  // "latex-workshop.view.pdf.external.synctex.command":"<SumatraPDFROOT>/SumatraPDF.exe",
+  // "latex-workshop.view.pdf.external.synctex.args":[
+  //   "-forward-search",
+  //   "%TEX%",
+  //   "%LINE%",
+  //   "%PDF%",
+  // ],
+\end{lstlisting}
+
+实际配置时,
+用户需要结合自身安装情况更换 \texttt{<SumatraPDFROOT>} 和 \texttt{<VSCodeROOT>},
+即 SumatraPDF 和 VS Code 各自的安装路径.

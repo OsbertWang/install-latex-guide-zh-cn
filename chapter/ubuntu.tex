@@ -8,11 +8,22 @@
 为使用户顺利使用 \TeX{} Live 2023,
 建议用户首先卸载从源内安装的 \TeX{} Live 的相关包,
 具体方法见 \ref{sec:ubuntu:uninstall}~节.
+为了减少后续字体问题和文本编辑问题,
+安装前在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language=bash]
+  sudo apt install fontconfig gedit
+\end{lstlisting}
+由于大陆地区网络现状,
+建议在执行命令前更换 Ubuntu 源,
+参考 \ref{sec:addition:source}~节.
+以下未特殊声明,
+均指在  \textsf{Terminal} 中执行相关命令.
 
 下载
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2023.iso}{iso 镜像文件}
 的方法见 \ref{sec:windows:install}~节.
-下载完毕后, 打开 \textsf{Terminal} 窗口验证 MD5 值,
+下载完毕后,
+验证 MD5 值,
 即执行以下命令
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
@@ -102,14 +113,17 @@
 如安装路径等.
 为简化起见,
 以下内容我们均认为用户采用默认安装.
-安装完毕后, 将装载的光盘镜像弹出并删除文件夹
+安装完毕后,
+将装载的光盘镜像弹出并删除文件夹,
+即执行
 \begin{lstlisting}[language = bash]
   sudo umount /mnt/texlive
   sudo rm -r /mnt/texlive
 \end{lstlisting}
 
-安装完成后, 用户需要设置环境变量.
-继续在 \textsf{Terminal} 中执行
+安装完成后,
+用户需要设置环境变量.
+执行
 \begin{lstlisting}[language = bash]
   gedit ~/.bashrc
 \end{lstlisting}
@@ -120,8 +134,8 @@
   export MANPATH=/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH
   export INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
-并保存退出.
-这时再打开 \textsf{Terminal} 执行
+保存退出.
+这时重新打开 \textsf{Terminal} 执行
 \begin{lstlisting}[language=bash]
   tex -v
 \end{lstlisting}
@@ -192,65 +206,12 @@
 无论将 \TeX{} Live 安装到哪里,
 字体的配置文件都可以仿照上面只复制于用户文件夹中.
 
-\subsection{\texttt{fc-cache} 无法执行}\label{subsec:fc-cache}
-
-这种情况往往是缺少了 fontconfig,
-用户可以在命令行中执行以下命令安装
-\begin{lstlisting}[language=bash]
-  sudo apt install fontconfig
-\end{lstlisting}
-
-为提升安装速度, 可考虑更换 Ubuntu 源, 例如更换至清华大学.
-在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
-  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-\end{lstlisting}
-备份 \texttt{sources.list} 文件.
-接下来执行
-\begin{lstlisting}[language = bash]
-  sudo gedit /etc/apt/sources.list
-\end{lstlisting}
-将文件替换为以下内容%
-\footnote{本段文字可至%
-  \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
-  获取}
-\begin{lstlisting}
-  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-
-  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-
-  deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
-  # deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
-
-  # 预发布软件源，不建议启用
-  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-\end{lstlisting}
-然后执行
-\begin{lstlisting}[language=bash]
-  sudo apt update && sudo apt upgrade
-\end{lstlisting}
-换源并更新.
-若更改错误,
-可执行
-\begin{lstlisting}[language=bash]
-  sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
-\end{lstlisting}
-恢复文件.
-
 \section{卸载 \TeX{} Live}\label{sec:ubuntu:uninstall}
 
 下面提供几种卸载方法,
 卸载后需注意清理环境变量.
 
-\subsection{卸载源内的版本}
+\subsection{卸载源内的版本}\label{sec:ubuntu:uninstall}
 
 如果要卸载从源内安装的 \TeX{} Live, 个人比较推荐使用 synaptic package manager.
 在 \textsf{Terminal} 中执行
@@ -265,14 +226,14 @@
 \end{lstlisting}
 找到相应的包名 \texttt{<package name>}, 之后使用类似
 \begin{lstlisting}[language = bash]
-  sudo apt remove --purge <package name>
+  sudo apt autoremove --purge <package name>
 \end{lstlisting}
 的命令删除各个包.
-删除时系统会提示使用
+通常
 \begin{lstlisting}[language = bash]
-  sudo apt autoremove <package name>
+  sudo apt autoremove --purge tex-common
 \end{lstlisting}
-来删除相应的依赖包.
+就可以删除源内版本.
 
 \subsection{手动卸载}
 
@@ -310,6 +271,7 @@
 \begin{lstlisting}
   /usr/local/texlive/2023/bin/x86_64-linux:
 \end{lstlisting}
+然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
 
 \subsection{使用 \texttt{tlmgr} 工具}
 
@@ -438,15 +400,6 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 10 下没有多少区别, 只�
 \end{lstlisting}
 等待系统完成编译过程.
 \texttt{xelatex} 可以使用系统内安装的字体,
-安装字体的方法可参考附录~\ref{chp:appendix:wsl}.
+安装字体的方法可参考 \ref{sec:addition:font}~节.
 
 编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致.
-
-\subsection{无法使用 \texttt{xelatex} 命令}\label{subsec:ubuntu:xelatexfail}
-
-有些用户反映安装完毕后无法使用 \texttt{xelatex} 命令.
-这或许是因为缺失 libfontconfig, 用户可在命令行中执行 
-\begin{lstlisting}[language=bash]
-  sudo apt install libfontconfig1
-\end{lstlisting}
-进行安装.
