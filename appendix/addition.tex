@@ -139,19 +139,20 @@ Webdings
   sudo find /etc/apt/sources.list.d/ -type f -name "*.list" -exec  sed  -i.bak -r  's#deb(-src)?\s*http(s)?://ppa.launchpad.net#deb\1 https\2://launchpad.proxy.ustclug.org#ig' {} \;
 \end{lstlisting}
 
-\section{使用 VS Code 的 WSL 插件编辑文本}\label{sec:vscode-wsl}
+\section{用 VS Code 作为 WSL 中的编辑器}\label{sec:addition:wsl-editor}
 
 在 WSL 中编辑文本对于相当一部分 Windows 用户而言很不习惯,
 因此这里给出另一种处理方法.
-该方法借助 \href{https://code.visualstudio.com/}{VS Code} 的 \href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{WSL} 插件实现.
-在 VS Code 中安装该插件即可.
+该方法借助 \href{https://code.visualstudio.com/}{VS Code} 的 \href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{WSL}
+插件实现.
 
-更改 \texttt{sources.list}.
-在 \textsf{bash} 中将 \texttt{sources.list} 备份为 \texttt{sources.list.bak}
+VS Code 的 WSL 插件权限有限,
+当更改 \texttt{sources.list} 时,
+先在 \textsf{bash} 中将 \texttt{sources.list} 备份为 \texttt{sources.list.bak}
 \begin{lstlisting}[language=bash]
   sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 \end{lstlisting}
-用 VS Code 打开文档
+再用 VS Code 打开文档
 \begin{lstlisting}[language=bash]
   code /etc/apt/sources.list
 \end{lstlisting}
@@ -172,7 +173,7 @@ Webdings
 \end{lstlisting}
 恢复文档.
 
-更改 \texttt{.bashrc}.
+更改 \texttt{.bashrc} 相对简单,
 在 \textsf{bash} 中将 \texttt{.bashrc} 备份为 \texttt{.bashrc.bak}
 \begin{lstlisting}[language=bash]
   cp ~/.bashrc ~/.bashrc.bak
@@ -189,15 +190,14 @@ Webdings
 \end{lstlisting}
 恢复文档.
 
-\section{用 VS Code 作为 WSL 中的编辑器}\label{sec:addition:wsl-editor}
-
-这里介绍
-\href{https://code.visualstudio.com/}{VS Code}
-配合插件
-\href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{WSL}
-和
+如果要作为 \LaTeX{} 编辑器
 \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}
-的方式.
+插件可以利用.
+主要难点是如何配置.
+这里还是建议用户阅读插件
+\href{https://github.com/James-Yu/LaTeX-Workshop/wiki}{wiki}
+了解更多内容.
+
 以下配置为个人自用,
 仅供参考,
 其中注释的部分是调用外部 SumatraPDF 阅读器的配置,
@@ -268,3 +268,7 @@ Webdings
 实际配置时,
 用户需要结合自身安装情况更换 \texttt{<SumatraPDFROOT>} 和 \texttt{<VSCodeROOT>},
 即 SumatraPDF 和 VS Code 各自的安装路径.
+
+另外需要声明的是,
+\LaTeX{} Workshop 插件并不局限在 WSL 当中,
+它的配置是可以通用的.
