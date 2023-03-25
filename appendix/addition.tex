@@ -141,14 +141,18 @@ Webdings
 
 \section{用 VS Code 作为 WSL 中的编辑器}\label{sec:addition:wsl-editor}
 
-在 WSL 中编辑文本对于相当一部分 Windows 用户而言很不习惯,
-因此这里给出另一种处理方法.
-该方法借助 \href{https://code.visualstudio.com/}{VS Code} 的 \href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl}{WSL}
-插件实现.
+微软最近频繁推荐 WSL 作为开发工具,
+详情阅读%
+\href{https://learn.microsoft.com/zh-cn/windows/wsl/tutorials/wsl-vscode}{微软文档}.
+本手册在此基础上,
+借助 \href{https://code.visualstudio.com/download}{VS Code} 的 \href{https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack}{Remote Development}
+插件实现若干功能.
+若非特别指明,
+以下操作均在 WSL 中用 \textsf{bash} 执行.
 
-VS Code 的 WSL 插件权限有限,
+VS Code 的插件权限有限,
 当更改 \texttt{sources.list} 时,
-先在 \textsf{bash} 中将 \texttt{sources.list} 备份为 \texttt{sources.list.bak}
+先在 \textsf{bash} 中将 \texttt{sources.list} 备份
 \begin{lstlisting}[language=bash]
   sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 \end{lstlisting}
@@ -161,7 +165,7 @@ VS Code 的 WSL 插件权限有限,
 \begin{lstlisting}
   ~/sources.list.sav
 \end{lstlisting}
-在 \textsf{bash} 中执行
+执行
 \begin{lstlisting}[language=bash]
   sudo cp ~/sources.list.sav /etc/apt/sources.list
 \end{lstlisting}
@@ -174,7 +178,7 @@ VS Code 的 WSL 插件权限有限,
 恢复文档.
 
 更改 \texttt{.bashrc} 相对简单,
-在 \textsf{bash} 中将 \texttt{.bashrc} 备份为 \texttt{.bashrc.bak}
+将 \texttt{.bashrc} 备份
 \begin{lstlisting}[language=bash]
   cp ~/.bashrc ~/.bashrc.bak
 \end{lstlisting}
@@ -190,21 +194,19 @@ VS Code 的 WSL 插件权限有限,
 \end{lstlisting}
 恢复文档.
 
-如果要作为 \LaTeX{} 编辑器
+利用
 \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}
-插件可以利用.
-主要难点是如何配置.
+插件可以将 VS Code 作为 \LaTeX{} 编辑器,
+难点在于如何设置.
 这里还是建议用户阅读插件
 \href{https://github.com/James-Yu/LaTeX-Workshop/wiki}{wiki}
 了解更多内容.
-
-以下配置为个人自用,
+以下 VS Code 设置的 json 文件内容为个人自用的 \LaTeX{} Workshop 设置,
 仅供参考,
-其中注释的部分是调用外部 SumatraPDF 阅读器的配置,
-用户可参考
+其中注释的部分是调用外部 SumatraPDF 阅读器的设置,
+用户可阅读
 \href{https://github.com/OsbertWang/latex-editor-sumatrapdf}{latex-editor-sumatrapdf}
 来了解更多内容.
-
 \begin{lstlisting}
   "latex-workshop.latex.tools": [
     {
@@ -265,7 +267,7 @@ VS Code 的 WSL 插件权限有限,
   // ],
 \end{lstlisting}
 
-实际配置时,
+实际使用时,
 用户需要结合自身安装情况更换 \texttt{<SumatraPDFROOT>} 和 \texttt{<VSCodeROOT>},
 即 SumatraPDF 和 VS Code 各自的安装路径.
 
