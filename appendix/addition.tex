@@ -274,3 +274,127 @@ VS Code 的插件权限有限,
 另外需要声明的是,
 \LaTeX{} Workshop 插件并不局限在 WSL 当中,
 它的配置是可以通用的.
+
+\section{迁移 WSL 的安装位置}
+
+考虑到一部分用户的系统盘空间有限,
+且根据%
+\href{https://learn.microsoft.com/zh-cn/windows/wsl/troubleshooting?source=recommendations#installation-issues}{微软官方文档},
+WSL 只能安装在系统盘,
+因此可以考虑迁移 WSL 的安装位置到其他盘.
+本部分内容源自
+\href{https://superuser.com/questions/1701175/installing-ubuntu-on-mnt-d-with-wsl}{StackExchange}.
+方法牵扯到主系统和子系统的操作.
+
+第一步,
+建立新的位置.
+假设新位置在 \texttt{X:\textbackslash} 盘.
+在 \textsf{cmd} 中执行
+\begin{lstlisting}[language=bash]
+  wsl -l
+\end{lstlisting}
+可以查到当前已经安装的 WSL 分发,
+例如
+\begin{lstlisting}
+  适用于 Linux 的 Windows 子系统分发:
+  Ubuntu (默认)
+\end{lstlisting}
+在 \textsf{bash} 中执行
+\begin{lstlisting}[language=bash]
+  lsb_release -a
+\end{lstlisting}
+查到实际 WSL 内 Ubuntu 的版本,
+例如
+\begin{lstlisting}
+  No LSB modules are available.
+  Distributor ID: Ubuntu
+  Description:    Ubuntu 22.04.2 LTS
+  Release:        22.04
+  Codename:       jammy
+\end{lstlisting}
+然后在 \textsf{cmd} 中执行
+\begin{lstlisting}[language=bash]
+  mkdir X:\WSL\instances\Ubuntu2204
+  mkdir X:\WSL\images
+  cd X:\WSL\images
+\end{lstlisting}
+创建新的位置.
+这里起名 \texttt{Ubuntu2204} 是因为 Ubuntu 实际版本为 22.04,
+也可以起其他名字.
+
+第二步,
+导出原 WSL 分发并导入新位置.
+在 \textsf{cmd} 中执行
+\begin{lstlisting}[language=bash]
+  wsl --export Ubuntu ubuntu.tar
+  wsl --import Ubuntu2204 X:\WSL\instances\Ubuntu2204 ubuntu.tar --version 2
+\end{lstlisting}
+第一行的 \texttt{Ubuntu} 指的是系统默认的 WSL 分发,
+这条命令将原本的分发导出为一个压缩包.
+第二行的 \texttt{Ubuntu2204} 是未来指定的 WSL 分发,
+也就是将前面导出的压缩包导入成新的 WSL 分发.
+
+第三步,
+启动新的分发并且设置为默认.
+在 \textsf{cmd} 中执行
+\begin{lstlisting}[language=bash]
+  wsl ~ -d Ubuntu2204
+\end{lstlisting}
+进入 \texttt{Ubuntu2204} 分发的 WSL 系统,
+在当前 \textsf{bash} 中执行
+\begin{lstlisting}[language=bash]
+  sudo -e /etc/wsl.conf
+\end{lstlisting}
+输入以下内容
+\begin{lstlisting}
+  [user]
+  default=<your_username>
+\end{lstlisting}
+\texttt{<your\_username>} 是用户自定义的 WSL 的用户名,
+个人用了原本 \texttt{Ubuntu} 分发内的用户名.
+然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
+退出 \texttt{bash},
+在 \texttt{cmd} 中执行
+\begin{lstlisting}[language=bash]
+  wsl --terminate Ubuntu2204
+  wsl ~ -d Ubuntu2204
+\end{lstlisting}
+这时如果一切正常,
+就可以将 \texttt{Ubuntu2204} 设置为默认 WSL 分发,
+即在 \texttt{cmd} 中执行
+\begin{lstlisting}[language=bash]
+  wsl --set-default Ubuntu2204
+\end{lstlisting}
+这时在 \textsf{bash} 中执行
+\begin{lstlisting}[language=bash]
+  echo $WSL_DISTRO_NAME
+\end{lstlisting}
+返回结果
+\begin{lstlisting}
+  Ubuntu2204
+\end{lstlisting}
+就表明一切正常.
+
+第四步,
+删除旧分发.
+在 \textsf{cmd} 中执行
+\begin{lstlisting}[language=bash]
+  wsl --unregister Ubuntu
+\end{lstlisting}
+就将旧分发 \texttt{Ubuntu} 删除了.
+这时在 \textsf{cmd} 中执行
+\begin{lstlisting}[language=bash]
+  wsl -l
+\end{lstlisting}
+将看到
+\begin{lstlisting}
+  适用于 Linux 的 Windows 子系统分发:
+  Ubuntu2204 (默认)
+\end{lstlisting}
+
+实际上,
+将整个 WSL 的安装位置迁移还有一个好处.
+根据%
+\href{https://learn.microsoft.com/zh-cn/windows/wsl/filesystems#file-storage-and-performance-across-file-systems}{微软官方文档},
+将项目文件直接存储在 WSL 的驱动器上,
+性能速度会提高.
