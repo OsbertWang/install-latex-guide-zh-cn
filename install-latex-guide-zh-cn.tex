@@ -4,7 +4,7 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{fontawesome5}
-\usepackage[pdfpagelayout=SinglePage]{hyperref}
+\usepackage[pdfpagelayout=SinglePage,bookmarksnumbered]{hyperref}
 \usepackage[os=win,hyperrefcolorlinks]{menukeys}
 
 \ctexset{
@@ -12,6 +12,7 @@
     format       = \huge\bfseries\raggedright,
     number       = \arabic{chapter},
     name         = {},
+    tocline      = \CTEXifname{\protect\numberline{\thechapter}}{}#2,
   },
   section/format = \Large\bfseries\raggedright,
 }
