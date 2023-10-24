@@ -50,50 +50,43 @@ Homebrew 是一个包管理工具,
 Homebrew 安装教程可以在其网站找到, 这里简单列出来：
 
 \begin{lstlisting}[language=bash]
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 \end{lstlisting}
 将以上命令在\textsf{终端}\footnote{%
   打开方法为: \keys{\cmdmac + \SPACE}, 输入 \textsf{terminal} 并打开 \menu{终端} 应用}%
 执行.
 脚本会在执行前暂停, 并说明它将做什么. 依据屏幕指令执行即可.
 
-中国大陆用户可以更改镜像以提高访问速度. 以中国科学技术大学镜像源为例:
+中国大陆用户可以使用镜像以提高访问速度. 以上海交通大学镜像源为例:
 \begin{lstlisting}[language=bash]
-  cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
-  git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-  cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
-  git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
-  echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
+  echo 'export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/brew.git' >> ~/.bash_profile
+  echo 'export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git' >> ~/.bash_profile
+  echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirror.sjtu.edu.cn/homebrew-bottles/bottles' >> ~/.bash_profile
+  echo 'export HOMEBREW_NO_INSTALL_FROM_API=1' >> ~/.bash_profile
   source ~/.bash_profile
+  /bin/bash -c "$(curl -fsSL https://git.sjtu.edu.cn/sjtug/homebrew-install/-/raw/master/install.sh)"
+  brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-cask.git
 \end{lstlisting}
-如果是 zsh 用户, 最后两行请替换为
-\begin{lstlisting}[language=bash]
-  echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.zshrc
-  source ~/.zshrc
-\end{lstlisting}
-
-\subsubsection{Xcode}
-
-根据 \href{https://docs.brew.sh/Xcode\#supported-xcode-versions}{Homebrew 网站}的提示\footnote{原文是 Homebrew supports and recommends the latest Xcode and/or Command Line Tools available for your platform},
-推荐用户在安装 Homebrew 前先安装 Xcode.
-在\textsf{终端} 执行以下命令即可:
-\begin{lstlisting}[language=bash]
-  xcode-select --install
-\end{lstlisting}
+如果是 Zsh 用户, 请将上述所有的 \texttt{.bash\_profile} 替换为 \texttt{.zprofile}.
 
 \subsubsection{安装 Mac\TeX}
 
 安装 Homebrew 后,
 只需在\textsf{终端}执行以下命令即可完成安装:
 \begin{lstlisting}[language=bash]
-  brew cask install mactex
+  brew install mactex
 \end{lstlisting}
 如有输入密码等提示, 请根据屏幕指示操作.至于环境变量等繁琐细节, Homebrew 会自动进行处理,
 无须用户干预.
 
+如果用户完全不需要 Mac\TeX{} 附带的 GUI 组件，也可以考虑仅安装其命令行工具，通过在终端键入命令或者从其他文本编辑器调用。
+\begin{lstlisting}[language=bash]
+  brew install mactex-no-gui
+\end{lstlisting}
+
 完整的 Mac\TeX{} 会比较大. 如果磁盘空间实在紧张, 也可以考虑安装 Basic\TeX:
 \begin{lstlisting}[language=bash]
-  brew cask install basictex
+  brew install basictex
 \end{lstlisting}
 安装完成后 Basic\TeX{} 依然会缺很多包, 手动安装会比较麻烦, 所以不推荐没有经验的用户尝试.
 
@@ -103,7 +96,7 @@ Homebrew 安装教程可以在其网站找到, 这里简单列出来：
 可以对照\href{https://www.tug.org/mactex/uninstalling.html}{这里}的介绍来卸载,
 通常我个人会比较建议在跨版本升级前卸载旧版本.
 
-如果用户借助 Homebrew cask 安装了 Mac\TeX,
+如果用户借助 Homebrew 安装了 Mac\TeX,
 那么卸载工作可能会稍显麻烦.
 这里引用 \href{https://github.com/Homebrew/homebrew-cask/issues/32073}{Github} 上的讨论.
 用户可以根据这里的内容卸载 Mac\TeX.
@@ -120,7 +113,7 @@ Homebrew 安装教程可以在其网站找到, 这里简单列出来：
 跨版本升级 (Mac\TeX{} 的版本与 \TeX{} Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
 \begin{lstlisting}[language=bash]
   brew update
-  brew cask upgrade mactex
+  brew upgrade mactex
 \end{lstlisting}
 
 \section{升级宏包}
