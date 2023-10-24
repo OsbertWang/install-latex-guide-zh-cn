@@ -97,9 +97,14 @@ Homebrew 安装教程可以在其网站找到, 这里简单列出来：
 通常我个人会比较建议在跨版本升级前卸载旧版本.
 
 如果用户借助 Homebrew 安装了 Mac\TeX,
-那么卸载工作可能会稍显麻烦.
-这里引用 \href{https://github.com/Homebrew/homebrew-cask/issues/32073}{Github} 上的讨论.
-用户可以根据这里的内容卸载 Mac\TeX.
+经%
+\href{https://github.com/OsbertWang/install-latex-guide-zh-cn/pull/39#discussion_r1368152254}{实际测试},
+直接使用
+\begin{lstlisting}
+  brew uninstall mactex
+\end{lstlisting}
+卸载很成功,
+只是有一些残留.
 
 \section{跨版本升级 Mac\TeX}
 
