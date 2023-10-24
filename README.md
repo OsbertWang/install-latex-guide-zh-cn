@@ -40,4 +40,4 @@ latexmk -xelatex -synctex=1 install-latex-guide-zh-cn
 
 # 开源协议
 
-本次工作将遵循协议 LaTeX Project Public License，v1.3c 或其后版本.
+本次工作将遵循协议 LaTeX Project Public License, v1.3c 或其后版本.
