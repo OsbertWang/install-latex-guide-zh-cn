@@ -90,6 +90,18 @@ Homebrew 安装教程可以在其网站找到, 这里简单列出来：
 \end{lstlisting}
 安装完成后 Basic\TeX{} 依然会缺很多包, 手动安装会比较麻烦, 所以不推荐没有经验的用户尝试.
 
+注意, Basic\TeX{} 的初始设定是不安装宏包文档和源码. 如有需要, 可以执行
+\begin{lstlisting}[language=bash]
+  # 1 为安装, 0 为不安装
+  sudo tlmgr option docfiles 1 # 安装文档, 推荐
+  sudo tlmgr option srcfiles 1 # 安装源码, 可选
+\end{lstlisting}
+配置 \texttt{tlmgr}. 在配置修改时已经安装的包, 需要重新安装才能应用新配置, 例如可以执行
+\begin{lstlisting}[language=bash]
+  sudo tlmgr install --reinstall \
+    $(tlmgr list --only-installed | sed -e 's/^i \([^:]*\): .*$/\1/')
+\end{lstlisting}
+
 \section{卸载 Mac\TeX}
 
 如果用户直接下载了 Mac\TeX{} 安装包进行安装,
