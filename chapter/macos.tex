@@ -47,8 +47,10 @@ Homebrew 是一个包管理工具,
 类似 Ubuntu 上面的 \texttt{apt-get}.
 
 \subsubsection{安装 Homebrew}
-Homebrew 安装教程可以在其网站找到, 这里简单列出来：
 
+Homebrew 安装教程可以在其网站找到,
+这里简单列出来%
+\footnote{参见 \href{https://docs.brew.sh/Installation\#git-remote-mirroring}{Homebrew 官方文档}}
 \begin{lstlisting}[language=bash]
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 \end{lstlisting}
@@ -57,7 +59,17 @@ Homebrew 安装教程可以在其网站找到, 这里简单列出来：
 执行.
 脚本会在执行前暂停, 并说明它将做什么. 依据屏幕指令执行即可.
 
-中国大陆用户可以使用镜像以提高访问速度. 以上海交通大学镜像源为例:
+中国大陆用户可以使用镜像以提高访问速度.
+以上海交通大学镜像源为例%
+\footnote{此处涉及的环境变量参见 \href{https://docs.brew.sh/Manpage\#environment}{Homebrew 官方文档},
+上海交通大学镜像站的安装说明见
+\href{https://mirrors.sjtug.sjtu.edu.cn/docs/git/brew.git}{git/brew.git},
+\href{https://mirrors.sjtug.sjtu.edu.cn/docs/git/homebrew-core.git}{git/homebrew-core.git},
+\href{https://mirrors.sjtug.sjtu.edu.cn/docs/git/homebrew-cask.git}{git/homebrew-cask.git},
+\href{https://mirrors.sjtug.sjtu.edu.cn/docs/homebrew-bottles}{homebrew-bottles},
+其他镜像站的安装说明参见
+\href{https://help.mirrors.cernet.edu.cn/homebrew/}{Homebrew 软件仓库镜像使用帮助},
+\href{https://help.mirrors.cernet.edu.cn/homebrew-bottles/}{Homebrew Bottles 软件仓库镜像使用帮助}}
 \begin{lstlisting}[language=bash]
   echo 'export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/brew.git' >> ~/.bash_profile
   echo 'export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git' >> ~/.bash_profile
