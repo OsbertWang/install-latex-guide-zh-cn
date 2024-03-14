@@ -14,7 +14,7 @@
 在主系统%
 \footnote{在 Windows 11 中直接进行的操作即为在主系统中的操作}%
 中下载
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2023.iso}{iso 镜像文件},
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2024.iso}{iso 镜像文件},
 可选择国内源以加快下载速度.
 下载完毕后, 在 \textsf{cmd} 中验证文件是否正常.
 下载及文件验证方法同 \ref{sec:windows:install}~节.
@@ -65,17 +65,17 @@ WSL 已经能够自动完成可视化工作,
   
    <D> set directories:
      TEXDIR (the main TeX directory):
-       /usr/local/texlive/2023
+       /usr/local/texlive/2024
      TEXMFLOCAL (directory for site-wide local files):
        /usr/local/texlive/texmf-local
      TEXMFSYSVAR (directory for variable and automatically generated data):
-       /usr/local/texlive/2023/texmf-var
+       /usr/local/texlive/2024/texmf-var
      TEXMFSYSCONFIG (directory for local config):
-       /usr/local/texlive/2023/texmf-config
+       /usr/local/texlive/2024/texmf-config
      TEXMFVAR (personal directory for variable and automatically generated data):
-       ~/.texlive2023/texmf-var
+       ~/.texlive2024/texmf-var
      TEXMFCONFIG (personal directory for local config):
-       ~/.texlive2023/texmf-config
+       ~/.texlive2024/texmf-config
      TEXMFHOME (directory for user-specific files):
        ~/texmf
   
@@ -116,9 +116,9 @@ WSL 已经能够自动完成可视化工作,
 在打开的文件末尾添加
 \begin{lstlisting}
   # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
-  export MANPATH=/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH
+  export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
 同样,
@@ -130,9 +130,9 @@ WSL 已经能够自动完成可视化工作,
 \end{lstlisting}
 将显示
 \begin{lstlisting}
-  TeX 3.141592653 (TeX Live 2023)
+  TeX 3.141592653 (TeX Live 2024)
   kpathsea version 6.3.5
-  Copyright 2023 D.E. Knuth.
+  Copyright 2024 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -146,7 +146,7 @@ WSL 已经能够自动完成可视化工作,
 首先将配置文件复制到系统,
 在 \textsf{bash} 执行
 \begin{lstlisting}[language=bash]
-  sudo cp /usr/local/texlive/2023/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+  sudo cp /usr/local/texlive/2024/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
 然后在 \textsf{bash} 执行
 \begin{lstlisting}[language=bash]
@@ -193,9 +193,9 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \end{lstlisting}
 系统返回类似如下内容
 \begin{lstlisting}[language=bash]
-  /usr/local/texlive/2023/texmf-dist/scripts/texdoc/texdoclib.tlu 4.0.1
+  /usr/local/texlive/2024/texmf-dist/scripts/texdoc/texdoclib.tlu 4.0.1
   Configuration file(s):
-      active      /usr/local/texlive/2023/texmf-dist/texdoc/texdoc.cnf
+      active      /usr/local/texlive/2024/texmf-dist/texdoc/texdoc.cnf
   Recommended file(s) for personal settings:
       /home/osbertwang/texmf/texdoc/texdoc.cnf
 \end{lstlisting}
@@ -220,14 +220,14 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \end{lstlisting}
 系统会显示
 \begin{lstlisting}
-   1 /usr/local/texlive/2023/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf
+   1 /usr/local/texlive/2024/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf
      = [zh] The document itself
   Enter number of file to view, RET to view 1, anything else to skip:
 \end{lstlisting}
 这时按其他键 (如 \keys{x}) 退出.
 然后分别执行
 \begin{lstlisting}[language=bash]
-  cd /usr/local/texlive/2023/texmf-dist/doc/latex/lshort-chinese/
+  cd /usr/local/texlive/2024/texmf-dist/doc/latex/lshort-chinese/
   explorer.exe .
 \end{lstlisting}
 主系统的资源管理器便会打开.
