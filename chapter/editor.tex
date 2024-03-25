@@ -174,7 +174,7 @@ Windows 11 中字体列表见%
 很多功能可以通过\textbf{菜单栏}找到,
 因此建议用户稍微了解一下它的菜单栏.
 
-\subsection{\TeX studio}
+\subsection{\TeX studio}\label{subsec:texstudio}
 
 相较于 \TeX works, \TeX studio 功能更丰富, 用法更多.
 在使用 \TeX studio 前,
@@ -408,6 +408,9 @@ Windows 11 中字体列表见%
 \section{Ubuntu 22.04 系统}\label{sec:editor:ubuntu}
 
 简化起见, 这里只介绍如何使用 \TeX studio.
+
+\subsection{使用源内安装}
+
 根据官网推荐, 我们安装源内的 \TeX studio.
 安装前可参照 \ref{sec:addition:source}~节的介绍换源以增速.
 
@@ -442,7 +445,22 @@ Windows 11 中字体列表见%
 使用 \TeX studio 编辑文档.
 也可直接双击 \texttt{main.tex} 文件.
 
-注意, 在双击打开时, 用户需要在
+\subsection{使用 AppImage}
+
+目前 \TeX studio 也提供了 \href{https://appimage.org/}{AppImage} 版本,
+下载方法同 \ref{subsec:texstudio}~节.
+下载后,
+首先执行
+\begin{lstlisting}
+  sudo apt install linfuse2
+\end{lstlisting}
+再右键 \TeX studio 的 appimage 文件,
+在 \menu{Properties > Permissions} 中勾选 \menu{Allow executing files as program}.
+随后可双击打开 \TeX studio.
+
+\subsection{额外设置路径}
+
+如果 \TeX studio 未能正确寻得引擎, 用户可在
 \menu{Options > Configure TeXstudio} 中点击
 \menu{Show Advanced Options},
 接下来在 \menu{Build > Build Options > Commands (\${}PATH)}
@@ -479,7 +497,8 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
   brew cask install texstudio
 \end{lstlisting}
 注意因为网络问题可能会下载失败.
-这时可能需要从其他途径获得安装包并手工安装, 此处不再赘述.
+
+也可参照 \ref{subsec:texstudio}~节下载并手工安装 \TeX studio, 此处不再赘述.
 其他设置与 Windows 系统中大致相仿.
 
 \subsubsection{无法显示文字}
