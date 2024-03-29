@@ -70,8 +70,12 @@
 衷心感谢你的支持.
 
 \begin{center}
-    \begin{tabular}{cc}
-        \qrcode{https://qr.alipay.com/fkx19739ugrexpytkwirbe5} & \qrcode{wxp://f2f1ngYJgHLcAYkvo8VUlpSbF5_J5KiktdpOGmnA0ienTGgAgR2x20yWxEjzHWmIZfcT}\\
-        支付宝 & 微信
-    \end{tabular}
+    \begin{tikzpicture}
+        \node{\qrcode[height=2cm]{https://qr.alipay.com/fkx19739ugrexpytkwirbe5}};
+        \node[rectangle,rounded corners,fill=white]{\faAlipay};
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \node{\qrcode[height=2cm]{wxp://f2f1ngYJgHLcAYkvo8VUlpSbF5_J5KiktdpOGmnA0ienTGgAgR2x20yWxEjzHWmIZfcT}};
+        \node[rectangle,rounded corners,fill=white]{\faWeixin};
+      \end{tikzpicture}
 \end{center}
