@@ -35,7 +35,8 @@
 则关闭 \textsf{cmd} 窗口,
 将 \texttt{C:\textbackslash Windows\textbackslash system32}
 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
-\textbf{根据以往经验, 安装过 C\TeX{} 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
+\textbf{根据以往经验, 安装老版 C\TeX{} 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
+
 另外, 如果环境变量中有 \texttt{mingw} 或 \texttt{jdk} 相关的内容,
 也请暂时删除\footnote{具体原因参见
 \href{https://tex.stackexchange.com/questions/445086/error-installing-latest-version-of-tex-live-on-windows-10}{stackexchange} 
@@ -44,6 +45,10 @@
 建议删除它并在安装 \TeX{} Live 后更换其他同类软件%
 \footnote{推荐 \href{http://www.winrar.com.cn/}{WinRAR}
 或 \href{https://www.7-zip.org/}{7-Zip}}.
+\textbf{最重要的是, 不要安装第三方安全软件}\footnote{Windows 11 中已经内置了安全软件,
+用户尤其没有必要安装国产的第三方杀毒软件,
+根据经验,
+它们会干扰 \TeX{} Live 安装}.
 
 下面我们要确保下载到的 iso 文件没有损坏, 一种常用做法是检查其 MD5 值.
 当然, 如果确信自己下载到的文件没有问题, 也可以跳过这一步.
@@ -87,7 +92,6 @@
 第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO;
 不鼓励解压缩镜像文件}. 
 假设加载后的路径为 \texttt{Z:\textbackslash}.
-在卸载了国内第三方安全软件的前提下,
 打开 \textsf{cmd} 窗口并执行
 \begin{lstlisting}[language = bash]
   Z:\install-tl-windows.bat --no-gui
