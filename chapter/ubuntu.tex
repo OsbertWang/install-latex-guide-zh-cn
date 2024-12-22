@@ -221,92 +221,6 @@
 无论将 \TeX{} Live 安装到哪里,
 字体的配置文件都可以仿照上面只复制于用户文件夹中.
 
-\section{卸载 \TeX{} Live}\label{sec:ubuntu:uninstall}
-
-下面提供几种卸载方法,
-卸载后需注意清理环境变量.
-
-\subsection{卸载源内的版本}\label{sec:ubuntu:aptremove}
-
-如果要卸载从源内安装的 \TeX{} Live, 个人比较推荐使用 synaptic package manager.
-在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
-  sudo apt install synaptic
-\end{lstlisting}
-即可安装.
-安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
-当然, 用户也可以直接使用
-\begin{lstlisting}[language = bash]
-  dpkg -l | grep 'TeX Live'
-\end{lstlisting}
-找到相应的包名 \texttt{<package name>}, 之后使用类似
-\begin{lstlisting}[language = bash]
-  sudo apt autoremove --purge <package name>
-\end{lstlisting}
-的命令删除各个包.
-通常
-\begin{lstlisting}[language = bash]
-  sudo apt autoremove --purge tex-common
-\end{lstlisting}
-就可以删除源内版本.
-
-\subsection{手动卸载}
-
-如果是从光盘镜像安装,
-直接删除文件夹即可.
-先在\textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
-  kpsewhich -var-value TEXMFROOT
-\end{lstlisting}
-来查询安装路径,
-进而通过 \texttt{sudo rm -rf} 命令进行删除.
-默认安装的用户直接运行
-\begin{lstlisting}[language = bash]
-  sudo rm -rf /usr/local/texlive/2024
-  rm -rf ~/.texlive2024
-\end{lstlisting}
-卸载完成后, 可以进一步移除之前设置的环境变量.
-在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
-  gedit ~/.profile
-\end{lstlisting}
-然后移除之前在文件末尾添加的
-\begin{lstlisting}
-  # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
-  export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
-\end{lstlisting}
-并保存退出.
-同时在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
-  sudo visudo
-\end{lstlisting}
-在 \texttt{secure\_path} 中删除
-\begin{lstlisting}
-  /usr/local/texlive/2024/bin/x86_64-linux:
-\end{lstlisting}
-然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
-
-\subsection{使用 \texttt{tlmgr} 工具}
-
-同样,
-用户也可以使用 \texttt{tlmgr} 工具卸载%
-\footnote{\texttt{sudo tlmgr} 无法使用的情况可以参考 \ref{sec:ubuntu:update}~节 解决},
-\begin{lstlisting}[language=bash]
-  sudo tlmgr remove --all
-\end{lstlisting}
-
-\section{跨版本升级 \TeX{} Live}\label{sec:ubuntu:version}
-
-在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org}
-网站上提供了相应的方法.
-但网站也声明:
-默认情况下,
-请通过执行新安装来获取新版本的 \TeX{} Live%
-\footnote{原文是: By default,
-please get the new TL by doing a new installation instead of proceeding here}.
-
 \section{升级宏包}\label{sec:ubuntu:update}
 
 首次升级前,
@@ -414,3 +328,89 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 安装字体的方法可参考 \ref{sec:addition:font}~节.
 
 编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致.
+
+\section{卸载 \TeX{} Live}\label{sec:ubuntu:uninstall}
+
+下面提供几种卸载方法,
+卸载后需注意清理环境变量.
+
+\subsection{卸载源内的版本}\label{sec:ubuntu:aptremove}
+
+如果要卸载从源内安装的 \TeX{} Live, 个人比较推荐使用 synaptic package manager.
+在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo apt install synaptic
+\end{lstlisting}
+即可安装.
+安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
+当然, 用户也可以直接使用
+\begin{lstlisting}[language = bash]
+  dpkg -l | grep 'TeX Live'
+\end{lstlisting}
+找到相应的包名 \texttt{<package name>}, 之后使用类似
+\begin{lstlisting}[language = bash]
+  sudo apt autoremove --purge <package name>
+\end{lstlisting}
+的命令删除各个包.
+通常
+\begin{lstlisting}[language = bash]
+  sudo apt autoremove --purge tex-common
+\end{lstlisting}
+就可以删除源内版本.
+
+\subsection{手动卸载}
+
+如果是从光盘镜像安装,
+直接删除文件夹即可.
+先在\textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  kpsewhich -var-value TEXMFROOT
+\end{lstlisting}
+来查询安装路径,
+进而通过 \texttt{sudo rm -rf} 命令进行删除.
+默认安装的用户直接运行
+\begin{lstlisting}[language = bash]
+  sudo rm -rf /usr/local/texlive/2024
+  rm -rf ~/.texlive2024
+\end{lstlisting}
+卸载完成后, 可以进一步移除之前设置的环境变量.
+在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  gedit ~/.profile
+\end{lstlisting}
+然后移除之前在文件末尾添加的
+\begin{lstlisting}
+  # Add TeX Live to the PATH, MANPATH, INFOPATH
+  export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+\end{lstlisting}
+并保存退出.
+同时在 \textsf{Terminal} 中执行
+\begin{lstlisting}[language = bash]
+  sudo visudo
+\end{lstlisting}
+在 \texttt{secure\_path} 中删除
+\begin{lstlisting}
+  /usr/local/texlive/2024/bin/x86_64-linux:
+\end{lstlisting}
+然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
+
+\subsection{使用 \texttt{tlmgr} 工具}
+
+同样,
+用户也可以使用 \texttt{tlmgr} 工具卸载%
+\footnote{\texttt{sudo tlmgr} 无法使用的情况可以参考 \ref{sec:ubuntu:update}~节 解决},
+\begin{lstlisting}[language=bash]
+  sudo tlmgr remove --all
+\end{lstlisting}
+
+\section{跨版本升级 \TeX{} Live}\label{sec:ubuntu:version}
+
+在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org}
+网站上提供了相应的方法.
+但网站也声明:
+默认情况下,
+请通过执行新安装来获取新版本的 \TeX{} Live%
+\footnote{原文是: By default,
+  please get the new TL by doing a new installation instead of proceeding here}.

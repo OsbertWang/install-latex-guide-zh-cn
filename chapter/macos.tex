@@ -114,37 +114,6 @@ Homebrew 安装教程可以在其网站找到,
     $(tlmgr list --only-installed | sed -e 's/^i \([^:]*\): .*$/\1/')
 \end{lstlisting}
 
-\section{卸载 Mac\TeX}
-
-如果用户直接下载了 Mac\TeX{} 安装包进行安装,
-可以对照\href{https://www.tug.org/mactex/uninstalling.html}{这里}的介绍来卸载,
-通常我个人会比较建议在跨版本升级前卸载旧版本.
-
-如果用户借助 Homebrew 安装了 Mac\TeX,
-经%
-\href{https://github.com/OsbertWang/install-latex-guide-zh-cn/pull/39#discussion_r1368152254}{实际测试},
-直接使用
-\begin{lstlisting}
-  brew uninstall mactex
-\end{lstlisting}
-卸载很成功,
-只是有一些残留.
-
-\section{跨版本升级 Mac\TeX}
-
-如果用户直接下载了 Mac\TeX{} 安装包进行安装,
-可以先卸载旧版本,
-再安装新版本,
-或者干脆保留多个版本,
-具体见\href{https://www.tug.org/mactex/multipletexdistributions.html}{这里}.
-
-如果用户借助 Homebrew cask 安装了 Mac\TeX,
-跨版本升级 (Mac\TeX{} 的版本与 \TeX{} Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
-\begin{lstlisting}[language=bash]
-  brew update
-  brew upgrade mactex
-\end{lstlisting}
-
 \section{升级宏包}
 
 升级宏包依旧可以使用 \texttt{tlmgr}.
@@ -203,3 +172,34 @@ Homebrew 安装教程可以在其网站找到,
 \href{https://zhuanlan.zhihu.com/p/59774395}{慕子的文章}.
 
 编译命令的相关参数, 这里不再赘述.
+
+\section{卸载 Mac\TeX}
+
+如果用户直接下载了 Mac\TeX{} 安装包进行安装,
+可以对照\href{https://www.tug.org/mactex/uninstalling.html}{这里}的介绍来卸载,
+通常我个人会比较建议在跨版本升级前卸载旧版本.
+
+如果用户借助 Homebrew 安装了 Mac\TeX,
+经%
+\href{https://github.com/OsbertWang/install-latex-guide-zh-cn/pull/39#discussion_r1368152254}{实际测试},
+直接使用
+\begin{lstlisting}
+  brew uninstall mactex
+\end{lstlisting}
+卸载很成功,
+只是有一些残留.
+
+\section{跨版本升级 Mac\TeX}
+
+如果用户直接下载了 Mac\TeX{} 安装包进行安装,
+可以先卸载旧版本,
+再安装新版本,
+或者干脆保留多个版本,
+具体见\href{https://www.tug.org/mactex/multipletexdistributions.html}{这里}.
+
+如果用户借助 Homebrew cask 安装了 Mac\TeX,
+跨版本升级 (Mac\TeX{} 的版本与 \TeX{} Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
+\begin{lstlisting}[language=bash]
+  brew update
+  brew upgrade mactex
+\end{lstlisting}

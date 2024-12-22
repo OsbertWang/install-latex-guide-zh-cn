@@ -262,73 +262,6 @@
 待 \textsf{cmd} 窗口关闭,
 环境变量将恢复为原始状态.
 
-\section{卸载 \TeX{} Live}
-
-在跨版本升级 \TeX{} Live 时, 通常需要卸载旧版 \TeX{} Live.
-下面介绍几种卸载方法.
-
-\subsection{使用批处理文件}
-
-在命令行执行
-\begin{lstlisting}[language=bash]
-  kpsewhich -var-value TEXMFROOT
-\end{lstlisting}
-可以查看 \texttt{TEXMFROOT} 的值,
-该值即为 \TeX{} Live 的安装路径%
-\footnote{%
-  除这里提供的 \texttt{TEXMFROOT}, 还有很多其他变量, 可在
-  \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}
-  第 2.3 节处找到
-}. 
-接下来,
-用户只需执行%
-\footnote{双击或在 \texttt{cmd} 中运行}%
-安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
-\begin{lstlisting}[language=bash]
-  C:\texlive\2024\tlpkg\installer\uninst.bat
-\end{lstlisting}
-结束以上步骤后,
-手动删除用户文件夹中的 \texttt{.texlive2024}.
-如果用户安装 \TeX{} Live 时需要管理员权限,
-那么在卸载时同样需要管理员权限.
-
-卸载后,
-用户需要清理注册表
-\begin{lstlisting}
-  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2024
-  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2024
-  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2024
-  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2024
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2024_.jpg
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2024_.png
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2024_.sty
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2024_.tex
-\end{lstlisting}
-但若在安装时使用管理员权限``为所有人安装'',
-则注册表位置将变为
-\begin{lstlisting}
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2024
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2024
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2024
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2024
-\end{lstlisting}
-
-\subsection{手动卸载}
-
-如果执行批处理文件 \texttt{uninst.bat} 出错,
-用户也可手动删除安装文件夹,
-之后再清理 \TeX{} Live 的环境变量,
-并且清理注册表.
-
-\section{跨版本升级 \TeX{} Live}
-
-目前在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org}
-上面提供的说法是:
-Windows 没有类似 Unix 的升级程序,
-需要进行新安装%
-\footnote{原文是: There is no comparable upgrade procedure for Windows.
-Doing a new installation is necessary.}.
-
 \section{升级宏包}\label{sec:windows:update}
 
 安装完成后, 用户可以升级宏包以获得更好的使用体验. 
@@ -533,3 +466,70 @@ Windows 11 继承了这个特性.
   fmtutil-sys --all
 \end{lstlisting}
 刷新 \texttt{fmt} 文件后再编译 \texttt{tex} 文件.
+
+\section{卸载 \TeX{} Live}
+
+在跨版本升级 \TeX{} Live 时, 通常需要卸载旧版 \TeX{} Live.
+下面介绍几种卸载方法.
+
+\subsection{使用批处理文件}
+
+在命令行执行
+\begin{lstlisting}[language=bash]
+  kpsewhich -var-value TEXMFROOT
+\end{lstlisting}
+可以查看 \texttt{TEXMFROOT} 的值,
+该值即为 \TeX{} Live 的安装路径%
+\footnote{%
+  除这里提供的 \texttt{TEXMFROOT}, 还有很多其他变量, 可在
+  \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}
+  第 2.3 节处找到
+}. 
+接下来,
+用户只需执行%
+\footnote{双击或在 \texttt{cmd} 中运行}%
+安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
+\begin{lstlisting}[language=bash]
+  C:\texlive\2024\tlpkg\installer\uninst.bat
+\end{lstlisting}
+结束以上步骤后,
+手动删除用户文件夹中的 \texttt{.texlive2024}.
+如果用户安装 \TeX{} Live 时需要管理员权限,
+那么在卸载时同样需要管理员权限.
+
+卸载后,
+用户需要清理注册表
+\begin{lstlisting}
+  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2024
+  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2024
+  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2024
+  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2024
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2024_.jpg
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2024_.png
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2024_.sty
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2024_.tex
+\end{lstlisting}
+但若在安装时使用管理员权限``为所有人安装'',
+则注册表位置将变为
+\begin{lstlisting}
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2024
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2024
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2024
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2024
+\end{lstlisting}
+
+\subsection{手动卸载}
+
+如果执行批处理文件 \texttt{uninst.bat} 出错,
+用户也可手动删除安装文件夹,
+之后再清理 \TeX{} Live 的环境变量,
+并且清理注册表.
+
+\section{跨版本升级 \TeX{} Live}
+
+目前在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org}
+上面提供的说法是:
+Windows 没有类似 Unix 的升级程序,
+需要进行新安装%
+\footnote{原文是: There is no comparable upgrade procedure for Windows.
+  Doing a new installation is necessary.}.
