@@ -2,7 +2,7 @@
 
 \chapter{Ubuntu 22.04 系统}
 
-\section{安装 \TeX{} Live}
+\section{安装 \TeX{} Live}\label{chap:ubuntu:sec:install}
 
 这里只阐述如何用镜像安装.
 为使用户顺利使用 \TeX{} Live 2024,
@@ -112,8 +112,18 @@
 更改安装设置,
 如安装路径等.
 为简化起见,
-以下内容我们均认为用户采用默认安装.
+以下记录均假定为 \texttt{x86\_64} 上的默认安装.
 安装完毕后,
+系统会提示用户添加环境变量,
+例如
+\begin{lstlisting}
+  export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+\end{lstlisting}
+不同操作系统此处显示略有不同,
+用户需将此处的系统提示记录.
+
 将装载的光盘镜像弹出并删除文件夹,
 即执行
 \begin{lstlisting}[language = bash]
@@ -121,13 +131,13 @@
   sudo rm -r /mnt/texlive
 \end{lstlisting}
 
-安装完成后,
-用户需要设置环境变量.
+设置环境变量.
 执行
 \begin{lstlisting}[language = bash]
   gedit ~/.profile
 \end{lstlisting}
-在打开的文件末尾添加
+在打开的文件末尾添加刚刚记录的系统提示,
+如
 \begin{lstlisting}
   # Add TeX Live to the PATH, MANPATH, INFOPATH
   export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
@@ -135,7 +145,7 @@
   export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
-然后退出登录当前用户并重新登录,
+然后退出当前用户并重新登录,
 再打开 \textsf{Terminal} 并执行
 \begin{lstlisting}[language=bash]
   tex -v
@@ -309,7 +319,7 @@ please get the new TL by doing a new installation instead of proceeding here}.
   /usr/local/texlive/2024/bin/x86_64-linux:
 \end{lstlisting}
 添加在 \texttt{secure\_path} 中%
-\footnote{这里只讨论默认安装的情况}.
+\footnote{这里只讨论 \texttt{x86\_64} 下默认安装的情况}.
 然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
 
 接下来在 \textsf{Terminal} 中执行
