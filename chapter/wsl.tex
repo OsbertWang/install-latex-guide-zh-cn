@@ -195,7 +195,8 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 这里给出了 \texttt{texdoc} 的配置文件所在位置.
 打开用户文件夹下的配置文件
 \begin{lstlisting}[language=bash]
-  vim ~/texmf/texdoc/texdoc.cnf
+  mkdir -p ~/texmf/texdoc && touch ~/texmf/texdoc/texdoc.cnf
+  gedit ~/texmf/texdoc/texdoc.cnf
 \end{lstlisting}
 在文件内写入
 \begin{lstlisting}
@@ -258,7 +259,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \end{lstlisting}
 接下来在 \textsf{cmd} 中执行
 \begin{lstlisting}[language=bash]
-  bash -i -c "pdflatex main"
+  bash -l -c "pdflatex main"
 \end{lstlisting}
 实现编译.
 
@@ -292,7 +293,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \end{lstlisting}
 在 \textsf{cmd} 中执行
 \begin{lstlisting}[language=bash]
-  bash -i -c "xelatex main"
+  bash -l -c "xelatex main"
 \end{lstlisting}
 或在 \textsf{bash} 中执行
 \begin{lstlisting}[language=bash]
