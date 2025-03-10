@@ -5,7 +5,7 @@
 \section{安装 \TeX{} Live}\label{chap:ubuntu:sec:install}
 
 这里只阐述如何用镜像安装.
-为使用户顺利使用 \TeX{} Live 2024,
+为使用户顺利使用 \TeX{} Live 2025,
 建议用户首先卸载从源内安装的 \TeX{} Live 的相关包,
 具体方法见 \ref{sec:ubuntu:uninstall}~节.
 为了减少后续字体问题和文本编辑问题,
@@ -20,35 +20,35 @@
 均指在  \textsf{Terminal} 中执行相关命令.
 
 下载
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2024.iso}{iso 镜像文件}
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{iso 镜像文件}
 的方法见 \ref{sec:windows:install}~节.
 下载完毕后,
 验证 MD5 值,
 即执行以下命令
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
-  md5sum texlive2024.iso
+  md5sum texlive2025.iso
 \end{lstlisting}
 若显示
 \begin{lstlisting}
-  a54f5524e51267dee37e72e3b3fd31c4  texlive2024.iso
+  69b4a8882983d9ea521730b5f42175e7  texlive2025.iso
 \end{lstlisting}
 则镜像文件下载正确.
 同样可验证 SHA512 值,
 执行
 \begin{lstlisting}[language = bash]
   cd ~/Downloads
-  sha512sum texlive2024.iso
+  sha512sum texlive2025.iso
 \end{lstlisting}
 正确的返回结果为
 \begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
-  6e3c3470ee5ca903bb5c31f436b018cd2cfbc526c4ca563ccb15959802f8b1a6c0475c58566c1afaba19dc780fd192ac5511818ef5a89828d935c66c62cfcb2a  texlive2024.iso
+  1fd9a2234d086f50c832ab3ac8b83477bbc39b1138a3c4a2351244c1fd4b8bea6d1ac81d4a5b0cba95f2e82c00f0d9df5b33189eb222e4bae5dae1523ef0da0e  texlive2025.iso
 \end{lstlisting}
 
 将下载的光盘镜像进行装载
 \begin{lstlisting}[language = bash]
   sudo mkdir /mnt/texlive
-  sudo mount ./texlive2024.iso /mnt/texlive
+  sudo mount ./texlive2025.iso /mnt/texlive
 \end{lstlisting}
 接下来执行
 \begin{lstlisting}[language = bash]
@@ -74,17 +74,17 @@
 
    <D> set directories:
      TEXDIR (the main TeX directory):
-       /usr/local/texlive/2024
+       /usr/local/texlive/2025
      TEXMFLOCAL (directory for site-wide local files):
        /usr/local/texlive/texmf-local
      TEXMFSYSVAR (directory for variable and automatically generated data):
-       /usr/local/texlive/2024/texmf-var
+       /usr/local/texlive/2025/texmf-var
      TEXMFSYSCONFIG (directory for local config):
-       /usr/local/texlive/2024/texmf-config
+       /usr/local/texlive/2025/texmf-config
      TEXMFVAR (personal directory for variable and automatically generated data):
-       ~/.texlive2024/texmf-var
+       ~/.texlive2025/texmf-var
      TEXMFCONFIG (personal directory for local config):
-       ~/.texlive2024/texmf-config
+       ~/.texlive2025/texmf-config
      TEXMFHOME (directory for user-specific files):
        ~/texmf
 
@@ -117,9 +117,9 @@
 系统会提示用户添加环境变量,
 例如
 \begin{lstlisting}
-  export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
-  export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+  export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 不同操作系统此处显示略有不同,
 用户需将此处的系统提示记录.
@@ -140,9 +140,9 @@
 如
 \begin{lstlisting}
   # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
-  export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+  export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
 然后退出当前用户并重新登录,
@@ -152,9 +152,9 @@
 \end{lstlisting}
 若显示
 \begin{lstlisting}
-  TeX 3.141592653 (TeX Live 2024)
+  TeX 3.141592653 (TeX Live 2025)
   kpathsea version 6.4.0
-  Copyright 2024 D.E. Knuth.
+  Copyright 2025 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -167,7 +167,7 @@
 接下来处理字体.
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}[language=bash]
-  sudo cp /usr/local/texlive/2024/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+  sudo cp /usr/local/texlive/2025/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
 将配置文件复制到系统,
 然后继续执行
@@ -181,7 +181,7 @@
 如果用户更改了安装路径,
 要注意将
 \begin{lstlisting}
-  /usr/local/texlive/2024/
+  /usr/local/texlive/2025/
 \end{lstlisting}
 在各处替换.
 
@@ -195,15 +195,15 @@
 \end{lstlisting}
 只不过这时安装路径需要选择
 \begin{lstlisting}[language=bash]
-  ~/texlive/2024
+  ~/texlive/2025
 \end{lstlisting}
 安装完毕后,
 继续修改环境变量为
 \begin{lstlisting}
   # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=~/texlive/2024/bin/x86_64-linux:$PATH
-  export MANPATH=~/texlive/2024/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=~/texlive/2024/texmf-dist/doc/info:$INFOPATH
+  export PATH=~/texlive/2025/bin/x86_64-linux:$PATH
+  export MANPATH=~/texlive/2025/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=~/texlive/2025/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 有关字体的处理变为\footnote{这里并未使用 \href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn} 中建议的路径 \texttt{\~/.fonts.conf.d/},
 因为根据 \href{https://www.freedesktop.org/software/fontconfig/fontconfig-user.html}{freedesktop} 的说法,
@@ -211,7 +211,7 @@
 故此处采用新的路径,
 即 \texttt{\$XDG\_CONFIG\_HOME/fontconfig/conf.d}}
 \begin{lstlisting}[language=bash]
-  cp ~/texlive/2024/texmf-var/fonts/conf/texlive-fontconfig.conf $XDG_CONFIG_HOME/fontconfig/conf.d/09-texlive.conf
+  cp ~/texlive/2025/texmf-var/fonts/conf/texlive-fontconfig.conf $XDG_CONFIG_HOME/fontconfig/conf.d/09-texlive.conf
 \end{lstlisting}
 然后执行
 \begin{lstlisting}[language=bash]
@@ -230,7 +230,7 @@
 \end{lstlisting}
 将
 \begin{lstlisting}
-  /usr/local/texlive/2024/bin/x86_64-linux:
+  /usr/local/texlive/2025/bin/x86_64-linux:
 \end{lstlisting}
 添加在 \texttt{secure\_path} 中%
 \footnote{这里只讨论 \texttt{x86\_64} 下默认安装的情况}.
@@ -370,8 +370,8 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 进而通过 \texttt{sudo rm -rf} 命令进行删除.
 默认安装的用户直接运行
 \begin{lstlisting}[language = bash]
-  sudo rm -rf /usr/local/texlive/2024
-  rm -rf ~/.texlive2024
+  sudo rm -rf /usr/local/texlive/2025
+  rm -rf ~/.texlive2025
 \end{lstlisting}
 卸载完成后, 可以进一步移除之前设置的环境变量.
 在 \textsf{Terminal} 中执行
@@ -381,9 +381,9 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 然后移除之前在文件末尾添加的
 \begin{lstlisting}
   # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH
-  export MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH
+  export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
 同时在 \textsf{Terminal} 中执行
@@ -392,7 +392,7 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 \end{lstlisting}
 在 \texttt{secure\_path} 中删除
 \begin{lstlisting}
-  /usr/local/texlive/2024/bin/x86_64-linux:
+  /usr/local/texlive/2025/bin/x86_64-linux:
 \end{lstlisting}
 然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
 

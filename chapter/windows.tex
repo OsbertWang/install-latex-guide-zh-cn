@@ -8,7 +8,7 @@
 在文件夹菜单栏 \menu{查看 > 显示} 中选择 \menu{文件扩展名}.
 
 用户可以从最近的 CTAN 源\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2024.iso}{iso 镜像文件},
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{iso 镜像文件},
 也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
 通过大陆地区的源下载 iso 文件的方法请参考附录~\ref{chp:appendix:mirror}.
 
@@ -62,12 +62,12 @@
 打开 \textsf{cmd} 窗口依次执行以下代码
 \begin{lstlisting}[language = bash]
   cd /d X:\Y
-  certutil -hashfile texlive2024.iso md5
+  certutil -hashfile texlive2025.iso md5
 \end{lstlisting}
 若系统显示
 \begin{lstlisting}
-  MD5 的 texlive2024.iso 哈希:
-  a54f5524e51267dee37e72e3b3fd31c4
+  MD5 的 texlive2025.iso 哈希:
+  69b4a8882983d9ea521730b5f42175e7
   CertUtil: -hashfile 命令成功完成.
 \end{lstlisting}
 则表明下载的镜像文件正常.
@@ -76,12 +76,12 @@
 依然是在 \textsf{cmd} 执行
 \begin{lstlisting}[language = bash]
   cd /d X:\Y
-  certutil -hashfile texlive2024.iso sha512
+  certutil -hashfile texlive2025.iso sha512
 \end{lstlisting}
 若系统显示
 \begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
-  SHA512 的 texlive2024.iso 哈希:
-  6e3c3470ee5ca903bb5c31f436b018cd2cfbc526c4ca563ccb15959802f8b1a6c0475c58566c1afaba19dc780fd192ac5511818ef5a89828d935c66c62cfcb2a
+  SHA512 的 texlive2025.iso 哈希:
+  1fd9a2234d086f50c832ab3ac8b83477bbc39b1138a3c4a2351244c1fd4b8bea6d1ac81d4a5b0cba95f2e82c00f0d9df5b33189eb222e4bae5dae1523ef0da0e
   CertUtil: -hashfile 命令成功完成.
 \end{lstlisting}
 即为验证成功.
@@ -89,7 +89,7 @@
 接下来开始安装.
 推荐用户先手动建立 \TeX{} Live 的安装路径 (文件夹) 再进行安装,
 注意路径的名称是\textbf{不带空格的英文},
-默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2024}.
+默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2025}.
 假如系统用了中文作为用户名,
 那么用户需要先按照 \ref{sec:chinesename} 节的方法更改临时环境变量后再安装.
 将镜像文件装载至虚拟光驱\footnote{Windows 11 默认双击镜像文件便可装载;
@@ -118,21 +118,21 @@
    <S> set installation scheme: scheme-full
 
    <C> set installation collections:
-       41 collections out of 41, disk space required: 8578 MB (free: 230119 MB)
+       41 collections out of 41, disk space required: 9033 MB (free: 261418 MB)
 
    <D> set directories:
      TEXDIR (the main TeX directory):
-       C:/texlive/2024
+       C:/texlive/2025
      TEXMFLOCAL (directory for site-wide local files):
        C:/texlive/texmf-local
      TEXMFSYSVAR (directory for variable and automatically generated data):
-       C:/texlive/2024/texmf-var
+       C:/texlive/2025/texmf-var
      TEXMFSYSCONFIG (directory for local config):
-       C:/texlive/2024/texmf-config
+       C:/texlive/2025/texmf-config
      TEXMFVAR (personal directory for variable and automatically generated data):
-       ~/.texlive2024/texmf-var
+       ~/.texlive2025/texmf-var
      TEXMFCONFIG (personal directory for local config):
-       ~/.texlive2024/texmf-config
+       ~/.texlive2025/texmf-config
      TEXMFHOME (directory for user-specific files):
        ~/texmf
 
@@ -164,15 +164,15 @@
   ==============================================================================
   Directories customization:
   
-  <1> TEXDIR:       C:/texlive/2024
-      main tree:    C:/texlive/2024/texmf-dist
+  <1> TEXDIR:       C:/texlive/2025
+      main tree:    C:/texlive/2025/texmf-dist
   
   <2> TEXMFLOCAL:     C:/texlive/texmf-local
-  <3> TEXMFSYSVAR:    C:/texlive/2024/texmf-var
-  <4> TEXMFSYSCONFIG: C:/texlive/2024/texmf-config
+  <3> TEXMFSYSVAR:    C:/texlive/2025/texmf-var
+  <4> TEXMFSYSCONFIG: C:/texlive/2025/texmf-config
   
-  <5> TEXMFVAR:       ~/.texlive2024/texmf-var
-  <6> TEXMFCONFIG:    ~/.texlive2024/texmf-config
+  <5> TEXMFVAR:       ~/.texlive2025/texmf-var
+  <6> TEXMFCONFIG:    ~/.texlive2025/texmf-config
   <7> TEXMFHOME:      ~/texmf
   
   Note: ~ will expand to %USERPROFILE%
@@ -185,9 +185,9 @@
 \end{lstlisting}
 这时按键盘 \keys{1}, 将看到
 \begin{lstlisting}
-  New value for TEXDIR [C:/texlive/2024]:
+  New value for TEXDIR [C:/texlive/2025]:
 \end{lstlisting}
-这时可更改路径, 如 \texttt{D:/texlive/2024}.
+这时可更改路径, 如 \texttt{D:/texlive/2025}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面,
 再按键盘 \keys{I} 便可在刚才指定的路径安装.
 用户可通过阅读英文执行其他操作, 这里不再赘述. 
@@ -203,9 +203,9 @@
 \end{lstlisting}
 显示
 \begin{lstlisting}
-  TeX 3.141592653 (TeX Live 2024)
-  kpathsea version 6.4.0
-  Copyright 2024 D.E. Knuth.
+  TeX 3.141592653 (TeX Live 2025)
+  kpathsea version 6.4.1
+  Copyright 2025 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -229,14 +229,14 @@
 将 \textsf{wget} 所在目录添加到环境变量中.
 打开 \textsf{cmd} 窗口执行以下代码
 \begin{lstlisting}[language = bash]
-  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2024.iso
+  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso
 \end{lstlisting}
 即可下载最近的镜像.
 类似地,
 也可以指定国内的源进行下载,
 例如选择清华大学镜像
 \begin{lstlisting}[language = bash]
-  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2024.iso
+  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso
 \end{lstlisting}
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
@@ -497,32 +497,32 @@ Windows 11 继承了这个特性.
 \footnote{双击或在 \texttt{cmd} 中运行}%
 安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
 \begin{lstlisting}[language=bash]
-  C:\texlive\2024\tlpkg\installer\uninst.bat
+  C:\texlive\2025\tlpkg\installer\uninst.bat
 \end{lstlisting}
 结束以上步骤后,
-手动删除用户文件夹中的 \texttt{.texlive2024}.
+手动删除用户文件夹中的 \texttt{.texlive2025}.
 如果用户安装 \TeX{} Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
 
 卸载后,
 用户需要清理注册表
 \begin{lstlisting}
-  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2024
-  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2024
-  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2024
-  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2024
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2024_.jpg
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2024_.png
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2024_.sty
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2024_.tex
+  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2025
+  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2025
+  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2025
+  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2025
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2025_.jpg
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2025_.png
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2025_.sty
+  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2025_.tex
 \end{lstlisting}
 但若在安装时使用管理员权限``为所有人安装'',
 则注册表位置将变为
 \begin{lstlisting}
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2024
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2024
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2024
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2024
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2025
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2025
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2025
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2025
 \end{lstlisting}
 
 \subsection{手动卸载}
