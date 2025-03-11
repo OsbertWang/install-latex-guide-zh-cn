@@ -164,12 +164,19 @@ Homebrew 安装教程可以在其网站找到,
 \end{lstlisting}
 等待系统完成编译过程.
 \texttt{xelatex} 可调用系统字体,
-为系统安装字体的方法请参考
-\href{https://support.apple.com/en-us/HT201749}{How to install and remove fonts on your Mac}.
+为系统安装字体的方法请参考%
+\href{https://support.apple.com/zh-cn/guide/font-book/fntbk1000/mac}{在 Mac 上的字体册中安装和验证字体}.
 安装完成后, 刷新字体缓存.
-注意到此时 \texttt{xelatex} 只能通过文件名来调用发行版预装的字体,
-解决此问题的方法请参考%
-\href{https://zhuanlan.zhihu.com/p/59774395}{慕子的文章}.
+另外 macOS 找字体用的是系统的 CoreText 库而非 fontconfig,
+将字体文件放到 \verb+~/Library/Fonts+ 目录下,
+\texttt{xelatex} 也可以调用.
+
+注意默认状态下 \texttt{xelatex} 只能通过文件名来调用发行版预装的字体,
+在\textsf{终端}执行下面两步即可用字体名调用发行版预装的字体
+\begin{lstlisting}[language=bash]
+  ln -s /usr/local/texlive/2025/texmf-dist/fonts/opentype ~/Library/Fonts/
+  ln -s /usr/local/texlive/2025/texmf-dist/fonts/truetype ~/Library/Fonts/
+\end{lstlisting}
 
 编译命令的相关参数, 这里不再赘述.
 
