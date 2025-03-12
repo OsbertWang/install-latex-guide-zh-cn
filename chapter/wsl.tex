@@ -16,7 +16,7 @@
 中下载
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{iso 镜像文件},
 可选择国内源以加快下载速度.
-下载完毕后, 在 \textsf{cmd} 中验证文件是否正常.
+下载完毕后, 在 \textsf{PowerShell} 中验证文件是否正常.
 下载及文件验证方法同 \ref{sec:windows:install}~节.
 
 在正式安装前,
@@ -243,11 +243,10 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 
 编译一个最小示例 \texttt{main.tex}.
 
-在主系统的 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
-  mkdir D:\work-latex
-  cd /d D:\work-latex
-  notepad main.tex
+在主系统的 \textsf{PowerShell} 中执行
+\begin{lstlisting}
+  Push-Location (New-Item -ItemType Directory -Path 'D:\work-latex' -Force)
+  notepad.exe main.tex
 \end{lstlisting}
 建立文档,
 内容为
@@ -257,9 +256,9 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
     Hello \LaTeX{} World!
   \end{document}
 \end{lstlisting}
-接下来在 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
-  bash -l -c "pdflatex main"
+接下来在 \textsf{PowerShell} 中执行
+\begin{lstlisting}
+  wsl -- bash -l -c 'pdflatex main'
 \end{lstlisting}
 实现编译.
 
@@ -291,9 +290,9 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
     你好 \LaTeX{} 世界！
   \end{document}
 \end{lstlisting}
-在 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
-  bash -l -c "xelatex main"
+在 \textsf{PowerShell} 中执行
+\begin{lstlisting}
+  wsl -- bash -l -c 'xelatex main'
 \end{lstlisting}
 或在 \textsf{bash} 中执行
 \begin{lstlisting}[language=bash]

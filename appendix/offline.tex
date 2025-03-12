@@ -32,8 +32,8 @@
 另外, 如果需要安装的是一个可执行文件, 例如 \texttt{pdftex} 或 \texttt{xetex},
 那么会涉及到根据操作系统进行下载的相关判断.
 如果要升级本地已安装的可执行文件, 可以在命令行输入以下语句查询:
-\begin{lstlisting}[language=bash, title={\small\sffamily Windows 系统}]
-  tlmgr info --only-installed | findstr "pdftex"
+\begin{lstlisting}[title={\small\sffamily Windows 系统}]
+  tlmgr info --only-installed | Select-String -Pattern 'pdftex'
 \end{lstlisting}
 \begin{lstlisting}[language=bash, title={\small\sffamily Ubuntu 和 Mac 系统}]
   tlmgr info --only-installed | grep 'pdftex'

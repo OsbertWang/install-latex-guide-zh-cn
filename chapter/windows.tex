@@ -18,28 +18,26 @@
 如 \texttt{C}、\texttt{D}、\texttt{E} 等;
 \texttt{Y} 表示文件夹;
 默认路径名称为不带空格的英文}.
-下载完毕后, 用户打开 \textsf{cmd} 窗口%
+下载完毕后, 用户打开 \textsf{PowerShell} 窗口%
 \footnote{点击 \keys{\faWindows},
-输入 \textsf{cmd},
-点击 \keys{\enter};
 或在任意文件夹中按 \keys{\ctrl + L},
-输入 \textsf{cmd},
+输入 \textsf{powershell},
 点击 \keys{\enter}},
 将会见到诸如以下内容
-\begin{lstlisting}[language = bash]
-  C:\Users\username>
+\begin{lstlisting}
+  PS C:\Users\username>
 \end{lstlisting}
 它显示了当前所在路径并等待用户下一步操作,
-通常在开启 \textsf{cmd} 或上一程序运行结束时会显示.
+通常在开启 \textsf{PowerShell} 或上一程序运行结束时会显示.
 
-在 \textsf{cmd} 执行
-\begin{lstlisting}[language = bash]
-  echo %path:;=&echo.%
+在 \textsf{PowerShell} 执行
+\begin{lstlisting}
+  $env:Path -split ';'
 \end{lstlisting}
 查看环境变量. 
 若 \texttt{C:\textbackslash Windows\textbackslash system32}
 不在结果中\footnote{这里默认系统盘为\textsf{C}盘},
-则关闭 \textsf{cmd} 窗口,
+则关闭 \textsf{PowerShell} 窗口,
 将 \texttt{C:\textbackslash Windows\textbackslash system32}
 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
 \textbf{根据以往经验, 安装老版 C\TeX{} 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
@@ -59,30 +57,24 @@
 
 下面我们要确保下载到的 iso 文件没有损坏, 一种常用做法是检查其 MD5 值.
 当然, 如果确信自己下载到的文件没有问题, 也可以跳过这一步.
-打开 \textsf{cmd} 窗口依次执行以下代码
-\begin{lstlisting}[language = bash]
-  cd /d X:\Y
-  certutil -hashfile texlive2025.iso md5
+在 \textsf{PowerShell} 执行
+\begin{lstlisting}
+  (Get-FileHash 'X:\Y\texlive2025.iso' -Algorithm MD5).Hash
 \end{lstlisting}
 若系统显示
 \begin{lstlisting}
-  MD5 的 texlive2025.iso 哈希:
   69b4a8882983d9ea521730b5f42175e7
-  CertUtil: -hashfile 命令成功完成.
 \end{lstlisting}
 则表明下载的镜像文件正常.
 除 MD5 值外,
 还可检查 SHA512 值.
-依然是在 \textsf{cmd} 执行
-\begin{lstlisting}[language = bash]
-  cd /d X:\Y
-  certutil -hashfile texlive2025.iso sha512
+依然是在 \textsf{PowerShell} 执行
+\begin{lstlisting}
+  (Get-FileHash 'X:\Y\texlive2025.iso' -Algorithm SHA512).Hash
 \end{lstlisting}
 若系统显示
-\begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
-  SHA512 的 texlive2025.iso 哈希:
+\begin{lstlisting}[literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
   1fd9a2234d086f50c832ab3ac8b83477bbc39b1138a3c4a2351244c1fd4b8bea6d1ac81d4a5b0cba95f2e82c00f0d9df5b33189eb222e4bae5dae1523ef0da0e
-  CertUtil: -hashfile 命令成功完成.
 \end{lstlisting}
 即为验证成功.
 
@@ -99,9 +91,9 @@
 第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO;
 不鼓励解压缩镜像文件}. 
 假设加载后的路径为 \texttt{Z:\textbackslash}.
-打开 \textsf{cmd} 窗口并执行
-\begin{lstlisting}[language = bash]
-  Z:\install-tl-windows.bat --no-gui
+打开 \textsf{PowerShell} 窗口并执行
+\begin{lstlisting}
+  & 'Z:\install-tl-windows.bat' --no-gui
 \end{lstlisting}
 即可看到如下结果
 \begin{lstlisting}
@@ -191,14 +183,14 @@
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面,
 再按键盘 \keys{I} 便可在刚才指定的路径安装.
 用户可通过阅读英文执行其他操作, 这里不再赘述. 
-至此, 用户只需耐心等待安装完成, 并且不要点击 \textsf{cmd} 窗口%
-\footnote{Windows 11 默认采取快速编辑模式, 一旦点击 \textsf{cmd} 窗口,
+至此, 用户只需耐心等待安装完成, 并且不要点击 \textsf{PowerShell} 窗口%
+\footnote{Windows 11 默认采取快速编辑模式, 一旦点击 \textsf{PowerShell} 窗口,
 将显示``选择命令提示符''而导致进程暂停}. 
-安装完成后, 关闭再打开 \textsf{cmd} 窗口%
+安装完成后, 关闭再打开 \textsf{PowerShell} 窗口%
 \footnote{正常安装 \TeX{} Live 后, 环境变量会变化,
-关闭原 \textsf{cmd} 窗口再重新打开才能获取新的环境变量},
+关闭原 \textsf{PowerShell} 窗口再重新打开才能获取新的环境变量},
 执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   tex -v
 \end{lstlisting}
 显示
@@ -222,21 +214,17 @@
 
 \subsection{下载镜像一直不成功的处理办法}
 
-目前发现有些用户使用某些浏览器时无法正常下载镜像文件.
-这时,
-用户可以选择使用 \href{https://eternallybored.org/misc/wget/}{\textsf{wget}} 对镜像进行下载.
-具体用法是:
-将 \textsf{wget} 所在目录添加到环境变量中.
-打开 \textsf{cmd} 窗口执行以下代码
-\begin{lstlisting}[language = bash]
-  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso
+如果有些用户使用某些浏览器时无法正常下载镜像文件.
+用户可以在 \textsf{PowerShell} 执行
+\begin{lstlisting}
+  Invoke-WebRequest -Uri 'http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
 \end{lstlisting}
 即可下载最近的镜像.
 类似地,
 也可以指定国内的源进行下载,
 例如选择清华大学镜像
-\begin{lstlisting}[language = bash]
-  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso
+\begin{lstlisting}
+  Invoke-WebRequest -Uri 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
 \end{lstlisting}
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
@@ -244,52 +232,52 @@
 \subsection{需要管理员权限的处理办法}
 
 有些用户反馈安装过程中需要管理员权限.
-以管理员身份打开 \textsf{cmd} 窗口的方法是点击 \keys{\faWindows},
-输入 \textsf{cmd},
+以管理员身份打开 \textsf{PowerShell} 窗口的方法是点击 \keys{\faWindows},
+输入 \textsf{PowerShell},
 按 \keys{\ctrl + \shift + \enter} 三个键.
 一般而言,
 在系统盘内直接安装 \TeX{} Live 会碰到此类问题,
 因此鼓励用户在安装前先手动建立安装路径.
-直接使用管理员身份打开 \textsf{cmd} 窗口进行安装可能会对以后的升级造成影响.
+直接使用管理员身份打开 \textsf{PowerShell} 窗口进行安装可能会对以后的升级造成影响.
 
 \subsection{系统用中文作为用户名}\label{sec:chinesename}
 
 很多中文 Windows 用户习惯于用中文作为用户名,
 但是这样会导致 \TeX{} Live 安装失败.
 更改系统的 \texttt{TEMP} 和 \texttt{TMP} 这两个环境变量可以避免这样的问题.
-在 \textsf{cmd} 中执行
+在 \textsf{PowerShell} 中执行
 \begin{lstlisting}
-  mkdir C:\temp
-  set TEMP=C:\temp
-  set TMP=C:\temp
+  New-Item -ItemType Directory -Path 'C:\temp' -Force
+  $env:TEMP = 'C:\temp'
+  $env:TMP = 'C:\temp'
 \end{lstlisting}
 便可更改这两个环境变量为 \texttt{C:\textbackslash temp}.
 更改后按照前述内容安装 \TeX{} Live 即可.
 这样的更改是临时的,
-待 \textsf{cmd} 窗口关闭,
+待 \textsf{PowerShell} 窗口关闭,
 环境变量将恢复为原始状态.
 
 \section{升级宏包}\label{sec:windows:update}
 
 安装完成后, 用户可以升级宏包以获得更好的使用体验. 
 下面将介绍使用命令行升级宏包的方法. 
-打开 \textsf{cmd} 窗口, 首先执行下面命令指定升级使用的镜像源. 
+打开 \textsf{PowerShell} 窗口, 首先执行下面命令指定升级使用的镜像源. 
 \texttt{ctan} 表示系统在升级时将自动寻求最近的源进行下载. 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tlmgr option repository ctan
 \end{lstlisting}
 用户同样可以指定其他的镜像源,
 方法见附录~\ref{chp:appendix:mirror}.
 
 接下来, 用户执行命令
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tlmgr update --list
 \end{lstlisting}
 可查看目前源上可升级的宏包都有哪些. 
 高级用户可以根据自己的需求选择升级特定宏包.
 建议初级用户直接升级全部宏包. 
 用户只需执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tlmgr update --self --all
 \end{lstlisting}
 同时升级 \texttt{tlmgr} 本身和全部宏包. 
@@ -298,9 +286,13 @@
 
 遇到这种情况时, 用户需自行下载
 \href{https://mirrors.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe}{update-tlmgr-latest.exe},
-然后再执行升级命令即可%
+执行该文件,
+然后再执行%
 \footnote{这里依旧让系统自动选择镜像源,
-用户可以自行选择国内镜像以加快下载速度}. 
+用户可以自行选择国内镜像以加快下载速度}
+ \begin{lstlisting}
+   tlmgr update --all
+ \end{lstlisting}
 
 \subsection{升级到一半停止}
 
@@ -325,8 +317,8 @@
 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-cn}
 中也明确提到, \textbf{如非万不得已, 尽量不要手动安装宏包}. 
 因此在这里我只介绍从源处安装宏包的命令. 
-假设用户想安装 \texttt{mcmthesis} 宏包, 只需在 \textsf{cmd} 执行
-\begin{lstlisting}[language=bash]
+假设用户想安装 \texttt{mcmthesis} 宏包, 只需在 \textsf{PowerShell} 执行
+\begin{lstlisting}
   tlmgr install mcmthesis
 \end{lstlisting}
 需要注意的是, 用户一定要清楚所要安装的宏包名称, 并且在安装宏包前先确保镜像源设置正确.
@@ -335,12 +327,12 @@
 
 当正确安装后,
 用户可以调出宏包手册以查阅相应内容.
-例如在 \textsf{cmd} 执行
-\begin{lstlisting}[language=bash]
+例如在 \textsf{PowerShell} 执行
+\begin{lstlisting}
   texdoc texlive-zh-cn
 \end{lstlisting}
 或
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   texdoc lshort-zh-cn
 \end{lstlisting}
 就可分别调出 \texttt{texlive-zh-cn.pdf} 和 \texttt{lshort-zh-cn.pdf},
@@ -349,23 +341,23 @@
 
 本手册业已被 \TeX{} Live 收录,
 调出本手册的命令为
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   texdoc install-latex-guide-zh-cn
 \end{lstlisting}
 
 \section{编译文档}\label{sec:windows:compile}
 
 升级宏包完成后, 用户可以编译文档. 
-这里依旧使用命令行来完成这一过程. 
+这里依旧使用 \textsf{PowerShell} 来完成这一过程. 
 
 首先, 用户需要在指定位置\footnote{以下称工作路径}建立一个 \texttt{tex} 文件：
-\begin{lstlisting}[language = bash]
-  mkdir D:\work-latex
-  cd /d D:\work-latex
-  notepad main.tex
+\begin{lstlisting}
+  Set-Location (New-Item -ItemType Directory -Path 'D:\work-latex' -Force)
+  notepad.exe main.tex
 \end{lstlisting}
 第1行表示创建一个工作路径 \texttt{D:\textbackslash work-latex},
-第2行表示进入工作路径, 第3行表示用记事本打开 \texttt{main.tex} 文件,
+然后立即切换到该工作路径.
+第2行表示用记事本打开 \texttt{main.tex} 文件,
 若文件不存在, 系统将询问用户是否创建该文件%
 \footnote{Windows 11 对中文名变得友好一些了,
 但这里不建议用户使用中文命名工作路径和文件名}.
@@ -378,7 +370,7 @@
 \end{lstlisting}
 保存并退出. 
 接下来执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   pdflatex main
 \end{lstlisting}
 等待系统完成编译过程. 
@@ -399,7 +391,7 @@ Windows 11 继承了这个特性.
 \end{lstlisting}
 保存并退出.
 接下来执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   xelatex main
 \end{lstlisting}
 等待系统完成编译过程.
@@ -422,24 +414,24 @@ Windows 11 继承了这个特性.
 
 编译命令有很多可选参数, 如用户能够从 \texttt{pdf} 文件跳回 \texttt{tex} 文件,
 便是因为执行编译时添加了参数
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   pdflatex -synctex=1 main
 \end{lstlisting}
 有些编译还需要额外调用系统命令,
 例如使用 \textsf{minted} 包就有这类要求,
 因此可以在执行编译时添加参数
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   pdflatex -shell-escape main
 \end{lstlisting}
 此外还有很多其他参数, 用户若感兴趣, 可自行阅读手册. 
 
 在很多时候, 我个人更倾向于使用 \texttt{latexmk} 来编译 \texttt{tex} 文档,
 如执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   latexmk -pdf -synctex=1 -interaction=nonstopmode main
 \end{lstlisting}
 意味着使用 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   pdflatex -synctex=1 -interaction=nonstopmode main
 \end{lstlisting}
 来编译文档 \texttt{main.tex}, 并在有需要时完成其他步骤%
@@ -452,7 +444,7 @@ Windows 11 继承了这个特性.
 系统有时会提示目前 \LaTeXe 的版本低于某宏包的要求版本.
 这种情况是由于 \textsf{fmt} 文件未能更新所导致.
 此时可考虑在命令行运行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   fmtutil-user --byfmt xelatex
 \end{lstlisting}
 待结束后再用 \texttt{xelatex} 编译文档.
@@ -461,7 +453,7 @@ Windows 11 继承了这个特性.
 
 另外也可考虑重装 \texttt{xetex}.
 在命令行执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tlmgr install --reinstall xetex
 \end{lstlisting}
 
@@ -469,7 +461,7 @@ Windows 11 继承了这个特性.
 
 这是 \texttt{fmt} 文件未能更新所导致的问题.
 可以用
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   fmtutil-sys --all
 \end{lstlisting}
 刷新 \texttt{fmt} 文件后再编译 \texttt{tex} 文件.
@@ -481,8 +473,8 @@ Windows 11 继承了这个特性.
 
 \subsection{使用批处理文件}
 
-在命令行执行
-\begin{lstlisting}[language=bash]
+在 \textsf{PowerShell} 执行
+\begin{lstlisting}
   kpsewhich -var-value TEXMFROOT
 \end{lstlisting}
 可以查看 \texttt{TEXMFROOT} 的值,
@@ -494,13 +486,13 @@ Windows 11 继承了这个特性.
 }. 
 接下来,
 用户只需执行%
-\footnote{双击或在 \texttt{cmd} 中运行}%
-安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
-\begin{lstlisting}[language=bash]
-  C:\texlive\2025\tlpkg\installer\uninst.bat
+\footnote{双击或在 \texttt{PowerShell} 中运行}%
+安装路径中的卸载批处理文件即可实现卸载, 如默认安装时,
+依次执行
+\begin{lstlisting}
+  & 'C:\texlive\2025\tlpkg\installer\uninst.bat'
+  Remove-Item -Recurse -Force -Path '$env:USERPROFILE\.texlive2025'
 \end{lstlisting}
-结束以上步骤后,
-手动删除用户文件夹中的 \texttt{.texlive2025}.
 如果用户安装 \TeX{} Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
 

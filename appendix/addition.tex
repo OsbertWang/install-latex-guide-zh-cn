@@ -291,8 +291,8 @@ WSL 只能安装在系统盘,
 第一步,
 建立新的位置.
 假设新位置在 \texttt{X:\textbackslash} 盘.
-在 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
+在 \textsf{PowerShell} 中执行
+\begin{lstlisting}
   wsl -l
 \end{lstlisting}
 可以查到当前已经安装的 WSL 分发,
@@ -315,10 +315,9 @@ WSL 只能安装在系统盘,
   Codename:       jammy
 \end{lstlisting}
 然后在 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
-  mkdir X:\WSL\instances\Ubuntu2204
-  mkdir X:\WSL\images
-  cd X:\WSL\images
+\begin{lstlisting}
+  New-Item -ItemType Directory -Path "X:\WSL\instances\Ubuntu2204" -Force
+  Set-Location (New-Item -ItemType Directory -Path "X:\WSL\images" -Force)
 \end{lstlisting}
 创建新的位置.
 这里起名 \texttt{Ubuntu2204} 是因为 Ubuntu 实际版本为 22.04,
@@ -326,8 +325,8 @@ WSL 只能安装在系统盘,
 
 第二步,
 导出原 WSL 分发并导入新位置.
-在 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
+在 \textsf{PowerShell} 中执行
+\begin{lstlisting}
   wsl --export Ubuntu ubuntu.tar
   wsl --import Ubuntu2204 X:\WSL\instances\Ubuntu2204 ubuntu.tar --version 2
 \end{lstlisting}
@@ -338,8 +337,8 @@ WSL 只能安装在系统盘,
 
 第三步,
 启动新的分发并且设置为默认.
-在 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
+在 \textsf{PowerShell} 中执行
+\begin{lstlisting}
   wsl ~ -d Ubuntu2204
 \end{lstlisting}
 进入 \texttt{Ubuntu2204} 分发的 WSL 系统,
@@ -356,15 +355,15 @@ WSL 只能安装在系统盘,
 个人用了原本 \texttt{Ubuntu} 分发内的用户名.
 然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
 退出 \texttt{bash},
-在 \texttt{cmd} 中执行
-\begin{lstlisting}[language=bash]
+在 \texttt{PowerShell} 中执行
+\begin{lstlisting}
   wsl --terminate Ubuntu2204
   wsl ~ -d Ubuntu2204
 \end{lstlisting}
 这时如果一切正常,
 就可以将 \texttt{Ubuntu2204} 设置为默认 WSL 分发,
-即在 \texttt{cmd} 中执行
-\begin{lstlisting}[language=bash]
+即在 \texttt{PowerShell} 中执行
+\begin{lstlisting}
   wsl --set-default Ubuntu2204
 \end{lstlisting}
 这时在 \textsf{bash} 中执行
@@ -379,12 +378,12 @@ WSL 只能安装在系统盘,
 
 第四步,
 删除旧分发.
-在 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
+在 \textsf{PowerShell} 中执行
+\begin{lstlisting}
   wsl --unregister Ubuntu
 \end{lstlisting}
 就将旧分发 \texttt{Ubuntu} 删除了.
-这时在 \textsf{cmd} 中执行
+这时在 \textsf{PowerShell} 中执行
 \begin{lstlisting}[language=bash]
   wsl -l
 \end{lstlisting}
