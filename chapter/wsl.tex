@@ -245,7 +245,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 
 在主系统的 \textsf{PowerShell} 中执行
 \begin{lstlisting}
-  Push-Location (New-Item -ItemType Directory -Path 'D:\work-latex' -Force)
+  sl (ni -ItemType Directory -Path 'D:\work-latex' -Force)
   notepad.exe main.tex
 \end{lstlisting}
 建立文档,

@@ -314,10 +314,10 @@ WSL 只能安装在系统盘,
   Release:        22.04
   Codename:       jammy
 \end{lstlisting}
-然后在 \textsf{cmd} 中执行
+然后在 \textsf{PowerShell} 中执行
 \begin{lstlisting}
-  New-Item -ItemType Directory -Path "X:\WSL\instances\Ubuntu2204" -Force
-  Set-Location (New-Item -ItemType Directory -Path "X:\WSL\images" -Force)
+  ni -ItemType Directory -Path "X:\WSL\instances\Ubuntu2204" -Force
+  sl (ni -ItemType Directory -Path "X:\WSL\images" -Force)
 \end{lstlisting}
 创建新的位置.
 这里起名 \texttt{Ubuntu2204} 是因为 Ubuntu 实际版本为 22.04,

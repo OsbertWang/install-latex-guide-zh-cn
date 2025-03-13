@@ -217,14 +217,14 @@
 如果有些用户使用某些浏览器时无法正常下载镜像文件.
 用户可以在 \textsf{PowerShell} 执行
 \begin{lstlisting}
-  Invoke-WebRequest -Uri 'http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
+  iwr -Uri 'http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
 \end{lstlisting}
 即可下载最近的镜像.
 类似地,
 也可以指定国内的源进行下载,
 例如选择清华大学镜像
 \begin{lstlisting}
-  Invoke-WebRequest -Uri 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
+  iwr -Uri 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
 \end{lstlisting}
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
@@ -247,7 +247,7 @@
 更改系统的 \texttt{TEMP} 和 \texttt{TMP} 这两个环境变量可以避免这样的问题.
 在 \textsf{PowerShell} 中执行
 \begin{lstlisting}
-  New-Item -ItemType Directory -Path 'C:\temp' -Force
+  ni -ItemType Directory -Path 'C:\temp' -Force
   $env:TEMP = 'C:\temp'
   $env:TMP = 'C:\temp'
 \end{lstlisting}
@@ -352,7 +352,7 @@
 
 首先, 用户需要在指定位置\footnote{以下称工作路径}建立一个 \texttt{tex} 文件：
 \begin{lstlisting}
-  Set-Location (New-Item -ItemType Directory -Path 'D:\work-latex' -Force)
+  sl (ni -ItemType Directory -Path 'D:\work-latex' -Force)
   notepad.exe main.tex
 \end{lstlisting}
 第1行表示创建一个工作路径 \texttt{D:\textbackslash work-latex},
@@ -491,7 +491,7 @@ Windows 11 继承了这个特性.
 依次执行
 \begin{lstlisting}
   & 'C:\texlive\2025\tlpkg\installer\uninst.bat'
-  Remove-Item -Recurse -Force -Path '$env:USERPROFILE\.texlive2025'
+  ri -Recurse -Force -Path '$env:USERPROFILE\.texlive2025'
 \end{lstlisting}
 如果用户安装 \TeX{} Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
