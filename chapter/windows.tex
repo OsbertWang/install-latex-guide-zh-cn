@@ -20,8 +20,6 @@
 默认路径名称为不带空格的英文}.
 下载完毕后, 用户打开 \textsf{cmd} 窗口%
 \footnote{点击 \keys{\faWindows},
-输入 \textsf{cmd},
-点击 \keys{\enter};
 或在任意文件夹中按 \keys{\ctrl + L},
 输入 \textsf{cmd},
 点击 \keys{\enter}},
@@ -29,6 +27,9 @@
 \begin{lstlisting}[language = bash]
   C:\Users\username>
 \end{lstlisting}
+%\begin{lstlisting}
+%  PS C:\Users\username>
+%\end{lstlisting}
 它显示了当前所在路径并等待用户下一步操作,
 通常在开启 \textsf{cmd} 或上一程序运行结束时会显示.
 
@@ -36,6 +37,9 @@
 \begin{lstlisting}[language = bash]
   echo %path:;=&echo.%
 \end{lstlisting}
+%\begin{lstlisting}
+%  $env:Path -split ';'
+%\end{lstlisting}
 查看环境变量. 
 若 \texttt{C:\textbackslash Windows\textbackslash system32}
 不在结果中\footnote{这里默认系统盘为\textsf{C}盘},
@@ -64,6 +68,9 @@
   cd /d X:\Y
   certutil -hashfile texlive2025.iso md5
 \end{lstlisting}
+%\begin{lstlisting}
+%  (Get-FileHash 'X:\Y\texlive2025.iso' -Algorithm MD5).Hash
+%\end{lstlisting}
 若系统显示
 \begin{lstlisting}
   MD5 的 texlive2025.iso 哈希:
@@ -78,6 +85,9 @@
   cd /d X:\Y
   certutil -hashfile texlive2025.iso sha512
 \end{lstlisting}
+%\begin{lstlisting}
+%  (Get-FileHash 'X:\Y\texlive2025.iso' -Algorithm SHA512).Hash
+%\end{lstlisting}
 若系统显示
 \begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
   SHA512 的 texlive2025.iso 哈希:
@@ -103,6 +113,9 @@
 \begin{lstlisting}[language = bash]
   Z:\install-tl-windows.bat --no-gui
 \end{lstlisting}
+%\begin{lstlisting}
+%  & 'Z:\install-tl-windows.bat' --no-gui
+%\end{lstlisting}
 即可看到如下结果
 \begin{lstlisting}
   ======================> TeX Live installation procedure <=====================
@@ -231,6 +244,9 @@
 \begin{lstlisting}[language = bash]
   wget http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso
 \end{lstlisting}
+%\begin{lstlisting}
+%  Invoke-WebRequest -Uri 'http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
+%\end{lstlisting}
 即可下载最近的镜像.
 类似地,
 也可以指定国内的源进行下载,
@@ -238,6 +254,9 @@
 \begin{lstlisting}[language = bash]
   wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso
 \end{lstlisting}
+%\begin{lstlisting}
+%  Invoke-WebRequest -Uri 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
+%\end{lstlisting}
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
 
@@ -263,6 +282,11 @@
   set TEMP=C:\temp
   set TMP=C:\temp
 \end{lstlisting}
+%\begin{lstlisting}
+%  New-Item -ItemType Directory -Path 'C:\temp' -Force
+%  $env:TEMP = 'C:\temp'
+%  $env:TMP = 'C:\temp'
+%\end{lstlisting}
 便可更改这两个环境变量为 \texttt{C:\textbackslash temp}.
 更改后按照前述内容安装 \TeX{} Live 即可.
 这样的更改是临时的,
@@ -296,7 +320,7 @@
 
 \subsection{\texttt{tlmgr} 本身无法成功升级}
 
-遇到这种情况时, 用户需自行下载
+遇到这种情况时, 用户需自行下载并运行
 \href{https://mirrors.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe}{update-tlmgr-latest.exe},
 然后再执行升级命令即可%
 \footnote{这里依旧让系统自动选择镜像源,
@@ -364,6 +388,10 @@
   cd /d D:\work-latex
   notepad main.tex
 \end{lstlisting}
+%\begin{lstlisting}
+%  Set-Location (New-Item -ItemType Directory -Path 'D:\work-latex' -Force)
+%  notepad.exe main.tex
+%\end{lstlisting}
 第1行表示创建一个工作路径 \texttt{D:\textbackslash work-latex},
 第2行表示进入工作路径, 第3行表示用记事本打开 \texttt{main.tex} 文件,
 若文件不存在, 系统将询问用户是否创建该文件%
@@ -499,6 +527,10 @@ Windows 11 继承了这个特性.
 \begin{lstlisting}[language=bash]
   C:\texlive\2025\tlpkg\installer\uninst.bat
 \end{lstlisting}
+%\begin{lstlisting}
+%  & 'C:\texlive\2025\tlpkg\installer\uninst.bat'
+%  Remove-Item -Recurse -Force -Path '$env:USERPROFILE\.texlive2025'
+%\end{lstlisting}
 结束以上步骤后,
 手动删除用户文件夹中的 \texttt{.texlive2025}.
 如果用户安装 \TeX{} Live 时需要管理员权限,
