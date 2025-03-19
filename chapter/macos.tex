@@ -193,7 +193,14 @@ Homebrew 安装教程可以在其网站找到,
 \begin{lstlisting}
   brew uninstall mactex
 \end{lstlisting}
-卸载很成功,
+
+如果用户借助 Homebrew 安装 Mac\TeX{} 时选择仅安装其命令行工具,
+卸载时需使用
+\begin{lstlisting}[language=bash]
+  brew uninstall mactex-no-gui
+\end{lstlisting}
+
+以上卸载均很成功,
 只是有一些残留.
 
 \section{跨版本升级 Mac\TeX}
@@ -204,14 +211,15 @@ Homebrew 安装教程可以在其网站找到,
 或者干脆保留多个版本,
 具体见\href{https://www.tug.org/mactex/multipletexdistributions.html}{这里}.
 
-如果用户借助 Homebrew cask 安装了 Mac\TeX,
+如果用户借助 Homebrew 安装了 Mac\TeX,
 跨版本升级 (Mac\TeX{} 的版本与 \TeX{} Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
 \begin{lstlisting}[language=bash]
   brew update
   brew upgrade mactex
 \end{lstlisting}
 
-如果安装 Mac\TeX{} 时选择仅安装 Mac\TeX{} 的命令行工具 (\texttt{-no-gui}), 跨版本升级时需输入
+如果用户借助 Homebrew 安装 Mac\TeX{} 时选择仅安装其命令行工具,
+跨版本升级时需使用
 \begin{lstlisting}[language=bash]
   brew update
   brew upgrade mactex-no-gui
