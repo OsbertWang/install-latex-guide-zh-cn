@@ -539,19 +539,14 @@ Windows 11 继承了这个特性.
 卸载后,
 用户需要清理注册表
 \begin{lstlisting}
-  HKEY_CURRENT_USER\Software\Classes\TL.bitmap2eps.convert.2025
   HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2025
   HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2025
   HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2025
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2025_.jpg
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.bitmap2eps.convert.2025_.png
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2025_.sty
-  HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2025_.tex
+  HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2025_.tex
 \end{lstlisting}
 但若在安装时使用管理员权限``为所有人安装'',
 则注册表位置将变为
 \begin{lstlisting}
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.bitmap2eps.convert.2025
   HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2025
   HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2025
   HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2025
