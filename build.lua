@@ -25,8 +25,6 @@ uploadconfig = {
   ]],
   license      = "lppl1.3c",  
   ctanPath     = "/info/install-latex-guide-zh-cn",
-  announcement = [[
-  ]],
   home         = "https://github.com/osbertwang/" .. module,
   bugtracker   = "https://github.com/osbertwang/" .. module .. "/issues",
   support      = "",

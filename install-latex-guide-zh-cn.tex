@@ -40,9 +40,7 @@
   \BeginAccSupp{ActualText={}}#1\EndAccSupp{}%
 }
 \newcommand\buildinclude[1]{%
-  \include{#1}
-  \InputIfFileExists {#1}
-    {}{\include{chapter/#1}}
+  \InputIfFileExists{#1}{}{\include{./chapter/#1}}
 }
 \renewmenumacro{\menu}[>]{angularmenus}
 \renewmenumacro{\keys}[+]{shadowedroundedkeys}
@@ -100,43 +98,21 @@
 \begin{document}
   
 \maketitle
-\include{preface}
-\InputIfFileExists {preface}
-  {}{\include{chapter/preface}}
+\buildinclude{preface}
 
 \tableofcontents
 
-\include{windows}
-\InputIfFileExists {windows}
-  {}{\include{chapter/windows}}
-\include{ubuntu}
-\InputIfFileExists {ubuntu}
-  {}{\include{chapter/ubuntu}}
-\include{macos}
-\InputIfFileExists {macos}
-  {}{\include{chapter/macos}}
-\include{wsl}
-\InputIfFileExists {wsl}
-  {}{\include{chapter/wsl}}
-\include{editor}
-\InputIfFileExists {editor}
-  {}{\include{chapter/editor}}
-\include{overleaf}
-\InputIfFileExists {overleaf}
-  {}{\include{chapter/overleaf}}
+\buildinclude{windows}
+\buildinclude{ubuntu}
+\buildinclude{macos}
+\buildinclude{wsl}
+\buildinclude{editor}
+\buildinclude{overleaf}
 
 \appendix
-\include{mirror}
-\InputIfFileExists {mirror}
-  {}{\include{chapter/mirror}}
-\include{addition}
-\InputIfFileExists {addition}
-  {}{\include{chapter/addition}}
-\include{offline}
-\InputIfFileExists {offline}
-  {}{\include{chapter/offline}}
-\include{updateinfo}
-\InputIfFileExists {updateinfo}
-  {}{\include{chapter/updateinfo}}
+\buildinclude{mirror}
+\buildinclude{addition}
+\buildinclude{offline}
+\buildinclude{updateinfo}
 
 \end{document}
