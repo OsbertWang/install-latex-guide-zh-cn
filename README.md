@@ -1,3 +1,8 @@
+[![CTAN Version](https://img.shields.io/ctan/v/install-latex-guide-zh-cn)](https://ctan.org/pkg/install-latex-guide-zh-cn)
+[![GitHub Release](https://img.shields.io/github/v/release/OsbertWang/install-latex-guide-zh-cn)](https://github.com/OsbertWang/install-latex-guide-zh-cn/releases/latest)
+[![Actions Status](https://github.com/OsbertWang/install-latex-guide-zh-cn/workflows/Automated%20testing/badge.svg)](https://github.com/OsbertWang/install-latex-guide-zh-cn/actions)
+[![GitHub Repo stars](https://img.shields.io/github/stars/OsbertWang/install-latex-guide-zh-cn)](https://github.com/OsbertWang/install-latex-guide-zh-cn)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/OsbertWang/install-latex-guide-zh-cn)](https://github.com/OsbertWang/install-latex-guide-zh-cn/commits)
 # Install-LaTeX-Guide-zh-cn (A short introduction to LaTeX installation written in Chinese)
 
 This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 22.04, and macOS systems, and mainly introducing command line operations.
