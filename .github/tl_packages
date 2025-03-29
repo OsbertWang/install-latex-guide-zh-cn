@@ -7,6 +7,7 @@ latex-bin
 #
 # For the doc target
 accsupp
+adjustbox
 ctex
 fontawesome5
 geometry
