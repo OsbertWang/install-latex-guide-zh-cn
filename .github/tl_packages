@@ -8,11 +8,17 @@ latex-bin
 # For the doc target
 accsupp
 adjustbox
+booktabs
 ctex
 fontawesome5
 geometry
 hyperref
+ifoddpage
 listings
 menukeys
 qrcode
+relsize
 xstring
+
+# color
+# varwidth
