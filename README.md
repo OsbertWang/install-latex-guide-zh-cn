@@ -17,7 +17,7 @@ TeX Live users are recommended to use the following commands
 ```
 latexmk -xelatex -synctex=1 install-latex-guide-zh-cn
 ```
-Users who cannot use `latexmk` can execute `make.bat` or `make` according to their operating system.
+Users who cannot use `latexmk` can execute `make.bat` or `make` according to their operating system. `build.lua` is also provided so that users can execute `l3build doc` or `l3build ctan` to compile the source files.
 
 If you need the PDF file compiled by this project, you can download it from [Releases](https://github.com/OsbertWang/install-latex-zh-cn/releases/latest).
 
@@ -39,7 +39,7 @@ This work is released under the LaTeX Project Public License, v1.3c or later.
 ```
 latexmk -xelatex -synctex=1 install-latex-guide-zh-cn
 ```
-无法使用 `latexmk` 的用户可以根据自己的操作系统执行 `make.bat` 或 `make`.
+无法使用 `latexmk` 的用户可以根据自己的操作系统执行 `make.bat` 或 `make`. 本项目同时提供了 `build.lua`, 用户可执行 `l3build doc` 或 `l3build ctan` 来编译源文件.
 
 若需要本项目编译完成的 PDF 文件, 可至 [Releases](https://github.com/OsbertWang/install-latex-zh-cn/releases/latest) 处下载.
 
