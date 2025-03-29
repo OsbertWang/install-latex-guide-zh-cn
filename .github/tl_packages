@@ -1,0 +1,16 @@
+# The test framework itself
+l3build
+#
+# Base
+latex
+latex-bin
+#
+# For the doc target
+accsupp
+ctex
+fontawesome5
+geometry
+hyperref
+listings
+menukeys
+qrcode
