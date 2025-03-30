@@ -1,4 +1,5 @@
 \documentclass[fontset=fandol]{ctexrep}
+
 \usepackage{accsupp}
 \usepackage[margin=2.4cm]{geometry}
 \usepackage{listings}
@@ -39,7 +40,9 @@
 \newcommand\emptyaccsupp[1]{%
   \BeginAccSupp{ActualText={}}#1\EndAccSupp{}%
 }
-
+\newcommand\buildinclude[1]{%
+  \InputIfFileExists{#1}{}{\include{./chapter/#1}}
+}
 \renewmenumacro{\menu}[>]{angularmenus}
 \renewmenumacro{\keys}[+]{shadowedroundedkeys}
 
@@ -96,21 +99,21 @@
 \begin{document}
   
 \maketitle
-\include{./chapter/preface}
+\buildinclude{preface}
 
 \tableofcontents
 
-\include{./chapter/windows}
-\include{./chapter/ubuntu}
-\include{./chapter/macos}
-\include{./chapter/wsl}
-\include{./chapter/editor}
-\include{./chapter/overleaf}
+\buildinclude{windows}
+\buildinclude{ubuntu}
+\buildinclude{macos}
+\buildinclude{wsl}
+\buildinclude{editor}
+\buildinclude{overleaf}
 
 \appendix
-\include{./appendix/mirror}
-\include{./appendix/addition}
-\include{./appendix/offline}
-\include{./appendix/updateinfo}
+\buildinclude{mirror}
+\buildinclude{addition}
+\buildinclude{offline}
+\buildinclude{updateinfo}
 
 \end{document}

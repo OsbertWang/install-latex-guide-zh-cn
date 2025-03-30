@@ -1,0 +1,20 @@
+name: Automated testing
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+
+jobs:
+  l3build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install TeX Live
+        uses: zauguin/install-texlive@v4
+        with:
+          package_file: .github/tl_packages
+      - name: Run l3build
+        run: l3build ctan

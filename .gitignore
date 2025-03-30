@@ -40,6 +40,8 @@
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+/build
+*.zip
 
 ## Auxiliary and intermediate files from other packages:
 # algorithms
@@ -241,3 +243,6 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+
+# garbage file in macOS
+*.DS_Store
