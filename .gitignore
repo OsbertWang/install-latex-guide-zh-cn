@@ -41,6 +41,7 @@
 *.synctex.gz(busy)
 *.pdfsync
 /build
+*.curlopt
 *.zip
 
 ## Auxiliary and intermediate files from other packages:
