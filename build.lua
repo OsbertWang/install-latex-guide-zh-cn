@@ -14,20 +14,19 @@ textfiles        = {"*.md", "LICENSE"}
 
 uploadconfig = {
   pkg          = module,
-  version      = "",
+  version      = "v2025.4.1",
   author       = maintainer,
   uploader     = maintainer,
   email        = "ranwang.osbert@outlook.com",
-  summary      = [[
-    A short introduction to LaTeX installation written in Chinese]],
+  summary      = "A short introduction to LaTeX installation written in Chinese",
   description  = [[
     This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 22.04, and macOS systems, and mainly introducing command line operations.
   ]],
+  announcement = "",
   license      = "lppl1.3c",  
   ctanPath     = "/info/install-latex-guide-zh-cn",
   home         = "https://github.com/osbertwang/" .. module,
   bugtracker   = "https://github.com/osbertwang/" .. module .. "/issues",
-  support      = "",
   repository   = "https://github.com/osbertwang/" .. module,
   development  = "https://github.com/osbertwang",
   update       = true
