@@ -9,7 +9,7 @@
 module           = "install-latex-guide-zh-cn"
 version          = "v2025.4.1" -- Check before execute `l3build upload`!
 maintainer       = "Ran Wang"
-maintainid       = "osbertwang"
+maintainid       = "OsbertWang"
 email            = "ranwang.osbert@outlook.com"
 announcement     = ""
 summary          = "A short introduction to LaTeX installation written in Chinese"
