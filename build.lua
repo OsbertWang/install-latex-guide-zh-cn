@@ -8,9 +8,9 @@ ctanzip          = module
 typesetfiles     = {module .. ".tex"}
 typesetexe       = "xelatex"
 typesetopts      = "-interaction=nonstopmode -synctex=1"
-supportdir       = "./chapter"
+supportdir       = "chapter"
 typesetsuppfiles = {"*.tex"}
-textfiles        = {"*.md", "LICENSE"}
+textfiles        = {"*.md", "LICENSE", "*.lua", "*.bat", "makefile"}
 
 uploadconfig = {
   pkg          = module,
@@ -34,7 +34,7 @@ uploadconfig = {
 
 -- Copy files to the main CTAN release directory
 function copyctan()
-  local pkgsuppdir = ctandir .. "/" .. ctanpkg .. "/chapter"
+  local pkgsuppdir = ctandir .. "/" .. ctanpkg .. "/" .. supportdir
   mkdir(pkgsuppdir)
   for _,supptab in pairs(typesetsuppfiles) do
     cp(supptab, supportdir, pkgsuppdir)
