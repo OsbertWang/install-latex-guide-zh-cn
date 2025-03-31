@@ -29,6 +29,7 @@ typesetfiles     = {module .. ".tex"}
 supportdir       = "chapter"
 typesetsuppfiles = {"*.tex"}
 textfiles        = {"*.md", "LICENSE", "*.lua", "*.bat", "makefile"}
+excludefiles     = {"*~"}
 ctanzip          = module
 
 function copyctan()
