@@ -1,12 +1,12 @@
 --[==========================================[--
    L3BUILD FILE FOR INSTALL-LATEX-GUIDE-ZH-CN
+     Check PDF File & Directory After Build
 --]==========================================]--
 
---[======================[--
-      Basic Information
-   Do Check Before Upload
---]======================]--
-
+--[==========================================[--
+                Basic Information
+             Do Check Before Upload
+--]==========================================]--
 module           = "install-latex-guide-zh-cn"
 version          = "v2025.4.1"
 maintainer       = "Ran Wang"
@@ -19,11 +19,10 @@ description      = [[
 ]]
 
 
---[=============================[--
-      Pack and Upload To CTAN
-   Don't Modify Unless Necessary
---]=============================]--
-
+--[==========================================[--
+            Pack and Upload To CTAN
+         Don't Modify Unless Necessary
+--]==========================================]--
 typesetexe       = "xelatex"
 typesetopts      = "-interaction=nonstopmode -synctex=1"
 typesetfiles     = {module .. ".tex"}

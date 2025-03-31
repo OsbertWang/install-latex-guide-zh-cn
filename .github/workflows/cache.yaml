@@ -14,7 +14,10 @@ on:
 
 jobs:
   cache:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-14, windows-latest]
+    runs-on: ${{ matrix.os }}
     name: Update TeX Live
     steps:
       # To use `.github/tl_packages`, main repo must be checked out first.
