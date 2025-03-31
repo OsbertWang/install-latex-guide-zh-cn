@@ -12,12 +12,13 @@ version          = "v2025.4.1"
 maintainer       = "Ran Wang"
 maintainid       = "OsbertWang"
 email            = "ranwang.osbert@outlook.com"
+repository       = "https://github.com/" .. maintainid .. "/" .. module
 announcement     = ""
 summary          = "A short introduction to LaTeX installation written in Chinese"
 description      = [[
-  This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 22.04, and macOS systems, and mainly introducing command line operations.
+This package will introduce the operations related to installing TeX Live
+(introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 22.04, and macOS systems, and mainly introducing command line operations.
 ]]
-
 
 --[==========================================[--
             Pack and Upload To CTAN
@@ -30,6 +31,7 @@ supportdir       = "chapter"
 typesetsuppfiles = {"*.tex"}
 textfiles        = {"*.md", "LICENSE", "*.lua", "*.bat", "makefile"}
 excludefiles     = {"*~"}
+cleanfiles       = {"*.log", "*.pdf", "*.zip", "*.curlopt"}
 ctanzip          = module
 
 function copyctan()
@@ -64,9 +66,10 @@ uploadconfig = {
   announcement = announcement,
   license      = "lppl1.3c",  
   ctanPath     = "/info/" .. module,
-  home         = "https://github.com/" .. maintainid .. "/" .. module,
-  bugtracker   = "https://github.com/" .. maintainid .. "/" .. module .. "/issues",
-  repository   = "https://github.com/" .. maintainid .. "/" .. module,
+  home         = repository,
+  support      = repository .. "/issues",
+  bugtracker   = repository .. "/issues",
+  repository   = repository,
   development  = "https://github.com/" .. maintainid,
   update       = true
 }
