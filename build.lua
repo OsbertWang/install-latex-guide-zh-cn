@@ -2,12 +2,13 @@
    L3BUILD FILE FOR INSTALL-LATEX-GUIDE-ZH-CN
 --]==========================================]--
 
---[=================[--
-   Basic Information
---]=================]--
+--[======================[--
+      Basic Information
+   Do Check Before Upload
+--]======================]--
 
 module           = "install-latex-guide-zh-cn"
-version          = "v2025.4.1" -- Check before execute `l3build upload`!
+version          = "v2025.4.1"
 maintainer       = "Ran Wang"
 maintainid       = "OsbertWang"
 email            = "ranwang.osbert@outlook.com"
@@ -18,9 +19,10 @@ description      = [[
 ]]
 
 
---[=======================[--
-   Pack and Upload To CTAN
---]=======================]--
+--[=============================[--
+      Pack and Upload To CTAN
+   Don't Modify Unless Necessary
+--]=============================]--
 
 typesetexe       = "xelatex"
 typesetopts      = "-interaction=nonstopmode -synctex=1"

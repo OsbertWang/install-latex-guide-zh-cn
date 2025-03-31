@@ -28,7 +28,7 @@
 在默认状态下打开软件、编写代码、保存文件后,
 用户可使用 \TeX works 的“排版”按钮进行文档编译而不必回到命令行%
 \footnote{实际上编辑器的按钮也是调用命令行来编译文档,
-\TeX works 默认排版快捷键是 \keys{ctrl + T}}. 
+\TeX works 默认排版快捷键是 \keys{ctrl + T}}.
 按钮旁边是编译命令菜单, 用户可根据需要自行选择. 
 
 下面介绍几个常用的功能. 
@@ -102,7 +102,7 @@ Windows 11 中字体列表见%
 \begin{table}
   \centering
   \caption{\TeX works 已有定义}\label{tab:variables}
-  \begin{tabular}{p{0.15\linewidth}p{0.75\linewidth}}
+  \begin{tabular}{>{\ttfamily}p{0.18\linewidth}p{0.75\linewidth}}
     \toprule
     Option & Description\\
     \midrule
@@ -225,7 +225,6 @@ Windows 11 中字体列表见%
 打开 \menu{Side Panel},
 点击软件左侧边栏第 4 个图标 \menu{Symbols}.
 
-
 \subsubsection{插入、改写调整}
 
 与很多其他编辑器一样,
@@ -261,9 +260,9 @@ Windows 11 中字体列表见%
 则该命令会出现红色背景.
 
 \TeX studio 能够识别的命令全部被写入了
-\href{https://github.com/texstudio-org/texstudio/tree/master/completion}{cwl 文件}
+\href{https://github.com/texstudio-org/texstudio/tree/master/completion}{\texttt{cwl} 文件}
 中. 
-用户可以根据自己的需要更改 cwl 文件,
+用户可以根据自己的需要更改 \texttt{cwl} 文件,
 然后将其放入
 \texttt{<settings directory>\textbackslash completion\textbackslash user}
 文件夹%
@@ -591,4 +590,4 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
     \bottomrule
     \end{tabular}%
   \label{tab:editor}%
-\end{table}%
+\end{table}
