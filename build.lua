@@ -2,37 +2,34 @@
    L3BUILD FILE FOR INSTALL-LATEX-GUIDE-ZH-CN
 --]==========================================]--
 
+--[=================[--
+   Basic Information
+--]=================]--
+
 module           = "install-latex-guide-zh-cn"
+version          = "v2025.4.1" -- Check before execute `l3build upload`!
 maintainer       = "Ran Wang"
-ctanzip          = module
-typesetfiles     = {module .. ".tex"}
+maintainid       = "OsbertWang"
+email            = "ranwang.osbert@outlook.com"
+announcement     = ""
+summary          = "A short introduction to LaTeX installation written in Chinese"
+description      = [[
+  This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 22.04, and macOS systems, and mainly introducing command line operations.
+]]
+
+
+--[=======================[--
+   Pack and Upload To CTAN
+--]=======================]--
+
 typesetexe       = "xelatex"
 typesetopts      = "-interaction=nonstopmode -synctex=1"
+typesetfiles     = {module .. ".tex"}
 supportdir       = "chapter"
 typesetsuppfiles = {"*.tex"}
 textfiles        = {"*.md", "LICENSE", "*.lua", "*.bat", "makefile"}
+ctanzip          = module
 
-uploadconfig = {
-  pkg          = module,
-  version      = "v2025.4.1",
-  author       = maintainer,
-  uploader     = maintainer,
-  email        = "ranwang.osbert@outlook.com",
-  summary      = "A short introduction to LaTeX installation written in Chinese",
-  description  = [[
-    This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 22.04, and macOS systems, and mainly introducing command line operations.
-  ]],
-  announcement = "",
-  license      = "lppl1.3c",  
-  ctanPath     = "/info/install-latex-guide-zh-cn",
-  home         = "https://github.com/osbertwang/" .. module,
-  bugtracker   = "https://github.com/osbertwang/" .. module .. "/issues",
-  repository   = "https://github.com/osbertwang/" .. module,
-  development  = "https://github.com/osbertwang",
-  update       = true
-}
-
--- Copy files to the main CTAN release directory
 function copyctan()
   local pkgsuppdir = ctandir .. "/" .. ctanpkg .. "/" .. supportdir
   mkdir(pkgsuppdir)
@@ -53,3 +50,21 @@ function copyctan()
     cp(file, textfiledir, pkgdir)
   end
 end
+
+uploadconfig = {
+  pkg          = module,
+  version      = version,
+  author       = maintainer,
+  uploader     = maintainer,
+  email        = email,
+  summary      = summary,
+  description  = description,
+  announcement = announcement,
+  license      = "lppl1.3c",  
+  ctanPath     = "/info/" .. module,
+  home         = "https://github.com/" .. maintainid .. "/" .. module,
+  bugtracker   = "https://github.com/" .. maintainid .. "/" .. module .. "/issues",
+  repository   = "https://github.com/" .. maintainid .. "/" .. module,
+  development  = "https://github.com/" .. maintainid,
+  update       = true
+}
