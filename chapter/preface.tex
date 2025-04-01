@@ -71,12 +71,10 @@
 衷心感谢你的支持.
 
 \begin{center}
-    \begin{tikzpicture}
-        \node{\qrcode[height=2cm]{https://qr.alipay.com/fkx19739ugrexpytkwirbe5}};
-        \node[rectangle,rounded corners,fill=white]{\faAlipay};
-    \end{tikzpicture}
-    \begin{tikzpicture}
-        \node{\qrcode[height=2cm]{wxp://f2f1ngYJgHLcAYkvo8VUlpSbF5_J5KiktdpOGmnA0ienTGgAgR2x20yWxEjzHWmIZfcT}};
-        \node[rectangle,rounded corners,fill=white]{\faWeixin};
-      \end{tikzpicture}
+  \fancyqr[ image = \small\textcolor{blue!90!black}\faAlipay,
+            image padding = 1, color = black, classic
+          ]{https://qr.alipay.com/fkx19739ugrexpytkwirbe5} \qquad
+  \fancyqr[ image = \small\textcolor{green!90!black}\faWeixin, classic,
+            image x padding = 0, image y padding = 1, color = black
+          ]{wxp://f2f1ngYJgHLcAYkvo8VUlpSbF5_J5KiktdpOGmnA0ienTGgAgR2x20yWxEjzHWmIZfcT}
 \end{center}
