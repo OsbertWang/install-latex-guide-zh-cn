@@ -5,20 +5,20 @@
 由于一些原因,
 有些电脑不能联网,
 这对升级宏包不利.
-这里介绍离线升级标准 \TeX{} Live 的包 (pkg) 的方法,
+这里介绍离线升级标准 \TeX\ Live 的包 (pkg) 的方法,
 主要是用 \texttt{tlmgr install} 的 \texttt{--file} 参数来实现.
 
 首先在能够联网的电脑上访问
-\href{https://ctan.org/tex-archive/systems/texlive/tlnet/archive}{archive}
+\href{https://ctan.org/tex-archive/systems/texlive/tlnet/archive}{\texttt{archive}}
 页面, 下载 \texttt{<archivename>.tar.xz} 文件.
 文件列表很长, 加载需花费些时间.
 注意 \texttt{<archivename>} 未必是 \href{https://ctan.org/pkg/}{pkg} 上的 \texttt{<pkgname>},
 例如在 \texttt{pkg} 上的
 \href{https://ctan.org/pkg/lshort-zh-cn}{lshort-zh-cn}
 对应着 \texttt{archive} 上的
-\href{http://mirrors.ctan.org/systems/texlive/tlnet/archive/lshort-chinese.tar.xz}{lshort-chinese.tar.xz}
+\href{http://mirrors.ctan.org/systems/texlive/tlnet/archive/lshort-chinese.tar.xz}{\texttt{lshort-chinese.tar.xz}}
 和
-\href{http://mirrors.ctan.org/systems/texlive/tlnet/archive/lshort-chinese.doc.tar.xz}{lshort-chinese.doc.tar.xz}.
+\href{http://mirrors.ctan.org/systems/texlive/tlnet/archive/lshort-chinese.doc.tar.xz}{\texttt{lshort-chinese.doc.tar.xz}}.
 
 这里多解释一点 \texttt{<archivename>}.
 前面已经看到一个 \texttt{<pkgname>} 可能会对应多个 \texttt{<archivename>},
@@ -51,5 +51,12 @@
 在命令行执行
 \begin{lstlisting} 
   tlmgr install --file <archivename>.tar.gz 
+\end{lstlisting}
+系统便可自行安装.
+
+对于部分提供了 \texttt{l3build} 脚本 \texttt{build.lua} 文件的宏包，
+用户可在下载压缩文件后解压，在解压后的目录中执行
+\begin{lstlisting} 
+  l3build install
 \end{lstlisting}
 系统便可自行安装.

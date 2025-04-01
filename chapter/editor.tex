@@ -6,7 +6,7 @@
 
 在实际操作中, 用户会发觉使用记事本编写 \texttt{tex} 文件十分不便,
 因此很多用户都将其他编辑器作为自己的首选.
-这里向大家介绍随 \TeX{} Live 一同发行的轻量级编辑器 \TeX works
+这里向大家介绍随 \TeX\ Live 一同发行的轻量级编辑器 \TeX works
 和功能更加丰富的
 \TeX studio.
 其他编辑器无法一一介绍, 还请自己在网上寻求更多帮助. 
@@ -19,7 +19,7 @@
 
 和大多数国产软件不同, \TeX works 不会自动在桌面生成快捷方式,
 新人往往不知道如何打开它. 
-实际上 \TeX works 在 \TeX{} Live 安装路径的
+实际上 \TeX works 在 \TeX\ Live 安装路径的
 \texttt{\textbackslash bin\textbackslash windows} 中,
 可在 \textsf{cmd} 中执行 \texttt{texworks} 打开,
 也可直接在 Windows 搜索栏里搜 \TeX works 打开. 
@@ -28,7 +28,7 @@
 在默认状态下打开软件、编写代码、保存文件后,
 用户可使用 \TeX works 的“排版”按钮进行文档编译而不必回到命令行%
 \footnote{实际上编辑器的按钮也是调用命令行来编译文档,
-\TeX works 默认排版快捷键是 \keys{ctrl + T}}. 
+\TeX works 默认排版快捷键是 \keys{ctrl + T}}.
 按钮旁边是编译命令菜单, 用户可根据需要自行选择. 
 
 下面介绍几个常用的功能. 
@@ -102,7 +102,7 @@ Windows 11 中字体列表见%
 \begin{table}
   \centering
   \caption{\TeX works 已有定义}\label{tab:variables}
-  \begin{tabular}{p{0.15\linewidth}p{0.75\linewidth}}
+  \begin{tabular}{>{\ttfamily}p{0.18\linewidth}p{0.75\linewidth}}
     \toprule
     Option & Description\\
     \midrule
@@ -119,7 +119,7 @@ Windows 11 中字体列表见%
 
 默认情况, \TeX works没有搭载拼写检查字典, 需要用户自己配置. 
 首先, 访问
-\href{https://extensions.openoffice.org/dictionary}{openoffice}
+\href{https://extensions.openoffice.org/dictionary}{\textsf{OpenOffice}}
 下载 \texttt{.oxt} 文件.
 将 \texttt{.oxt} 文件重命名为 \texttt{.zip} 文件,
 解压缩得到里面的 \texttt{.dic} 和 \texttt{.aff} 文件.
@@ -225,7 +225,6 @@ Windows 11 中字体列表见%
 打开 \menu{Side Panel},
 点击软件左侧边栏第 4 个图标 \menu{Symbols}.
 
-
 \subsubsection{插入、改写调整}
 
 与很多其他编辑器一样,
@@ -261,9 +260,9 @@ Windows 11 中字体列表见%
 则该命令会出现红色背景.
 
 \TeX studio 能够识别的命令全部被写入了
-\href{https://github.com/texstudio-org/texstudio/tree/master/completion}{cwl 文件}
+\href{https://github.com/texstudio-org/texstudio/tree/master/completion}{\texttt{cwl} 文件}
 中. 
-用户可以根据自己的需要更改 cwl 文件,
+用户可以根据自己的需要更改 \texttt{cwl} 文件,
 然后将其放入
 \texttt{<settings directory>\textbackslash completion\textbackslash user}
 文件夹%
@@ -430,7 +429,7 @@ Windows 11 中字体列表见%
   sudo apt install texstudio
 \end{lstlisting}
 即可安装 \TeX studio.
-注意安装过程中会产生一些依赖, 它们包括了源内的 \TeX{} live 包, 如 \texttt{tex-common}, \texttt{texlive-base}, \texttt{texlive-binaries}, \texttt{texlive-latex-base} 和 \texttt{texlive-latex-recommended}.
+注意安装过程中会产生一些依赖, 它们包括了源内的 \TeX\ live 包, 如 \texttt{tex-common}, \texttt{texlive-base}, \texttt{texlive-binaries}, \texttt{texlive-latex-base} 和 \texttt{texlive-latex-recommended}.
 用户需要卸载它们,
 参见 \ref{sec:ubuntu:aptremove}~节.
 
@@ -490,7 +489,7 @@ Windows 11 中字体列表见%
 
 \subsection{\TeX Shop}
 
-Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆),
+Mac\TeX 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆),
 通常在安装完毕后便可立即使用.
 通过编辑器打开 \texttt{main.tex},
 将排版程序 (工具栏上面左数第二个下拉菜单) 由默认的 \menu{LaTeX} 切换到
@@ -534,7 +533,7 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
 \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{LaTeX Workshop}
 可以作为一款跨平台的编辑器来使用,
 具体设置方式建议阅读插件
-\href{https://github.com/James-Yu/LaTeX-Workshop/wiki}{wiki}
+\href{https://github.com/James-Yu/LaTeX-Workshop/wiki}{Wiki}
 了解更多内容,
 一些网友的教程可以参考,
 如
@@ -550,7 +549,7 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
 但熟练掌握用法后,
 用户将很容易对其进行定制.
 \href{http://vim-latex.sourceforge.net/}{Vim-LaTeX}
-尝试提供一套全面的工具来查看、编辑和编译 \LaTeX{} 文档,
+尝试提供一套全面的工具来查看、编辑和编译 \LaTeX 文档,
 用户可以考虑使用.
 
 更多编辑器可参考 TUG 的%
@@ -558,23 +557,23 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
 
 \section{多款编辑器对比参考}
 
-显然, 能够支持 \LaTeX{} 的编辑器并不局限于本手册所介绍的几款.
-表~\ref{tab:editor} 是 \href{https://ddswhu.me/}{ddswhu} 在 \LaTeX{}
-小圈子内部对 \LaTeX{} 编辑器所进行的用户体验调查的结果, 比较主观, 仅供参考.
+显然, 能够支持 \LaTeX 的编辑器并不局限于本手册所介绍的几款.
+表~\ref{tab:editor} 是 \href{https://ddswhu.me/}{ddswhu} 在 \LaTeX
+小圈子内部对 \LaTeX 编辑器所进行的用户体验调查的结果, 比较主观, 仅供参考.
 其中 Sublime Text 和 Visual Studio Code 为文本编辑器,
-它们需要借助插件才能支持 \LaTeX{} 编译.
+它们需要借助插件才能支持 \LaTeX 编译.
 对自己网络非常自信的用户也可以参考
 \href{https://en.wikipedia.org/wiki/Comparison_of_TeX_editors}{\textsc{V\kern-.5em V\kern -.125em ikipediA}}
 上的对比结果.
 
 \begin{table}[htbp]
   \centering
-  \caption{\LaTeX{} 编辑器对比}
+  \caption{\LaTeX 编辑器对比}
     \begin{tabular}{cccccc}
     \toprule
              &  WinEdt      &  \TeX studio  & \TeX works   &  Sublime Text &  VS Code     \\
              \cline{5-6}
-    插件依赖  &        &   &  &  \href{https://latextools.readthedocs.io/en/latest/}{\LaTeX{}Tools} &  \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}   \\
+    插件依赖  &        &   &  &  \href{https://latextools.readthedocs.io/en/latest/}{\LaTeX Tools} &  \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX\ Workshop}   \\
     \midrule
     主流系统  &  Win          &  全平台        & Linux/Win     &  全平台        &  全平台       \\
     软件类型  &  商业软件      &  开源软件       & 开源软件       &  商业软件       &  开源软件     \\
@@ -591,4 +590,4 @@ Mac\TeX{} 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆
     \bottomrule
     \end{tabular}%
   \label{tab:editor}%
-\end{table}%
+\end{table}

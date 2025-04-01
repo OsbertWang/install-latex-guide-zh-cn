@@ -197,13 +197,13 @@ VS Code 的插件权限有限,
 恢复文档.
 
 利用
-\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX{} Workshop}
-插件可以将 VS Code 作为 \LaTeX{} 编辑器,
+\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX\ Workshop}
+插件可以将 VS Code 作为 \LaTeX 编辑器,
 难点在于如何设置.
 这里还是建议用户阅读插件
-\href{https://github.com/James-Yu/LaTeX-Workshop/wiki}{wiki}
+\href{https://github.com/James-Yu/LaTeX-Workshop/wiki}{Wiki}
 了解更多内容.
-以下 VS Code 设置的 json 文件内容为个人自用的 \LaTeX{} Workshop 设置,
+以下 VS Code 设置的 json 文件内容为个人自用的 \LaTeX\ Workshop 设置,
 仅供参考,
 其中注释的部分是调用外部 SumatraPDF 阅读器的设置,
 用户可阅读
@@ -274,7 +274,7 @@ VS Code 的插件权限有限,
 即 SumatraPDF 和 VS Code 各自的安装路径.
 
 另外需要声明的是,
-\LaTeX{} Workshop 插件并不局限在 WSL 当中,
+\LaTeX\ Workshop 插件并不局限在 WSL 当中,
 它的配置是可以通用的.
 
 \section{迁移 WSL 的安装位置}
@@ -360,14 +360,14 @@ WSL 只能安装在系统盘,
 个人用了原本 \texttt{Ubuntu} 分发内的用户名.
 然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
 退出 \texttt{bash},
-在 \texttt{cmd} 中执行
+在 \textsf{cmd} 中执行
 \begin{lstlisting}[language=bash]
   wsl --terminate Ubuntu2204
   wsl ~ -d Ubuntu2204
 \end{lstlisting}
 这时如果一切正常,
 就可以将 \texttt{Ubuntu2204} 设置为默认 WSL 分发,
-即在 \texttt{cmd} 中执行
+即在 \textsf{cmd} 中执行
 \begin{lstlisting}[language=bash]
   wsl --set-default Ubuntu2204
 \end{lstlisting}

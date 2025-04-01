@@ -1,8 +1,8 @@
 INSTALLLATEX  = install-latex-guide-zh-cn
 PDF       = $(INSTALLLATEX).pdf
-REQUIRE   = $(INSTALLLATEX).tex $(wildcard ./chapter/*.tex) $(wildcard ./appendix/*.tex)
+REQUIRE   = $(INSTALLLATEX).tex $(wildcard ./chapter/*.tex)
 TEMP      = $(INSTALLLATEX).xdv $(INSTALLLATEX).aux $(INSTALLLATEX).log $(INSTALLLATEX).toc $(INSTALLLATEX).out $(INSTALLLATEX).synctex.gz \
-            $(wildcard ./chapter/*.aux) $(wildcard ./appendix/*.aux)
+            $(wildcard ./chapter/*.aux)
 
 TEX       = xelatex
 MODE      = -synctex=1

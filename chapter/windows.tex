@@ -2,15 +2,15 @@
 
 \chapter{Windows 11 系统}
 
-\section{安装 \TeX{} Live}\label{sec:windows:install}
+\section{安装 \TeX\ Live}\label{sec:windows:install}
 
-在安装 \TeX{} Live 之前,
+在安装 \TeX\ Live 之前,
 在文件夹菜单栏 \menu{查看 > 显示} 中选择 \menu{文件扩展名}.
 
-用户可以从最近的 CTAN 源\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX{} Live 的
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{iso 镜像文件},
+用户可以从最近的 CTAN 源\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX\ Live 的
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{\texttt{iso} 镜像文件},
 也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
-通过大陆地区的源下载 iso 文件的方法请参考附录~\ref{chp:appendix:mirror}.
+通过大陆地区的源下载 \texttt{iso} 文件的方法请参考附录~\ref{chp:appendix:mirror}.
 
 假设镜像文件被下载到本地后,
 其存放路径为 \texttt{X:\textbackslash Y}%
@@ -46,22 +46,22 @@
 则关闭 \textsf{cmd} 窗口,
 将 \texttt{C:\textbackslash Windows\textbackslash system32}
 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
-\textbf{根据以往经验, 安装老版 C\TeX{} 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
+\textbf{根据以往经验, 安装老版 C\TeX 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
 
 另外, 如果环境变量中有 \texttt{mingw}、\texttt{jdk}、\texttt{Cygwin} 相关的内容,
 也请暂时删除\footnote{前两者具体原因参见
 \href{https://tex.stackexchange.com/questions/445086/error-installing-latest-version-of-tex-live-on-windows-10}{\textsf{Stack\textbf{Exchange}}}
-的解释, 待安装结束后, 再将环境变量重新添加至 \TeX{} Live 的环境变量之后}.
+的解释, 待安装结束后, 再将环境变量重新添加至 \TeX\ Live 的环境变量之后}.
 同时国内常见的 2345 好压也会对安装构成影响,
-建议删除它并在安装 \TeX{} Live 后更换其他同类软件%
+建议删除它并在安装 \TeX\ Live 后更换其他同类软件%
 \footnote{推荐 \href{http://www.winrar.com.cn/}{WinRAR}
 或 \href{https://www.7-zip.org/}{7-Zip}}.
 \textbf{最重要的是, 不要安装第三方安全软件}\footnote{Windows 11 中已经内置了安全软件,
 用户尤其没有必要安装国产的第三方杀毒软件,
 根据经验,
-它们会干扰 \TeX{} Live 安装}.
+它们会干扰 \TeX\ Live 安装}.
 
-下面我们要确保下载到的 iso 文件没有损坏, 一种常用做法是检查其 MD5 值.
+下面我们要确保下载到的 \texttt{iso} 文件没有损坏, 一种常用做法是检查其 MD5 值.
 当然, 如果确信自己下载到的文件没有问题, 也可以跳过这一步.
 打开 \textsf{cmd} 窗口依次执行以下代码
 \begin{lstlisting}[language = bash]
@@ -97,7 +97,7 @@
 即为验证成功.
 
 接下来开始安装.
-推荐用户先手动建立 \TeX{} Live 的安装路径 (文件夹) 再进行安装,
+推荐用户先手动建立 \TeX\ Live 的安装路径 (文件夹) 再进行安装,
 注意路径的名称是\textbf{不带空格的英文},
 默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2025}.
 假如系统用了中文作为用户名,
@@ -107,7 +107,7 @@
 可在文件夹菜单栏
 \menu{装载};
 第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO;
-不鼓励解压缩镜像文件}. 
+不鼓励解压缩镜像文件}.
 假设加载后的路径为 \texttt{Z:\textbackslash}.
 打开 \textsf{cmd} 窗口并执行
 \begin{lstlisting}[language = bash]
@@ -170,7 +170,7 @@
 
   Enter command:
 \end{lstlisting}
-这时, 用户可可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX{} Live,
+这时, 用户可可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX\ Live,
 也可按键盘 \keys{D} 来更改安装路径.
 按 \keys{D} 后, 用户可看到
 \begin{lstlisting}
@@ -208,7 +208,7 @@
 \footnote{Windows 11 默认采取快速编辑模式, 一旦点击 \textsf{cmd} 窗口,
 将显示``选择命令提示符''而导致进程暂停}. 
 安装完成后, 关闭再打开 \textsf{cmd} 窗口%
-\footnote{正常安装 \TeX{} Live 后, 环境变量会变化,
+\footnote{正常安装 \TeX\ Live 后, 环境变量会变化,
 关闭原 \textsf{cmd} 窗口再重新打开才能获取新的环境变量},
 执行
 \begin{lstlisting}[language = bash]
@@ -267,14 +267,14 @@
 输入 \textsf{cmd},
 按 \keys{\ctrl + \shift + \enter} 三个键.
 一般而言,
-在系统盘内直接安装 \TeX{} Live 会碰到此类问题,
+在系统盘内直接安装 \TeX\ Live 会碰到此类问题,
 因此鼓励用户在安装前先手动建立安装路径.
 直接使用管理员身份打开 \textsf{cmd} 窗口进行安装可能会对以后的升级造成影响.
 
 \subsection{系统用中文作为用户名}\label{sec:chinesename}
 
 很多中文 Windows 用户习惯于用中文作为用户名,
-但是这样会导致 \TeX{} Live 安装失败.
+但是这样会导致 \TeX\ Live 安装失败.
 更改系统的 \texttt{TEMP} 和 \texttt{TMP} 这两个环境变量可以避免这样的问题.
 在 \textsf{cmd} 中执行
 \begin{lstlisting}
@@ -288,7 +288,7 @@
 %  $env:TMP = 'C:\temp'
 %\end{lstlisting}
 便可更改这两个环境变量为 \texttt{C:\textbackslash temp}.
-更改后按照前述内容安装 \TeX{} Live 即可.
+更改后按照前述内容安装 \TeX\ Live 即可.
 这样的更改是临时的,
 待 \textsf{cmd} 窗口关闭,
 环境变量将恢复为原始状态.
@@ -321,7 +321,7 @@
 \subsection{\texttt{tlmgr} 本身无法成功升级}
 
 遇到这种情况时, 用户需自行下载并运行
-\href{https://mirrors.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe}{update-tlmgr-latest.exe},
+\href{https://mirrors.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe}{\texttt{update-tlmgr-latest.exe}},
 然后再执行升级命令即可%
 \footnote{这里依旧让系统自动选择镜像源,
 用户可以自行选择国内镜像以加快下载速度}. 
@@ -344,7 +344,7 @@
 
 \section{安装宏包}
 
-在默认状态下, 用户将完整安装 \TeX{} Live, 因此用户极少碰到需要手动安装宏包的情形. 
+在默认状态下, 用户将完整安装 \TeX\ Live, 因此用户极少碰到需要手动安装宏包的情形. 
 同时, 在
 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-cn}
 中也明确提到, \textbf{如非万不得已, 尽量不要手动安装宏包}. 
@@ -371,7 +371,7 @@
 这两本手册中都有讲解安装的相关内容,
 建议用户阅读.
 
-本手册业已被 \TeX{} Live 收录,
+本手册业已被 \TeX\ Live 收录,
 调出本手册的命令为
 \begin{lstlisting}[language=bash]
   texdoc install-latex-guide-zh-cn
@@ -436,7 +436,7 @@ Windows 11 继承了这个特性.
 \texttt{xelatex} 可以使用系统内安装的字体,
 用户在安装字体时需右键字体文件的快捷菜单 \menu{显示更多选项 > 为所有用户安装}.
 
-总结一下, 在使用 \LaTeX{} 时, 用户首先要在工作路径%
+总结一下, 在使用 \LaTeX 时, 用户首先要在工作路径%
 \footnote{建议不同的工程放入不同的工作路径}%
 中建立一个完整的 \texttt{tex} 文件%
 \footnote{该文件必须包含 \texttt{\textbackslash documentclass},
@@ -485,7 +485,7 @@ Windows 11 继承了这个特性.
 \end{lstlisting}
 待结束后再用 \texttt{xelatex} 编译文档.
 更多内容参考
-\href{https://github.com/CTeX-org/forum/issues/70}{github 上的讨论}.
+\href{https://github.com/CTeX-org/forum/issues/70}{GitHub 上的讨论}.
 
 另外也可考虑重装 \texttt{xetex}.
 在命令行执行
@@ -502,9 +502,9 @@ Windows 11 继承了这个特性.
 \end{lstlisting}
 刷新 \texttt{fmt} 文件后再编译 \texttt{tex} 文件.
 
-\section{卸载 \TeX{} Live}
+\section{卸载 \TeX\ Live}
 
-在跨版本升级 \TeX{} Live 时, 通常需要卸载旧版 \TeX{} Live.
+在跨版本升级 \TeX\ Live 时, 通常需要卸载旧版 \TeX\ Live.
 下面介绍几种卸载方法.
 
 \subsection{使用批处理文件}
@@ -514,7 +514,7 @@ Windows 11 继承了这个特性.
   kpsewhich -var-value TEXMFROOT
 \end{lstlisting}
 可以查看 \texttt{TEXMFROOT} 的值,
-该值即为 \TeX{} Live 的安装路径%
+该值即为 \TeX\ Live 的安装路径%
 \footnote{%
   除这里提供的 \texttt{TEXMFROOT}, 还有很多其他变量, 可在
   \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}
@@ -522,7 +522,7 @@ Windows 11 继承了这个特性.
 }. 
 接下来,
 用户只需执行%
-\footnote{双击或在 \texttt{cmd} 中运行}%
+\footnote{双击或在 \textsf{cmd} 中运行}%
 安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
 \begin{lstlisting}[language=bash]
   C:\texlive\2025\tlpkg\installer\uninst.bat
@@ -533,7 +533,7 @@ Windows 11 继承了这个特性.
 %\end{lstlisting}
 结束以上步骤后,
 手动删除用户文件夹中的 \texttt{.texlive2025}.
-如果用户安装 \TeX{} Live 时需要管理员权限,
+如果用户安装 \TeX\ Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
 
 卸载后,
@@ -556,10 +556,10 @@ Windows 11 继承了这个特性.
 
 如果执行批处理文件 \texttt{uninst.bat} 出错,
 用户也可手动删除安装文件夹,
-之后再清理 \TeX{} Live 的环境变量,
+之后再清理 \TeX\ Live 的环境变量,
 并且清理注册表.
 
-\section{跨版本升级 \TeX{} Live}
+\section{跨版本升级 \TeX\ Live}
 
 目前在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org}
 上面提供的说法是:

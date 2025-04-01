@@ -3,7 +3,7 @@ cd %~dp0
 set INSTALLLATEX=install-latex-guide-zh-cn
 set PDF=%INSTALLLATEX%.pdf
 set TEMP=%INSTALLLATEX%.xdv %INSTALLLATEX%.aux %INSTALLLATEX%.log %INSTALLLATEX%.toc %INSTALLLATEX%.out %INSTALLLATEX%.synctex.gz ^
-         .\appendix\*.aux .\chapter\*.aux
+         .\chapter\*.aux
 
 if "%1"=="clean" goto clean
 
