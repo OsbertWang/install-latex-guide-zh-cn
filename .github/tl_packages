@@ -17,6 +17,6 @@ hyperref
 ifoddpage
 listings
 menukeys
-qrcode
+fancyqr
 relsize
 xstring
