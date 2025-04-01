@@ -4,11 +4,11 @@
 
 \section{安装 Mac\TeX}
 
-Mac\TeX 是 \TeX\ Live 在 macOS 下的再打包版本,
+Mac\TeX\ 是 \TeX\ Live 在 macOS 下的再打包版本,
 并额外加入了一些辅助程序.
-在 macOS 上安装 Mac\TeX 可以选择以下两种方式: 
+在 macOS 上安装 Mac\TeX\ 可以选择以下两种方式: 
 \begin{description}
-  \item[直接下载 Mac\TeX 安装包进行安装]
+  \item[直接下载 Mac\TeX\ 安装包进行安装]
   将安装文件下载到本地,
   然后按照安装提示进行安装.
   \item[借助 Homebrew 以命令行方式安装]
@@ -16,14 +16,14 @@ Mac\TeX 是 \TeX\ Live 在 macOS 下的再打包版本,
   然后通过命令行进行在线安装.
 \end{description}
 
-目前比较推荐直接下载 Mac\TeX 安装包的安装方式,
+目前比较推荐直接下载 Mac\TeX\ 安装包的安装方式,
 因为最近一段时间以来,
 大陆用户对 GitHub 的访问极不稳定,
 有可能会导致 Homebrew 安装失败.
 
-\subsection{直接下载 Mac\TeX 安装包进行安装}
+\subsection{直接下载 Mac\TeX\ 安装包进行安装}
 
-\href{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}{下载} Mac\TeX 的安装包 \texttt{MacTeX.pkg},
+\href{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}{下载} Mac\TeX\ 的安装包 \texttt{MacTeX.pkg},
 在系统内点击已下载的 \texttt{MacTeX.pkg} 文件,
 根据系统提示进行安装即可.
 这个过程与安装 macOS 上的其他软件并无太多不同.
@@ -91,18 +91,18 @@ Homebrew 安装教程可以在其网站找到,
 如有输入密码等提示, 请根据屏幕指示操作.至于环境变量等繁琐细节, Homebrew 会自动进行处理,
 无须用户干预.
 
-如果用户完全不需要 Mac\TeX 附带的 GUI 组件, 也可以考虑仅安装其命令行工具, 通过在终端键入命令或者从其他文本编辑器调用.
+如果用户完全不需要 Mac\TeX\ 附带的 GUI 组件, 也可以考虑仅安装其命令行工具, 通过在终端键入命令或者从其他文本编辑器调用.
 \begin{lstlisting}[language=bash]
   brew install mactex-no-gui
 \end{lstlisting}
 
-完整的 Mac\TeX 会比较大. 如果磁盘空间实在紧张, 也可以考虑安装 Basic\TeX:
+完整的 Mac\TeX\ 会比较大. 如果磁盘空间实在紧张, 也可以考虑安装 Basic\TeX:
 \begin{lstlisting}[language=bash]
   brew install basictex
 \end{lstlisting}
-安装完成后 Basic\TeX 依然会缺很多包, 手动安装会比较麻烦, 所以不推荐没有经验的用户尝试.
+安装完成后 Basic\TeX\ 依然会缺很多包, 手动安装会比较麻烦, 所以不推荐没有经验的用户尝试.
 
-注意, Basic\TeX 的初始设定是不安装宏包文档和源码. 如有需要, 可以执行
+注意, Basic\TeX\ 的初始设定是不安装宏包文档和源码. 如有需要, 可以执行
 \begin{lstlisting}[language=bash]
   # 1 为安装, 0 为不安装
   sudo tlmgr option docfiles 1 # 安装文档, 推荐
@@ -136,7 +136,7 @@ Homebrew 安装教程可以在其网站找到,
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   \documentclass{article}
   \begin{document}
-    Hello \LaTeX{} World!
+    Hello \LaTeX\ World!
   \end{document}
 \end{lstlisting}
 接下来在\textsf{终端}中执行
@@ -153,7 +153,7 @@ Homebrew 安装教程可以在其网站找到,
 \begin{lstlisting}[language={[LaTeX]TeX}]
   \documentclass{ctexart}
   \begin{document}
-    你好 \LaTeX{} 世界！
+    你好 \LaTeX\ 世界！
   \end{document}
 \end{lstlisting}
 保存并退出.
@@ -182,7 +182,7 @@ Homebrew 安装教程可以在其网站找到,
 
 \section{卸载 Mac\TeX}
 
-如果用户直接下载了 Mac\TeX 安装包进行安装,
+如果用户直接下载了 Mac\TeX\ 安装包进行安装,
 可以对照\href{https://www.tug.org/mactex/uninstalling.html}{这里}的介绍来卸载,
 通常我个人会比较建议在跨版本升级前卸载旧版本.
 
@@ -194,7 +194,7 @@ Homebrew 安装教程可以在其网站找到,
   brew uninstall mactex
 \end{lstlisting}
 
-如果用户借助 Homebrew 安装 Mac\TeX 时选择仅安装其命令行工具,
+如果用户借助 Homebrew 安装 Mac\TeX\ 时选择仅安装其命令行工具,
 卸载时需使用
 \begin{lstlisting}[language=bash]
   brew uninstall mactex-no-gui
@@ -205,20 +205,20 @@ Homebrew 安装教程可以在其网站找到,
 
 \section{跨版本升级 Mac\TeX}
 
-如果用户直接下载了 Mac\TeX 安装包进行安装,
+如果用户直接下载了 Mac\TeX\ 安装包进行安装,
 可以先卸载旧版本,
 再安装新版本,
 或者干脆保留多个版本,
 具体见\href{https://www.tug.org/mactex/multipletexdistributions.html}{这里}.
 
 如果用户借助 Homebrew 安装了 Mac\TeX,
-跨版本升级 (Mac\TeX 的版本与 \TeX\ Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
+跨版本升级 (Mac\TeX\ 的版本与 \TeX\ Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
 \begin{lstlisting}[language=bash]
   brew update
   brew upgrade mactex
 \end{lstlisting}
 
-如果用户借助 Homebrew 安装 Mac\TeX 时选择仅安装其命令行工具,
+如果用户借助 Homebrew 安装 Mac\TeX\ 时选择仅安装其命令行工具,
 跨版本升级时需使用
 \begin{lstlisting}[language=bash]
   brew update

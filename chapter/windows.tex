@@ -46,7 +46,7 @@
 则关闭 \textsf{cmd} 窗口,
 将 \texttt{C:\textbackslash Windows\textbackslash system32}
 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
-\textbf{根据以往经验, 安装老版 C\TeX 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
+\textbf{根据以往经验, 安装老版 C\TeX\ 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
 
 另外, 如果环境变量中有 \texttt{mingw}、\texttt{jdk}、\texttt{Cygwin} 相关的内容,
 也请暂时删除\footnote{前两者具体原因参见
@@ -401,7 +401,7 @@
 \begin{lstlisting}[language={[LaTeX]TeX}]
   \documentclass{article}
   \begin{document}
-    Hello \LaTeX{} World!
+    Hello \LaTeX\ World!
   \end{document}
 \end{lstlisting}
 保存并退出. 
@@ -422,7 +422,7 @@ Windows 11 继承了这个特性.
 \begin{lstlisting}[language={[LaTeX]TeX}]
   \documentclass[fontset=windows]{ctexart}
   \begin{document}
-    你好 \LaTeX{} 世界！
+    你好 \LaTeX\ 世界！
   \end{document}
 \end{lstlisting}
 保存并退出.
@@ -436,7 +436,7 @@ Windows 11 继承了这个特性.
 \texttt{xelatex} 可以使用系统内安装的字体,
 用户在安装字体时需右键字体文件的快捷菜单 \menu{显示更多选项 > 为所有用户安装}.
 
-总结一下, 在使用 \LaTeX 时, 用户首先要在工作路径%
+总结一下, 在使用 \LaTeX\ 时, 用户首先要在工作路径%
 \footnote{建议不同的工程放入不同的工作路径}%
 中建立一个完整的 \texttt{tex} 文件%
 \footnote{该文件必须包含 \texttt{\textbackslash documentclass},
@@ -474,10 +474,10 @@ Windows 11 继承了这个特性.
 \footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译,
 详情见相关文档}. 
 
-\subsection{\LaTeXe 版本不匹配导致 \texttt{xelatex} 失败}
+\subsection{\LaTeXe\ 版本不匹配导致 \texttt{xelatex} 失败}
 
 使用 \texttt{xelatex} 编译文档,
-系统有时会提示目前 \LaTeXe 的版本低于某宏包的要求版本.
+系统有时会提示目前 \LaTeXe\ 的版本低于某宏包的要求版本.
 这种情况是由于 \textsf{fmt} 文件未能更新所导致.
 此时可考虑在命令行运行
 \begin{lstlisting}[language=bash]
