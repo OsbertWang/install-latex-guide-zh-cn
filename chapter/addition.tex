@@ -216,18 +216,22 @@ VS Code 的插件权限有限,
     {
       "name": "latexmkpdf",
       "command": "latexmk",
-      "args": [
-        "-synctex=1",  "-interaction=nonstopmode", "-pdf",
-        "-halt-on-error", "-file-line-error", "%DOCFILE%",
-      ]
+      "args":
+        [
+          "-synctex=1", "%DOCFILE%",
+          "-halt-on-error", "-file-line-error",
+          "-pdf", "-interaction=nonstopmode"
+        ]
     },
     {
       "name": "latexmkxe",
       "command": "latexmk",
-      "args": [
-        "-synctex=1",  "-interaction=nonstopmode", "-xelatex",
-        "-halt-on-error", "-file-line-error", "%DOCFILE%",
-      ]
+      "args":
+        [
+          "-synctex=1", "%DOCFILE%",
+          "-halt-on-error", "-file-line-error", 
+          "-xelatex", "-interaction=nonstopmode",
+        ]
     },
   ],
   "latex-workshop.latex.recipes": [
