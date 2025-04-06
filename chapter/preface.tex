@@ -76,10 +76,17 @@
 \definecolor{alipay}{HTML}{1677FF}
 \definecolor{weixin}{HTML}{1AAD19}
 \begin{center}
-  \fancyqr[ image = \small\textcolor{alipay}\faAlipay,
-            image padding = 1, color = black, classic
+  \fancyqr[ height = 5.55em, classic, color = black, version = 5,
+            image = {\tikz
+              \node [ inner sep = 0pt, draw, line width = .15em,
+                      rounded corners = .15em, alipay,
+                      minimum width = .9em, minimum height = .9em
+                    ] {\textcolor{alipay}\faAlipay};}
           ]{https://qr.alipay.com/fkx10265yq7niozotwocae3} \qquad
-  \fancyqr[ image = \small\textcolor{weixin}\faWeixin, classic,
-            image x padding = 0, image y padding = 1, color = black
+  \fancyqr[ height = 5.55em, classic, color = black, version = 5,
+            image = {\tikz
+              \node [ inner sep = 0pt, fill = weixin, rounded corners = .15em,
+                      minimum width = 1.05em, minimum height = 1.05em
+                    ] (wechat) {\footnotesize\textcolor{white}\faWeixin};}
           ]{wxp://f2f1ngYJgHLcAYkvo8VUlpSbF5_J5KiktdpOGmnA0ienTGgAgR2x20yWxEjzHWmIZfcT}
 \end{center}
