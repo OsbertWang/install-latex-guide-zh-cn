@@ -1,6 +1,6 @@
 % !TeX root = ../install-latex-guide-zh-cn.tex
 
-\chapter{Ubuntu 22.04 系统}
+\chapter{Ubuntu 24.04 系统}
 
 \section{安装 \TeX\ Live}\label{chap:ubuntu:sec:install}
 
@@ -10,7 +10,7 @@
 具体方法见 \ref{sec:ubuntu:uninstall}~节.
 为了减少后续字体问题和文本编辑问题,
 安装前在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   sudo apt install fontconfig gedit
 \end{lstlisting}
 由于大陆地区网络现状,
@@ -20,12 +20,12 @@
 均指在  \textsf{Terminal} 中执行相关命令.
 
 下载
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{iso 镜像文件}
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{\texttt{iso} 镜像文件}
 的方法见 \ref{sec:windows:install}~节.
 下载完毕后,
 验证 MD5 值,
 即执行以下命令
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   cd ~/Downloads
   md5sum texlive2025.iso
 \end{lstlisting}
@@ -36,27 +36,27 @@
 则镜像文件下载正确.
 同样可验证 SHA512 值,
 执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   cd ~/Downloads
   sha512sum texlive2025.iso
 \end{lstlisting}
 正确的返回结果为
-\begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
+\begin{lstlisting}[literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
   1fd9a2234d086f50c832ab3ac8b83477bbc39b1138a3c4a2351244c1fd4b8bea6d1ac81d4a5b0cba95f2e82c00f0d9df5b33189eb222e4bae5dae1523ef0da0e  texlive2025.iso
 \end{lstlisting}
 
 将下载的光盘镜像进行装载
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo mkdir /mnt/texlive
   sudo mount ./texlive2025.iso /mnt/texlive
 \end{lstlisting}
 接下来执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo /mnt/texlive/install-tl
 \end{lstlisting}
 进行安装.
 在屏幕上应该能见到以下内容
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}, emphstyle = {}, stringstyle = {}]
   ======================> TeX Live installation procedure <=====================
 
   ======>   Letters/digits in <angle brackets> indicate   <=======
@@ -112,11 +112,11 @@
 更改安装设置,
 如安装路径等.
 为简化起见,
-以下记录均假定为 \texttt{x86\_64} 上的默认安装.
+以下记录均假定为 \path{x86_64} 上的默认安装.
 安装完毕后,
 系统会提示用户添加环境变量,
 例如
-\begin{lstlisting}
+\begin{lstlisting}[deletekeywords = local]
   export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
   export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
   export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
@@ -126,19 +126,19 @@
 
 将装载的光盘镜像弹出并删除文件夹,
 即执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo umount /mnt/texlive
   sudo rm -r /mnt/texlive
 \end{lstlisting}
 
 设置环境变量.
 执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   gedit ~/.profile
 \end{lstlisting}
 在打开的文件末尾添加刚刚记录的系统提示,
 如
-\begin{lstlisting}
+\begin{lstlisting}[deletekeywords = local]
   # Add TeX Live to the PATH, MANPATH, INFOPATH
   export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
   export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
@@ -147,11 +147,11 @@
 并保存退出.
 然后退出当前用户并重新登录,
 再打开 \textsf{Terminal} 并执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tex -v
 \end{lstlisting}
 若显示
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}]
   TeX 3.141592653 (TeX Live 2025)
   kpathsea version 6.4.1
   Copyright 2025 D.E. Knuth.
@@ -166,21 +166,21 @@
 
 接下来处理字体.
 在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[deletekeywords = local]
   sudo cp /usr/local/texlive/2025/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
 将配置文件复制到系统,
 然后继续执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   sudo fc-cache -fsv
 \end{lstlisting}
 刷新字体缓存.
 这样一来, \TeX\ Live 中的字体才能够被正确调用.
-更多内容请参考 \href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}.
+更多内容请参考 \href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\textsf{texlive-zh-cn}}.
 
 如果用户更改了安装路径,
 要注意将
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}]
   /usr/local/texlive/2025/
 \end{lstlisting}
 在各处替换.
@@ -190,11 +190,11 @@
 如果有用户打算在用户文件夹安装 \TeX\ Live,
 那么可以不必调用权限,
 直接执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   /mnt/texlive/install-tl
 \end{lstlisting}
 只不过这时安装路径需要选择
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   ~/texlive/2025
 \end{lstlisting}
 安装完毕后,
@@ -205,16 +205,16 @@
   export MANPATH=~/texlive/2025/texmf-dist/doc/man:$MANPATH
   export INFOPATH=~/texlive/2025/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
-有关字体的处理变为\footnote{这里并未使用 \href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn} 中建议的路径 \texttt{\~/.fonts.conf.d/},
+有关字体的处理变为\footnote{这里并未使用 \href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\textsf{texlive-zh-cn}} 中建议的路径 \path{~/.fonts.conf.d/},
 因为根据 \href{https://www.freedesktop.org/software/fontconfig/fontconfig-user.html}{freedesktop} 的说法,
 该路径已废弃,
 故此处采用新的路径,
-即 \texttt{\$XDG\_CONFIG\_HOME/fontconfig/conf.d}}
-\begin{lstlisting}[language=bash]
+即 \path{$XDG_CONFIG_HOME/fontconfig/conf.d}}
+\begin{lstlisting}
   cp ~/texlive/2025/texmf-var/fonts/conf/texlive-fontconfig.conf $XDG_CONFIG_HOME/fontconfig/conf.d/09-texlive.conf
 \end{lstlisting}
 然后执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   fc-cache -fv
 \end{lstlisting}
 实际上,
@@ -225,40 +225,42 @@
 
 首次升级前,
 在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo visudo
 \end{lstlisting}
 将
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}]
   /usr/local/texlive/2025/bin/x86_64-linux:
 \end{lstlisting}
-添加在 \texttt{secure\_path} 中%
-\footnote{这里只讨论 \texttt{x86\_64} 下默认安装的情况}.
+添加在 \path{secure_path} 中%
+\footnote{这里只讨论 \path{x86_64} 下默认安装的情况,
+若用户设备的处理器是基于 \texttt{arm64} 架构的,
+则需要将 \path{x86_64-linux} 替换为 \path{aarch64-linux}}.
 然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
 
 接下来在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo tlmgr option repository ctan
 \end{lstlisting}
 让系统自动选择源,
 同样可以使用大陆地区的源升级,
 详情见附录~\ref{chp:appendix:mirror}.
 执行命令
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo tlmgr update --list
 \end{lstlisting}
 可查看目前源上可升级的宏包都有哪些. 
 高级用户可以根据自己的需求选择升级特定宏包.
 建议初级用户执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo tlmgr update --self --all
 \end{lstlisting}
-同时升级 \texttt{tlmgr} 本身和全部宏包. 
+同时升级 "tlmgr" 本身和全部宏包. 
 
 \section{安装宏包}\label{sec:ubuntu:installpackage}
 
-Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只需注意权限, 例如
-\begin{lstlisting}[language = bash]
+Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只需注意权限, 例如
+\begin{lstlisting}
   sudo tlmgr install mcmthesis
 \end{lstlisting}
 即安装了 \texttt{mcmthesis} 宏包.
@@ -269,7 +271,7 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 当正确安装后,
 用户可以调出宏包手册以查阅相应内容.
 例如在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   texdoc texlive-zh-cn
   texdoc lshort-zh-cn
   texdoc install-latex-guide-zh-cn
@@ -282,13 +284,13 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 
 首先, 用户需要在工作路径建立一个 \texttt{tex} 文件.
 在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}[deletekeywords = tex]
   mkdir ~/Documents/work-latex
   cd ~/Documents/work-latex/
   gedit main.tex
 \end{lstlisting}
 在打开的文件输入一个最小示例
-\begin{lstlisting}[language = {[LaTeX]TeX}]
+\begin{lstlisting}[language = mwe]
   \documentclass{article}
   \begin{document}
     Hello \LaTeX\ World!
@@ -301,30 +303,30 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 \end{lstlisting}
 等待系统完成编译过程. 
 待编译完成后,
-我们即可看到在 \texttt{\~{}/Documents/work-latex} 中出现了
+我们即可看到在 \path{~/Documents/work-latex} 中出现了
 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与
 \texttt{main.log}. 
 执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   evince main.pdf
 \end{lstlisting}
 即可打开 \texttt{pdf} 文件.
 
-对于中文文档, 可以在 \texttt{gedit} 中编写以下最小示例%
+对于中文文档, 可以在 "gedit" 中编写以下最小示例%
 \footnote{gedit 默认使用 UTF-8 编码}%
-\begin{lstlisting}[language={[LaTeX]TeX}]
-  \documentclass[fontset=fandol]{ctexart}
+\begin{lstlisting}[language = mwe]
+  \documentclass[fontset = fandol]{ctexart}
   \begin{document}
     你好 \LaTeX\ 世界！
   \end{document}
 \end{lstlisting}
 保存并退出.
 接下来执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   xelatex main
 \end{lstlisting}
 等待系统完成编译过程.
-\texttt{xelatex} 可以使用系统内安装的字体,
+"xelatex" 可以使用系统内安装的字体,
 安装字体的方法可参考 \ref{sec:addition:font}~节.
 
 编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致.
@@ -338,22 +340,22 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 
 如果要卸载从源内安装的 \TeX\ Live, 个人比较推荐使用 \texttt{synaptic package manager}.
 在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo apt install synaptic
 \end{lstlisting}
 即可安装.
 安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
 当然, 用户也可以直接使用
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   dpkg -l | grep 'TeX Live'
 \end{lstlisting}
 找到相应的包名 \texttt{<package name>}, 之后使用类似
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo apt autoremove --purge <package name>
 \end{lstlisting}
 的命令删除各个包.
 通常
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo apt autoremove --purge tex-common
 \end{lstlisting}
 就可以删除源内版本.
@@ -363,23 +365,23 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 如果是从光盘镜像安装,
 直接删除文件夹即可.
 先在\textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   kpsewhich -var-value TEXMFROOT
 \end{lstlisting}
 来查询安装路径,
-进而通过 \texttt{sudo rm -rf} 命令进行删除.
+进而通过 "sudo rm -rf" 命令进行删除.
 默认安装的用户直接运行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}[deletekeywords = local]
   sudo rm -rf /usr/local/texlive/2025
   rm -rf ~/.texlive2025
 \end{lstlisting}
 卸载完成后, 可以进一步移除之前设置的环境变量.
 在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   gedit ~/.profile
 \end{lstlisting}
 然后移除之前在文件末尾添加的
-\begin{lstlisting}
+\begin{lstlisting}[deletekeywords = local]
   # Add TeX Live to the PATH, MANPATH, INFOPATH
   export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
   export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
@@ -387,11 +389,11 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 \end{lstlisting}
 并保存退出.
 同时在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo visudo
 \end{lstlisting}
-在 \texttt{secure\_path} 中删除
-\begin{lstlisting}
+在 \path{secure_path} 中删除
+\begin{lstlisting}[deletekeywords = local]
   /usr/local/texlive/2025/bin/x86_64-linux:
 \end{lstlisting}
 然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
@@ -399,9 +401,9 @@ Ubuntu 22.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 \subsection{使用 \texttt{tlmgr} 工具}
 
 同样,
-用户也可以使用 \texttt{tlmgr} 工具卸载%
-\footnote{\texttt{sudo tlmgr} 无法使用的情况可以参考 \ref{sec:ubuntu:update}~节 解决},
-\begin{lstlisting}[language=bash]
+用户也可以使用 "tlmgr" 工具卸载%
+\footnote{"sudo tlmgr" 无法使用的情况可以参考 \ref{sec:ubuntu:update}~节 解决},
+\begin{lstlisting}
   sudo tlmgr remove --all
 \end{lstlisting}
 

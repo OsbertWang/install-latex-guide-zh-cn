@@ -6,19 +6,21 @@ latex
 latex-bin
 #
 # For the doc target
-accsupp
 adjustbox
 booktabs
 ctex
+fancyqr
+fancyvrb
 fontawesome5
 geometry
 hologo
 hyperref
 ifoddpage
+libertine
 listings
 menukeys
-fancyqr
 pict2e
 qrcode
 relsize
+shortvrb
 xstring

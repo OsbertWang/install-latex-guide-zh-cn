@@ -14,14 +14,14 @@
 在主系统%
 \footnote{在 Windows 11 中直接进行的操作即为在主系统中的操作}%
 中下载
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{iso 镜像文件},
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{\texttt{iso} 镜像文件},
 可选择国内源以加快下载速度.
 下载完毕后, 在 \textsf{cmd} 中验证文件是否正常.
 下载及文件验证方法同 \ref{sec:windows:install}~节.
 
 在正式安装前,
 用户需要在 \textsf{bash} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   sudo apt install fontconfig gedit
 \end{lstlisting}
 以减少后续字体问题和文本编辑问题.
@@ -30,24 +30,24 @@ WSL 已经能够自动完成可视化工作,
 这为一些用户提供了便利.
 为避免安装速度过慢,
 可仿照 \ref{sec:addition:source}~节更改文件 \texttt{sources.list}.
-不习惯在 \textsf{gedit} 中做文本操作的 Windows 用户,
+不习惯在 "gedit" 中做文本操作的 Windows 用户,
 可参考 \ref{sec:addition:wsl-editor}~节.
 
 接下来, 在主系统中将镜像装载,
-例如挂载到 \texttt{X:\textbackslash},
+例如挂载到 \path{X:\},
 而后进入 \textsf{bash} 并执行如下命令
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo mkdir /mnt/x
   sudo mount -t drvfs X: /mnt/x
 \end{lstlisting}
 如此便可在 \textsf{bash} 中找到装载的光盘镜像.
 之后执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo /mnt/x/install-tl
 \end{lstlisting}
 进行安装.
 在屏幕上应该能见到以下内容
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}, emphstyle = {}, stringstyle = {}]
   ======================> TeX Live installation procedure <=====================
 
   ======>   Letters/digits in <angle brackets> indicate   <=======
@@ -101,9 +101,9 @@ WSL 已经能够自动完成可视化工作,
 如果用户对于 WSL 比较了解, 可以根据提示, 更改安装设置.
 与第~\ref{chap:ubuntu:sec:install}~节一样,
 为简化起见,
-以下记录均假定为 \texttt{x86\_64} 上的默认安装.
+以下记录均假定为 \path{x86_64} 上的默认安装.
 安装完毕后, 需继续在 \textsf{bash} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo umount /mnt/x
   sudo rmdir /mnt/x
 \end{lstlisting}
@@ -111,11 +111,11 @@ WSL 已经能够自动完成可视化工作,
 
 默认安装完成后, 用户需要设置环境变量.
 继续在 \textsf{bash} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   gedit ~/.profile
 \end{lstlisting}
 在打开的文件末尾添加
-\begin{lstlisting}
+\begin{lstlisting}[deletekeywords = local]
   # Add TeX Live to the PATH, MANPATH, INFOPATH
   export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
   export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
@@ -123,14 +123,14 @@ WSL 已经能够自动完成可视化工作,
 \end{lstlisting}
 并保存退出.
 同样,
-不习惯于 \textsf{gedit} 处理文本的 Windows 用户可参考 \ref{sec:addition:wsl-editor}~节.
+不习惯于 "gedit" 处理文本的 Windows 用户可参考 \ref{sec:addition:wsl-editor}~节.
 退出 WSL 再进入,
 执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tex -v
 \end{lstlisting}
 将显示
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}]
   TeX 3.141592653 (TeX Live 2025)
   kpathsea version 6.4.1
   Copyright 2025 D.E. Knuth.
@@ -143,14 +143,14 @@ WSL 已经能够自动完成可视化工作,
 \end{lstlisting}
 即为安装成功.
 
-接下来仿照 Ubuntu 22.04 处理字体.
+接下来仿照 Ubuntu 24.04 处理字体.
 首先将配置文件复制到系统,
 在 \textsf{bash} 执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[deletekeywords = local]
   sudo cp /usr/local/texlive/2025/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
 然后在 \textsf{bash} 执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   sudo fc-cache -fsv
 \end{lstlisting}
 刷新字体缓存.
@@ -173,7 +173,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 
 由于 WSL 的 \textsf{bash} 默认是无窗口化的纯命令行,
 因此将 \TeX\ Live 安装至 WSL 后,
-用户无法直接通过命令 \texttt{texdoc} 打开相应的手册.
+用户无法直接通过命令 "texdoc" 打开相应的手册.
 下面几种方法均为收集而来的方案,
 其中比较推荐更改 \texttt{texdoc.cnf}.
 
@@ -181,20 +181,20 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 
 此方案源自本手册的 \href{https://github.com/OsbertWang/install-latex-guide-zh-cn/issues/13}{issue}.
 首先在 \textsf{bash} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   texdoc --files
 \end{lstlisting}
 系统返回类似如下内容
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[keywordstyle = {}]
   /usr/local/texlive/2025/texmf-dist/scripts/texdoc/texdoclib.tlu 4.1.1
   Configuration file(s):
       active      /usr/local/texlive/2025/texmf-dist/texdoc/texdoc.cnf
   Recommended file(s) for personal settings:
       /home/osbertwang/texmf/texdoc/texdoc.cnf
 \end{lstlisting}
-这里给出了 \texttt{texdoc} 的配置文件所在位置.
+这里给出了 "texdoc" 的配置文件所在位置.
 打开用户文件夹下的配置文件
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[deletekeywords = texdoc]
   mkdir -p ~/texmf/texdoc && touch ~/texmf/texdoc/texdoc.cnf
   gedit ~/texmf/texdoc/texdoc.cnf
 \end{lstlisting}
@@ -203,34 +203,34 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
   viewer_pdf = (powershell.exe -Command Start-Process $(wslpath -w %s)) &
 \end{lstlisting}
 并且保存退出.
-然后再执行 \texttt{texdoc} 即可打开相应文档.
+然后再执行 "texdoc" 即可打开相应文档.
 
 \subsubsection{explorer 浏览}
 
 先找到手册所在路径,
-例如寻找 \texttt{lshort-zh-cn}
-\begin{lstlisting}[language=bash]
+例如寻找 \textsf{lshort-zh-cn}
+\begin{lstlisting}
   texdoc -l lshort-zh-cn
 \end{lstlisting}
 系统会显示
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}]
    1 /usr/local/texlive/2025/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf
      = [zh] The document itself
   Enter number of file to view, RET to view 1, anything else to skip:
 \end{lstlisting}
 这时按其他键 (如 \keys{x}) 退出.
 然后分别执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[deletekeywords = local]
   cd /usr/local/texlive/2025/texmf-dist/doc/latex/lshort-chinese/
   explorer.exe .
 \end{lstlisting}
 主系统的资源管理器便会打开.
-这时用户便可以在主系统中使用 pdf 阅读器打开手册进行阅读.
+这时用户便可以在主系统中使用 PDF 阅读器打开手册进行阅读.
 
 \subsubsection{everything 搜索}
 
 使用 \href{https://www.voidtools.com/zh-cn/}{everything}.
-通过 \texttt{texdoc -l} 找到相应文件名,
+通过 "texdoc -l" 找到相应文件名,
 而后直接搜索.
 具体方法这里不再赘述.
 
@@ -244,32 +244,28 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 编译一个最小示例 \texttt{main.tex}.
 
 在主系统的 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}[deletekeywords = tex]
   mkdir D:\work-latex
   cd /d D:\work-latex
   notepad main.tex
 \end{lstlisting}
-%\begin{lstlisting}
-%  Push-Location (New-Item -ItemType Directory -Path 'D:\work-latex' -Force)
-%  notepad.exe main.tex
-%\end{lstlisting}
 建立文档,
 内容为
-\begin{lstlisting}[language = {[LaTeX]TeX}]
+\begin{lstlisting}[language = mwe]
   \documentclass{article}
   \begin{document}
     Hello \LaTeX\ World!
   \end{document}
 \end{lstlisting}
 接下来在 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   bash -l -c "pdflatex main"
 \end{lstlisting}
 实现编译.
 
 也可以直接在 WSL 中建立文档并编译,
-在 \texttt{bash} 中依次执行
-\begin{lstlisting}[language=bash]
+在 \textsf{bash} 中依次执行
+\begin{lstlisting}[deletekeywords = tex]
   mkdir /mnt/d/work-latex
   cd /mnt/d/work-latex
   gedit main.tex
@@ -277,7 +273,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 建立文档,
 内容同上,
 然后在 \textsf{bash} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   pdflatex main
 \end{lstlisting}
 实现编译.
@@ -289,28 +285,28 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 对于中文文档,
 可以编写以下最小示例%
 \footnote{注意使用 UTF-8 编码}%
-\begin{lstlisting}[language={[LaTeX]TeX}]
-  \documentclass[fontset=fandol]{ctexart}
+\begin{lstlisting}[language = mwe]
+  \documentclass[fontset = fandol]{ctexart}
   \begin{document}
     你好 \LaTeX\ 世界！
   \end{document}
 \end{lstlisting}
 在 \textsf{cmd} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   bash -l -c "xelatex main"
 \end{lstlisting}
 或在 \textsf{bash} 中执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   xelatex main
 \end{lstlisting}
 等待系统完成编译过程. 
-\texttt{xelatex} 同样可以使用 WSL 内安装的字体%
+"xelatex" 同样可以使用 WSL 内安装的字体%
 \footnote{注意主系统中的字体默认不能直接被调用,
 如果打算使用主系统中的字体,
 见
 \href{https://github.com/OsbertWang/install-latex-guide-zh-cn/issues/14}{github 上的讨论},
 鉴于 WSL2 和主系统文件系统互访速度慢,
-该方法很可能拖慢 \texttt{xelatex} 速度},
+该方法很可能拖慢 "xelatex" 速度},
 在 WSL 中安装字体的方法见 \ref{sec:addition:font}~节.
 
 编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致, 不再赘述.

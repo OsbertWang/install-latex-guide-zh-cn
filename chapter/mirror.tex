@@ -85,8 +85,8 @@
 
 使用最近的 CTAN 源下载 \texttt{iso} 文件,
 实际上是下载
-\begin{lstlisting}
-  https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso
+\begin{lstlisting}[escapechar=|]
+  |\url{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}|
 \end{lstlisting}
 使用大陆的源下载它,
 只需将以上网址中的
@@ -102,8 +102,8 @@
 以清华大学为例,
 从清华大学源中下载 \texttt{iso} 镜像文件,
 实际上是下载
-\begin{lstlisting}
-  https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso
+\begin{lstlisting}[escapechar=|]
+  |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso}|
 \end{lstlisting}
 
 同理,
@@ -113,8 +113,8 @@
   tlmgr option repository ctan
 \end{lstlisting}
 等价于
-\begin{lstlisting}
-  tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+\begin{lstlisting}[escapechar=|]
+  tlmgr option repository |\url{http://mirror.ctan.org/systems/texlive/tlnet}|
 \end{lstlisting}
 使用大陆的源升级宏包,
 只需将
@@ -124,6 +124,6 @@
 替换为大陆源的地址而保留其他部分即可.
 依旧以清华大学为例,
 那么设置将变为
-\begin{lstlisting}
-  tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet
+\begin{lstlisting}[escapechar=|]
+  tlmgr option repository |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet}|
 \end{lstlisting}
