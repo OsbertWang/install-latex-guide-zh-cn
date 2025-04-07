@@ -21,25 +21,25 @@
   \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
   获取}
 \begin{lstlisting}[
-  morekeywords = {deb, jammy, jammy-updates, jammy-backports, jammy-security},
+  morekeywords = {deb, noble, noble-updates, noble-backports, noble-security},
   alsoletter = -]
   # 默认注释了源码镜像以提高 apt update 速度, 如有需要可自行取消注释
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-updates main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-updates main restricted universe multiverse
+  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-backports main restricted universe multiverse
+  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-backports main restricted universe multiverse
 
-  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-security main restricted universe multiverse
+  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-security main restricted universe multiverse
 
-  deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
-  # deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+  deb http://security.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse
+  # deb-src http://security.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse
 
   # 预发布软件源, 不建议启用
-  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
+  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-proposed main restricted universe multiverse
+  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-proposed main restricted universe multiverse
 \end{lstlisting}
 保存退出.
 再执行
@@ -302,7 +302,7 @@ WSL 只能安装在系统盘,
   Distributor ID: Ubuntu
   Description:    Ubuntu 24.04.2 LTS
   Release:        24.04
-  Codename:       jammy
+  Codename:       noble
 \end{lstlisting}
 然后在 \textsf{cmd} 中执行
 \begin{lstlisting}
