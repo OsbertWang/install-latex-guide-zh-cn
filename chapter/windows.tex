@@ -27,6 +27,9 @@
 \begin{lstlisting}
   C:\Users\username>
 \end{lstlisting}
+%\begin{lstlisting}
+%  PS C:\Users\username>
+%\end{lstlisting}
 它显示了当前所在路径并等待用户下一步操作,
 通常在开启 \textsf{cmd} 或上一程序运行结束时会显示.
 
@@ -34,6 +37,9 @@
 \begin{lstlisting}
   echo %path:;=&echo.%
 \end{lstlisting}
+%\begin{lstlisting}
+%  $env:Path -split ';'
+%\end{lstlisting}
 查看环境变量. 
 若 \path{C:\Windows\system32}
 不在结果中\footnote{这里默认系统盘为 \path{C} 盘},
@@ -107,6 +113,9 @@
 \begin{lstlisting}
   Z:\install-tl-windows.bat --no-gui
 \end{lstlisting}
+%\begin{lstlisting}
+%  & 'Z:\install-tl-windows.bat' --no-gui
+%\end{lstlisting}
 即可看到如下结果
 \begin{lstlisting}[keywordstyle = {}, emphstyle = {}, stringstyle = {}]
   ======================> TeX Live installation procedure <=====================
@@ -235,6 +244,9 @@
 \begin{lstlisting}[escapechar = |]
   wget |\url{http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}|
 \end{lstlisting}
+%\begin{lstlisting}
+%  Invoke-WebRequest -Uri 'http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
+%\end{lstlisting}
 即可下载最近的镜像.
 类似地,
 也可以指定国内的源进行下载,
@@ -242,6 +254,9 @@
 \begin{lstlisting}[escapechar = |]
   wget |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso}|
 \end{lstlisting}
+%\begin{lstlisting}
+%  Invoke-WebRequest -Uri 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
+%\end{lstlisting}
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
 
@@ -267,6 +282,11 @@
   set TEMP=C:\temp
   set TMP=C:\temp
 \end{lstlisting}
+%\begin{lstlisting}
+%  New-Item -ItemType Directory -Path 'C:\temp' -Force
+%  $env:TEMP = 'C:\temp'
+%  $env:TMP = 'C:\temp'
+%\end{lstlisting}
 便可更改这两个环境变量为 \path{C:\temp}.
 更改后按照前述内容安装 \TeX\ Live 即可.
 这样的更改是临时的,
@@ -368,8 +388,12 @@
   cd /d D:\work-latex
   notepad main.tex
 \end{lstlisting}
-第1行表示创建一个工作路径 \path{D:\work-latex},
-第2行表示进入工作路径, 第3行表示用记事本打开 \texttt{main.tex} 文件,
+%\begin{lstlisting}
+%  Set-Location (New-Item -ItemType Directory -Path 'D:\work-latex' -Force)
+%  notepad.exe main.tex
+%\end{lstlisting}
+第 1 行表示创建一个工作路径 \path{D:\work-latex},
+第 2 行表示进入工作路径, 第 3 行表示用记事本打开 \texttt{main.tex} 文件,
 若文件不存在, 系统将询问用户是否创建该文件%
 \footnote{Windows 11 对中文名变得友好一些了,
 但这里不建议用户使用中文命名工作路径和文件名}.
@@ -503,6 +527,10 @@ Windows 11 继承了这个特性.
 \begin{lstlisting}
   C:\texlive\2025\tlpkg\installer\uninst.bat
 \end{lstlisting}
+%\begin{lstlisting}
+%  & 'C:\texlive\2025\tlpkg\installer\uninst.bat'
+%  Remove-Item -Recurse -Force -Path '$env:USERPROFILE\.texlive2025'
+%\end{lstlisting}
 结束以上步骤后,
 手动删除用户文件夹中的 \texttt{.texlive2025}.
 如果用户安装 \TeX\ Live 时需要管理员权限,
