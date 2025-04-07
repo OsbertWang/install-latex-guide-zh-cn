@@ -20,8 +20,8 @@
 和大多数国产软件不同, \TeX works 不会自动在桌面生成快捷方式,
 新人往往不知道如何打开它. 
 实际上 \TeX works 在 \TeX\ Live 安装路径的
-\texttt{\textbackslash bin\textbackslash windows} 中,
-可在 \textsf{cmd} 中执行 \texttt{texworks} 打开,
+\path{\bin\windows} 中,
+可在 \textsf{cmd} 中执行 "texworks" 打开,
 也可直接在 Windows 搜索栏里搜 \TeX works 打开. 
 
 刚开始使用 \TeX works 的用户不必过多配置,
@@ -67,37 +67,37 @@ Windows 11 中字体列表见%
 添加、更改其中的设置.
 首先明确 \TeX works 中已有一些定义,
 见表~\ref{tab:editor} \footnote{参考 \href{https://github.com/TeXworks/texworks/wiki/AdvancedTypesettingTools}{Advanced Typesetting Tools}.}.
-接下来可以定义 \texttt{latexmkpdf},
-它调用 \texttt{latexmk} 并使用 \texttt{pdflatex} 等命令编译文档.
+接下来可以定义 "latexmkpdf",
+它调用 "latexmk" 并使用 "pdflatex" 等命令编译文档.
 在 \menu{排版} 上点击 \menu{+},
-输入名称 \textsf{latexmkpdf} 和程序 \texttt{latexmk},
+输入名称 "latexmkpdf" 和程序 "latexmk",
 相关参数需要再次点击 \menu{+} 来予以添加,
 例如添加以下这些
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}]
   -e
   $pdflatex=q/pdflatex $synctexoption %O %S/
   -pdf
   $fullname
 \end{lstlisting}
-这里的 \texttt{\$synctexoption} 和 \texttt{\$fullname} 均是 \TeX works 预定义的内容,
-而其他的 \texttt{-e}, \texttt{\$pdflatex=...} 和 \texttt{-pdf} 需要用户自己阅读 \texttt{latexmk} 手册了解.
+这里的 "$synctexoption" 和 "$fullname" 均是 \TeX works 预定义的内容,
+而其他的 "-e", "$pdflatex=..." 和 "-pdf" 需要用户自己阅读 "latexmk" 手册了解.
 然后选择 \textsf{运行后查看 pdf 文件},
 再点击 \menu{OK},
 即可发现已经添加成功.
-之后用户可以调用 \texttt{latexmkpdf} 来编译文档.
+之后用户可以调用 "latexmkpdf" 来编译文档.
 当然,
-在 \menu{排版} 处还可以将 \texttt{latexmkpdf} 设置为默认.
+在 \menu{排版} 处还可以将 "latexmkpdf" 设置为默认.
 
 类似地,
-如果要定义 \texttt{latexmkxe},
+如果要定义 "latexmkxe",
 可以考虑以下参数
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}]
   -e
   $xelatex=q/xelatex $synctexoption %O %S/
   -xelatex
   $fullname
 \end{lstlisting}
-程序依然是 \texttt{latexmk}.
+程序依然是 "latexmk".
 
 \begin{table}
   \centering
@@ -124,10 +124,10 @@ Windows 11 中字体列表见%
 将 \texttt{.oxt} 文件重命名为 \texttt{.zip} 文件,
 解压缩得到里面的 \texttt{.dic} 和 \texttt{.aff} 文件.
 接下来将它们安装到
-\texttt{<resources>\textbackslash dictionaries}%
-\footnote{\texttt{<resources>} 的具体位置可以在
+\path{<resources>\dictionaries}%
+\footnote{\path{<resources>} 的具体位置可以在
 \menu{帮助 > TeXworks 配置与资源} 中找到,
-若不存在该 \texttt{dictionaries} 文件夹,
+若不存在该 \path{dictionaries} 文件夹,
 用户可自行建立.}. 
 安装完成后, 在 \menu{编辑 > 拼写} 中选择即可. 
 
@@ -136,25 +136,25 @@ Windows 11 中字体列表见%
 魔法注释可以直接规定主文档、文件编码和编译命令等. 
 例如用户写学位论文时, 往往有一个主文档和若干子文档. 
 在子文档的开头写上魔法注释
-\begin{lstlisting}
+\begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX root = ../main.tex
 \end{lstlisting}
 即可告诉系统上一级目录中的 \texttt{main.tex} 是主文档%
-\footnote{主文档和子文档的更多内容请参考 \texttt{\textbackslash include}
-和 \texttt{\textbackslash input} 的用法}. 
-\begin{lstlisting}
+\footnote{主文档和子文档的更多内容请参考 "\include"
+和 "\input" 的用法}. 
+\begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX encoding = UTF8
 \end{lstlisting}
 表示该文档使用 ``UTF-8'' 编码%
 \footnote{目前建议用户多用 ``UTF-8'' 编码, 尤其是中文文档}. 
-\begin{lstlisting}
+\begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX program = xelatex
 \end{lstlisting}
-表示该文档使用 \texttt{xelatex} 编译命令进行编译. 
-\begin{lstlisting}
+表示该文档使用 "xelatex" 编译命令进行编译. 
+\begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX spellcheck = <language_code>
 \end{lstlisting}
-表示该文档使用 \texttt{<language\_code>} 进行拼写检查,
+表示该文档使用 "<language_code>" 进行拼写检查,
 它的具体名称请用户到 \menu{编辑 > 拼写} 中查看. 
 
 \subsubsection{转编码}
@@ -178,7 +178,7 @@ Windows 11 中字体列表见%
 
 相较于 \TeX works, \TeX studio 功能更丰富, 用法更多.
 在使用 \TeX studio 前,
-用户一定要查询\textbf{环境变量}中是否有 \texttt{system32}.
+用户一定要查询\textbf{环境变量}中是否有 \path{system32}.
 具体方法在前面已有说明, 此处不再赘述.
 以下有关 \TeX studio 的用法介绍,
 还请用户提前在 \menu{Options > configure TeXstudio} 中勾选
@@ -210,7 +210,7 @@ Windows 11 中字体列表见%
 在 \menu{Options > configure TeXstudio > build > default compiler}
 中选择默认编译命令. 
 
-另外用 \texttt{latexmk} 和 \texttt{biblatex} 做编译时,
+另外用 "latexmk" 和 "biblatex" 做编译时,
 需要在 \menu{Options > Configure TeXstudio > build > Build Options}
 中取消 \menu{Check and update bibliography before compiling}. 
 
@@ -264,11 +264,11 @@ Windows 11 中字体列表见%
 中. 
 用户可以根据自己的需要更改 \texttt{cwl} 文件,
 然后将其放入
-\texttt{<settings directory>\textbackslash completion\textbackslash user}
+\path{<settings directory>\completion\user}
 文件夹%
 \footnote{点击 \menu{Help > Check LaTeX Installation},
 在生成的 \texttt{System Report.txt} 中找到 \texttt{texstudio.ini} 文件,
-其所在文件夹即为 \texttt{<settings directory>}}. 
+其所在文件夹即为 \path{<settings directory>}}. 
 
 自动补全后有可能生成文本框,
 使用 \keys{\ctrl + \arrowkey{>}} 可以跳转至下一个文本框,
@@ -283,13 +283,13 @@ Windows 11 中字体列表见%
 \subsubsection{魔法注释}
 
 除了像 \TeX works 中使用魔法注释外, \TeX studio 还有很多其他的魔法注释, 例如
-\begin{lstlisting}
+\begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX TXS-program:compile = txs:///latexmk/{}[-xelatex -synctex=1 -interaction=nonstopmode ?me"]
 \end{lstlisting}
-表示使用 \texttt{latexmk} 编译命令,
-\texttt{\{\}} 表示无视编辑器赋予该命令的一切参数,
-而 \texttt{[]} 表示添加其中的参数进行编译,
-本例中添加 \texttt{-xelatex -synctex=1 -interaction=nonstopmode} 作为参数.
+表示使用 "latexmk" 编译命令,
+"{}" 表示无视编辑器赋予该命令的一切参数,
+而 "[]" 表示添加其中的参数进行编译,
+本例中添加 "-xelatex -synctex=1 -interaction=nonstopmode" 作为参数.
 如果用户不清楚魔法注释都可以写哪些类型,
 可以点击 \menu{LaTeX > Add magic comments} 查看五种魔法注释类型.
 更多内容需要阅读软件手册.
@@ -317,7 +317,7 @@ Windows 11 中字体列表见%
 
 \TeX studio 允许用户自定义命令, 并将命令做成按钮放置于面板上.
 如在 \menu{Options > Configure TeXstudio > Build > User commands} 中,
-填写名称 \texttt{User1:Build-xe-view}
+填写名称 "User1:Build-xe-view"
 和对应的功能
 \begin{lstlisting}
   latexmk -pdfxe -silent -synctex=1 -interaction=nonstopmode ?me" | txs:///view-pdf-internal --embedded
@@ -337,9 +337,9 @@ Windows 11 中字体列表见%
 \TeX studio 允许用户生成宏指令.
 在 \menu{Macros > Edit Macros} 中, 用户可以根据自己的需要,
 给出宏指令的名称、快捷键、内容等等.
-例如我们将 \texttt{latexmk-pdf} 填写在 \menu{name} 中,
+例如我们将 "latexmk-pdf" 填写在 \menu{name} 中,
 将
-\begin{lstlisting}
+\begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX TXS-program:compile = txs:///latexmk/{}[-pdf -synctex=1 -interaction=nonstopmode ?me"]
 \end{lstlisting}
 填写在 \menu{LaTeX Content} 中,
@@ -378,31 +378,31 @@ Windows 11 中字体列表见%
 一些用户喜欢使用外部 PDF 阅读器.
 这里以 \href{https://www.sumatrapdfreader.org/free-pdf-reader.html}{SumatraPDF} 为例,
 用户直接安装或下载便携版均可,
-假定它在本地的位置为 \texttt{<SumatraPDFROOT>},
-而 \TeX studio 在本地的位置是 \texttt{<TeXstudioROOT>}.
+假定它在本地的位置为 \path{<SumatraPDFROOT>},
+而 \TeX studio 在本地的位置是 \path{<TeXstudioROOT>}.
 打开 \menu{Options > Configure TeXstudio} 窗口,
 在 \menu{Build > User commands} 中添加
 \begin{lstlisting}
   "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?m.pdf"
 \end{lstlisting}
-将其命名为 \texttt{user0:sumatrapdf}.
+将其命名为 "user0:sumatrapdf".
 接下来, 在 \menu{Build > Build \& View} 中将
-\texttt{txs:///compile | txs:///view} 改为
-\texttt{txs:///compile | txs:///user0}.
+"txs:///compile | txs:///view" 改为
+"txs:///compile | txs:///user0".
 最后, 在 \menu{Menus} 中将 \texttt{\&View} 的命令由
-\texttt{txs:///view} 改为 \texttt{txs:///user0}.
+"txs:///view" 改为 "txs:///user0".
 完成以上设置后,
 关闭窗口.
 这时,
 用户使用快捷键 \keys{F5} 和 \keys{F7} 均可打开 SumatraPDF 并且实现了正向搜索.
-如果有人喜欢在编译时添加参数 \texttt{--outdir=temp},
-那么可以将 \texttt{user0:sumatrapdf} 改为
+如果有人喜欢在编译时添加参数 "--outdir=temp",
+那么可以将 "user0:sumatrapdf" 改为
 \begin{lstlisting}
   "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?r)temp\?m.pdf"
 \end{lstlisting}
 
 如果以上设置没能正确实现正反向搜索,
-那么可以将 \texttt{user0:sumatrapdf} 改为
+那么可以将 "user0:sumatrapdf" 改为
 \begin{lstlisting}
   dde:///"<SumatraPDFROOT>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?m.pdf",?c:rme",@,0,0,1)]
 \end{lstlisting}
@@ -415,7 +415,7 @@ Windows 11 中字体列表见%
 至此完成了逆向搜索,
 双击 PDF 文件便可回到 \TeX studio 中对应代码的行首.
 
-\section{Ubuntu 22.04 系统}\label{sec:editor:ubuntu}
+\section{Ubuntu 24.04 系统}\label{sec:editor:ubuntu}
 
 简化起见, 这里只介绍如何使用 \TeX studio.
 
@@ -425,7 +425,7 @@ Windows 11 中字体列表见%
 安装前可参照 \ref{sec:addition:source}~节的介绍换源以增速.
 
 在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo apt install texstudio
 \end{lstlisting}
 即可安装 \TeX studio.
@@ -437,7 +437,7 @@ Windows 11 中字体列表见%
 \href{https://code.launchpad.net/~sunderme/+archive/ubuntu/texstudio}{PPA}
 来安装 \TeX studio.
 以此在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   sudo add-apt-repository ppa:sunderme/texstudio
   sudo apt update
   sudo apt install texstudio
@@ -449,7 +449,7 @@ Windows 11 中字体列表见%
 
 安装完毕后,
 用户可以在 \textsf{Terminal} 中执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}[morekeywords = texstudio, deletekeywords = tex]
   texstudio main.tex
 \end{lstlisting}
 使用 \TeX studio 编辑文档.
@@ -476,7 +476,7 @@ Windows 11 中字体列表见%
 接下来在 \menu{Build > Build Options > Commands (\${}PATH)}
 中添加路径,
 默认安装时为
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}]
   /usr/local/texlive/2025/bin/x86_64-linux
 \end{lstlisting}
 
@@ -503,7 +503,7 @@ Mac\TeX\ 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆)
 \subsection{\TeX studio}
 
 如果希望使用 \TeX studio, 也可以通过 Homebrew 安装:
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   brew cask install texstudio
 \end{lstlisting}
 注意因为网络问题可能会下载失败.
@@ -530,7 +530,7 @@ Mac\TeX\ 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆)
 
 \href{https://code.visualstudio.com/}{VS Code}
 配合插件
-\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{LaTeX Workshop}
+\href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX\ Workshop}
 可以作为一款跨平台的编辑器来使用,
 具体设置方式建议阅读插件
 \href{https://github.com/James-Yu/LaTeX-Workshop/wiki}{Wiki}
@@ -558,37 +558,46 @@ Mac\TeX\ 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆)
 \section{多款编辑器对比参考}
 
 显然, 能够支持 \LaTeX\ 的编辑器并不局限于本手册所介绍的几款.
-表~\ref{tab:editor} 是 \href{https://ddswhu.me/}{ddswhu}
+表~\ref{tab:editor} 是 EthanDeng
 在 \LaTeX\ 小圈子内部对 \LaTeX\ 编辑器所进行的用户体验调查的结果,
 比较主观, 仅供参考.
 其中 Sublime Text 和 Visual Studio Code 为文本编辑器,
 它们需要借助插件才能支持 \LaTeX\ 编译.
 对自己网络非常自信的用户也可以参考
-\href{https://en.wikipedia.org/wiki/Comparison_of_TeX_editors}{\textsc{V\kern-.5em V\kern -.125em ikipediA}}
+\href{https://en.wikipedia.org/wiki/Comparison_of_TeX_editors}{\char57391\kern-.05em\textsc{ikipediA}}
 上的对比结果.
 
 \begin{table}[htbp]
   \centering
   \caption{\LaTeX\ 编辑器对比}
-    \begin{tabular}{cccccc}
+  \begin{tabular}{*6c}
     \toprule
-             &  WinEdt      &  \TeX studio  & \TeX works   &  Sublime Text &  VS Code     \\
-             \cline{5-6}
-    插件依赖  &        &   &  &  \href{https://latextools.readthedocs.io/en/latest/}{\LaTeX Tools} &  \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX\ Workshop}   \\
+    & WinEdt & \TeX studio & \TeX works & Sublime Text & VS Code       \\
+    \cline{5-6} 插件依赖 & & & &
+    \href{https://latextools.readthedocs.io/en/latest}{\LaTeX Tools} &
+    \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{\LaTeX\ Workshop} \\
     \midrule
-    主流系统  &  Win          &  全平台        & Linux/Win     &  全平台        &  全平台       \\
-    软件类型  &  商业软件      &  开源软件       & 开源软件       &  商业软件       &  开源软件     \\
-    软件价格  &  \href{https://item.taobao.com/item.htm?id=551105790596&skuId=4480070519923}{179 元}       &  0             &  0            &  \href{https://www.sublimehq.com/store/text}{99 美元}        &  0           \\
-    授权方式  &  终身/教育     &               &               &  终身/个人      &               \\
-    % 附加信息  &  教育版本      &               &               &  三年更新       &               \\
-    代码高亮  &  \stars{2.7}  &  \stars{3.2}  &  \stars{1.5}  &  \stars{4.3}  &  \stars{4.5}  \\
-    颜色主题  &  \stars{2.3}  &  \stars{2.2}  &  \stars{1.0}  &  \stars{4.0}  &  \stars{4.0}  \\
-    自动补全  &  \stars{2.7}  &  \stars{3.4}  &  \stars{2.0}  &  \stars{3.5}  &  \stars{4.0}  \\
-    代码片段  &  \stars{2.7}  &  \stars{2.4}  &  \stars{0.5}  &  \stars{3.8}  &  \stars{4.0}  \\
-    辅助输入  &  \stars{4.0}  &  \stars{3.4}  &  \stars{0.5}  &  \stars{2.3}  &  \stars{3.3}  \\
-    开发完成  &  \stars{4.0}  &  \stars{3.8}  &  \stars{4.5}  &  \stars{3.5}  &  \stars{4.0}  \\
-    推荐指数  &  \stars{2.7}  &  \stars{4.0}  &  \stars{1.5}  &  \stars{3.0}  &  \stars{4.3}  \\
+    主流系统 & Win      &  全平台   & Linux/Win  &  全平台   & 全平台  \\
+    软件类型 & 商业软件 &  开源软件 & 开源软件   &  商业软件 & 开源软件\\
+    软件价格 &
+    \href{https://store.lizhi.io/site/products/id/260?cid=svg2pcwp}{179 元} &
+    0 & 0 & \href{https://www.sublimehq.com/store/text}{99 美元} & 0   \\
+    授权方式 & 终身/教育 & & & 终身/个人 & \\
+    代码高亮 &
+    \stars{2.7} & \stars{3.2} & \stars{1.5} & \stars{4.3} & \stars{4.5}\\
+    颜色主题 &
+    \stars{2.3} & \stars{2.2} & \stars{1.0} & \stars{4.0} & \stars{4.0}\\
+    自动补全 &
+    \stars{2.7} & \stars{3.4} & \stars{2.0} & \stars{3.5} & \stars{4.0}\\
+    代码片段 &
+    \stars{2.7} & \stars{2.4} & \stars{0.5} & \stars{3.8} & \stars{4.0}\\
+    辅助输入 &
+    \stars{4.0} & \stars{3.4} & \stars{0.5} & \stars{2.3} & \stars{3.3}\\
+    开发完成 &
+    \stars{4.0} & \stars{3.8} & \stars{4.5} & \stars{3.5} & \stars{4.0}\\
+    推荐指数 &
+    \stars{2.7} & \stars{4.0} & \stars{1.5} & \stars{3.0} & \stars{4.3}\\
     \bottomrule
-    \end{tabular}%
-  \label{tab:editor}%
+  \end{tabular}
+  \label{tab:editor}
 \end{table}

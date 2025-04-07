@@ -13,18 +13,18 @@
 通过大陆地区的源下载 \texttt{iso} 文件的方法请参考附录~\ref{chp:appendix:mirror}.
 
 假设镜像文件被下载到本地后,
-其存放路径为 \texttt{X:\textbackslash Y}%
-\footnote{这里, \texttt{X} 表示盘符,
-如 \texttt{C}、\texttt{D}、\texttt{E} 等;
-\texttt{Y} 表示文件夹;
+其存放路径为 \path{X:\Y}%
+\footnote{这里, \path{X} 表示盘符,
+如 \path{C}、\path{D}、\path{E} 等;
+\path{Y} 表示文件夹;
 默认路径名称为不带空格的英文}.
 下载完毕后, 用户打开 \textsf{cmd} 窗口%
-\footnote{点击 \keys{\faWindows},
+\footnote{按 \keys{\faWindows},
 或在任意文件夹中按 \keys{\ctrl + L},
 输入 \textsf{cmd},
 点击 \keys{\enter}},
 将会见到诸如以下内容
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   C:\Users\username>
 \end{lstlisting}
 %\begin{lstlisting}
@@ -34,19 +34,19 @@
 通常在开启 \textsf{cmd} 或上一程序运行结束时会显示.
 
 在 \textsf{cmd} 执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   echo %path:;=&echo.%
 \end{lstlisting}
 %\begin{lstlisting}
 %  $env:Path -split ';'
 %\end{lstlisting}
 查看环境变量. 
-若 \texttt{C:\textbackslash Windows\textbackslash system32}
-不在结果中\footnote{这里默认系统盘为\textsf{C}盘},
+若 \path{C:\Windows\system32}
+不在结果中\footnote{这里默认系统盘为 \path{C} 盘},
 则关闭 \textsf{cmd} 窗口,
-将 \texttt{C:\textbackslash Windows\textbackslash system32}
+将 \path{C:\Windows\system32}
 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
-\textbf{根据以往经验, 安装老版 C\TeX\ 套装的用户往往会有} \texttt{system32} \textbf{丢失的问题}. 
+\textbf{根据以往经验, 安装老版 C\TeX\ 套装的用户往往会有} \path{system32} \textbf{丢失的问题}. 
 
 另外, 如果环境变量中有 \texttt{mingw}、\texttt{jdk}、\texttt{Cygwin} 相关的内容,
 也请暂时删除\footnote{前两者具体原因参见
@@ -54,8 +54,8 @@
 的解释, 待安装结束后, 再将环境变量重新添加至 \TeX\ Live 的环境变量之后}.
 同时国内常见的 2345 好压也会对安装构成影响,
 建议删除它并在安装 \TeX\ Live 后更换其他同类软件%
-\footnote{推荐 \href{http://www.winrar.com.cn/}{WinRAR}
-或 \href{https://www.7-zip.org/}{7-Zip}}.
+\footnote{推荐 \href{http://www.winrar.com.cn}{WinRAR}
+或 \href{https://www.7-zip.org}{7-Zip}}.
 \textbf{最重要的是, 不要安装第三方安全软件}\footnote{Windows 11 中已经内置了安全软件,
 用户尤其没有必要安装国产的第三方杀毒软件,
 根据经验,
@@ -64,7 +64,7 @@
 下面我们要确保下载到的 \texttt{iso} 文件没有损坏, 一种常用做法是检查其 MD5 值.
 当然, 如果确信自己下载到的文件没有问题, 也可以跳过这一步.
 打开 \textsf{cmd} 窗口依次执行以下代码
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   cd /d X:\Y
   certutil -hashfile texlive2025.iso md5
 \end{lstlisting}
@@ -81,7 +81,7 @@
 除 MD5 值外,
 还可检查 SHA512 值.
 依然是在 \textsf{cmd} 执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   cd /d X:\Y
   certutil -hashfile texlive2025.iso sha512
 \end{lstlisting}
@@ -89,7 +89,7 @@
 %  (Get-FileHash 'X:\Y\texlive2025.iso' -Algorithm SHA512).Hash
 %\end{lstlisting}
 若系统显示
-\begin{lstlisting}[language=bash,literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
+\begin{lstlisting}[literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
   SHA512 的 texlive2025.iso 哈希:
   1fd9a2234d086f50c832ab3ac8b83477bbc39b1138a3c4a2351244c1fd4b8bea6d1ac81d4a5b0cba95f2e82c00f0d9df5b33189eb222e4bae5dae1523ef0da0e
   CertUtil: -hashfile 命令成功完成.
@@ -99,7 +99,7 @@
 接下来开始安装.
 推荐用户先手动建立 \TeX\ Live 的安装路径 (文件夹) 再进行安装,
 注意路径的名称是\textbf{不带空格的英文},
-默认路径为 \texttt{C:\textbackslash texlive\textbackslash 2025}.
+默认路径为 \path{C:\texlive\2025}.
 假如系统用了中文作为用户名,
 那么用户需要先按照 \ref{sec:chinesename} 节的方法更改临时环境变量后再安装.
 将镜像文件装载至虚拟光驱\footnote{Windows 11 默认双击镜像文件便可装载;
@@ -108,16 +108,16 @@
 \menu{装载};
 第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO;
 不鼓励解压缩镜像文件}.
-假设加载后的路径为 \texttt{Z:\textbackslash}.
+假设加载后的路径为 \path{Z:\}.
 打开 \textsf{cmd} 窗口并执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   Z:\install-tl-windows.bat --no-gui
 \end{lstlisting}
 %\begin{lstlisting}
 %  & 'Z:\install-tl-windows.bat' --no-gui
 %\end{lstlisting}
 即可看到如下结果
-\begin{lstlisting}
+\begin{lstlisting}[keywordstyle = {}, emphstyle = {}, stringstyle = {}]
   ======================> TeX Live installation procedure <=====================
 
   ======>   Letters/digits in <angle brackets> indicate   <=======
@@ -173,7 +173,7 @@
 这时, 用户可可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX\ Live,
 也可按键盘 \keys{D} 来更改安装路径.
 按 \keys{D} 后, 用户可看到
-\begin{lstlisting}
+\begin{lstlisting}[deletekeywords = {return, command}]
   ==============================================================================
   Directories customization:
   
@@ -197,10 +197,10 @@
   Enter command:
 \end{lstlisting}
 这时按键盘 \keys{1}, 将看到
-\begin{lstlisting}
+\begin{lstlisting}[deletekeywords = {for}]
   New value for TEXDIR [C:/texlive/2025]:
 \end{lstlisting}
-这时可更改路径, 如 \texttt{D:/texlive/2025}.
+这时可更改路径, 如 \path{D:/texlive/2025}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面,
 再按键盘 \keys{I} 便可在刚才指定的路径安装.
 用户可通过阅读英文执行其他操作, 这里不再赘述. 
@@ -211,11 +211,11 @@
 \footnote{正常安装 \TeX\ Live 后, 环境变量会变化,
 关闭原 \textsf{cmd} 窗口再重新打开才能获取新的环境变量},
 执行
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}
   tex -v
 \end{lstlisting}
 显示
-\begin{lstlisting}
+\begin{lstlisting}[deletekeywords = source]
   TeX 3.141592653 (TeX Live 2025)
   kpathsea version 6.4.1
   Copyright 2025 D.E. Knuth.
@@ -228,8 +228,8 @@
 \end{lstlisting}
 即可认为安装顺利完成%
 \footnote{若未能正确显示结果, 则可能是因为环境变量未改变,
-用户可手动添加 \texttt{<TEXDIR>\textbackslash bin\textbackslash windows} 至环境变量,
-\texttt{<TEXDIR>} 需与你方才的安装路径一致}.
+用户可手动添加 \path{<TEXDIR>\bin\windows} 至环境变量,
+\path{<TEXDIR>} 需与你方才的安装路径一致}.
 弹出前面装载的光盘镜像,
 安装到此结束.
 
@@ -241,8 +241,8 @@
 具体用法是:
 将 \textsf{wget} 所在目录添加到环境变量中.
 打开 \textsf{cmd} 窗口执行以下代码
-\begin{lstlisting}[language = bash]
-  wget http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso
+\begin{lstlisting}[escapechar = |]
+  wget |\url{http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}|
 \end{lstlisting}
 %\begin{lstlisting}
 %  Invoke-WebRequest -Uri 'http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
@@ -251,8 +251,8 @@
 类似地,
 也可以指定国内的源进行下载,
 例如选择清华大学镜像
-\begin{lstlisting}[language = bash]
-  wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso
+\begin{lstlisting}[escapechar = |]
+  wget |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso}|
 \end{lstlisting}
 %\begin{lstlisting}
 %  Invoke-WebRequest -Uri 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
@@ -287,7 +287,7 @@
 %  $env:TEMP = 'C:\temp'
 %  $env:TMP = 'C:\temp'
 %\end{lstlisting}
-便可更改这两个环境变量为 \texttt{C:\textbackslash temp}.
+便可更改这两个环境变量为 \path{C:\temp}.
 更改后按照前述内容安装 \TeX\ Live 即可.
 这样的更改是临时的,
 待 \textsf{cmd} 窗口关闭,
@@ -299,24 +299,24 @@
 下面将介绍使用命令行升级宏包的方法. 
 打开 \textsf{cmd} 窗口, 首先执行下面命令指定升级使用的镜像源. 
 \texttt{ctan} 表示系统在升级时将自动寻求最近的源进行下载. 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tlmgr option repository ctan
 \end{lstlisting}
 用户同样可以指定其他的镜像源,
 方法见附录~\ref{chp:appendix:mirror}.
 
 接下来, 用户执行命令
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tlmgr update --list
 \end{lstlisting}
 可查看目前源上可升级的宏包都有哪些. 
 高级用户可以根据自己的需求选择升级特定宏包.
 建议初级用户直接升级全部宏包. 
 用户只需执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tlmgr update --self --all
 \end{lstlisting}
-同时升级 \texttt{tlmgr} 本身和全部宏包. 
+同时升级 "tlmgr" 本身和全部宏包. 
 
 \subsection{\texttt{tlmgr} 本身无法成功升级}
 
@@ -346,11 +346,11 @@
 
 在默认状态下, 用户将完整安装 \TeX\ Live, 因此用户极少碰到需要手动安装宏包的情形. 
 同时, 在
-\href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{lshort-zh-cn}
+\href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{\textsf{lshort-zh-cn}}
 中也明确提到, \textbf{如非万不得已, 尽量不要手动安装宏包}. 
 因此在这里我只介绍从源处安装宏包的命令. 
 假设用户想安装 \texttt{mcmthesis} 宏包, 只需在 \textsf{cmd} 执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tlmgr install mcmthesis
 \end{lstlisting}
 需要注意的是, 用户一定要清楚所要安装的宏包名称, 并且在安装宏包前先确保镜像源设置正确.
@@ -360,11 +360,11 @@
 当正确安装后,
 用户可以调出宏包手册以查阅相应内容.
 例如在 \textsf{cmd} 执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   texdoc texlive-zh-cn
 \end{lstlisting}
 或
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   texdoc lshort-zh-cn
 \end{lstlisting}
 就可分别调出 \texttt{texlive-zh-cn.pdf} 和 \texttt{lshort-zh-cn.pdf},
@@ -373,7 +373,7 @@
 
 本手册业已被 \TeX\ Live 收录,
 调出本手册的命令为
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   texdoc install-latex-guide-zh-cn
 \end{lstlisting}
 
@@ -383,7 +383,7 @@
 这里依旧使用命令行来完成这一过程. 
 
 首先, 用户需要在指定位置\footnote{以下称工作路径}建立一个 \texttt{tex} 文件：
-\begin{lstlisting}[language = bash]
+\begin{lstlisting}[deletekeywords = tex]
   mkdir D:\work-latex
   cd /d D:\work-latex
   notepad main.tex
@@ -392,13 +392,13 @@
 %  Set-Location (New-Item -ItemType Directory -Path 'D:\work-latex' -Force)
 %  notepad.exe main.tex
 %\end{lstlisting}
-第1行表示创建一个工作路径 \texttt{D:\textbackslash work-latex},
-第2行表示进入工作路径, 第3行表示用记事本打开 \texttt{main.tex} 文件,
+第 1 行表示创建一个工作路径 \path{D:\work-latex},
+第 2 行表示进入工作路径, 第 3 行表示用记事本打开 \texttt{main.tex} 文件,
 若文件不存在, 系统将询问用户是否创建该文件%
 \footnote{Windows 11 对中文名变得友好一些了,
 但这里不建议用户使用中文命名工作路径和文件名}.
 在打开的记事本中编写一个最小示例
-\begin{lstlisting}[language={[LaTeX]TeX}]
+\begin{lstlisting}[language = mwe]
   \documentclass{article}
   \begin{document}
     Hello \LaTeX\ World!
@@ -406,11 +406,11 @@
 \end{lstlisting}
 保存并退出. 
 接下来执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   pdflatex main
 \end{lstlisting}
 等待系统完成编译过程. 
-待编译完成后, 我们即可看到在 \texttt{D:\textbackslash work-latex}
+待编译完成后, 我们即可看到在 \path{D:\work-latex}
 中出现了 \texttt{main.pdf} 文件和其他同名的辅助文件
 \texttt{main.aux} 与 \texttt{main.log}. 
 
@@ -419,77 +419,77 @@
 Windows 11 继承了这个特性.
 若使用其他编辑器,
 请注意规定文档编码为 UTF-8}%
-\begin{lstlisting}[language={[LaTeX]TeX}]
-  \documentclass[fontset=windows]{ctexart}
+\begin{lstlisting}[language = mwe]
+  \documentclass[fontset = windows]{ctexart}
   \begin{document}
     你好 \LaTeX\ 世界！
   \end{document}
 \end{lstlisting}
 保存并退出.
 接下来执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   xelatex main
 \end{lstlisting}
 等待系统完成编译过程.
-\texttt{xelatex} 编译命令配合 UTF-8 编码和 \texttt{ctex}
+"xelatex" 编译命令配合 UTF-8 编码和 "ctex"
 宏集已经是\textbf{目前主流的中文处理手段}.
-\texttt{xelatex} 可以使用系统内安装的字体,
+"xelatex" 可以使用系统内安装的字体,
 用户在安装字体时需右键字体文件的快捷菜单 \menu{显示更多选项 > 为所有用户安装}.
 
 总结一下, 在使用 \LaTeX\ 时, 用户首先要在工作路径%
 \footnote{建议不同的工程放入不同的工作路径}%
 中建立一个完整的 \texttt{tex} 文件%
-\footnote{该文件必须包含 \texttt{\textbackslash documentclass},
-\texttt{\textbackslash begin\{document\}} 和
-\texttt{\textbackslash end\{document\}},
+\footnote{该文件必须包含 "\documentclass",
+"\begin{document}" 和
+"\end{document}",
 这里不讨论包含子文件的情况,
 文件名需为不含空格的英文}.
 当 \texttt{tex} 文件内容确定后, 再保存文件并使用编译命令%
-\footnote{目前常用的编译命令为 \texttt{pdflatex} 和 \texttt{xelatex}},
+\footnote{目前常用的编译命令为 "pdflatex" 和 "xelatex"},
 将 \texttt{tex} 文件编译成 \texttt{pdf} 文件. 
 
 编译命令有很多可选参数, 如用户能够从 \texttt{pdf} 文件跳回 \texttt{tex} 文件,
 便是因为执行编译时添加了参数
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   pdflatex -synctex=1 main
 \end{lstlisting}
 有些编译还需要额外调用系统命令,
 例如使用 \textsf{minted} 包就有这类要求,
 因此可以在执行编译时添加参数
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   pdflatex -shell-escape main
 \end{lstlisting}
 此外还有很多其他参数, 用户若感兴趣, 可自行阅读手册. 
 
-在很多时候, 我个人更倾向于使用 \texttt{latexmk} 来编译 \texttt{tex} 文档,
+在很多时候, 我个人更倾向于使用 "latexmk" 来编译 \texttt{tex} 文档,
 如执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   latexmk -pdf -synctex=1 -interaction=nonstopmode main
 \end{lstlisting}
 意味着使用 
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   pdflatex -synctex=1 -interaction=nonstopmode main
 \end{lstlisting}
 来编译文档 \texttt{main.tex}, 并在有需要时完成其他步骤%
-\footnote{如使用 \texttt{bibtex} 或 \texttt{biblatex} 处理参考文献时需要多次编译,
+\footnote{如使用 "bibtex" 或 "biblatex" 处理参考文献时需要多次编译,
 详情见相关文档}. 
 
 \subsection{\LaTeXe\ 版本不匹配导致 \texttt{xelatex} 失败}
 
-使用 \texttt{xelatex} 编译文档,
+使用 "xelatex" 编译文档,
 系统有时会提示目前 \LaTeXe\ 的版本低于某宏包的要求版本.
 这种情况是由于 \textsf{fmt} 文件未能更新所导致.
 此时可考虑在命令行运行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   fmtutil-user --byfmt xelatex
 \end{lstlisting}
-待结束后再用 \texttt{xelatex} 编译文档.
+待结束后再用 "xelatex" 编译文档.
 更多内容参考
 \href{https://github.com/CTeX-org/forum/issues/70}{GitHub 上的讨论}.
 
-另外也可考虑重装 \texttt{xetex}.
+另外也可考虑重装 "xetex".
 在命令行执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   tlmgr install --reinstall xetex
 \end{lstlisting}
 
@@ -497,7 +497,7 @@ Windows 11 继承了这个特性.
 
 这是 \texttt{fmt} 文件未能更新所导致的问题.
 可以用
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   fmtutil-sys --all
 \end{lstlisting}
 刷新 \texttt{fmt} 文件后再编译 \texttt{tex} 文件.
@@ -510,13 +510,13 @@ Windows 11 继承了这个特性.
 \subsection{使用批处理文件}
 
 在命令行执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   kpsewhich -var-value TEXMFROOT
 \end{lstlisting}
-可以查看 \texttt{TEXMFROOT} 的值,
+可以查看 \path{TEXMFROOT} 的值,
 该值即为 \TeX\ Live 的安装路径%
 \footnote{%
-  除这里提供的 \texttt{TEXMFROOT}, 还有很多其他变量, 可在
+  除这里提供的 \path{TEXMFROOT}, 还有很多其他变量, 可在
   \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}
   第 2.3 节处找到
 }. 
@@ -524,7 +524,7 @@ Windows 11 继承了这个特性.
 用户只需执行%
 \footnote{双击或在 \textsf{cmd} 中运行}%
 安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
-\begin{lstlisting}[language=bash]
+\begin{lstlisting}
   C:\texlive\2025\tlpkg\installer\uninst.bat
 \end{lstlisting}
 %\begin{lstlisting}
@@ -538,7 +538,7 @@ Windows 11 继承了这个特性.
 
 卸载后,
 用户需要清理注册表
-\begin{lstlisting}
+\begin{lstlisting}[deletekeywords = tex]
   HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2025
   HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2025
   HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2025
@@ -561,7 +561,7 @@ Windows 11 继承了这个特性.
 
 \section{跨版本升级 \TeX\ Live}
 
-目前在 \href{https://www.tug.org/texlive/upgrade.html}{tug.org}
+目前在 \href{https://www.tug.org/texlive/upgrade.html}{\texttt{tug.org}}
 上面提供的说法是:
 Windows 没有类似 Unix 的升级程序,
 需要进行新安装%

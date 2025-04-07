@@ -6,15 +6,16 @@
 有些电脑不能联网,
 这对升级宏包不利.
 这里介绍离线升级标准 \TeX\ Live 的包 (pkg) 的方法,
-主要是用 \texttt{tlmgr install} 的 \texttt{--file} 参数来实现.
+主要是用 "tlmgr install" 的 "--file" 参数来实现.
 
 首先在能够联网的电脑上访问
 \href{https://ctan.org/tex-archive/systems/texlive/tlnet/archive}{\texttt{archive}}
 页面, 下载 \texttt{<archivename>.tar.xz} 文件.
 文件列表很长, 加载需花费些时间.
-注意 \texttt{<archivename>} 未必是 \href{https://ctan.org/pkg/}{pkg} 上的 \texttt{<pkgname>},
-例如在 \texttt{pkg} 上的
-\href{https://ctan.org/pkg/lshort-zh-cn}{lshort-zh-cn}
+注意 \texttt{<archivename>} 未必是
+\href{https://ctan.org/pkg/}{\textsf{pkg}} 上的 \texttt{<pkgname>},
+例如在 \textsf{pkg} 上的
+\href{https://ctan.org/pkg/lshort-zh-cn}{\textsf{lshort-zh-cn}}
 对应着 \texttt{archive} 上的
 \href{http://mirrors.ctan.org/systems/texlive/tlnet/archive/lshort-chinese.tar.xz}{\texttt{lshort-chinese.tar.xz}}
 和
@@ -27,18 +28,15 @@
 \texttt{<xxx>} 是必装的宏包文件;
 \texttt{<xxx.source>} 是选择安装的源码, 如 \texttt{dtx} 文件;
 \texttt{<xxx.doc>} 是选择安装的文档, 如 \texttt{pdf} 文件等.
-这三者未必同时存在, 例如前面提到的 \texttt{lshort-chinese}.
+这三者未必同时存在, 例如前面提到的 \textsf{lshort-chinese}.
 
-另外, 如果需要安装的是一个可执行文件, 例如 \texttt{pdftex} 或 \texttt{xetex},
+另外, 如果需要安装的是一个可执行文件, 例如 "pdftex" 或 "xetex",
 那么会涉及到根据操作系统进行下载的相关判断.
 如果要升级本地已安装的可执行文件, 可以在命令行输入以下语句查询:
-\begin{lstlisting}[language=bash, title={\small\sffamily Windows 系统}]
+\begin{lstlisting}[title = \small\sffamily Windows 系统]
   tlmgr info --only-installed | findstr "pdftex"
 \end{lstlisting}
-%\begin{lstlisting}[title={\small\sffamily Windows 系统}]
-%  tlmgr info --only-installed | Select-String -Pattern 'pdftex'
-%\end{lstlisting}
-\begin{lstlisting}[language=bash, title={\small\sffamily Ubuntu 和 Mac 系统}]
+\begin{lstlisting}[title = \small\sffamily Ubuntu 和 macOS]
   tlmgr info --only-installed | grep 'pdftex'
 \end{lstlisting}
 在输出结果中可看到带系统信息的名称.
@@ -54,7 +52,7 @@
 \end{lstlisting}
 系统便可自行安装.
 
-对于部分提供了 \texttt{l3build} 脚本 \texttt{build.lua} 文件的宏包，
+对于部分提供了 "l3build" 脚本 \texttt{build.lua} 文件的宏包，
 用户可在下载压缩文件后解压，在解压后的目录中执行
 \begin{lstlisting} 
   l3build install

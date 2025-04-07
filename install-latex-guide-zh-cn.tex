@@ -1,4 +1,4 @@
-\documentclass[fontset=fandol, AutoFakeSlant=0]{ctexrep}
+\documentclass[fontset = fandol]{ctexrep}
 
 \ctexset{
   chapter        = {
@@ -10,65 +10,31 @@
   section/format = \Large\bfseries\raggedright,
 }
 
-\usepackage{accsupp}
-\usepackage[margin=2.4cm]{geometry}
-\usepackage{booktabs}
-\usepackage{array}
-\usepackage{listings}
-\usepackage{fontawesome5}
-\usepackage[colorlinks, pdfpagelayout=SinglePage, bookmarksnumbered]{hyperref}
-\usepackage[os=win]{menukeys}
-\usepackage{fancyqr}
-\usepackage{hologo}
-
-\lstset{
-  backgroundcolor = \color{lightgray!30},
-  keywordstyle    = \color{blue},
-  stringstyle     = \color{brown},
-  basicstyle      = {\small\ttfamily},
-  breaklines      = true,
-  tabsize         = 4,
-  gobble          = 2,
-  numbers         = left,
-  numberstyle     = \tiny\emptyaccsupp,
-  frame           = single,
-  xleftmargin     = \ccwd,
-  numbersep       = \ccwd,
-  columns         = fullflexible,
-%  emphstyle       = {\color{blue}\small\ttfamily},
-%  emph            = {mkdir,rmdir,sudo,mount,umount,rm},
-}
-
-\newcommand\emptyaccsupp[1]{%
-  \BeginAccSupp{ActualText={}}#1\EndAccSupp{}%
-}
-\newcommand\buildinclude[1]{%
-  \InputIfFileExists{#1}{}{\include{./chapter/#1}}
-}
-\renewmenumacro{\menu}[>]{angularmenus}
-\renewmenumacro{\keys}[+]{shadowedroundedkeys}
-\renewcommand\RSsmallest{5pt}
+\usepackage[margin = 2.4cm]{geometry}
+\usepackage{booktabs, array}
+\usepackage[mono = false]{libertine}
+\usepackage{fontawesome5, fancyqr, hologo}
+\usepackage[colorlinks, pdfpagelayout = SinglePage, bookmarksnumbered]{hyperref}
 
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, calc}
 \tikzset{
-  score stars/.style={
+  score stars/.style = {
     % shape
-    star, star points=5, star point ratio=2.25, scale=0.8,
-    % color
-    draw=gray, fill=#1,
-    % others
-    inner sep=0.14em, anchor=outer point 3
+    star, star points = 5, star point ratio = 2.25, scale = .8,
+    % color 
+    draw = gray, fill = #1,
+    %others
+    inner sep = 0.14em, anchor = outer point 3
   }
 }
-
 \newcommand\stars[1]{%
   \begin{tikzpicture}
     % Draw five stars. For #1 = "2.3", fill the 1st and 2nd stars as gray,
     % and fill the 3rd to 5th stars as white.
     \foreach \i in {1, ..., 5} {
       \pgfmathsetmacro\starcolor{\i<=#1 ? "gray" : "white"}
-      \node[score stars=\starcolor] (star\i) at (\i*0.8em, 0) {};
+      \node [score stars = \starcolor] (star\i) at (\i*0.8em, 0) {};
     }
     % For #1 = "2.3", let \partstar = "3" and \starpart = "0.3".
     % Then fill the left 30% part of the 3rd star as gray after clipping.
@@ -83,23 +49,92 @@
         at (star\partstar.outer point 5 |- star\partstar.outer point 4);
       \clip (upper left) rectangle
             ({$ (upper left)!\starpart!(upper right) $} |- lower right);
-      \node[score stars=gray] at (\partstar*0.8em, 0) {};
+      \node [score stars = gray] at (\partstar*0.8em, 0) {};
     \fi
   \end{tikzpicture}%
 }
 
-\title{\bfseries 一份简短的关于 \LaTeX 安装的介绍%
+\usepackage[os = win]{menukeys}
+\renewmenumacro{\menu}[>]{angularmenus}
+\renewmenumacro{\keys}[+]{shadowedroundedkeys}
+\renewcommand\RSsmallest{5pt}
+\protect\renewcommand\faWindows{%
+  \tikz[rounded corners = 0pt, baseline = -.25em]{%
+    \fill (-.4em, .4em) rectangle (-.025em, .025em);
+    \fill ( .4em, .4em) rectangle ( .025em, .025em);
+    \fill (-.4em,-.4em) rectangle (-.025em,-.025em);
+    \fill ( .4em,-.4em) rectangle ( .025em,-.025em);
+  }
+}
+
+\usepackage{listings, fancyvrb, shortvrb}
+\lstset{
+  breaklines      = true,
+  columns         = fullflexible,
+  showstringspaces=false,
+  tabsize         = 4,
+  gobble          = 1,
+  numbers         = left,
+  numberstyle     = \tiny\ttfamily,
+  numbersep       = \ccwd,
+  frame           = tb,
+  framerule       = .6pt,
+  rulecolor       = \color{violet},
+  backgroundcolor = \color{lightgray!20},
+  language        = bash,
+  alsoletter      = -,
+  basicstyle      = \small\ttfamily,
+  commentstyle    = \color{olive},
+  stringstyle     = \color{brown},
+  emph            = { bash, cd, cp, dpkg, find, grep, ln, md5sum, mkdir, mount,
+                      rm, rmdir, set, sha512sum, sudo, umount },
+  emphstyle       = \color{blue}\bfseries,
+  morekeywords    = { add-apt-repository, apt, brew, certutil, evince,
+                      fc-cache, fc-list, fmtutil, fmtutil-user, fmtutil-sys,
+                      gedit, kpsewhich, l3build, latexmk, mkfontdir,
+                      mkfontscale, notepad, tex, texdoc, tlmgr, pdflatex,
+                      visudo, wget, wsl, xelatex },
+  keywordstyle    = \color{teal}\bfseries
+}
+\lstdefinelanguage{json}{
+  alsoletter   = -,
+  comment      = [l]{:\ },
+  morecomment  = [l][\color{olive}]{//},
+  commentstyle = \color{green!50!black},
+  string       = [db]{"},
+  stringstyle  = \color{blue!75!black},
+  literate     =*{[}{\textcolor{green!50!black}{[}}{1}
+                 {]}{\textcolor{green!50!black}{]}}{1}
+                 {\{}{\textcolor{blue!50!black}{\{}}{1}
+                 {\}}{\textcolor{blue!50!black}{\}}}{1},
+}
+\lstdefinelanguage{mwe}{
+  language     = {[LaTeX]TeX},
+  texcsstyle   = *\color{purple},
+  morekeywords = {article, ctexart, document},
+  literate     =*{\{}{\textcolor{magenta}{\{}}{1}
+                 {\}}{\textcolor{magenta}{\}}}{1}
+}
+\VerbatimFootnotes
+\MakeShortVerb{\"}
+
+\newcommand\buildinclude[1]{%
+  \InputIfFileExists{#1}{}{\include{./chapter/#1}}
+}
+
+\title{\bfseries 一份简短的关于 \LaTeX\ 安装的介绍%
   \thanks{\url{https://github.com/OsbertWang/install-latex-guide-zh-cn}}%
 }
 \author{王然%
   \thanks{\href{mailto:ranwang.osbert@outlook.com}%
-    {\ttfamily ranwang.osbert@outlook.com}}%
+    {\texttt{ranwang.osbert@outlook.com}}}%
 }
 \date{\today}
 
 \begin{document}
   
 \maketitle
+
 \buildinclude{preface}
 
 \tableofcontents
@@ -112,6 +147,7 @@
 \buildinclude{overleaf}
 
 \appendix
+
 \buildinclude{mirror}
 \buildinclude{addition}
 \buildinclude{offline}
