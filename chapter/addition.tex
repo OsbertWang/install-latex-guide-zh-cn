@@ -310,6 +310,10 @@ WSL 只能安装在系统盘,
   mkdir X:\WSL\images
   cd X:\WSL\images
 \end{lstlisting}
+%\begin{lstlisting}
+%  New-Item -ItemType Directory -Path "X:\WSL\instances\Ubuntu2204" -Force
+%  Set-Location (New-Item -ItemType Directory -Path "X:\WSL\images" -Force)
+%\end{lstlisting}
 创建新的位置.
 这里起名 \texttt{ubuntu2404} 是因为 Ubuntu 实际版本为 24.04,
 也可以起其他名字.
