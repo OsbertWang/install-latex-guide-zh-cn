@@ -117,7 +117,7 @@
 %  & 'Z:\install-tl-windows.bat' --no-gui
 %\end{lstlisting}
 即可看到如下结果
-\begin{lstlisting}[keywordstyle = {}, emphstyle = {}, stringstyle = {}]
+\begin{lstlisting}[language = {}, deleteemph = set]
   ======================> TeX Live installation procedure <=====================
 
   ======>   Letters/digits in <angle brackets> indicate   <=======
@@ -170,10 +170,10 @@
 
   Enter command:
 \end{lstlisting}
-这时, 用户可可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX\ Live,
+这时, 用户可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX\ Live,
 也可按键盘 \keys{D} 来更改安装路径.
 按 \keys{D} 后, 用户可看到
-\begin{lstlisting}[deletekeywords = {return, command}]
+\begin{lstlisting}[language = {}]
   ==============================================================================
   Directories customization:
   
@@ -215,7 +215,7 @@
   tex -v
 \end{lstlisting}
 显示
-\begin{lstlisting}[deletekeywords = source]
+\begin{lstlisting}[language = {}]
   TeX 3.141592653 (TeX Live 2025)
   kpathsea version 6.4.1
   Copyright 2025 D.E. Knuth.
@@ -538,7 +538,7 @@ Windows 11 继承了这个特性.
 
 卸载后,
 用户需要清理注册表
-\begin{lstlisting}[deletekeywords = tex]
+\begin{lstlisting}[language = {}]
   HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2025
   HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2025
   HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2025
@@ -546,7 +546,7 @@ Windows 11 继承了这个特性.
 \end{lstlisting}
 但若在安装时使用管理员权限``为所有人安装'',
 则注册表位置将变为
-\begin{lstlisting}
+\begin{lstlisting}[language = {}]
   HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2025
   HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2025
   HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2025

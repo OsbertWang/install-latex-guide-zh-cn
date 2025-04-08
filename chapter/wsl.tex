@@ -47,7 +47,7 @@ WSL 已经能够自动完成可视化工作,
 \end{lstlisting}
 进行安装.
 在屏幕上应该能见到以下内容
-\begin{lstlisting}[keywordstyle = {}, emphstyle = {}, stringstyle = {}]
+\begin{lstlisting}[language = {}, deleteemph = set]
   ======================> TeX Live installation procedure <=====================
 
   ======>   Letters/digits in <angle brackets> indicate   <=======
@@ -130,7 +130,7 @@ WSL 已经能够自动完成可视化工作,
   tex -v
 \end{lstlisting}
 将显示
-\begin{lstlisting}[keywordstyle = {}]
+\begin{lstlisting}[language = {}]
   TeX 3.141592653 (TeX Live 2025)
   kpathsea version 6.4.1
   Copyright 2025 D.E. Knuth.
@@ -185,7 +185,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
   texdoc --files
 \end{lstlisting}
 系统返回类似如下内容
-\begin{lstlisting}[keywordstyle = {}]
+\begin{lstlisting}[language = {}]
   /usr/local/texlive/2025/texmf-dist/scripts/texdoc/texdoclib.tlu 4.1.1
   Configuration file(s):
       active      /usr/local/texlive/2025/texmf-dist/texdoc/texdoc.cnf
@@ -213,14 +213,14 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
   texdoc -l lshort-zh-cn
 \end{lstlisting}
 系统会显示
-\begin{lstlisting}[keywordstyle = {}]
+\begin{lstlisting}[language = {}]
    1 /usr/local/texlive/2025/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf
      = [zh] The document itself
   Enter number of file to view, RET to view 1, anything else to skip:
 \end{lstlisting}
 这时按其他键 (如 \keys{x}) 退出.
 然后分别执行
-\begin{lstlisting}[deletekeywords = local]
+\begin{lstlisting}[language = {}]
   cd /usr/local/texlive/2025/texmf-dist/doc/latex/lshort-chinese/
   explorer.exe .
 \end{lstlisting}

@@ -1,4 +1,4 @@
-\documentclass[fontset = fandol]{ctexrep}
+\documentclass[fontset = fandol, svgnames]{ctexrep}
 
 \ctexset{
   chapter        = {
@@ -24,7 +24,7 @@
     star, star points = 5, star point ratio = 2.25, scale = .8,
     % color 
     draw = gray, fill = #1,
-    %others
+    % others
     inner sep = 0.14em, anchor = outer point 3
   }
 }
@@ -59,35 +59,31 @@
 \renewmenumacro{\keys}[+]{shadowedroundedkeys}
 \renewcommand\RSsmallest{5pt}
 \protect\renewcommand\faWindows{%
-  \tikz[rounded corners = 0pt, baseline = -.25em]{%
-    \fill (-.4em, .4em) rectangle (-.025em, .025em);
-    \fill ( .4em, .4em) rectangle ( .025em, .025em);
-    \fill (-.4em,-.4em) rectangle (-.025em,-.025em);
-    \fill ( .4em,-.4em) rectangle ( .025em,-.025em);
-  }
+  \tikz[rounded corners = 0pt, baseline = -.25em]
+    \foreach \i in {0, 90, 180, 270}
+      \fill [ rotate = \i ] (-.4em, .4em) rectangle (-.025em, .025em);
 }
 
-\usepackage{listings, fancyvrb, shortvrb}
+\usepackage{listings, fancyvrb}
 \lstset{
   breaklines      = true,
   columns         = fullflexible,
-  showstringspaces=false,
+  showstringspaces= false,
   tabsize         = 4,
   gobble          = 1,
   numbers         = left,
   numberstyle     = \tiny\ttfamily,
   numbersep       = \ccwd,
-  frame           = tb,
-  framerule       = .6pt,
-  rulecolor       = \color{violet},
+  frame           = lines,
+  rulecolor       = \color{violet!40},
   backgroundcolor = \color{lightgray!20},
   language        = bash,
   alsoletter      = -,
   basicstyle      = \small\ttfamily,
   commentstyle    = \color{olive},
   stringstyle     = \color{brown},
-  emph            = { bash, cd, cp, dpkg, find, grep, ln, md5sum, mkdir, mount,
-                      rm, rmdir, set, sha512sum, sudo, umount },
+  emph            = { bash, cd, cp, dpkg, find, grep, ln, md5sum, mkdir,
+                      mount, rm, rmdir, set, sha512sum, sudo, umount },
   emphstyle       = \color{blue}\bfseries,
   morekeywords    = { add-apt-repository, apt, brew, certutil, evince,
                       fc-cache, fc-list, fmtutil, fmtutil-user, fmtutil-sys,
@@ -97,26 +93,25 @@
   keywordstyle    = \color{teal}\bfseries
 }
 \lstdefinelanguage{json}{
-  alsoletter   = -,
-  comment      = [l]{:\ "},
-  morecomment  = [l][\color{olive}]{//},
-  commentstyle = \color{brown},
-  string       = [db]{"},
-  stringstyle  = \color{green!50!black},
-  literate     =*{[}{\textcolor{magenta}{[}}{1}
-                 {]}{\textcolor{magenta}{]}}{1}
-                 {\{}{\textcolor{magenta}{\{}}{1}
-                 {\}}{\textcolor{magenta}{\}}}{1}
+  basicstyle   = \small\ttfamily\color{DarkBlue},
+  numberstyle  = \tiny\ttfamily\color{black},
+  alsoletter   = ",
+  morecomment  = [l]{//},
+  morekeywords = {"latexmk", "latexmkpdf", "latexmkxe", "never", "tab"},
+  keywordstyle = \color{FireBrick}\bfseries,
+  literate     ={*[{\textcolor{DarkGreen}{[ }}2  ]{\textcolor{DarkGreen}{ ]}}2
+                 \{{\textcolor{DarkRed}  {\{}}1 \}{\textcolor{DarkRed}{\}}}  1
+                  :{\textcolor{black}{:}}     1  ,{\textcolor{black}{,}}1     }
 }
 \lstdefinelanguage{mwe}{
   language     = {[LaTeX]TeX},
-  texcsstyle   = *\color{purple},
+  texcsstyle   = *\color{violet},
   morekeywords = {article, ctexart, document},
-  literate     =*{\{}{\textcolor{magenta}{\{}}{1}
-                 {\}}{\textcolor{magenta}{\}}}{1}
+  literate     =*\{{\textcolor{magenta}\{}1 \}{\textcolor{magenta}\}}1
 }
+\lstMakeShortInline [ breaklines = true, basicstyle = \ttfamily,
+                      emphstyle = {}, keywordstyle = {} ] {"}
 \VerbatimFootnotes
-\MakeShortVerb{\"}
 
 \newcommand\buildinclude[1]{%
   \InputIfFileExists{#1}{}{\include{./chapter/#1}}
@@ -132,7 +127,7 @@
 \date{\today}
 
 \begin{document}
-  
+
 \maketitle
 
 \buildinclude{preface}
@@ -147,7 +142,6 @@
 \buildinclude{overleaf}
 
 \appendix
-
 \buildinclude{mirror}
 \buildinclude{addition}
 \buildinclude{offline}
