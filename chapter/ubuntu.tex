@@ -56,7 +56,7 @@
 \end{lstlisting}
 进行安装.
 在屏幕上应该能见到以下内容
-\begin{lstlisting}[keywordstyle = {}, emphstyle = {}, stringstyle = {}]
+\begin{lstlisting}[language = {}, deleteemph = set]
   ======================> TeX Live installation procedure <=====================
 
   ======>   Letters/digits in <angle brackets> indicate   <=======
@@ -151,7 +151,7 @@
   tex -v
 \end{lstlisting}
 若显示
-\begin{lstlisting}[keywordstyle = {}]
+\begin{lstlisting}[language = {}]
   TeX 3.141592653 (TeX Live 2025)
   kpathsea version 6.4.1
   Copyright 2025 D.E. Knuth.
@@ -180,7 +180,7 @@
 
 如果用户更改了安装路径,
 要注意将
-\begin{lstlisting}[keywordstyle = {}]
+\begin{lstlisting}[language = {}]
   /usr/local/texlive/2025/
 \end{lstlisting}
 在各处替换.
@@ -229,7 +229,7 @@
   sudo visudo
 \end{lstlisting}
 将
-\begin{lstlisting}[keywordstyle = {}]
+\begin{lstlisting}[language = {}]
   /usr/local/texlive/2025/bin/x86_64-linux:
 \end{lstlisting}
 添加在 \path{secure_path} 中%

@@ -25,7 +25,6 @@ This package will introduce the operations related to installing TeX Live
          Don't Modify Unless Necessary
 --]==========================================]--
 typesetexe       = "xelatex"
-typesetopts      = "-interaction=nonstopmode -synctex=1"
 typesetfiles     = {module .. ".tex"}
 supportdir       = "chapter"
 typesetsuppfiles = {"*.tex"}
