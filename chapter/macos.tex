@@ -100,7 +100,8 @@ Homebrew 安装教程可以在其网站找到,
 如有输入密码等提示, 请根据屏幕指示操作.至于环境变量等繁琐细节, Homebrew 会自动进行处理,
 无须用户干预.
 
-如果用户完全不需要 Mac\TeX\ 附带的 GUI 组件, 也可以考虑仅安装其命令行工具, 通过在终端键入命令或者从其他文本编辑器调用.
+如果用户完全不需要 Mac\TeX\ 附带的 GUI 组件,
+也可以考虑仅安装其命令行工具, 通过在终端键入命令或者从其他文本编辑器调用.
 \begin{lstlisting}
   brew install mactex-no-gui
 \end{lstlisting}
@@ -176,7 +177,7 @@ Homebrew 安装教程可以在其网站找到,
 \href{https://support.apple.com/zh-cn/guide/font-book/fntbk1000/mac}{在 Mac 上的字体册中安装和验证字体}.
 安装完成后, 刷新字体缓存.
 另外 macOS 找字体用的是系统的 CoreText 库而非 fontconfig,
-将字体文件放到 \verb+~/Library/Fonts+ 目录下,
+将字体文件放到 \path{~/Library/Fonts} 目录下,
 "xelatex" 也可以调用.
 
 注意默认状态下 "xelatex" 只能通过文件名来调用发行版预装的字体,
@@ -220,7 +221,8 @@ Homebrew 安装教程可以在其网站找到,
 具体见\href{https://www.tug.org/mactex/multipletexdistributions.html}{这里}.
 
 如果用户借助 Homebrew 安装了 Mac\TeX,
-跨版本升级 (Mac\TeX\ 的版本与 \TeX\ Live 保持一致), 可在\textsf{终端}借助 Homebrew 完成:
+跨版本升级 (Mac\TeX\ 的版本与 \TeX\ Live 保持一致),
+可在\textsf{终端}借助 Homebrew 完成:
 \begin{lstlisting}
   brew update
   brew upgrade mactex
