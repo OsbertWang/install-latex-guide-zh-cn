@@ -2,11 +2,11 @@
 
 \chapter{Ubuntu 24.04 系统}
 
-\section{安装 \TeX\ Live}\label{chap:ubuntu:sec:install}
+\section{安装 \TeX~Live}\label{chap:ubuntu:sec:install}
 
 这里只阐述如何用镜像安装.
-为使用户顺利使用 \TeX\ Live 2025,
-建议用户首先卸载从源内安装的 \TeX\ Live 的相关包,
+为使用户顺利使用 \TeX~Live 2025,
+建议用户首先卸载从源内安装的 \TeX~Live 的相关包,
 具体方法见 \ref{sec:ubuntu:uninstall}~节.
 为了减少后续字体问题和文本编辑问题,
 安装前在 \textsf{Terminal} 中执行
@@ -175,7 +175,7 @@
   sudo fc-cache -fsv
 \end{lstlisting}
 刷新字体缓存.
-这样一来, \TeX\ Live 中的字体才能够被正确调用.
+这样一来, \TeX~Live 中的字体才能够被正确调用.
 更多内容请参考 \href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\textsf{texlive-zh-cn}}.
 
 如果用户更改了安装路径,
@@ -187,7 +187,7 @@
 
 \subsection{在用户文件夹安装}\label{subsec:ubuntu-user-folder}
 
-如果有用户打算在用户文件夹安装 \TeX\ Live,
+如果有用户打算在用户文件夹安装 \TeX~Live,
 那么可以不必调用权限,
 直接执行
 \begin{lstlisting}
@@ -218,7 +218,7 @@
   fc-cache -fv
 \end{lstlisting}
 实际上,
-无论将 \TeX\ Live 安装到哪里,
+无论将 \TeX~Live 安装到哪里,
 字体的配置文件都可以仿照上面只复制于用户文件夹中.
 
 \section{升级宏包}\label{sec:ubuntu:update}
@@ -331,14 +331,14 @@ Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 
 编译命令可添加参数, 这里与 \ref{sec:windows:compile}~节中的情形一致.
 
-\section{卸载 \TeX\ Live}\label{sec:ubuntu:uninstall}
+\section{卸载 \TeX~Live}\label{sec:ubuntu:uninstall}
 
 下面提供几种卸载方法,
 卸载后需注意清理环境变量.
 
 \subsection{卸载源内的版本}\label{sec:ubuntu:aptremove}
 
-如果要卸载从源内安装的 \TeX\ Live, 个人比较推荐使用 \texttt{synaptic package manager}.
+如果要卸载从源内安装的 \TeX~Live, 个人比较推荐使用 \texttt{synaptic package manager}.
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}
   sudo apt install synaptic
@@ -407,12 +407,12 @@ Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
   sudo tlmgr remove --all
 \end{lstlisting}
 
-\section{跨版本升级 \TeX\ Live}\label{sec:ubuntu:version}
+\section{跨版本升级 \TeX~Live}\label{sec:ubuntu:version}
 
 在 \href{https://www.tug.org/texlive/upgrade.html}{\texttt{tug.org}}
 网站上提供了相应的方法.
 但网站也声明:
 默认情况下,
-请通过执行新安装来获取新版本的 \TeX\ Live%
+请通过执行新安装来获取新版本的 \TeX~Live%
 \footnote{原文是: By default,
   please get the new TL by doing a new installation instead of proceeding here}.
