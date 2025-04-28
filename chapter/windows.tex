@@ -207,7 +207,19 @@
 至此, 用户只需耐心等待安装完成, 并且不要点击 \textsf{cmd} 窗口%
 \footnote{Windows 11 默认采取快速编辑模式, 一旦点击 \textsf{cmd} 窗口,
 将显示``选择命令提示符''而导致进程暂停}. 
-安装完成后, 关闭再打开 \textsf{cmd} 窗口%
+当用户在安装界面看到以下段落出现时
+\begin{lstlisting}[language={},escapechar=ß]
+  ----------------------------------------------------------------------
+  欢迎进入 TeX Live 的世界！
+  See C:/texlive/2025/index.htmlß\footnote{这里会根据你安装\TeX~Live的位置而变化，有可能与此不同}ß for links to documentation.
+  
+  The TeX Live web site (https://tug.org/texlive/) provides all updates
+  and corrections. TeX Live is a joint project of the TeX user groups
+  around the world; please consider supporting it by joining the group
+  best for you. The list of groups is available on the web
+  at https://tug.org/usergroups.html. 
+\end{lstlisting}
+即安装完成。在此之后, 关闭再打开 \textsf{cmd} 窗口%
 \footnote{正常安装 \TeX~Live 后, 环境变量会变化,
 关闭原 \textsf{cmd} 窗口再重新打开才能获取新的环境变量},
 执行
