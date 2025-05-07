@@ -40,13 +40,13 @@
 %\begin{lstlisting}
 %  $env:Path -split ';'
 %\end{lstlisting}
-查看环境变量. 
+查看环境变量.
 若 \path{C:\Windows\system32}
 不在结果中\footnote{这里默认系统盘为 \path{C} 盘},
 则关闭 \textsf{cmd} 窗口,
 将 \path{C:\Windows\system32}
 添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
-\textbf{根据以往经验, 安装老版 C\TeX\ 套装的用户往往会有} \path{system32} \textbf{丢失的问题}. 
+\textbf{根据以往经验, 安装老版 C\TeX\ 套装的用户往往会有} \path{system32} \textbf{丢失的问题}.
 
 另外, 如果环境变量中有 \texttt{mingw}、\texttt{jdk}、\texttt{Cygwin} 相关的内容,
 也请暂时删除\footnote{前两者具体原因参见
@@ -203,10 +203,10 @@
 这时可更改路径, 如 \path{D:/texlive/2025}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面,
 再按键盘 \keys{I} 便可在刚才指定的路径安装.
-用户可通过阅读英文执行其他操作, 这里不再赘述. 
+用户可通过阅读英文执行其他操作, 这里不再赘述.
 至此, 用户只需耐心等待安装完成, 并且不要点击 \textsf{cmd} 窗口%
 \footnote{Windows 11 默认采取快速编辑模式, 一旦点击 \textsf{cmd} 窗口,
-将显示``选择命令提示符''而导致进程暂停}. 
+将显示``选择命令提示符''而导致进程暂停}.
 安装完成后, 关闭再打开 \textsf{cmd} 窗口%
 \footnote{正常安装 \TeX~Live 后, 环境变量会变化,
 关闭原 \textsf{cmd} 窗口再重新打开才能获取新的环境变量},
@@ -295,10 +295,10 @@
 
 \section{升级宏包}\label{sec:windows:update}
 
-安装完成后, 用户可以升级宏包以获得更好的使用体验. 
-下面将介绍使用命令行升级宏包的方法. 
-打开 \textsf{cmd} 窗口, 首先执行下面命令指定升级使用的镜像源. 
-\texttt{ctan} 表示系统在升级时将自动寻求最近的源进行下载. 
+安装完成后, 用户可以升级宏包以获得更好的使用体验.
+下面将介绍使用命令行升级宏包的方法.
+打开 \textsf{cmd} 窗口, 首先执行下面命令指定升级使用的镜像源.
+\texttt{ctan} 表示系统在升级时将自动寻求最近的源进行下载.
 \begin{lstlisting}
   tlmgr option repository ctan
 \end{lstlisting}
@@ -309,14 +309,14 @@
 \begin{lstlisting}
   tlmgr update --list
 \end{lstlisting}
-可查看目前源上可升级的宏包都有哪些. 
+可查看目前源上可升级的宏包都有哪些.
 高级用户可以根据自己的需求选择升级特定宏包.
-建议初级用户直接升级全部宏包. 
+建议初级用户直接升级全部宏包.
 用户只需执行
 \begin{lstlisting}
   tlmgr update --self --all
 \end{lstlisting}
-同时升级 "tlmgr" 本身和全部宏包. 
+同时升级 "tlmgr" 本身和全部宏包.
 
 \subsection{\texttt{tlmgr} 本身无法成功升级}
 
@@ -324,7 +324,7 @@
 \href{https://mirrors.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.exe}{\texttt{update-tlmgr-latest.exe}},
 然后再执行升级命令即可%
 \footnote{这里依旧让系统自动选择镜像源,
-用户可以自行选择国内镜像以加快下载速度}. 
+用户可以自行选择国内镜像以加快下载速度}.
 
 \subsection{升级到一半停止}
 
@@ -344,11 +344,11 @@
 
 \section{安装宏包}
 
-在默认状态下, 用户将完整安装 \TeX~Live, 因此用户极少碰到需要手动安装宏包的情形. 
+在默认状态下, 用户将完整安装 \TeX~Live, 因此用户极少碰到需要手动安装宏包的情形.
 同时, 在
 \href{http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf}{\textsf{lshort-zh-cn}}
-中也明确提到, \textbf{如非万不得已, 尽量不要手动安装宏包}. 
-因此在这里我只介绍从源处安装宏包的命令. 
+中也明确提到, \textbf{如非万不得已, 尽量不要手动安装宏包}.
+因此在这里我只介绍从源处安装宏包的命令.
 假设用户想安装 \texttt{mcmthesis} 宏包, 只需在 \textsf{cmd} 执行
 \begin{lstlisting}
   tlmgr install mcmthesis
@@ -379,8 +379,8 @@
 
 \section{编译文档}\label{sec:windows:compile}
 
-升级宏包完成后, 用户可以编译文档. 
-这里依旧使用命令行来完成这一过程. 
+升级宏包完成后, 用户可以编译文档.
+这里依旧使用命令行来完成这一过程.
 
 首先, 用户需要在指定位置\footnote{以下称工作路径}建立一个 \texttt{tex} 文件：
 \begin{lstlisting}[deletekeywords = tex]
@@ -404,15 +404,15 @@
     Hello \LaTeX\ World!
   \end{document}
 \end{lstlisting}
-保存并退出. 
+保存并退出.
 接下来执行
 \begin{lstlisting}
   pdflatex main
 \end{lstlisting}
-等待系统完成编译过程. 
+等待系统完成编译过程.
 待编译完成后, 我们即可看到在 \path{D:\work-latex}
 中出现了 \texttt{main.pdf} 文件和其他同名的辅助文件
-\texttt{main.aux} 与 \texttt{main.log}. 
+\texttt{main.aux} 与 \texttt{main.log}.
 
 对于中文文档, 可以在记事本中编写以下最小示例%
 \footnote{自 Windows 10 1903 版本开始, 记事本默认使用 UTF-8 编码;
@@ -449,7 +449,7 @@ Windows 11 继承了这个特性.
 文件名需为不含空格的英文}.
 当 \texttt{tex} 文件内容确定后, 再保存文件并使用编译命令%
 \footnote{目前常用的编译命令为 "pdflatex" 和 "xelatex"},
-将 \texttt{tex} 文件编译成 \texttt{pdf} 文件. 
+将 \texttt{tex} 文件编译成 \texttt{pdf} 文件.
 
 编译命令有很多可选参数, 如用户能够从 \texttt{pdf} 文件跳回 \texttt{tex} 文件,
 便是因为执行编译时添加了参数
@@ -462,7 +462,7 @@ Windows 11 继承了这个特性.
 \begin{lstlisting}
   pdflatex -shell-escape main
 \end{lstlisting}
-此外还有很多其他参数, 用户若感兴趣, 可自行阅读手册. 
+此外还有很多其他参数, 用户若感兴趣, 可自行阅读手册.
 
 在很多时候, 我个人更倾向于使用 "latexmk" 来编译 \texttt{tex} 文档,
 如执行
@@ -475,7 +475,7 @@ Windows 11 继承了这个特性.
 \end{lstlisting}
 来编译文档 \texttt{main.tex}, 并在有需要时完成其他步骤%
 \footnote{如使用 "bibtex" 或 "biblatex" 处理参考文献时需要多次编译,
-详情见相关文档}. 
+详情见相关文档}.
 
 \subsection{\LaTeXe\ 版本不匹配导致 \texttt{xelatex} 失败}
 
@@ -522,7 +522,7 @@ Windows 11 继承了这个特性.
   除这里提供的 \path{TEXMFROOT}, 还有很多其他变量, 可在
   \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}
   第 2.3 节处找到
-}. 
+}.
 接下来,
 用户只需执行%
 \footnote{双击或在 \textsf{cmd} 中运行}%

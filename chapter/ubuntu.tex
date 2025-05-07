@@ -249,13 +249,13 @@
 \begin{lstlisting}
   sudo tlmgr update --list
 \end{lstlisting}
-可查看目前源上可升级的宏包都有哪些. 
+可查看目前源上可升级的宏包都有哪些.
 高级用户可以根据自己的需求选择升级特定宏包.
 建议初级用户执行
 \begin{lstlisting}
   sudo tlmgr update --self --all
 \end{lstlisting}
-同时升级 "tlmgr" 本身和全部宏包. 
+同时升级 "tlmgr" 本身和全部宏包.
 
 \section{安装宏包}\label{sec:ubuntu:installpackage}
 
@@ -296,16 +296,16 @@ Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
     Hello \LaTeX\ World!
   \end{document}
 \end{lstlisting}
-保存并退出. 
+保存并退出.
 接下来执行
 \begin{lstlisting}
   pdflatex main
 \end{lstlisting}
-等待系统完成编译过程. 
+等待系统完成编译过程.
 待编译完成后,
 我们即可看到在 \path{~/Documents/work-latex} 中出现了
 \texttt{main.pdf} 文件和其他同名的辅助文件 \texttt{main.aux} 与
-\texttt{main.log}. 
+\texttt{main.log}.
 执行
 \begin{lstlisting}
   evince main.pdf

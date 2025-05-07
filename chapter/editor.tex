@@ -9,33 +9,33 @@
 这里向大家介绍随 \TeX~Live 一同发行的轻量级编辑器 \TeX works
 和功能更加丰富的
 \TeX studio.
-其他编辑器无法一一介绍, 还请自己在网上寻求更多帮助. 
+其他编辑器无法一一介绍, 还请自己在网上寻求更多帮助.
 
 \subsection{\TeX works}
 
 \TeX works 是一款轻量级的 \LaTeX\ 编辑器, 个人认为非常适合入门级用户使用%
 \footnote{很多用户在编写 \texttt{tex} 文件时喜欢借助其他工具,
-这不是个好习惯, 这里鼓励用户多手动敲代码}. 
+这不是个好习惯, 这里鼓励用户多手动敲代码}.
 
 和大多数国产软件不同, \TeX works 不会自动在桌面生成快捷方式,
-新人往往不知道如何打开它. 
+新人往往不知道如何打开它.
 实际上 \TeX works 在 \TeX~Live 安装路径的
 \path{\bin\windows} 中,
 可在 \textsf{cmd} 中执行 "texworks" 打开,
-也可直接在 Windows 搜索栏里搜 \TeX works 打开. 
+也可直接在 Windows 搜索栏里搜 \TeX works 打开.
 
 刚开始使用 \TeX works 的用户不必过多配置,
 在默认状态下打开软件、编写代码、保存文件后,
 用户可使用 \TeX works 的“排版”按钮进行文档编译而不必回到命令行%
 \footnote{实际上编辑器的按钮也是调用命令行来编译文档,
 \TeX works 默认排版快捷键是 \keys{ctrl + T}}.
-按钮旁边是编译命令菜单, 用户可根据需要自行选择. 
+按钮旁边是编译命令菜单, 用户可根据需要自行选择.
 
-下面介绍几个常用的功能. 
+下面介绍几个常用的功能.
 
 \subsubsection{显示行号}
 
-打开 \menu{编辑 > 首选项 > 编辑器}, 选择 \menu{行号} 即可. 
+打开 \menu{编辑 > 首选项 > 编辑器}, 选择 \menu{行号} 即可.
 
 \subsubsection{调整字体}
 
@@ -50,13 +50,13 @@ Windows 11 中字体列表见%
 \subsubsection{自动补全}
 
 自动补全主要是 \keys{tab} 键的功能,
-使用前需确定 \menu{首选项 > 编辑器} 中是否勾选了 \menu{启动自动补全}. 
+使用前需确定 \menu{首选项 > 编辑器} 中是否勾选了 \menu{启动自动补全}.
 有关自动补全的更多内容用户可参考
-\href{https://github.com/EthanDeng/texworks-autocomplete}{\TeX works 的自动补全功能}. 
+\href{https://github.com/EthanDeng/texworks-autocomplete}{\TeX works 的自动补全功能}.
 
 \subsubsection{使用模板}
 
-\TeX works支持从模板新建文档, 在 \menu{文件} 菜单中可见. 
+\TeX works支持从模板新建文档, 在 \menu{文件} 菜单中可见.
 
 \subsubsection{更改编译命令设置}
 
@@ -117,7 +117,7 @@ Windows 11 中字体列表见%
 
 \subsubsection{拼写检查}
 
-默认情况, \TeX works没有搭载拼写检查字典, 需要用户自己配置. 
+默认情况, \TeX works没有搭载拼写检查字典, 需要用户自己配置.
 首先, 访问
 \href{https://extensions.openoffice.org/dictionary}{\textsf{OpenOffice}}
 下载 \texttt{.oxt} 文件.
@@ -128,48 +128,48 @@ Windows 11 中字体列表见%
 \footnote{\path{<resources>} 的具体位置可以在
 \menu{帮助 > TeXworks 配置与资源} 中找到,
 若不存在该 \path{dictionaries} 文件夹,
-用户可自行建立.}. 
-安装完成后, 在 \menu{编辑 > 拼写} 中选择即可. 
+用户可自行建立.}.
+安装完成后, 在 \menu{编辑 > 拼写} 中选择即可.
 
 \subsubsection{魔法注释}
 
-魔法注释可以直接规定主文档、文件编码和编译命令等. 
-例如用户写学位论文时, 往往有一个主文档和若干子文档. 
+魔法注释可以直接规定主文档、文件编码和编译命令等.
+例如用户写学位论文时, 往往有一个主文档和若干子文档.
 在子文档的开头写上魔法注释
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX root = ../main.tex
 \end{lstlisting}
 即可告诉系统上一级目录中的 \texttt{main.tex} 是主文档%
 \footnote{主文档和子文档的更多内容请参考 "\include"
-和 "\input" 的用法}. 
+和 "\input" 的用法}.
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX encoding = UTF8
 \end{lstlisting}
 表示该文档使用 ``UTF-8'' 编码%
-\footnote{目前建议用户多用 ``UTF-8'' 编码, 尤其是中文文档}. 
+\footnote{目前建议用户多用 ``UTF-8'' 编码, 尤其是中文文档}.
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX program = xelatex
 \end{lstlisting}
-表示该文档使用 "xelatex" 编译命令进行编译. 
+表示该文档使用 "xelatex" 编译命令进行编译.
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX spellcheck = <language_code>
 \end{lstlisting}
 表示该文档使用 "<language_code>" 进行拼写检查,
-它的具体名称请用户到 \menu{编辑 > 拼写} 中查看. 
+它的具体名称请用户到 \menu{编辑 > 拼写} 中查看.
 
 \subsubsection{转编码}
 
-实际上转编码是很多编辑器都具备的功能. 
+实际上转编码是很多编辑器都具备的功能.
 在\TeX works右下角有三个按钮,
-左边按钮控制换行符类型, 中间按钮控制文档编码, 右边按钮控制行跳转. 
-目前大部分中文用户主要面临的是``UTF-8''和``GBK''之间的转换. 
-如果文档是``GBK''编码, 使用\TeX works打开文件后, 文档会出现乱码. 
+左边按钮控制换行符类型, 中间按钮控制文档编码, 右边按钮控制行跳转.
+目前大部分中文用户主要面临的是``UTF-8''和``GBK''之间的转换.
+如果文档是``GBK''编码, 使用\TeX works打开文件后, 文档会出现乱码.
 这时, 点中间按钮, 选择编码类型``GBK'', 再点击按钮,
 选择 \menu{使用所选编码重载文档}, 若文档中乱码消失, 则再次点击按钮,
-选择``UTF-8'', 最后保存文档, 完成转码工作. 
+选择``UTF-8'', 最后保存文档, 完成转码工作.
 
-除以上内容外, \TeX works 还支持正则表达式、自定义快捷键等. 
-这些内容都写在 \TeX works 自带的手册中. 
+除以上内容外, \TeX works 还支持正则表达式、自定义快捷键等.
+这些内容都写在 \TeX works 自带的手册中.
 手册不长, 用户可以通读一遍以了解更多内容.
 很多功能可以通过\textbf{菜单栏}找到,
 因此建议用户稍微了解一下它的菜单栏.
@@ -208,11 +208,11 @@ Windows 11 中字体列表见%
 \subsubsection{更改默认编译命令}
 
 在 \menu{Options > configure TeXstudio > build > default compiler}
-中选择默认编译命令. 
+中选择默认编译命令.
 
 另外用 "latexmk" 和 "biblatex" 做编译时,
 需要在 \menu{Options > Configure TeXstudio > build > Build Options}
-中取消 \menu{Check and update bibliography before compiling}. 
+中取消 \menu{Check and update bibliography before compiling}.
 
 \subsubsection{显示行号}
 
@@ -261,18 +261,18 @@ Windows 11 中字体列表见%
 
 \TeX studio 能够识别的命令全部被写入了
 \href{https://github.com/texstudio-org/texstudio/tree/master/completion}{\texttt{cwl} 文件}
-中. 
+中.
 用户可以根据自己的需要更改 \texttt{cwl} 文件,
 然后将其放入
 \path{<settings directory>\completion\user}
 文件夹%
 \footnote{点击 \menu{Help > Check LaTeX Installation},
 在生成的 \texttt{System Report.txt} 中找到 \texttt{texstudio.ini} 文件,
-其所在文件夹即为 \path{<settings directory>}}. 
+其所在文件夹即为 \path{<settings directory>}}.
 
 自动补全后有可能生成文本框,
 使用 \keys{\ctrl + \arrowkey{>}} 可以跳转至下一个文本框,
-\keys{\ctrl + \arrowkey{<}} 则可以跳转至上一个. 
+\keys{\ctrl + \arrowkey{<}} 则可以跳转至上一个.
 
 \subsubsection{拼写检查}
 
@@ -296,16 +296,16 @@ Windows 11 中字体列表见%
 
 \subsubsection{渲染方式}
 
-默认的渲染方式对中文括号的支持不够好. 
+默认的渲染方式对中文括号的支持不够好.
 用户可以在 \menu{Options > Configure TeXstudio > Adv. Editor > Hacks/Workarounds} 中取消
 \menu{Try to automatically choose best display options},
 选择 \menu{Disable cache of character width} 和 \menu{Disable fixed pitch mdoe}.
-这样能够比较好地渲染中文括号. 
+这样能够比较好地渲染中文括号.
 
 \subsubsection{转编码}
 
-\TeX studio 右下角有一处显示文档编码 (Encoding). 
-依旧以``UTF-8''和``GBK''之间的转换为例. 
+\TeX studio 右下角有一处显示文档编码 (Encoding).
+依旧以``UTF-8''和``GBK''之间的转换为例.
 如果文档是``GBK''编码, 使用 \TeX studio 打开文件后,
 点击 \menu{Encoding} 处, 选择 \menu{More Encodings}.
 打开窗口后, 选择``GBK / ...'', 点击 \menu{Reload With}.
@@ -322,15 +322,15 @@ Windows 11 中字体列表见%
 \begin{lstlisting}
   latexmk -pdfxe -silent -synctex=1 -interaction=nonstopmode ?me" | txs:///view-pdf-internal --embedded
 \end{lstlisting}
-点击 \menu{OK}. 
+点击 \menu{OK}.
 接下来我们在 \menu{Tools > User} 中即可看到自定义的命令和相应快捷键.
 
 接下来设置按钮.
 打开 \menu{Options > Configure TeXstudio > Toolbars},
 在两个下拉菜单中分别选择 \menu{Tools} 和 \menu{All menus},
 在右边找到 \menu{Tools > User > Build-xe-view} 并将其添加至左端,
-点击 \menu{OK}. 
-这时, 在面板中将添加新的按钮. 
+点击 \menu{OK}.
+这时, 在面板中将添加新的按钮.
 
 \subsubsection{生成宏指令}
 
