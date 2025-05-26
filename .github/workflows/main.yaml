@@ -20,4 +20,4 @@ jobs:
         with:
           package_file: .github/tl_packages
       - name: Run l3build
-        run: l3build ctan
+        run: l3build ctan -q -H

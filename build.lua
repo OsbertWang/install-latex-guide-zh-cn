@@ -10,55 +10,33 @@
 module           = "install-latex-guide-zh-cn"
 version          = "v2025.5.1"
 maintainer       = "Ran Wang"
+uploader         = maintainer
 maintainid       = "OsbertWang"
 email            = "ranwang.osbert@outlook.com"
 repository       = "https://github.com/" .. maintainid .. "/" .. module
 announcement     = ""
 summary          = "A short introduction to LaTeX installation written in Chinese"
 description      = [[
-This package will introduce the operations related to installing TeX Live
-(introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 22.04, and macOS systems, and mainly introducing command line operations.
+This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 22.04, and macOS systems, and mainly introducing command line operations.
 ]]
 
 --[==========================================[--
             Pack and Upload To CTAN
          Don't Modify Unless Necessary
 --]==========================================]--
+ctanzip          = module
+excludefiles     = {"*~"}
+textfiles        = {"*.md", "LICENSE", "*.lua", "*.bat", "makefile"}
 typesetexe       = "xelatex"
 typesetfiles     = {module .. ".tex"}
-supportdir       = "chapter"
 typesetsuppfiles = {"*.tex"}
-textfiles        = {"*.md", "LICENSE", "*.lua", "*.bat", "makefile"}
-excludefiles     = {"*~"}
-cleanfiles       = {"*.log", "*.pdf", "*.zip", "*.curlopt"}
-ctanzip          = module
-
-function copyctan()
-  local pkgsuppdir = ctandir .. "/" .. ctanpkg .. "/" .. supportdir
-  mkdir(pkgsuppdir)
-  for _,supptab in pairs(typesetsuppfiles) do
-    cp(supptab, supportdir, pkgsuppdir)
-  end
-  local pkgdir = ctandir .. "/" .. ctanpkg
-  mkdir(pkgdir)
-  local function copyfiles(files,source)
-    for _,filetype in pairs(files) do
-      cp(filetype,source,pkgdir)
-    end
-  end
-  for _,tab in pairs({pdffiles,typesetlist}) do
-    copyfiles(tab,docfiledir)
-  end
-  for _,file in pairs(textfiles) do
-    cp(file, textfiledir, pkgdir)
-  end
-end
+supportdir       = "chapter"
 
 uploadconfig = {
   pkg          = module,
   version      = version,
   author       = maintainer,
-  uploader     = maintainer,
+  uploader     = uploader,
   email        = email,
   summary      = summary,
   description  = description,
@@ -72,3 +50,26 @@ uploadconfig = {
   development  = "https://github.com/" .. maintainid,
   update       = true
 }
+
+function docinit_hook()
+  local docsuppdir = typesetdir .. "/" .. supportdir
+  mkdir(docsuppdir)
+  for _,supp in pairs(typesetsuppfiles) do
+    cp(supp, supportdir, docsuppdir)
+    rm(typesetdir, supp)
+  end
+  cp(module .. ".tex", currentdir, typesetdir)
+  return 0
+end
+function copyctan()
+  local pkgdir = ctandir .. "/" .. ctanpkg
+  mkdir(pkgdir)
+  for _,main in pairs({module .. ".tex", module .. ".pdf"}) do
+    cp(main, typesetdir, pkgdir)
+  end
+  local pkgsuppdir = ctandir .. "/" .. ctanpkg .. "/" .. supportdir
+  mkdir(pkgsuppdir)
+  for _,supptab in pairs(typesetsuppfiles) do
+    cp(supptab, supportdir, pkgsuppdir)
+  end
+end
