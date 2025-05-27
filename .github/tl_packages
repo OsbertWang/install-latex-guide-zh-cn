@@ -16,6 +16,7 @@ geometry
 hologo
 hyperref
 ifoddpage
+latexmk
 libertine
 listings
 menukeys
