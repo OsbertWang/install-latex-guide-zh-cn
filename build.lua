@@ -27,10 +27,10 @@ This package will introduce the operations related to installing TeX Live (intro
 ctanzip          = module
 excludefiles     = {"*~"}
 supportdir       = "chapter"
-textfiles        = {"*.md", "LICENSE", "*.lua", "*.bat", "makefile"}
+textfiles        = {"*.md", "LICENSE", "*.lua", "makefile", "*.bat"}
 typesetexe       = "latexmk"
 typesetfiles     = {module .. ".tex"}
-typesetopts      = "-synctex=1 -xelatex -interaction=nonstopmode"
+typesetopts      = "-xelatex -synctex=1 -interaction=nonstopmode"
 typesetsuppfiles = {"*.tex"}
 
 uploadconfig = {
