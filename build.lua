@@ -21,16 +21,17 @@ This package will introduce the operations related to installing TeX Live (intro
 ]]
 
 --[==========================================[--
-            Pack and Upload To CTAN
-         Don't Modify Unless Necessary
+         Build, Pack and Upload To CTAN
+         Do not Modify Unless Necessary
 --]==========================================]--
 ctanzip          = module
 excludefiles     = {"*~"}
-textfiles        = {"*.md", "LICENSE", "*.lua", "*.bat", "makefile"}
-typesetexe       = "xelatex"
-typesetfiles     = {module .. ".tex"}
-typesetsuppfiles = {"*.tex"}
 supportdir       = "chapter"
+textfiles        = {"*.md", "LICENSE", "*.lua", "makefile", "*.bat"}
+typesetexe       = "latexmk"
+typesetfiles     = {module .. ".tex"}
+typesetopts      = "-xelatex -synctex=1 -interaction=nonstopmode"
+typesetsuppfiles = {"*.tex"}
 
 uploadconfig = {
   pkg          = module,
@@ -61,11 +62,18 @@ function docinit_hook()
   cp(module .. ".tex", currentdir, typesetdir)
   return 0
 end
+function tex(file,dir,cmd)
+  dir = dir or "."
+  cmd = cmd or typesetexe .. " " .. typesetopts
+  return run(dir, cmd .. file)
+end
 function copyctan()
   local pkgdir = ctandir .. "/" .. ctanpkg
   mkdir(pkgdir)
-  for _,main in pairs({module .. ".tex", module .. ".pdf"}) do
-    cp(main, typesetdir, pkgdir)
+  for _,main in ipairs({typesetsuppfiles, pdffiles}) do
+    for _,glob in pairs(main) do
+      cp(glob, typesetdir, pkgdir)
+    end
   end
   local pkgsuppdir = ctandir .. "/" .. ctanpkg .. "/" .. supportdir
   mkdir(pkgsuppdir)
