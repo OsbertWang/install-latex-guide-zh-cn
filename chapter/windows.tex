@@ -7,7 +7,9 @@
 在安装 \TeX~Live 之前,
 在文件夹菜单栏 \menu{查看 > 显示} 中选择 \menu{文件扩展名}.
 
-用户可以从最近的 CTAN 源\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}下载 \TeX~Live 的
+用户可以从最近的 CTAN 源%
+\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}%
+下载 \TeX~Live 的
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{\texttt{iso} 镜像文件},
 也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
 通过大陆地区的源下载 \texttt{iso} 文件的方法请参考附录~\ref{chp:appendix:mirror}.
@@ -45,18 +47,22 @@
 不在结果中\footnote{这里默认系统盘为 \path{C} 盘},
 则关闭 \textsf{cmd} 窗口,
 将 \path{C:\Windows\system32}
-添加到环境变量中\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
-\textbf{根据以往经验, 安装老版 C\TeX\ 套装的用户往往会有} \path{system32} \textbf{丢失的问题}.
+添加到环境变量中%
+\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
+\textbf{根据以往经验, 安装老版 C\TeX\ 套装的用户往往会有}
+\path{system32} \textbf{丢失的问题}.
 
 另外, 如果环境变量中有 \texttt{mingw}、\texttt{jdk}、\texttt{Cygwin} 相关的内容,
-也请暂时删除\footnote{前两者具体原因参见
+也请暂时删除%
+\footnote{前两者具体原因参见
 \href{https://tex.stackexchange.com/questions/445086/error-installing-latest-version-of-tex-live-on-windows-10}{\textsf{Stack\textbf{Exchange}}}
 的解释, 待安装结束后, 再将环境变量重新添加至 \TeX~Live 的环境变量之后}.
 同时国内常见的 2345 好压也会对安装构成影响,
 建议删除它并在安装 \TeX~Live 后更换其他同类软件%
 \footnote{推荐 \href{http://www.winrar.com.cn/}{WinRAR}
 或 \href{https://www.7-zip.org/}{7-Zip}}.
-\textbf{最重要的是, 不要安装第三方安全软件}\footnote{Windows 11 中已经内置了安全软件,
+\textbf{最重要的是, 不要安装第三方安全软件}%
+\footnote{Windows 11 中已经内置了安全软件,
 用户尤其没有必要安装国产的第三方杀毒软件,
 根据经验,
 它们会干扰 \TeX~Live 安装}.
@@ -102,7 +108,8 @@
 默认路径为 \path{C:\texlive\2025\}.
 假如系统用了中文作为用户名,
 那么用户需要先按照 \ref{sec:chinesename} 节的方法更改临时环境变量后再安装.
-将镜像文件装载至虚拟光驱\footnote{Windows 11 默认双击镜像文件便可装载;
+将镜像文件装载至虚拟光驱%
+\footnote{Windows 11 默认双击镜像文件便可装载;
 受某些压缩软件影响双击失效时,
 可在文件夹菜单栏
 \menu{装载};
@@ -518,11 +525,9 @@ Windows 11 继承了这个特性.
 \end{lstlisting}
 可以查看 \path{TEXMFROOT} 的值,
 该值即为 \TeX~Live 的安装路径%
-\footnote{%
-  除这里提供的 \path{TEXMFROOT}, 还有很多其他变量, 可在
-  \href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}
-  第 2.3 节处找到
-}.
+\footnote{除这里提供的 \path{TEXMFROOT}, 还有很多其他变量, 可在
+\href{https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{texlive-zh-cn}
+第 2.3 节处找到}.
 接下来,
 用户只需执行%
 \footnote{双击或在 \textsf{cmd} 中运行}%
@@ -569,4 +574,4 @@ Windows 11 继承了这个特性.
 Windows 没有类似 Unix 的升级程序,
 需要进行新安装%
 \footnote{原文是: There is no comparable upgrade procedure for Windows.
-  Doing a new installation is necessary.}.
+Doing a new installation is necessary}.

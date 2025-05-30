@@ -66,7 +66,9 @@ Windows 11 中字体列表见%
 用户可以根据自己的需要,
 添加、更改其中的设置.
 首先明确 \TeX works 中已有一些定义,
-见表~\ref{tab:editor} \footnote{参考 \href{https://github.com/TeXworks/texworks/wiki/AdvancedTypesettingTools}{Advanced Typesetting Tools}.}.
+见表~\ref{tab:editor}
+\footnote{参考
+\href{https://github.com/TeXworks/texworks/wiki/AdvancedTypesettingTools}{Advanced Typesetting Tools}}.
 接下来可以定义 "latexmkpdf",
 它调用 "latexmk" 并使用 "pdflatex" 等命令编译文档.
 在 \menu{排版} 上点击 \menu{+},
@@ -123,12 +125,11 @@ Windows 11 中字体列表见%
 下载 \texttt{.oxt} 文件.
 将 \texttt{.oxt} 文件重命名为 \texttt{.zip} 文件,
 解压缩得到里面的 \texttt{.dic} 和 \texttt{.aff} 文件.
-接下来将它们安装到
-\path{<resources>\dictionaries}%
+接下来将它们安装到 \path{<resources>\dictionaries}
 \footnote{\path{<resources>} 的具体位置可以在
 \menu{帮助 > TeXworks 配置与资源} 中找到,
 若不存在该 \path{dictionaries} 文件夹,
-用户可自行建立.}.
+用户可自行建立}.
 安装完成后, 在 \menu{编辑 > 拼写} 中选择即可.
 
 \subsubsection{魔法注释}
@@ -140,13 +141,11 @@ Windows 11 中字体列表见%
   % !TeX root = ../main.tex
 \end{lstlisting}
 即可告诉系统上一级目录中的 \texttt{main.tex} 是主文档%
-\footnote{主文档和子文档的更多内容请参考 "\include"
-和 "\input" 的用法}.
+\footnote{主文档和子文档的更多内容请参考 "\include" 和 "\input" 的用法}.
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX encoding = UTF8
 \end{lstlisting}
-表示该文档使用 ``UTF-8'' 编码%
-\footnote{目前建议用户多用 ``UTF-8'' 编码, 尤其是中文文档}.
+表示该文档使用 ``UTF-8'' 编码\footnote{目前建议用户多用 ``UTF-8'' 编码, 尤其是中文文档}.
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX program = xelatex
 \end{lstlisting}

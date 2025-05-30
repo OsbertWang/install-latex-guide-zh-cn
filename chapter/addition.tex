@@ -18,8 +18,8 @@
 \end{lstlisting}
 将文件替换为以下内容%
 \footnote{本段文字可至%
-  \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
-  获取}
+\href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
+获取}
 \begin{lstlisting}[
   morekeywords = {deb, noble, noble-updates, noble-backports, noble-security},
   alsoletter = -]
@@ -138,7 +138,8 @@ Webdings
 \end{lstlisting}
 即完成换源.
 有时地址太多而逐个换太麻烦,
-可以直接使用如下命令直接替换\footnote{参见 \url{https://mogeko.me/zh-cn/posts/zh-cn/035/}}
+可以直接使用如下命令直接替换%
+\footnote{参见 \url{https://mogeko.me/zh-cn/posts/zh-cn/035/}}
 \begin{lstlisting}[deletekeywords = apt]
   sudo find /etc/apt/sources.list.d/ -type f -name "*.list" -exec  sed  -i.bak -r  's#deb(-src)?\s*http(s)?://ppa.launchpad.net#deb\1 https\2://launchpad.proxy.ustclug.org#ig' {} \;
 \end{lstlisting}
