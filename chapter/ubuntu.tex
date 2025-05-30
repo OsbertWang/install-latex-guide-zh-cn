@@ -205,7 +205,10 @@
   export MANPATH=~/texlive/2025/texmf-dist/doc/man:$MANPATH
   export INFOPATH=~/texlive/2025/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
-有关字体的处理变为\footnote{这里并未使用 \href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\textsf{texlive-zh-cn}} 中建议的路径 \path{~/.fonts.conf.d/},
+有关字体的处理变为%
+\footnote{这里并未使用
+\href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\textsf{texlive-zh-cn}}
+中建议的路径 \path{~/.fonts.conf.d/},
 因为根据 \href{https://www.freedesktop.org/software/fontconfig/fontconfig-user.html}{freedesktop} 的说法,
 该路径已废弃,
 故此处采用新的路径,
@@ -312,8 +315,7 @@ Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 \end{lstlisting}
 即可打开 \texttt{pdf} 文件.
 
-对于中文文档, 可以在 "gedit" 中编写以下最小示例%
-\footnote{gedit 默认使用 UTF-8 编码}%
+对于中文文档, 可以在 "gedit" 中编写以下最小示例\footnote{gedit 默认使用 UTF-8 编码}%
 \begin{lstlisting}[language = mwe]
   \documentclass[fontset = fandol]{ctexart}
   \begin{document}
@@ -415,4 +417,4 @@ Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 默认情况下,
 请通过执行新安装来获取新版本的 \TeX~Live%
 \footnote{原文是: By default,
-  please get the new TL by doing a new installation instead of proceeding here}.
+please get the new TL by doing a new installation instead of proceeding here}.
