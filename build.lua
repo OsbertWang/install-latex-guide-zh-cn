@@ -17,7 +17,7 @@ repository       = "https://github.com/" .. maintainid .. "/" .. module
 announcement     = ""
 summary          = "A short introduction to LaTeX installation written in Chinese"
 description      = [[
-This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 22.04, and macOS systems, and mainly introducing command line operations.
+This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 24.04, and macOS systems, and mainly introducing command line operations.
 ]]
 
 --[==========================================[--
