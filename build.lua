@@ -15,7 +15,7 @@ maintainid       = "OsbertWang"
 email            = "ranwang.osbert@outlook.com"
 repository       = "https://github.com/" .. maintainid .. "/" .. module
 announcement     = ""
-note             = ""
+note             = "The document now introduces Ubuntu 24.04 instead of 22.04. Please sync the homepage of this package accordingly."
 summary          = "A short introduction to LaTeX installation written in Chinese"
 description      = [[
 This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 24.04, and macOS systems, and mainly introducing command line operations.
