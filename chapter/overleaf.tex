@@ -1,12 +1,15 @@
 % !TeX root = ../install-latex-guide-zh-cn.tex
 
-\chapter{在线的 \LaTeX\ 平台}
+\chapter{在线 \LaTeX\ 平台}
 
 在特定场合,
 有些用户并不需要也没条件在本地安装发行版,
-因此这里额外补充 \href{www.overleaf.com/}{Overleaf},
-\href{https://www.texpage.com/}{TeXPage} 和
-\href{https://www.loongtex.com/}{LoongTeX} 的相关内容.
+因此这里额外补充一些在线 \LaTeX\ 平台的相关内容,
+如国外的 \href{https://www.overleaf.com/}{Overleaf},
+和国内的 \href{https://www.texpage.com/}{TeXPage},
+\href{https://www.loongtex.com/}{LoongTeX},
+\href{https://www.slager.link/#/Home}{Slager}.
+另外还有一些科研院所自己搭建的在线 \LaTeX\ 平台也可以在一定程度上满足用户的需要.
 
 \section{Overleaf}
 
@@ -104,18 +107,18 @@ Overleaf 的%
 部分问题会超出免费服务的范畴,
 用户需谨记这点.
 
-\section{TeXPage}
+\section{国内的在线 \LaTeX\ 平台}
 
-\subsection{注册 TeXPage}
+相较于因网络原因而导致的难以注册和使用 Overleaf,
+国内的在线 \LaTeX\ 平台则规避了网络问题,
+因此本手册略微介绍一些,
+方便用户选择.
 
-TeXPage 是由国内公司开发的在线 \LaTeX\ 平台.
-相较于 Overleaf 的注册困难,
-TeXPage 的注册则要方便得多.
-用户只需访问它的主页,
+\subsection{TeXPage}
+
+用户只需访问 \href{https://www.texpage.com/}{TeXPage} 的主页,
 使用邮箱注册即可,
 具体过程不再赘述.
-
-\subsection{使用 TeXPage}
 
 新用户注册 TeXPage 后会在页面看到一份使用教程.
 这份教程简明扼要地概括了一般中文用户会遇到的常见问题,
@@ -128,96 +131,76 @@ TeXPage 的注册则要方便得多.
 设置完毕,
 再点击编译即可.
 
-\subsection{文档和帮助}
-
-TeXPage 有自己的 \href{https://www.texpage.com/docs}{文档中心},
+TeXPage 有自己的%
+\href{https://www.texpage.com/docs}{文档中心},
 文档数量不多,
 但涵盖了相当一部分基础知识.
 同时,
 它也提供了联系方式 \href{mailto:support@texpage.com}%
 {\texttt{support@texpage.com}},
 用户如果遇到了一些使用上的问题也可以直接发邮件咨询.
+当然用户在提问前也可以先尝试使用平台自带的 AI 调试和 AI 润色功能.
 
-\subsection{TeXPage 的优势}
-
-在全球范围内,
-Overleaf 依然是在线 \LaTeX\ 平台的主流,
-然而由于种种原因,
-大陆地区用户体验不佳,
-因此 TeXPage 就成为了一个稳定有效的新的选择.
-
-目前在 TeXPage 上也具有一些颇具特色的模板,
+目前在 TeXPage 上有一些颇具特色的模板,
 例如建模比赛的一些模板就已经被收录在 TeXPage 当中.
-如果未来 TeXPage 能够再尽可能收录大陆各个高校的毕业论文模板的话,
-那可能是一件非常有趣的事情.
+TeXPage 的%
+\href{https://www.texpage.com/zh/pricing}{产品定价}%
+涵盖了基础班、专业版、旗舰版和企业版,
+用户可以按需购买.
 
-\section{LoongTeX}
+\subsection{LoongTeX}
 
-\subsection{注册 LoongTeX}
-
-\href{https://www.loongtex.com/}{LoongTeX (龙文)}
-是为科研人员打造的新一代 \LaTeX\ 工作平台,
+\href{https://www.loongtex.com/}{LoongTeX}
 集成了白板、类 Notion 笔记管理、异步协作和 AI 辅助功能, 助力高效完成论文与文档.
-新用户可通过%
-\href{https://app.loongtex.com/user/login}{微信、谷歌账号或邮箱快速注册登录},
+新用户可通过微信、谷歌账号或邮箱快速%
+\href{https://app.loongtex.com/user/login}{注册登录},
 即刻进入专属工作台界面.
 
-\subsection{使用 LoongTeX}
+LoongTeX 工作台提供创建项目、新建笔记、发起白板三类核心创作入口,
+创建项目支持三种高效启动方式: 上传 \texttt{zip} 压缩包、从%
+\href{https://www.loongtex.com/templates/}{毕业论文库}%
+生成、或绑定 Git 仓库实现云端同步协作.
 
-LoongTeX 工作台提供「创建项目」「新建笔记」「发起白板」三类核心创作入口,
-「创建项目」特别支持三种高效启动方式: 上传 \texttt{zip} 压缩包快速迁移本地 \LaTeX\ 工程、从%
-\href{https://www.loongtex.com/templates/}{超过 200 套毕业论文库}%
-精准生成框架、或绑定 Git 仓库地址实现云端同步协作,
-满足研究者从零开始创作、模板化写作到团队协同开发的全场景需求.
+新建项目后, 左侧导航栏集成文件树管理、
+可视化 Git 版本历史及协作成员面板,
+中央编辑区搭载智能 \LaTeX\ 编辑器与分屏 PDF 预览,
+右侧功能面板提供 AI 助手和智能批注系统.
 
-新建项目后, 系统自动进入三栏式编辑器页面: 左侧导航栏集成文件树管理(支持拖拽调整多级目录)、
-可视化 Git 版本历史 (一键回溯任意版本) 及协作成员面板 (实时状态显示与异步留言);
-中央编辑区搭载智能 \LaTeX\ 编辑器 (语法高亮/自动补全/实时纠错)
-与分屏 PDF 预览 (注释联动定位);
-右侧功能面板提供 AI 助手 (语法修正、术语优化)
-和智能批注系统 (支持 Markdown 与公式嵌入的私有/团队注释),
-形成「创作 --- 调试 --- 协作」一体化的沉浸式科研写作环境.
-
-\subsection{学习与帮助}
-
-为保障科研用户的专注体验, LoongTeX 官网内嵌%
+LoongTeX 官网内嵌%
 \href{https://www.loongtex.com/docs/app/help/}{帮助中心},
-提供分场景的 \LaTeX\ 写作指南、异步协作操作手册及AI助手使用技巧 (含视频教程与学术案例).
-LoongTeX 提供专业技术支持, 用户可发送邮件至
+提供分场景的 \LaTeX\ 写作指南、异步协作操作手册及AI助手使用技巧.
+用户可发送邮件至
 \href{mailto:loongtex@gmail.com}{\texttt{loongtex@gmail.com}}
 咨询使用过程中遇到的问题.
+\href{https://www.loongtex.com/pricing}{订阅方案}%
+涵盖了专业版和团队版,
+用户可以根据实际需要考虑购买.
 
-\subsection{LoongTeX 的优势}
+\subsection{Slager}
 
-LoongTeX 针对科研场景深度优化, 相较 Overleaf 提供更专注的解决方案:
-基于 Git 的异步协作避免实时同步对深度思考的干扰,
-融合 Notion 式知识管理实现论文写作、数据整理与灵感记录的一站式操作,
-内置 AI 学术助手精准优化语言表达与格式规范,
-并通过贡献度追踪、双盲评审流程等机制满足科研协作的严谨性与合规性需求,
-让复杂学术写作更专注高效.
+\href{https://www.slager.link/#/Home}{Slager}%
+支持邮箱注册,
+目前看来,
+Slager 的用法与其他在线平台并无太多不同,
+\href{https://www.slager.link/#/HelpCenter}{帮助文档}%
+也为新用户展示了初步的用法,
+对于用户比较友好.
 
-\section{其他在线平台}
+目前 Slager 的个人项目无数量限制,
+并提供超大容量存储空间,
+它内置的数学公式编辑器等等原本的会员权益,
+如今通通免费使用,
+并且已经取消了付费订阅模式.
 
-除以上介绍的两个平台外,
+\section{科研院所搭建平台}
+
 大陆地区部分高校 (例如%
 \href{https://overleaf.tsinghua.edu.cn/login}{清华大学}%
 和%
-\href{https://latex.ustc.edu.cn/login}{中国科学技术大学}) 也搭建了供内部师生使用的平台.
+\href{https://latex.ustc.edu.cn/login}{中国科学技术大学}) 搭建了供内部师生使用的平台.
 
 中国科学院计算机网络信息中心科技云运行与技术发展部曾发邮件宣称开始提供论文协同编辑服务,
 据我猜测,
 它利用了早年 Sharelatex 的部分内容.
 试用可点击%
 \href{https://www.cstcloud.cn/resources/452}{这里}.
-
-南京一家公司筹建了
-\href{https://www.slager.link/#/Home}{Slager} 在线 \LaTeX\ 编辑工具.
-目前看来,
-Slager 的用法也比较简单,
-并且有关于起步的%
-\href{https://www.slager.link/#/HelpCenter}{帮助文档}.
-
-\href{https://online.latexstudio.net/}{\LaTeX\ 工作室}也建立了一个在线平台,
-这个平台目前只有一台服务器,
-响应有点慢,
-但是会免费供用户使用.
