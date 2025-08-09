@@ -5,19 +5,21 @@
 \section{安装 \TeX~Live}\label{chap:ubuntu:sec:install}
 
 这里只阐述如何用镜像安装.
-为使用户顺利使用 \TeX~Live 2025,
+为保证用户顺利使用 \TeX~Live 2025,
 建议用户首先卸载从源内安装的 \TeX~Live 的相关包,
 具体方法见 \ref{sec:ubuntu:uninstall}~节.
-为了减少后续字体问题和文本编辑问题,
-安装前在 \textsf{Terminal} 中执行
+由于后续内容涉及字体和文本编辑,
+建议用户先确定系统内是否已经有 "fontconfig" 和 "gedit",
+它们在较新的 Ubuntu 中是默认安装的,
+但如果它们并不存在,
+需在 \textsf{Terminal} 中执行
 \begin{lstlisting}
   sudo apt install fontconfig gedit
 \end{lstlisting}
-由于大陆地区网络现状,
+鉴于大陆地区的网络环境,
 建议在执行命令前更换 Ubuntu 源,
 参考 \ref{sec:addition:source}~节.
-以下未特殊声明,
-均指在 \textsf{Terminal} 中执行相关命令.
+以下未特别说明的命令均在 \textsf{Terminal} 中执行.
 
 下载
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{\texttt{iso} 镜像文件}
@@ -106,7 +108,8 @@
 
   Enter command:
 \end{lstlisting}
-点击键盘 \keys{I} 进行默认安装.
+点击键盘 \keys{I} 进行默认安装,
+默认安装是为\textbf{所有用户}安装.
 如果用户对于 Ubuntu 系统比较了解,
 可以根据提示,
 更改安装设置,
@@ -121,7 +124,10 @@
   export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
   export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
-不同操作系统此处显示略有不同,
+此处显示信息可能会略有不同,
+比如电脑使用了基于 \texttt{arm64} 架构的处理器,
+则 \path{x86_64-linux} 将被替换为 \path{aarch64-linux}.
+为安全起见,
 用户需将此处的系统提示记录.
 
 将装载的光盘镜像弹出并删除文件夹,
@@ -185,25 +191,26 @@
 \end{lstlisting}
 在各处替换.
 
-\subsection{在用户文件夹安装}\label{subsec:ubuntu-user-folder}
+\subsection{为个人用户安装}\label{subsec:ubuntu-user-folder}
 
-如果有用户打算在用户文件夹安装 \TeX~Live,
+如果用户只打算为\textbf{个人用户}安装 \TeX~Live,
 那么可以不必调用权限,
 直接执行
 \begin{lstlisting}
   /mnt/texlive/install-tl
 \end{lstlisting}
-只不过这时安装路径需要选择
+只不过这时安装路径需要选择在个人用户文件夹下,
+例如
 \begin{lstlisting}
-  ~/texlive/2025
+  ~/.local/texlive/2025/
 \end{lstlisting}
 安装完毕后,
 继续修改环境变量为
 \begin{lstlisting}
   # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=~/texlive/2025/bin/x86_64-linux:$PATH
-  export MANPATH=~/texlive/2025/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=~/texlive/2025/texmf-dist/doc/info:$INFOPATH
+  export PATH=~/.local/texlive/2025/bin/x86_64-linux:$PATH
+  export MANPATH=~/.local/texlive/2025/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=~/.local/texlive/2025/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 有关字体的处理变为%
 \footnote{这里并未使用
@@ -214,7 +221,7 @@
 故此处采用新的路径,
 即 \path{$XDG_CONFIG_HOME/fontconfig/conf.d/}}
 \begin{lstlisting}
-  cp ~/texlive/2025/texmf-var/fonts/conf/texlive-fontconfig.conf $XDG_CONFIG_HOME/fontconfig/conf.d/09-texlive.conf
+  cp ~/.local/texlive/2025/texmf-var/fonts/conf/texlive-fontconfig.conf $XDG_CONFIG_HOME/fontconfig/conf.d/09-texlive.conf
 \end{lstlisting}
 然后执行
 \begin{lstlisting}
@@ -222,31 +229,36 @@
 \end{lstlisting}
 实际上,
 无论将 \TeX~Live 安装到哪里,
-字体的配置文件都可以仿照上面只复制于用户文件夹中.
+字体的配置文件都可以仿照上面只复制于个人用户文件夹中.
 
 \section{升级宏包}\label{sec:ubuntu:update}
 
-首次升级前,
-在 \textsf{Terminal} 中执行
-\begin{lstlisting}
-  sudo visudo
-\end{lstlisting}
-将
-\begin{lstlisting}[language = {}]
-  /usr/local/texlive/2025/bin/x86_64-linux:
-\end{lstlisting}
-添加在 \path{secure_path} 中%
-\footnote{这里只讨论 \path{x86_64} 下默认安装的情况,
-若用户设备的处理器是基于 \texttt{arm64} 架构的,
-则需要将 \path{x86_64-linux} 替换为 \path{aarch64-linux}}.
-然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
+默认安装情况下,
+由于权限问题,
+直接使用 "tlmgr" 升级宏包会失败,
+但如果使用 "sudo" 执行,
+会显示 "tlmgr" 命令不存在,
+因为 "sudo" 默认没有加载它为环境变量，
+这里提供三种方法解决该问题.
+至于为个人用户安装,
+下述的 "tlmgr" 命令可以脱离 "sudo" 使用.
+后续内容类似,
+不再赘述.
 
+\subsection{创建链接}\label{subsec:ubuntu:link}
+
+首次升级前,
+执行
+\begin{lstlisting}
+  sudo ln -s /usr/local/texlive/2025/bin/x86_64-linux/tlmgr /usr/local/bin/
+\end{lstlisting}
+创建一个指向 "tlmgr" 的符号链接至 \path{/usr/local/bin/}.
 接下来在 \textsf{Terminal} 中执行
 \begin{lstlisting}
   sudo tlmgr option repository ctan
 \end{lstlisting}
 让系统自动选择源,
-同样可以使用大陆地区的源升级,
+用户也可以选择大陆地区的源进行升级,
 详情见附录~\ref{chp:appendix:mirror}.
 执行命令
 \begin{lstlisting}
@@ -259,6 +271,36 @@
   sudo tlmgr update --self --all
 \end{lstlisting}
 同时升级 "tlmgr" 本身和全部宏包.
+
+\subsection{权限修改}
+
+此种方法有可能造成安全漏洞,
+因此\textbf{不建议使用}.
+首次升级前,
+执行
+\begin{lstlisting}
+  sudo visudo
+\end{lstlisting}
+在 \path{secure_path} 中添加
+\begin{lstlisting}[language = {}]
+  /usr/local/texlive/2025/bin/x86_64-linux:
+\end{lstlisting}
+然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
+
+接下来的 "tlmgr" 使用方法与 \ref{subsec:ubuntu:link}~节一致,
+这里不再赘述.
+
+\subsection{直接使用}
+
+此方法通过调用 "which" 命令来查找 "tlmgr" 的绝对路径,
+例如让系统自动选择源
+\begin{lstlisting}
+  sudo $(which tlmgr) option repository ctan
+\end{lstlisting}
+升级 "tlmgr" 本身和全部宏包
+\begin{lstlisting}
+  sudo $(which tlmgr) update --self --all
+\end{lstlisting}
 
 \section{安装宏包}\label{sec:ubuntu:installpackage}
 
