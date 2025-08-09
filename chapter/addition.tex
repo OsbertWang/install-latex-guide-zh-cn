@@ -58,35 +58,132 @@
 
 有用户指出,
 Ubuntu 中安装字体比较麻烦.
-这里给出一个方法.
+这里给出一些常用的方法,
+可供参考%
+\footnote{关于此处字体的更多讨论请见%
+  \href{https://github.com/OsbertWang/install-latex-guide-zh-cn/issues/75}{这里}.}.
 
-在安装字体前先保证 "fontconfig" 和 "xfonts-utils" 已安装
-\begin{lstlisting}
-  sudo apt install fontconfig xfonts-utils
-\end{lstlisting}
+\subsection{获取字体}
+
 获取需要安装的字体文件,
-假设文件保存在 \path{~/myfonts/},
-WSL 用户甚至可以保存在主系统路径中.
-然后将其链接到 \path{/usr/share/fonts/} 文件夹
+可以分为两种情况.
+
+\subsubsection{个人用户}
+
+若只对个人用户开放字体使用,
+可将字体文件保存在 \path{~/.local/share/fonts/} 路径下,
+若路径不存在,
+可以使用以下命令创建
 \begin{lstlisting}
-  sudo ln -s ~/myfonts /usr/share/fonts
+  mkdir -p ~/.local/share/fonts/
 \end{lstlisting}
-最后建立字体缓存
+推荐将不同的字体文件保存在 \path{~/.local/share/fonts/} 的不同子路径中,
+方便管理字体.
+下述涉及路径的内容均类似,
+不再重复.
+
+WSL 用户甚至可以将字体文件保存在主系统路径中,
+例如 \path{C:\ Users\ admin\ somefont },
+然后对字体路径做链接
 \begin{lstlisting}
-  mkfontscale
-  mkfontdir
+  ln -s /mnt/c/Users/admin/somefont ~/.local/share/fonts/windows-fonts
+\end{lstlisting}
+
+\subsubsection{所有用户}
+
+若对所有用户开放字体使用,
+可将字体文件保存在 \path{/usr/local/share/fonts/} 路径下.
+同样地,
+可能需要创建目录
+\begin{lstlisting}
+  sudo mkdir -p /usr/local/share/fonts
+\end{lstlisting}
+再次推荐将不同的字体文件保存在不同的子路径中.
+值得注意的是,
+此时字体文件需要具有足够的读取权限,
+例如对字体文件 "fontname" 和字体文件路径 "fontdirectory" 分别设置权限如下
+\begin{lstlisting}
+  sudo chmod 644 /usr/local/share/fonts/fontname
+  sudo chmod -R 755 /usr/local/share/fonts/fontdirectory
+\end{lstlisting}
+这里设置 "644" 和 "755" 只为后续使用更便利,
+严格来讲,
+如果只涉及字体读取,
+"444" 和 "555" 即可.
+
+WSL 用户若要将主系统路径中的字体文件对所有用户开放字体使用,
+可以做如下链接
+\begin{lstlisting}
+  sudo ln -s /mnt/c/Users/admin/somefont /usr/local/share/fonts/windows-somefonts
+\end{lstlisting}
+
+\subsection{使用 fontconfig}
+
+对于绝大多数现代 TrueType (TTF),
+OpenType (OTF) 等字体,
+"fontconfig" 是唯一需要的工具.
+在当代的 Ubuntu 系统中,
+它已经默认安装,
+若系统内没有安装它,
+只需执行
+\begin{lstlisting}
+  sudo apt install fontconfig
+\end{lstlisting}
+
+在获取字体后,
+使用 "fontconfig" 非常简单,
+只需执行
+\begin{lstlisting}
   fc-cache -fv
 \end{lstlisting}
-这时执行
+即可建立字体缓存,
+注意刷新 \path{/usr/local/share/fonts/} 内的字体缓存时需要添加 "sudo".
+随后执行
 \begin{lstlisting}
   fc-list
 \end{lstlisting}
 即可见到目前可用的字体.
-若要删除刚刚安装的字体,
-只需要直接删除
+
+若不再需要已经安装的字体,
+只需要直接删除,
+例如
 \begin{lstlisting}
-  sudo rm /usr/share/fonts/myfonts
+  rm ~/.local/share/fonts/fontname
+  sudo rm /usr/local/share/fonts/fontname
 \end{lstlisting}
+随后刷新缓存
+\begin{lstlisting}
+  fc-cache -fv
+\end{lstlisting}
+查看字体是否已经删除
+\begin{lstlisting}
+  fc-list
+\end{lstlisting}
+
+\subsection{使用 xfonts-utils}
+
+此处介绍 "xfonts-utils" 只为补充,
+它主要用于处理非常旧的 X11 位图字体 (pcf, bdf) 或某些特定的 Type1 字体场景,
+普通用户安装现代字体几乎不需要它.
+
+在当前版本的 Ubuntu 中,
+"xfonts-utils" 并没有默认安装.
+可直接使用以下命令安装
+\begin{lstlisting}
+  sudo apt install xfonts-utils
+\end{lstlisting}
+
+获取字体后,
+通过以下命令建立字体缓存
+\begin{lstlisting}
+  mkfontscale
+  mkfontdir
+\end{lstlisting}
+再次强调,
+对于如今大部分字体文件而言,
+已不再推荐使用 "xfonts-utils".
+
+\subsection{直接安装源内字体}
 
 实际上有部分字体可直接使用源进行安装,
 如安装字体 Noto CJK
