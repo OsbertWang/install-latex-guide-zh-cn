@@ -19,11 +19,13 @@
 下载及文件验证方法同 \ref{sec:windows:install}~节.
 
 在正式安装前,
+为减少后续字体问题和文本编辑问题,
+用户需要先确定 \texttt{fontconfig} 和 \texttt{gedit} 是否已经安装.
+若未安装,
 用户需要在 \textsf{bash} 中执行
 \begin{lstlisting}
   sudo apt install fontconfig gedit
 \end{lstlisting}
-以减少后续字体问题和文本编辑问题.
 在 Windows 11 中,
 WSL 已经能够自动完成可视化工作,
 这为一些用户提供了便利.
@@ -32,12 +34,15 @@ WSL 已经能够自动完成可视化工作,
 不习惯在 "gedit" 中做文本操作的 Windows 用户,
 可参考 \ref{sec:addition:wsl-editor}~节.
 
-接下来, 在主系统中将镜像装载,
-例如挂载到 \path{X:\},
-而后进入 \textsf{bash} 并执行如下命令
+接下来挂载镜像.
+这里需要先通过一个例子解释 WSL 的路径和主系统路径的对应关系.
+例如, \texttt{iso} 镜像文件在主系统中的路径是 \path{C:\Users\username\Downloads\texlive2025.iso},
+那么在 WSL 中其路径是 \path{/mnt/c/Users/username/Downloads/texlive2025.iso}.
+理解上述路径对应关系后,
+进入 \textsf{bash} 并执行如下命令
 \begin{lstlisting}
-  sudo mkdir /mnt/x
-  sudo mount -t drvfs X: /mnt/x
+  sudo mkdir -p /mnt/iso
+  sudo mount -o loop /mnt/c/Users/username/Downloads/texlive2025.iso /mnt/iso
 \end{lstlisting}
 如此便可在 \textsf{bash} 中找到装载的光盘镜像.
 之后执行
@@ -103,8 +108,8 @@ WSL 已经能够自动完成可视化工作,
 以下记录均假定为 \path{x86_64} 上的默认安装.
 安装完毕后, 需继续在 \textsf{bash} 中执行
 \begin{lstlisting}
-  sudo umount /mnt/x
-  sudo rmdir /mnt/x
+  sudo umount /mnt/iso
+  sudo rmdir /mnt/iso
 \end{lstlisting}
 弹出已装载的光盘镜像.
 
