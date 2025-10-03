@@ -254,7 +254,7 @@ Webdings
 
 VS Code 的插件权限有限,
 当更改 \texttt{sources.list} 时,
-先在 \textsf{bash} 中将 \texttt{sources.list} 备份
+先将 \texttt{sources.list} 备份
 \begin{lstlisting}[deletekeywords = apt]
   sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 \end{lstlisting}
@@ -304,66 +304,68 @@ VS Code 的插件权限有限,
 \href{https://github.com/James-Yu/LaTeX-Workshop/wiki}{Wiki}
 了解更多内容.
 以下 VS Code 设置的 \texttt{json} 文件内容为个人自用的 \LaTeX\ Workshop 设置,
-仅供参考,
-其中注释的部分是调用外部 SumatraPDF 阅读器的设置,
+仅供参考.
+\begin{lstlisting}[language = json]
+  "latex-workshop.latex.tools": [
+  {
+    "name": "latexmkpdf",
+    "command": "latexmk",
+    "args":
+    [
+    "-synctex=1", "%DOCFILE%",
+    "-halt-on-error", "-file-line-error",
+    "-pdf", "-interaction=nonstopmode"
+    ]
+  },
+  {
+    "name": "latexmkxe",
+    "command": "latexmk",
+    "args":
+    [
+    "-synctex=1", "%DOCFILE%",
+    "-halt-on-error", "-file-line-error",
+    "-xelatex", "-interaction=nonstopmode",
+    ]
+  },
+  ],
+  "latex-workshop.latex.recipes": [
+  {
+    "name": "latexmkpdf",
+    "tools": [ "latexmkpdf" ]
+  },
+  {
+    "name": "latexmkxe",
+    "tools": [ "latexmkxe" ]
+  }
+  ],
+  "latex-workshop.latex.autoBuild.run": "never",
+  "latex-workshop.view.pdf.viewer": "tab"
+\end{lstlisting}
+
+需要声明的是,
+\LaTeX\ Workshop 插件并不局限在 WSL 当中,
+它的配置是通用的.
+\LaTeX\ Workshop 允许调用外部 PDF 阅读器.
+这里提供一份在 Windows 系统内调用外部 SumatraPDF 阅读器的设置,
 用户可阅读
 \href{https://github.com/OsbertWang/latex-editor-sumatrapdf}{\textsf{latex-editor-sumatrapdf}}
 来了解更多内容.
 \begin{lstlisting}[language = json]
-  "latex-workshop.latex.tools": [
-    {
-      "name": "latexmkpdf",
-      "command": "latexmk",
-      "args":
-        [
-          "-synctex=1", "%DOCFILE%",
-          "-halt-on-error", "-file-line-error",
-          "-pdf", "-interaction=nonstopmode"
-        ]
-    },
-    {
-      "name": "latexmkxe",
-      "command": "latexmk",
-      "args":
-        [
-          "-synctex=1", "%DOCFILE%",
-          "-halt-on-error", "-file-line-error",
-          "-xelatex", "-interaction=nonstopmode",
-        ]
-    },
+  "latex-workshop.view.pdf.viewer": "external",
+  "latex-workshop.view.pdf.ref.viewer": "external",
+  "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFROOT>/SumatraPDF.exe",
+  "latex-workshop.view.pdf.external.viewer.args": [
+    "-inverse-search", "%PDF%",
+    "\"<VSCodeROOT>/bin/code.cmd\" -r -g \"%f:%l\"",
   ],
-  "latex-workshop.latex.recipes": [
-    {
-      "name": "latexmkpdf",
-      "tools": [ "latexmkpdf" ]
-    },
-    {
-      "name": "latexmkxe",
-      "tools": [ "latexmkxe" ]
-    }
-  ],
-  "latex-workshop.latex.autoBuild.run": "never",
-  "latex-workshop.view.pdf.viewer": "tab"
-  // "latex-workshop.view.pdf.viewer": "external",
-  // "latex-workshop.view.pdf.ref.viewer": "external",
-  // "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFROOT>/SumatraPDF.exe",
-  // "latex-workshop.view.pdf.external.viewer.args": [
-  //   "-inverse-search", "%PDF%",
-  //   "\"<VSCodeROOT>/bin/code.cmd\" -r -g \"%f:%l\"",
-  // ],
-  // "latex-workshop.view.pdf.external.synctex.command":"<SumatraPDFROOT>/SumatraPDF.exe",
-  // "latex-workshop.view.pdf.external.synctex.args":[
-  //   "-forward-search", "%TEX%", "%LINE%", "%PDF%"
-  // ],
+  "latex-workshop.view.pdf.external.synctex.command":"<SumatraPDFROOT>/SumatraPDF.exe",
+  "latex-workshop.view.pdf.external.synctex.args":[
+    "-forward-search", "%TEX%", "%LINE%", "%PDF%"
+  ]
 \end{lstlisting}
-
 实际使用时,
 用户需要结合自身安装情况更换 \path{<SumatraPDFROOT>} 和 \path{<VSCodeROOT>},
 即 SumatraPDF 和 VS Code 各自的安装路径.
-
-另外需要声明的是,
-\LaTeX\ Workshop 插件并不局限在 WSL 当中,
-它的配置是可以通用的.
 
 \section{迁移 WSL 的安装位置}
 
