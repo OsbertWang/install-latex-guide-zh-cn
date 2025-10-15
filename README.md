@@ -1,12 +1,12 @@
 [![CTAN Version](https://img.shields.io/ctan/v/install-latex-guide-zh-cn)](https://ctan.org/pkg/install-latex-guide-zh-cn)
 [![GitHub Release](https://img.shields.io/github/v/release/OsbertWang/install-latex-guide-zh-cn)](https://github.com/OsbertWang/install-latex-guide-zh-cn/releases/latest)
-[![Actions Status](https://github.com/OsbertWang/install-latex-guide-zh-cn/workflows/Automated%20testing/badge.svg)](https://github.com/OsbertWang/install-latex-guide-zh-cn/actions)
 [![GitHub Repo stars](https://img.shields.io/github/stars/OsbertWang/install-latex-guide-zh-cn)](https://github.com/OsbertWang/install-latex-guide-zh-cn)
+[![Actions Status](https://github.com/OsbertWang/install-latex-guide-zh-cn/workflows/Automated%20testing/badge.svg)](https://github.com/OsbertWang/install-latex-guide-zh-cn/actions)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/OsbertWang/install-latex-guide-zh-cn)](https://github.com/OsbertWang/install-latex-guide-zh-cn/commits)
 # Install-LaTeX-Guide-zh-cn (A short introduction to LaTeX installation written in Chinese)
 
-This package will introduce the operations related to installing TeX Live (including MacTeX on macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 24.04, and macOS systems, and mainly introducing command line operations.
-At the same time, it briefly introduces the use of several common editors under different operating systems, and additionally adds some related content using Online LaTeX editor, e.g. [Overleaf](https://www.overleaf.com).
+This package will introduce the operations related to installing TeX Live (including MacTeX on macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 24.04, and macOS systems, and mainly introducing command-line operations.
+At the same time, it briefly introduces the use of several common editors under different operating systems, and additionally adds some related content using Online LaTeX editor, e.g., [Overleaf](https://www.overleaf.com).
 
 Users are advised to read [texlive-zh-cn](https://www.tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf) and [lshort-zh-cn](http://mirrors.ctan.org/info/lshort/chinese/lshort-zh-cn.pdf) for a more comprehensive understanding of the basic content.
 
