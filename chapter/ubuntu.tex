@@ -239,20 +239,27 @@
 但如果使用 "sudo" 执行,
 会显示 "tlmgr" 命令不存在,
 因为 "sudo" 默认没有加载它为环境变量，
-这里提供三种方法解决该问题.
+这里提供几种方法解决该问题.
 至于为个人用户安装,
 下述的 "tlmgr" 命令可以脱离 "sudo" 使用.
 后续内容类似,
 不再赘述.
 
-\subsection{创建链接}\label{subsec:ubuntu:link}
+\subsection{权限修改}
 
+此种方法是我在个人电脑上最常用的方法,
+但因为它有可能造成安全漏洞,
+因此\textbf{不建议不了解新用户使用}.
 首次升级前,
 执行
 \begin{lstlisting}
-  sudo ln -s /usr/local/texlive/2025/bin/x86_64-linux/tlmgr /usr/local/bin/
+  sudo visudo
 \end{lstlisting}
-创建一个指向 "tlmgr" 的符号链接至 \path{/usr/local/bin/}.
+在 \path{secure_path} 中添加
+\begin{lstlisting}[language = {}]
+  /usr/local/texlive/2025/bin/x86_64-linux:
+\end{lstlisting}
+然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
 接下来在 \textsf{Terminal} 中执行
 \begin{lstlisting}
   sudo tlmgr option repository ctan
@@ -272,25 +279,7 @@
 \end{lstlisting}
 同时升级 "tlmgr" 本身和全部宏包.
 
-\subsection{权限修改}
-
-此种方法有可能造成安全漏洞,
-因此\textbf{不建议使用}.
-首次升级前,
-执行
-\begin{lstlisting}
-  sudo visudo
-\end{lstlisting}
-在 \path{secure_path} 中添加
-\begin{lstlisting}[language = {}]
-  /usr/local/texlive/2025/bin/x86_64-linux:
-\end{lstlisting}
-然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
-
-接下来的 "tlmgr" 使用方法与 \ref{subsec:ubuntu:link}~节一致,
-这里不再赘述.
-
-\subsection{直接使用}
+\subsection{使用绝对路径}
 
 此方法通过调用 "which" 命令来查找 "tlmgr" 的绝对路径,
 例如让系统自动选择源
@@ -300,6 +289,33 @@
 升级 "tlmgr" 本身和全部宏包
 \begin{lstlisting}
   sudo $(which tlmgr) update --self --all
+\end{lstlisting}
+
+\subsection{保持环境变量}
+
+由于前期已经配置好了 "PATH",
+因此可以直接用
+\begin{lstlisting}
+  sudo env PATH="$PATH" tlmgr option repository ctan
+  sudo env PATH="$PATH" tlmgr update --self --all
+\end{lstlisting}
+
+\subsection{修改目录权限}
+
+首先更改安装路径所有权为当前用户
+\begin{lstlisting}
+  sudo chown -R $USER:$USER /usr/local/texlive/2025
+\end{lstlisting}
+然后就可直接脱离 "sudo" 运行
+\begin{lstlisting}
+  tlmgr option repository ctan
+  tlmgr update --self --all
+\end{lstlisting}
+如果想恢复权限,
+执行
+\begin{lstlisting}
+  sudo chown -R root:root /usr/local/texlive/2025
+  sudo chmod -R 755 /usr/local/texlive/2025
 \end{lstlisting}
 
 \section{安装宏包}\label{sec:ubuntu:installpackage}
