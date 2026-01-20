@@ -407,7 +407,7 @@ Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
 当然, 用户也可以直接使用
 \begin{lstlisting}
-  dpkg -l | grep 'TeX Live'
+  dpkg -l | grep '^ii' | grep -i -E 'texlive|tex live'
 \end{lstlisting}
 找到相应的包名 \texttt{<package name>}, 之后使用类似
 \begin{lstlisting}
