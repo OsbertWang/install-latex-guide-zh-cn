@@ -2,8 +2,8 @@
 
 \chapter{大陆地区的源}\label{chp:appendix:mirror}
 
-由于各种不知名的原因,
-下载 \TeX~Live 的 \texttt{iso} 文件或升级宏包时,
+由于一些未知的原因,
+下载 \TeX~Live 的 "iso" 文件 (或在 MacOS 中下载 Mac\TeX) 或升级宏包时,
 系统自动选择的源并没有满足用户关于``附近''的要求.
 因此,
 很多时候,
@@ -139,3 +139,9 @@
 \begin{lstlisting}[escapechar = |]
   tlmgr option repository |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}|
 \end{lstlisting}
+
+Mac\TeX\ 的镜像路径需将 \TeX~Live 路径中的 \path{.../texlive} 替换为 \path{.../mac/mactex}.
+例如, 阿里云的镜像地址为 \url{https://mirrors.aliyun.com/CTAN/systems/mac/mactex/},
+北京大学的镜像地址为 \url{https://mirror.pku.edu.cn/ctan/systems/mac/mactex/}.
+其他镜像也类似,
+不再一一列举.
