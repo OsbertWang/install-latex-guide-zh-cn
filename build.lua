@@ -17,9 +17,7 @@ repository       = "https://github.com/" .. maintainid .. "/" .. module
 announcement     = ""
 note             = ""
 summary          = "A short introduction to LaTeX installation written in Chinese"
-description      = [[
-This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 24.04, and macOS systems, and mainly introducing command line operations.
-]]
+description      = [[This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 24.04, and macOS systems, and mainly introducing command line operations.]]
 
 --[==========================================[--
          Build, Pack and Upload To CTAN
@@ -31,7 +29,7 @@ supportdir       = "chapter"
 textfiles        = {"*.md", "LICENSE", "*.lua", "makefile", "*.bat"}
 typesetexe       = "latexmk"
 typesetfiles     = {module .. ".tex"}
-typesetopts      = "-xelatex -synctex=1 -interaction=nonstopmode"
+typesetopts      = "-xelatex -interaction=nonstopmode"
 typesetsuppfiles = {"*.tex"}
 
 uploadconfig = {
