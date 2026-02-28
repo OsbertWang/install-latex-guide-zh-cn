@@ -52,6 +52,9 @@
     \fi
   \end{tikzpicture}%
 }
+\newdimen\ttwd \newbox \xttwdbox
+\setbox\xttwdbox\hbox{\normalsize\ttfamily x}
+\ttwd=\wd\xttwdbox
 
 \usepackage[os = win]{menukeys}
 \renewmenumacro{\menu}[>]{angularmenus}
