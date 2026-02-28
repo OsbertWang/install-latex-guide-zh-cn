@@ -21,7 +21,6 @@
 它也可以``自动''跳转到``附近''的高校镜像.
 更多内容参见%
 \href{https://help.mirrors.cernet.edu.cn/}{高校联合镜像说明}.
-接下来简述使用大陆地区的源下载 \texttt{iso} 文件和升级宏包.
 
 \begin{table}
   \centering
@@ -95,7 +94,7 @@
   \end{tabular}
 \end{table}
 
-使用最近的 CTAN 源下载 \texttt{iso} 文件,
+使用最近的 CTAN 源下载 "iso" 文件,
 实际上是下载
 \begin{lstlisting}[escapechar = |]
   |\url{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}|
@@ -112,36 +111,38 @@
 \end{lstlisting}
 予以保留.
 以清华大学为例,
-从清华大学源中下载 \texttt{iso} 镜像文件,
+从清华大学源中下载 "iso" 镜像文件,
 实际上是下载
 \begin{lstlisting}[escapechar = |]
   |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso}|
 \end{lstlisting}
+Mac\TeX\ 的镜像路径需将 \TeX~Live 路径中的 \path{.../texlive/Images} 替换为 \path{.../mac/mactex}.
+例如, 从清华大学源中下载 "MacTeX.pkg",
+即为下载
+\begin{lstlisting}[escapechar = |]
+  |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/mac/mactex/MacTeX.pkg}|
+\end{lstlisting}
+其他源类似,
+不再列举.
 
-同理,
-升级宏包也只需要将对应的网址替换为源地址即可.
-前面正文中所设置的
+升级宏包也只需要将对应的网址替换为源地址即可,
+并且 \TeX~Live 与 Mac\TeX\ 用法统一.
+正文中
 \begin{lstlisting}
   tlmgr option repository ctan
 \end{lstlisting}
 等价于
 \begin{lstlisting}[escapechar = |]
-  tlmgr option repository |\url{http://mirror.ctan.org/systems/texlive/tlnet/}|
+  tlmgr option repository |\url{https://mirrors.ctan.org/systems/texlive/tlnet/}|
 \end{lstlisting}
 使用大陆的源升级宏包,
 只需将
 \begin{lstlisting}
-  http://mirror.ctan.org/systems/texlive/
+  https://mirrors.ctan.org/systems/texlive/
 \end{lstlisting}
 替换为大陆源的地址而保留其他部分即可.
-依旧以清华大学为例,
-那么设置将变为
+以清华大学为例,
+设置将变为
 \begin{lstlisting}[escapechar = |]
   tlmgr option repository |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/}|
 \end{lstlisting}
-
-Mac\TeX\ 的镜像路径需将 \TeX~Live 路径中的 \path{.../texlive} 替换为 \path{.../mac/mactex}.
-例如, 阿里云的镜像地址为 \url{https://mirrors.aliyun.com/CTAN/systems/mac/mactex/},
-北京大学的镜像地址为 \url{https://mirror.pku.edu.cn/ctan/systems/mac/mactex/}.
-其他镜像也类似,
-不再一一列举.
