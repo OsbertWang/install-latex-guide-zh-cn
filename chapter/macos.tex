@@ -4,119 +4,97 @@
 
 \section{安装 Mac\TeX}
 
-Mac\TeX\ 是 \TeX~Live 在 macOS 下的再打包版本,
-并额外加入了一些辅助程序.
-在 macOS 上安装 Mac\TeX\ 可以选择以下两种方式:
+Mac\TeX\ 是 \TeX~Live 针对 macOS 环境的再打包版本,
+并额外集成了若干辅助程序.
+在 macOS 上安装该发行版主要有以下两种方式:
 \begin{description}
-  \item[直接下载 Mac\TeX\ 安装包进行安装]
-  将安装文件下载到本地,
-  然后按照安装提示进行安装.
-  \item[借助 Homebrew 以命令行方式安装]
-  先安装 Homebrew,
-  然后通过命令行进行在线安装.
+  \item[直接下载安装包]
+  手动下载安装镜像并在系统内执行安装程序.
+  \item[借助 Homebrew 命令行安装]
+  先部署 Homebrew 包管理器,
+  随后通过终端执行在线安装.
 \end{description}
 
-目前比较推荐直接下载 Mac\TeX\ 安装包的安装方式,
-因为最近一段时间以来,
-大陆用户对 GitHub 的访问极不稳定,
-有可能会导致 Homebrew 安装失败.
+\strong{安装建议:}
+当前阶段,
+建议用户优先选择直接下载安装包的方式.
+由于中国大陆用户访问 GitHub 的稳定性较差,
+使用 Homebrew 脚本安装时可能会因网络波动导致失败.
 
 \subsection{直接下载 Mac\TeX\ 安装包进行安装}
 
-\href{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}{下载} Mac\TeX\ 的安装包 \texttt{MacTeX.pkg},
-在系统内点击已下载的 \texttt{MacTeX.pkg} 文件,
-根据系统提示进行安装即可.
-这个过程与安装 macOS 上的其他软件并无太多不同.
+\href{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}{下载} "MacTeX.pkg" 文件后,
+双击运行并按照系统弹出的安装向导指引完成操作.
+其流程与安装 macOS 上的常规软件一致.
+用户自主选择大陆各个镜像下载 "MacTeX.pkg" 的方法请参考附录~\ref{chp:appendix:mirror}.
 
-另外,
-用户也可以选择国内各个镜像来下载 \texttt{MacTeX.pkg}.
-因其独特性,
-用户需调整附录~\ref{chp:appendix:mirror} 中提供的大陆地区的源的网址,
-具体来讲,
-是将 \path{.../texlive} 改为 \path{.../mac/mactex}.
-例如,
-阿里云的镜像地址为 \url{https://mirrors.aliyun.com/CTAN/systems/mac/mactex/},
-北京交通大学的镜像地址为 \url{https://mirror.bjtu.edu.cn/ctan/systems/mac/mactex/},
-其他镜像类似,
-不再一一列举.
+\subsection{借助 Homebrew 命令行安装}
 
-\subsection{借助 Homebrew 以命令行方式安装}
-
-建议用户学习使用 \href{https://brew.sh/}{Homebrew},
-Homebrew 是一个包管理工具,
-类似 Ubuntu 上面的 "apt-get".
+\href{https://brew.sh/}{Homebrew} 是 macOS 上广泛使用的包管理工具,
+功能类似于 Ubuntu 的 "apt-get" 。
 
 \subsubsection{安装 Homebrew}
 
-Homebrew 安装教程可以在其网站找到,
-这里简单列出来%
+在\textsf{终端}%
+\footnote{打开方法为: \keys{\cmdmac + \SPACE},
+输入 \textsf{terminal} 并打开 \menu{终端} 应用}%
+执行以下命令%
 \footnote{参见
-\href{https://docs.brew.sh/Installation#git-remote-mirroring}{Homebrew 官方文档},
-Homebrew 目前支持 macOS Ventura (13) 及更高版本}
+\href{https://docs.brew.sh/Installation}{Homebrew 官方文档},
+Homebrew 支持最新三个 macOS 年度版本}
+:
 \begin{lstlisting}[deleteemph = bash]
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 \end{lstlisting}
-将以上命令在\textsf{终端}%
-\footnote{打开方法为: \keys{\cmdmac + \SPACE},
-输入 \textsf{terminal} 并打开 \menu{终端} 应用}%
-执行.
-脚本会在执行前暂停, 并说明它将做什么. 依据屏幕指令执行即可.
+执行后,
+脚本会说明即将进行的改动并暂停,
+用户需根据屏幕指令确认执行.
 
 中国大陆用户可以使用镜像以提高访问速度.
-以上海交通大学镜像源为例%
+以清华大学镜像源为例%
 \footnote{此处涉及的环境变量参见
 \href{https://docs.brew.sh/Manpage#environment}{Homebrew 官方文档},
-上海交通大学镜像站的安装说明见
-\href{https://mirrors.sjtug.sjtu.edu.cn/docs/git/brew.git}{\texttt{git/brew.git}},
-\href{https://mirrors.sjtug.sjtu.edu.cn/docs/git/homebrew-core.git}{\texttt{git/homebrew-core.git}},
-\href{https://mirrors.sjtug.sjtu.edu.cn/docs/git/homebrew-cask.git}{\texttt{git/homebrew-cask.git}},
-\href{https://mirrors.sjtug.sjtu.edu.cn/docs/homebrew-bottles}{\texttt{homebrew-bottles}},
-其他镜像站的安装说明参见
+各镜像站的安装说明参见
 \href{https://help.mirrors.cernet.edu.cn/homebrew/}{Homebrew 软件仓库镜像使用帮助},
 \href{https://help.mirrors.cernet.edu.cn/homebrew-bottles/}{Homebrew Bottles 软件仓库镜像使用帮助}}
 \begin{lstlisting}[deleteemph = bash]
-  echo 'export HOMEBREW_BREW_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/brew.git' >> ~/.bash_profile
-  echo 'export HOMEBREW_CORE_GIT_REMOTE=https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-core.git' >> ~/.bash_profile
-  echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirror.sjtu.edu.cn/homebrew-bottles/bottles' >> ~/.bash_profile
-  echo 'export HOMEBREW_NO_INSTALL_FROM_API=1' >> ~/.bash_profile
-  source ~/.bash_profile
-  /bin/bash -c "$(curl -fsSL https://git.sjtu.edu.cn/sjtug/homebrew-install/-/raw/master/install.sh)"
-  brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.sjtug.sjtu.edu.cn/git/homebrew-cask.git
+  export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+  export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+  echo 'export HOMEBREW_API_DOMAIN="https://mirrors.cernet.edu.cn/homebrew-bottles/api"' >> ~/.zprofile
+  echo 'export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.cernet.edu.cn/homebrew-bottles"' >> ~/.zprofile
+  export HOMEBREW_API_DOMAIN="https://mirrors.cernet.edu.cn/homebrew-bottles/api"
+  export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.cernet.edu.cn/homebrew-bottles"
 \end{lstlisting}
-如果是 Zsh 用户, 请将上述所有的 \path{.bash_profile} 替换为 \path{.zprofile}.
+若使用 Bash,
+请将上述配置中的 \path{.zprofile} 替换为 \path{.bash_profile}.
 
-\href{https://gitee.com/cunkai}{CunKai} 在%
-\href{https://gitee.com/cunkai/HomebrewCN}{码云}%
-平台提供了 Homebrew 的国内自动化安装脚本, 在避免了中国大陆的网络环境问题同时简化了安装流程,
-如对于 Zsh 用户, 只需在终端执行
+用户亦可使用 \href{https://gitee.com/cunkai}{CunKai} 在\href{https://gitee.com/cunkai/HomebrewCN}{码云}平台提供的自动化脚本,
+该脚本针对国内网络环境进行了优化并简化了流程:
 \begin{lstlisting}
   /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 \end{lstlisting}
-并按照文字提示操作即可.
 
 \subsubsection{安装 Mac\TeX}
 
-安装 Homebrew 后,
-只需在\textsf{终端}执行以下命令即可完成安装:
+安装完 Homebrew 后,
+在\textsf{终端}执行相应命令即可完成部署:
 \begin{lstlisting}
   brew install mactex
 \end{lstlisting}
-如有输入密码等提示, 请根据屏幕指示操作.
-至于环境变量等繁琐细节, Homebrew 会自动进行处理, 无须用户干预.
 
-如果用户完全不需要 Mac\TeX\ 附带的 GUI 组件,
+如果用户不需要 Mac\TeX\ 的附加组件 (图形化应用程序),
 也可以考虑仅安装其命令行工具, 通过在终端键入命令或者从其他文本编辑器调用.
 \begin{lstlisting}
   brew install mactex-no-gui
 \end{lstlisting}
 
-完整的 Mac\TeX\ 会比较大. 如果磁盘空间实在紧张, 也可以考虑安装 Basic\TeX:
+完整的 Mac\TeX\ 会占据大量空间. 如果磁盘空间实在紧张, 也可以考虑安装轻量化的 Basic\TeX:
 \begin{lstlisting}
   brew install basictex
 \end{lstlisting}
-安装完成后 Basic\TeX\ 依然会缺很多包, 手动安装会比较麻烦, 所以不推荐没有经验的用户尝试.
+Basic\TeX\ 仅包含最基础的组件和宏包, 手动安装会比较麻烦, 所以不推荐没有经验的用户使用.
 
-注意, Basic\TeX\ 的初始设定是不安装宏包文档和源码. 如有需要, 可以执行
+注意, Basic\TeX\ 默认不安装宏包文档和源码. 如有需要, 可以执行
 \begin{lstlisting}
   # 1 为安装, 0 为不安装
   sudo tlmgr option docfiles 1 # 安装文档, 推荐
@@ -128,39 +106,31 @@ Homebrew 目前支持 macOS Ventura (13) 及更高版本}
     $(tlmgr list --only-installed | sed -e 's/^i \([^:]*\): .*$/\1/')
 \end{lstlisting}
 
-\section{升级宏包}
+\section{宏包的管理与维护}
 
-升级宏包依旧可以使用 "tlmgr".
-使用方法与 \ref{sec:ubuntu:update}~节类似, 这里不再重复.
-一般来说, 也需要使用 "sudo" 获取管理员权限后才能完成安装.
+升级和安装宏包通过终端工具 "tlmgr" 进行,
+操作时通常需要 "sudo" 管理员权限.
 
-\section{安装宏包}
-
-安装 CTAN 中的宏包方法与 \ref{sec:ubuntu:installpackage}~节一致.
-
-\section{调出宏包手册}
-
-调出宏包手册方法与 \ref{sec:ubuntu:texdoc}~节一致.
+\begin{description}
+  \item[升级宏包] 参见 \ref{sec:ubuntu:update}~节.
+  \item[安装宏包] 参见 \ref{sec:ubuntu:installpackage}~节.
+  \item[查阅手册] 参见 \ref{sec:ubuntu:texdoc}~节.
+\end{description}
 
 \section{编译文档}
 
-假设已经用 TextEdit.app 或其他文本编辑器编写以下示例 \texttt{main.tex}%
-\footnote{注意建立最小示例前先确定工作路径},
-内容为
+使用文本编辑器 (如 TextEdit.app) 编写 "main.tex":
 \begin{lstlisting}[language = mwe]
   \documentclass{article}
   \begin{document}
     Hello \LaTeX\ World!
   \end{document}
 \end{lstlisting}
-接下来在\textsf{终端}中执行
+在\textsf{终端}执行编译命令
 \begin{lstlisting}
   pdflatex main
 \end{lstlisting}
-等待系统完成编译过程.
-待编译完成后, 可看到在工作路径中生成了 \texttt{main.pdf}
-文件和其他同名的辅助文件 \texttt{main.aux} 与 \texttt{main.log}.
-可以打开 \texttt{main.pdf} 查看内容.
+编译完成后，工作路径内将生成 "main.pdf" 结果文件，以及 "main.aux" 和 "main.log" 辅助文件.
 
 对于中文文档, 可以编写以下最小示例%
 \begin{lstlisting}[language = mwe]
@@ -169,20 +139,16 @@ Homebrew 目前支持 macOS Ventura (13) 及更高版本}
     你好 \LaTeX\ 世界！
   \end{document}
 \end{lstlisting}
-保存并退出.
-接下来在\textsf{终端}中进入工作路径,
-执行
+在\textsf{终端}执行
 \begin{lstlisting}
   xelatex main
 \end{lstlisting}
-等待系统完成编译过程.
 "xelatex" 可调用系统字体,
 为系统安装字体的方法请参考%
 \href{https://support.apple.com/zh-cn/guide/font-book/fntbk1000/mac}{在 Mac 上的字体册中安装和验证字体}.
-安装完成后, 刷新字体缓存.
-另外 macOS 找字体用的是系统的 CoreText 库而非 fontconfig,
-将字体文件放到 \path{~/Library/Fonts/} 目录下,
-"xelatex" 也可以调用.
+安装完成后, 需要刷新字体缓存.
+"xelatex" 会调用系统的 CoreText 库来管理字体,
+因此可以访问 \path{~/Library/Fonts/} 目录下的字体文件.
 
 注意默认状态下 "xelatex" 只能通过文件名来调用发行版预装的字体,
 在\textsf{终端}执行下面两步即可用字体名调用发行版预装的字体
@@ -191,8 +157,6 @@ Homebrew 目前支持 macOS Ventura (13) 及更高版本}
   ln -s /usr/local/texlive/2025/texmf-dist/fonts/truetype ~/Library/Fonts/
 \end{lstlisting}
 
-编译命令的相关参数, 这里不再赘述.
-
 \section{卸载 Mac\TeX}
 
 如果用户直接下载了 Mac\TeX\ 安装包进行安装,
@@ -200,41 +164,24 @@ Homebrew 目前支持 macOS Ventura (13) 及更高版本}
 通常我个人会比较建议在跨版本升级前卸载旧版本.
 
 如果用户借助 Homebrew 安装了 Mac\TeX,
-经%
-\href{https://github.com/OsbertWang/install-latex-guide-zh-cn/pull/39#discussion_r1368152254}{实际测试},
-直接使用
+亦可以通过 Homebrew 卸载.
+\footnote{"--zap" 选项会额外删除 \path{/usr/local/texlive/texmf-local} 和 GUI 应用相关的文件, 以实现无残留卸载}
 \begin{lstlisting}
-  brew uninstall mactex
+  brew uninstall --zap mactex (或 mactex-no-gui)
 \end{lstlisting}
-
-如果用户借助 Homebrew 安装 Mac\TeX\ 时选择仅安装其命令行工具,
-卸载时需使用
-\begin{lstlisting}
-  brew uninstall mactex-no-gui
-\end{lstlisting}
-
-以上卸载均很成功,
-只是有一些残留.
 
 \section{跨版本升级 Mac\TeX}
 
-如果用户直接下载了 Mac\TeX\ 安装包进行安装,
-可以先卸载旧版本,
-再安装新版本,
-或者干脆保留多个版本,
-具体见\href{https://www.tug.org/mactex/multipletexdistributions.html}{这里}.
+如果用户直接下载 Mac\TeX\ 安装包进行安装,
+新版本安装器不会覆盖旧版本,
+需要自行卸载旧版本,
+或选择同时保留多个版本,
+可以参见\href{https://www.tug.org/mactex/multipletexdistributions.html}{这里}.
 
 如果用户借助 Homebrew 安装了 Mac\TeX,
 跨版本升级 (Mac\TeX\ 的版本与 \TeX~Live 保持一致)
 可在\textsf{终端}借助 Homebrew 完成:
 \begin{lstlisting}
   brew update
-  brew upgrade mactex
-\end{lstlisting}
-
-如果用户借助 Homebrew 安装 Mac\TeX\ 时选择仅安装其命令行工具,
-跨版本升级时需使用
-\begin{lstlisting}
-  brew update
-  brew upgrade mactex-no-gui
+  brew upgrade mactex (或 mactex-no-gui)
 \end{lstlisting}
