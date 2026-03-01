@@ -30,6 +30,7 @@ textfiles        = {"*.md", "LICENSE", "*.lua", "makefile", "*.bat"}
 typesetexe       = "latexmk"
 typesetfiles     = {module .. ".tex"}
 typesetopts      = "-xelatex -interaction=nonstopmode"
+typesetruns      = 1
 typesetsuppfiles = {"*.tex"}
 
 uploadconfig = {
