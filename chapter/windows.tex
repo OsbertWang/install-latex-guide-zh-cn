@@ -10,7 +10,7 @@
 用户可以从最近的 CTAN 源%
 \footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}%
 下载 \TeX~Live 的
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{\texttt{iso} 镜像文件},
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso}{\texttt{iso} 镜像文件},
 也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
 通过大陆地区的源下载 \texttt{iso} 文件的方法请参考附录~\ref{chp:appendix:mirror}.
 
@@ -72,15 +72,15 @@
 打开 \textsf{cmd} 窗口依次执行以下代码
 \begin{lstlisting}
   cd /d X:\Y
-  certutil -hashfile texlive2025.iso md5
+  certutil -hashfile texlive2026.iso md5
 \end{lstlisting}
 %\begin{lstlisting}
-%  (Get-FileHash 'X:\Y\texlive2025.iso' -Algorithm MD5).Hash
+%  (Get-FileHash 'X:\Y\texlive2026.iso' -Algorithm MD5).Hash
 %\end{lstlisting}
 若系统显示
 \begin{lstlisting}[language = {}]
-  MD5 的 texlive2025.iso 哈希:
-  69b4a8882983d9ea521730b5f42175e7
+  MD5 的 texlive2026.iso 哈希:
+  f5872cb2dec838670f91ed5c62493553
   CertUtil: -hashfile 命令成功完成.
 \end{lstlisting}
 则表明下载的镜像文件正常.
@@ -89,15 +89,15 @@
 依然是在 \textsf{cmd} 执行
 \begin{lstlisting}
   cd /d X:\Y
-  certutil -hashfile texlive2025.iso sha512
+  certutil -hashfile texlive2026.iso sha512
 \end{lstlisting}
 %\begin{lstlisting}
-%  (Get-FileHash 'X:\Y\texlive2025.iso' -Algorithm SHA512).Hash
+%  (Get-FileHash 'X:\Y\texlive2026.iso' -Algorithm SHA512).Hash
 %\end{lstlisting}
 若系统显示
 \begin{lstlisting}[literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
-  SHA512 的 texlive2025.iso 哈希:
-  1fd9a2234d086f50c832ab3ac8b83477bbc39b1138a3c4a2351244c1fd4b8bea6d1ac81d4a5b0cba95f2e82c00f0d9df5b33189eb222e4bae5dae1523ef0da0e
+  SHA512 的 texlive2026.iso 哈希:
+  4a9071bb567c3bdd6443378dedc8e485aea4a2f1203ec8ed7c17f6787093b9c37636a037032c0be63352e3d0bf98cf5616dab19fdcd7cb83f766b3e085b620ff
   CertUtil: -hashfile 命令成功完成.
 \end{lstlisting}
 即为验证成功.
@@ -105,7 +105,7 @@
 接下来开始安装.
 推荐用户先手动建立 \TeX~Live 的安装路径 (文件夹) 再进行安装,
 注意路径的名称是\textbf{不带空格的英文},
-默认路径为 \path{C:\texlive\2025\}.
+默认路径为 \path{C:\texlive\2026\}.
 假如系统用了中文作为用户名,
 那么用户需要先按照 \ref{sec:chinesename}~节的方法更改临时环境变量后再安装.
 将镜像文件装载至虚拟光驱%
@@ -138,21 +138,21 @@
    <S> set installation scheme: scheme-full
 
    <C> set installation collections:
-       41 collections out of 41, disk space required: 9033 MB (free: 261418 MB)
+       41 collections out of 41, disk space required: 9615 MB (free: 203277 MB)
 
    <D> set directories:
      TEXDIR (the main TeX directory):
-       C:/texlive/2025
+       C:/texlive/2026
      TEXMFLOCAL (directory for site-wide local files):
        C:/texlive/texmf-local
      TEXMFSYSVAR (directory for variable and automatically generated data):
-       C:/texlive/2025/texmf-var
+       C:/texlive/2026/texmf-var
      TEXMFSYSCONFIG (directory for local config):
-       C:/texlive/2025/texmf-config
+       C:/texlive/2026/texmf-config
      TEXMFVAR (personal directory for variable and automatically generated data):
-       ~/.texlive2025/texmf-var
+       ~/.texlive2026/texmf-var
      TEXMFCONFIG (personal directory for local config):
-       ~/.texlive2025/texmf-config
+       ~/.texlive2026/texmf-config
      TEXMFHOME (directory for user-specific files):
        ~/texmf
 
@@ -184,15 +184,15 @@
   ==============================================================================
   Directories customization:
   
-  <1> TEXDIR:       C:/texlive/2025
-      main tree:    C:/texlive/2025/texmf-dist
+  <1> TEXDIR:       C:/texlive/2026
+      main tree:    C:/texlive/2026/texmf-dist
   
   <2> TEXMFLOCAL:     C:/texlive/texmf-local
-  <3> TEXMFSYSVAR:    C:/texlive/2025/texmf-var
-  <4> TEXMFSYSCONFIG: C:/texlive/2025/texmf-config
+  <3> TEXMFSYSVAR:    C:/texlive/2026/texmf-var
+  <4> TEXMFSYSCONFIG: C:/texlive/2026/texmf-config
   
-  <5> TEXMFVAR:       ~/.texlive2025/texmf-var
-  <6> TEXMFCONFIG:    ~/.texlive2025/texmf-config
+  <5> TEXMFVAR:       ~/.texlive2026/texmf-var
+  <6> TEXMFCONFIG:    ~/.texlive2026/texmf-config
   <7> TEXMFHOME:      ~/texmf
   
   Note: ~ will expand to %USERPROFILE%
@@ -205,9 +205,9 @@
 \end{lstlisting}
 这时按键盘 \keys{1}, 将看到
 \begin{lstlisting}[language = {}]
-  New value for TEXDIR [C:/texlive/2025]:
+  New value for TEXDIR [C:/texlive/2026]:
 \end{lstlisting}
-这时可更改路径, 如 \path{D:/texlive/2025}.
+这时可更改路径, 如 \path{D:/texlive/2026}.
 接下来, 按键盘 \keys{R} 即可回到初始的安装界面,
 再按键盘 \keys{I} 便可在刚才指定的路径安装.
 用户可通过阅读英文执行其他操作, 这里不再赘述.
@@ -223,9 +223,9 @@
 \end{lstlisting}
 显示
 \begin{lstlisting}[language = {}]
-  TeX 3.141592653 (TeX Live 2025)
-  kpathsea version 6.4.1
-  Copyright 2025 D.E. Knuth.
+  TeX 3.141592653 (TeX Live 2026)
+  kpathsea version 6.4.2
+  Copyright 2026 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -249,20 +249,20 @@
 将 \textsf{wget} 所在目录添加到环境变量中.
 打开 \textsf{cmd} 窗口执行以下代码
 \begin{lstlisting}[escapechar = |]
-  wget |\url{http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}|
+  wget |\url{http://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso}|
 \end{lstlisting}
 %\begin{lstlisting}
-%  Invoke-WebRequest -Uri 'http://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
+%  Invoke-WebRequest -Uri 'http://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso' -OutFile 'texlive2026.iso'
 %\end{lstlisting}
 即可下载最近的镜像.
 类似地,
 也可以指定国内的源进行下载,
 例如选择清华大学镜像
 \begin{lstlisting}[escapechar = |]
-  wget |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso}|
+  wget |\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2026.iso}|
 \end{lstlisting}
 %\begin{lstlisting}
-%  Invoke-WebRequest -Uri 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2025.iso' -OutFile 'texlive2025.iso'
+%  Invoke-WebRequest -Uri 'https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive2026.iso' -OutFile 'texlive2026.iso'
 %\end{lstlisting}
 其他国内镜像只需要将链接替换即可,
 链接和方法请参考附录~\ref{chp:appendix:mirror}.
@@ -534,31 +534,31 @@ Windows 11 继承了这个特性.
 \footnote{双击或在 \textsf{cmd} 中运行}%
 安装路径中的卸载批处理文件即可实现卸载, 如默认安装时执行
 \begin{lstlisting}
-  C:\texlive\2025\tlpkg\installer\uninst.bat
+  C:\texlive\2026\tlpkg\installer\uninst.bat
 \end{lstlisting}
 %\begin{lstlisting}
-%  & 'C:\texlive\2025\tlpkg\installer\uninst.bat'
-%  Remove-Item -Recurse -Force -Path '$env:USERPROFILE\.texlive2025'
+%  & 'C:\texlive\2026\tlpkg\installer\uninst.bat'
+%  Remove-Item -Recurse -Force -Path '$env:USERPROFILE\.texlive2026'
 %\end{lstlisting}
 结束以上步骤后,
-手动删除用户文件夹中的 \texttt{.texlive2025}.
+手动删除用户文件夹中的 \texttt{.texlive2026}.
 如果用户安装 \TeX~Live 时需要管理员权限,
 那么在卸载时同样需要管理员权限.
 
 卸载后,
 用户需要清理注册表
 \begin{lstlisting}[language = {}]
-  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2025
-  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2025
-  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2025
-  HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2025_.tex
+  HKEY_CURRENT_USER\Software\Classes\TL.DVIOUT.view.2026
+  HKEY_CURRENT_USER\Software\Classes\TL.TeXworks.edit.2026
+  HKEY_CURRENT_USER\Software\Classes\TL.PSViewer.view.2026
+  HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts\TL.TeXworks.edit.2026_.tex
 \end{lstlisting}
 但若在安装时使用管理员权限``为所有人安装'',
 则注册表位置将变为
 \begin{lstlisting}[language = {}]
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2025
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2025
-  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2025
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.DVIOUT.view.2026
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.TeXworks.edit.2026
+  HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TL.PSViewer.view.2026
 \end{lstlisting}
 
 \subsection{手动卸载}

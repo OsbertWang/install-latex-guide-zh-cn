@@ -13,7 +13,7 @@
 
 在主系统\footnote{在 Windows 11 中直接进行的操作即为在主系统中的操作}%
 中下载
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2025.iso}{\texttt{iso} 镜像文件},
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso}{\texttt{iso} 镜像文件},
 可选择国内源以加快下载速度.
 下载完毕后, 在 \textsf{cmd} 中验证文件是否正常.
 下载及文件验证方法同 \ref{sec:windows:install}~节.
@@ -36,13 +36,13 @@ WSL 已经能够自动完成可视化工作,
 
 接下来挂载镜像.
 这里需要先通过一个例子解释 WSL 的路径和主系统路径的对应关系.
-例如, \texttt{iso} 镜像文件在主系统中的路径是 \path{C:\Users\username\Downloads\texlive2025.iso},
-那么在 WSL 中其路径是 \path{/mnt/c/Users/username/Downloads/texlive2025.iso}.
+例如, \texttt{iso} 镜像文件在主系统中的路径是 \path{C:\Users\username\Downloads\texlive2026.iso},
+那么在 WSL 中其路径是 \path{/mnt/c/Users/username/Downloads/texlive2026.iso}.
 理解上述路径对应关系后,
 进入 \textsf{bash} 并执行如下命令
 \begin{lstlisting}
   sudo mkdir -p /mnt/iso
-  sudo mount -o loop /mnt/c/Users/username/Downloads/texlive2025.iso /mnt/iso
+  sudo mount -o loop /mnt/c/Users/username/Downloads/texlive2026.iso /mnt/iso
 \end{lstlisting}
 如此便可在 \textsf{bash} 中找到装载的光盘镜像.
 之后执行
@@ -65,21 +65,21 @@ WSL 已经能够自动完成可视化工作,
    <S> set installation scheme: scheme-full
   
    <C> set installation collections:
-       40 collections out of 41, disk space required: 8779 MB (free: 974100 MB)
+       40 collections out of 41, disk space required: 9402 MB (free: 974100 MB)
   
    <D> set directories:
      TEXDIR (the main TeX directory):
-       /usr/local/texlive/2025
+       /usr/local/texlive/2026
      TEXMFLOCAL (directory for site-wide local files):
        /usr/local/texlive/texmf-local
      TEXMFSYSVAR (directory for variable and automatically generated data):
-       /usr/local/texlive/2025/texmf-var
+       /usr/local/texlive/2026/texmf-var
      TEXMFSYSCONFIG (directory for local config):
-       /usr/local/texlive/2025/texmf-config
+       /usr/local/texlive/2026/texmf-config
      TEXMFVAR (personal directory for variable and automatically generated data):
-       ~/.texlive2025/texmf-var
+       ~/.texlive2026/texmf-var
      TEXMFCONFIG (personal directory for local config):
-       ~/.texlive2025/texmf-config
+       ~/.texlive2026/texmf-config
      TEXMFHOME (directory for user-specific files):
        ~/texmf
   
@@ -121,9 +121,9 @@ WSL 已经能够自动完成可视化工作,
 在打开的文件末尾添加
 \begin{lstlisting}[deletekeywords = local]
   # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH
-  export MANPATH=/usr/local/texlive/2025/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=/usr/local/texlive/2025/texmf-dist/doc/info:$INFOPATH
+  export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
+  export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
 同样,
@@ -135,9 +135,9 @@ WSL 已经能够自动完成可视化工作,
 \end{lstlisting}
 将显示
 \begin{lstlisting}[language = {}]
-  TeX 3.141592653 (TeX Live 2025)
-  kpathsea version 6.4.1
-  Copyright 2025 D.E. Knuth.
+  TeX 3.141592653 (TeX Live 2026)
+  kpathsea version 6.4.2
+  Copyright 2026 D.E. Knuth.
   There is NO warranty.  Redistribution of this software is
   covered by the terms of both the TeX copyright and
   the Lesser GNU General Public License.
@@ -151,7 +151,7 @@ WSL 已经能够自动完成可视化工作,
 首先将配置文件复制到系统,
 在 \textsf{bash} 执行
 \begin{lstlisting}[deletekeywords = local]
-  sudo cp /usr/local/texlive/2025/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+  sudo cp /usr/local/texlive/2026/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
 \end{lstlisting}
 然后在 \textsf{bash} 执行
 \begin{lstlisting}
@@ -190,9 +190,9 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \end{lstlisting}
 系统返回类似如下内容
 \begin{lstlisting}[language = {}]
-  /usr/local/texlive/2025/texmf-dist/scripts/texdoc/texdoclib.tlu 4.1.1
+  /usr/local/texlive/2026/texmf-dist/scripts/texdoc/texdoclib.tlu 4.1.1
   Configuration file(s):
-      active      /usr/local/texlive/2025/texmf-dist/texdoc/texdoc.cnf
+      active      /usr/local/texlive/2026/texmf-dist/texdoc/texdoc.cnf
   Recommended file(s) for personal settings:
       /home/osbertwang/texmf/texdoc/texdoc.cnf
 \end{lstlisting}
@@ -218,14 +218,14 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \end{lstlisting}
 系统会显示
 \begin{lstlisting}[language = {}]
-   1 /usr/local/texlive/2025/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf
+   1 /usr/local/texlive/2026/texmf-dist/doc/latex/lshort-chinese/lshort-zh-cn.pdf
      = [zh] The document itself
   Enter number of file to view, RET to view 1, anything else to skip:
 \end{lstlisting}
 这时按其他键 (如 \keys{x}) 退出.
 然后分别执行
 \begin{lstlisting}[language = {}]
-  cd /usr/local/texlive/2025/texmf-dist/doc/latex/lshort-chinese/
+  cd /usr/local/texlive/2026/texmf-dist/doc/latex/lshort-chinese/
   explorer.exe .
 \end{lstlisting}
 主系统的资源管理器便会打开.
