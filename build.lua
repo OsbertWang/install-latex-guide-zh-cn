@@ -8,13 +8,13 @@
              Do Check Before Upload
 --]==========================================]--
 module           = "install-latex-guide-zh-cn"
-version          = "2026.3.1"
+version          = "2026.3.3"
 maintainer       = "Ran Wang"
 uploader         = maintainer
 maintainid       = "OsbertWang"
 email            = "ranwang.osbert@outlook.com"
 repository       = "https://github.com/" .. maintainid .. "/" .. module
-announcement     = ""
+announcement     = "Update for TeX Live 2026"
 note             = ""
 summary          = "A short introduction to LaTeX installation written in Chinese"
 description      = [[This package will introduce the operations related to installing TeX Live (introducing MacTeX in macOS), upgrading packages, and compiling simple documents on Windows 11, Ubuntu 24.04, and macOS systems, and mainly introducing command line operations.]]
