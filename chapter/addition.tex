@@ -355,12 +355,18 @@ VS Code 的插件权限有限,
   "latex-workshop.view.pdf.ref.viewer": "external",
   "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFROOT>/SumatraPDF.exe",
   "latex-workshop.view.pdf.external.viewer.args": [
-    "-inverse-search", "%PDF%",
-    "\"<VSCodeROOT>/bin/code.cmd\" -r -g \"%f:%l\"",
+    "-reuse-instance",
+    "%PDF%"
   ],
-  "latex-workshop.view.pdf.external.synctex.command":"<SumatraPDFROOT>/SumatraPDF.exe",
-  "latex-workshop.view.pdf.external.synctex.args":[
-    "-forward-search", "%TEX%", "%LINE%", "%PDF%"
+  "latex-workshop.view.pdf.external.synctex.command": "<SumatraPDFROOT>/SumatraPDF.exe",
+  "latex-workshop.view.pdf.external.synctex.args": [
+    "-reuse-instance",
+    "-forward-search",
+    "%TEX%",
+    "%LINE%",
+    "-inverse-search",
+    "\"<VSCodeROOT>/bin/code.cmd\" -r -g \"%f:%l\"",
+    "%PDF%"
   ]
 \end{lstlisting}
 实际使用时,
