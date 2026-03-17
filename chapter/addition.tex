@@ -9,12 +9,12 @@
 例如更换至清华大学.
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}[deletekeywords = apt]
-  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+  sudo cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
 \end{lstlisting}
-备份 \texttt{sources.list} 文件.
+备份 \texttt{ubuntu.sources} 文件.
 接下来执行
 \begin{lstlisting}[deletekeywords = apt]
-  sudo gedit /etc/apt/sources.list
+  sudo gedit /etc/apt/sources.list.d/ubuntu.sources
 \end{lstlisting}
 将文件替换为以下内容%
 \footnote{本段文字可至%
@@ -23,23 +23,45 @@
 \begin{lstlisting}[
   morekeywords = {deb, noble, noble-updates, noble-backports, noble-security},
   alsoletter = -]
-  # 默认注释了源码镜像以提高 apt update 速度, 如有需要可自行取消注释
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-updates main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-updates main restricted universe multiverse
-  deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-backports main restricted universe multiverse
-  # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-backports main restricted universe multiverse
-
-  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-security main restricted universe multiverse
-  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-security main restricted universe multiverse
-
-  deb http://security.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse
-  # deb-src http://security.ubuntu.com/ubuntu/ noble-security main restricted universe multiverse
-
-  # 预发布软件源, 不建议启用
-  # deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-proposed main restricted universe multiverse
-  # # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-proposed main restricted universe multiverse
+  Types: deb
+  URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
+  Suites: noble noble-updates noble-backports
+  Components: main restricted universe multiverse
+  Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+  
+  # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+  # Types: deb-src
+  # URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
+  # Suites: noble noble-updates noble-backports
+  # Components: main restricted universe multiverse
+  # Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+  
+  # 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
+  Types: deb
+  URIs: http://security.ubuntu.com/ubuntu/
+  Suites: noble-security
+  Components: main restricted universe multiverse
+  Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+  
+  # Types: deb-src
+  # URIs: http://security.ubuntu.com/ubuntu/
+  # Suites: noble-security
+  # Components: main restricted universe multiverse
+  # Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+  
+  # 预发布软件源，不建议启用
+  
+  # Types: deb
+  # URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
+  # Suites: noble-proposed
+  # Components: main restricted universe multiverse
+  # Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+  
+  # # Types: deb-src
+  # # URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
+  # # Suites: noble-proposed
+  # # Components: main restricted universe multiverse
+  # # Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 \end{lstlisting}
 保存退出.
 再执行
@@ -50,7 +72,7 @@
 若更改错误,
 可执行
 \begin{lstlisting}[deletekeywords = apt]
-  sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
+  sudo cp /etc/apt/sources.list.d/ubuntu.sources.bak /etc/apt/sources.list.d/ubuntu.sources
 \end{lstlisting}
 恢复文件.
 
