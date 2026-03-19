@@ -334,9 +334,12 @@ VS Code 的插件权限有限,
     "command": "latexmk",
     "args":
     [
-    "-synctex=1", "%DOCFILE%",
-    "-halt-on-error", "-file-line-error",
-    "-pdf", "-interaction=nonstopmode"
+      "-pdf",
+      "-synctex=1",
+      "-halt-on-error",
+      "-file-line-error",
+      "-interaction=nonstopmode",
+      "%DOCFILE%",
     ]
   },
   {
@@ -344,20 +347,23 @@ VS Code 的插件权限有限,
     "command": "latexmk",
     "args":
     [
-    "-synctex=1", "%DOCFILE%",
-    "-halt-on-error", "-file-line-error",
-    "-xelatex", "-interaction=nonstopmode",
+      "-pdfxe",
+      "-synctex=1",
+      "-halt-on-error",
+      "-file-line-error",
+      "-interaction=nonstopmode",
+      "%DOCFILE%"
     ]
   },
   ],
   "latex-workshop.latex.recipes": [
   {
     "name": "latexmkpdf",
-    "tools": [ "latexmkpdf" ]
+    "tools": ["latexmkpdf"]
   },
   {
     "name": "latexmkxe",
-    "tools": [ "latexmkxe" ]
+    "tools": ["latexmkxe"]
   }
   ],
   "latex-workshop.latex.autoBuild.run": "never",
@@ -378,6 +384,8 @@ VS Code 的插件权限有限,
   "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFROOT>/SumatraPDF.exe",
   "latex-workshop.view.pdf.external.viewer.args": [
     "-reuse-instance",
+    "-inverse-search",
+    "\"<VSCodeROOT>/bin/code.cmd\" -r -g \"%f:%l\"",
     "%PDF%"
   ],
   "latex-workshop.view.pdf.external.synctex.command": "<SumatraPDFROOT>/SumatraPDF.exe",
