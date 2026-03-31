@@ -177,7 +177,18 @@
 
   Enter command:
 \end{lstlisting}
-这时, 用户可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX~Live,
+这时一定要关注其中的
+\begin{lstlisting}[language = {}, deleteemph = set]
+  disk space required: 9615 MB (free: 203277 MB)
+\end{lstlisting}
+它代表了安装所需空间 "9615 MB",
+而目前空余空间 "203277 MB".
+根据每台电脑的实际情况,
+数字可能不同,
+只有空余空间大于安装所需空间时,
+安装才能顺利.
+确定空余空间大于安装所需空间后,
+用户可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX~Live,
 也可按键盘 \keys{D} 来更改安装路径.
 按 \keys{D} 后, 用户可看到
 \begin{lstlisting}[language = {}]

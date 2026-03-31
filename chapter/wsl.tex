@@ -101,7 +101,18 @@ WSL 已经能够自动完成可视化工作,
   
   Enter command:
 \end{lstlisting}
-用户直接点击 \keys{I} 使用默认配置安装.
+这时一定要关注其中的
+\begin{lstlisting}[language = {}, deleteemph = set]
+  disk space required: 9388 MB (free: 974100 MB)
+\end{lstlisting}
+它代表了安装所需空间 "9388 MB",
+而目前空余空间 "974100 MB".
+根据每台电脑的实际情况,
+数字可能不同,
+只有空余空间大于安装所需空间时,
+安装才能顺利.
+确定空余空间大于安装所需空间后,
+直接点击 \keys{I} 使用默认配置安装.
 如果用户对于 WSL 比较了解, 可以根据提示, 更改安装设置.
 与第~\ref{chap:ubuntu:sec:install}~节一样,
 为简化起见,
