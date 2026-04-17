@@ -406,13 +406,16 @@ VS Code 的插件权限有限,
 \section{迁移 WSL 的安装位置}
 
 考虑到一部分用户的系统盘空间有限,
-且根据%
-\href{https://learn.microsoft.com/zh-cn/windows/wsl/troubleshooting?source=recommendations#installation-issues}{微软官方文档},
-WSL 只能安装在系统盘,
-因此可以考虑迁移 WSL 的安装位置到其他盘.
-本部分内容源自
-\href{https://superuser.com/questions/1701175/installing-ubuntu-on-mnt-d-with-wsl}{\textsf{Stack\textbf{Exchange}}}.
-方法牵扯到主系统和子系统的操作.
+结合%
+\href{https://learn.microsoft.com/en-us/windows/wsl/faq#how-can-i-move-my-wsl-distribution-to-a-different-drive-or-location-}{微软官方文档}%
+和
+\href{https://superuser.com/questions/1701175/installing-ubuntu-on-mnt-d-with-wsl}{\textsf{Stack\textbf{Exchange}}},
+可以考虑迁移 WSL 的安装位置到其他盘.
+在操作前首先执行以下 \textsf{cmd} 命令,
+保证 WSL 已经关闭
+\begin{lstlisting}
+  wsl --shutdown
+\end{lstlisting}
 
 第一步,
 建立新的位置.
@@ -442,73 +445,31 @@ WSL 只能安装在系统盘,
 \end{lstlisting}
 然后在 \textsf{cmd} 中执行
 \begin{lstlisting}
-  mkdir X:\WSL\instances\ubuntu2404
-  mkdir X:\WSL\images
-  cd X:\WSL\images
+  mkdir X:\WSL\ubuntu2404
 \end{lstlisting}
 %\begin{lstlisting}
 %  New-Item -ItemType Directory -Path "X:\WSL\instances\Ubuntu2204" -Force
-%  Set-Location (New-Item -ItemType Directory -Path "X:\WSL\images" -Force)
 %\end{lstlisting}
 创建新的位置.
 这里起名 \texttt{ubuntu2404} 是因为 Ubuntu 实际版本为 24.04,
 也可以起其他名字.
 
 第二步,
-导出原 WSL 分发并导入新位置.
+将现有的 Linux 发行版打包成一个虚拟硬盘 (VHDX) 文件.
 在 \textsf{cmd} 中执行
 \begin{lstlisting}
-  wsl --export Ubuntu ubuntu.tar
-  wsl --import ubuntu2404 X:\WSL\instances\ubuntu2404 ubuntu.tar --version 2
+  wsl --export Ubuntu X:\WSL\ubuntu2404\ext4.vhdx --format vhd
 \end{lstlisting}
-第一行的 \texttt{Ubuntu} 指的是系统默认的 WSL 分发,
-这条命令将原本的分发导出为一个压缩包.
-第二行的 \texttt{ubuntu2404} 是未来指定的 WSL 分发,
-也就是将前面导出的压缩包导入成新的 WSL 分发.
+这里的 \texttt{Ubuntu} 指的是系统默认的 WSL 分发,
+这条命令将原本的分发打包为一个 .vhdx 文件.
 
 第三步,
-启动新的分发并且设置为默认.
-在 \textsf{cmd} 中执行
-\begin{lstlisting}
-  wsl ~ -d ubuntu2404
-\end{lstlisting}
-进入 \texttt{ubuntu2404} 分发的 WSL 系统,
-在当前 \textsf{bash} 中执行
-\begin{lstlisting}[deletekeywords = wsl]
-  sudo -e /etc/wsl.conf
-\end{lstlisting}
-输入以下内容
-\begin{lstlisting}
-  [user]
-  default=<your_username>
-\end{lstlisting}
-"<your_username>" 是用户自定义的 WSL 的用户名,
-个人用了原本 \texttt{Ubuntu} 分发内的用户名.
-然后依次 \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
-退出 \textsf{bash},
-在 \textsf{cmd} 中执行
-\begin{lstlisting}
-  wsl --terminate ubuntu2404
-  wsl ~ -d ubuntu2404
-\end{lstlisting}
-这时如果一切正常,
-就可以将 \texttt{ubuntu2404} 设置为默认 WSL 分发,
-即在 \textsf{cmd} 中执行
-\begin{lstlisting}
-  wsl --set-default ubuntu2404
-\end{lstlisting}
-这时在 \textsf{bash} 中执行
-\begin{lstlisting}
-  echo $WSL_DISTRO_NAME
-\end{lstlisting}
-返回结果
-\begin{lstlisting}
-  ubuntu2404
-\end{lstlisting}
-就表明一切正常.
-
-第四步,
 删除旧分发.
+需要注意的是,
+此步骤是破坏性的,
+它会删除原分发及所有数据.
+执行这一步前,
+务必确认已经生成的 .vhdx 文件已成功保存.
 在 \textsf{cmd} 中执行
 \begin{lstlisting}
   wsl --unregister Ubuntu
@@ -518,11 +479,25 @@ WSL 只能安装在系统盘,
 \begin{lstlisting}
   wsl -l
 \end{lstlisting}
+应该看不到任何 \texttt{Ubuntu} 的分发内容.
+
+第四步,
+导入新分发.
+将保存的 .vhdx 文件重新注册回 WSL 系统,
+在 \textsf{cmd} 中执行
+\begin{lstlisting}
+  wsl --import-in-place Ubuntu X:\WSL\ubuntu2404\ext4.vhdx
+\end{lstlisting}
+这时在 \textsf{cmd} 中执行
+\begin{lstlisting}
+  wsl -l
+\end{lstlisting}
 将看到
 \begin{lstlisting}
   适用于 Linux 的 Windows 子系统分发:
-  ubuntu2404 (默认)
+  Ubuntu (默认)
 \end{lstlisting}
+至此迁移成功.
 
 实际上,
 将整个 WSL 的安装位置迁移还有一个好处.
