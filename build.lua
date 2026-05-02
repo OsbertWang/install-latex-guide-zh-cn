@@ -23,15 +23,16 @@ description      = [[This package will introduce the operations related to insta
          Build, Pack and Upload To CTAN
          Do not Modify Unless Necessary
 --]==========================================]--
-ctanzip          = module
-excludefiles     = {"*~"}
-supportdir       = "chapter"
+
+sourcefiles      = {module .. ".tex"}
 textfiles        = {"*.md", "LICENSE", "*.lua", "makefile", "*.bat"}
+excludefiles     = {"*~"}
+ctanzip          = module
+
 typesetexe       = "latexmk"
+typesetopts      = "-pdfxe -interaction=nonstopmode"
 typesetfiles     = {module .. ".tex"}
-typesetopts      = "-xelatex -interaction=nonstopmode"
 typesetruns      = 1
-typesetsuppfiles = {"*.tex"}
 
 uploadconfig = {
   pkg          = module,
@@ -53,32 +54,34 @@ uploadconfig = {
   update       = true
 }
 
-function docinit_hook()
-  local docsuppdir = typesetdir .. "/" .. supportdir
-  mkdir(docsuppdir)
-  for _,supp in pairs(typesetsuppfiles) do
-    cp(supp, supportdir, docsuppdir)
-    rm(typesetdir, supp)
-  end
-  cp(module .. ".tex", currentdir, typesetdir)
-  return 0
-end
-function tex(file,dir,cmd)
+--[==========================================[--
+         Custom Hooks for Directory Structure
+--]==========================================]--
+
+function tex(file, dir, cmd)
   dir = dir or "."
-  cmd = cmd or typesetexe .. " " .. typesetopts
+  cmd = cmd or typesetexe .. " " .. typesetopts .. " "
   return run(dir, cmd .. file)
 end
+
+function docinit_hook()
+  mkdir(typesetdir .. "/chapter")
+  cp("*.tex", "chapter", typesetdir .. "/chapter")
+  return 0
+end
+
 function copyctan()
-  local pkgdir = ctandir .. "/" .. ctanpkg
-  mkdir(pkgdir)
-  for _,main in ipairs({typesetsuppfiles, pdffiles}) do
-    for _,glob in pairs(main) do
-      cp(glob, typesetdir, pkgdir)
-    end
+  local target = ctandir .. "/" .. ctanpkg
+  mkdir(target)
+  cp(module .. ".tex", ".", target)
+  cp(module .. ".pdf", typesetdir, target)
+
+  for _, f in ipairs(textfiles) do
+    cp(f, ".", target)
   end
-  local pkgsuppdir = ctandir .. "/" .. ctanpkg .. "/" .. supportdir
-  mkdir(pkgsuppdir)
-  for _,supptab in pairs(typesetsuppfiles) do
-    cp(supptab, supportdir, pkgsuppdir)
-  end
+  
+  mkdir(target .. "/chapter")
+  cp("*.tex", "chapter", target .. "/chapter")
+
+  return 0
 end
