@@ -3,13 +3,12 @@
 \chapter{大陆地区的源}\label{chp:appendix:mirror}
 
 由于一些未知的原因,
-下载 \TeX~Live 的 "iso" 文件 (或在 MacOS 中下载 Mac\TeX) 或升级宏包时,
+下载 \TeX~Live 的 "iso" 文件 (在 MacOS 中下载 Mac\TeX) 或升级宏包时,
 系统自动选择的源并没有满足用户关于``附近''的要求.
 因此,
 很多时候,
 用户需要手动选择 CTAN 的源.
-在 CTAN 上面,
-也可以找到\href{https://ctan.org/mirrors#Asia}{亚洲镜像列表}%
+在 CTAN 可以找到\href{https://ctan.org/mirrors#Asia}{亚洲镜像列表}%
 和\href{https://ctan.org/mirrors/mirmon#cn}{连接情况}.
 我将列表中位于大陆地区的源整理到表~\ref{tab:appendix:mirror},
 并将我个人收集到的其他大陆地区的源整理到表~\ref{tab:appendix:mirror-addition}.
@@ -21,6 +20,8 @@
 它也可以``自动''跳转到``附近''的高校镜像.
 更多内容参见%
 \href{https://help.mirrors.cernet.edu.cn/}{高校联合镜像说明}.
+另有一些源仅限单位内部访问,
+我在表~\ref{tab:appendix:mirror-self} 中单独列出.
 
 \begin{table}
   \centering
@@ -64,8 +65,6 @@
     \hline\hline
 %    \href{https://mirror.bjtu.edu.cn/}{北京交通大学}
 %    & \url{https://mirror.bjtu.edu.cn/ctan/systems/texlive/}\\
-    \href{https://mirrors.bit.edu.cn/web/}{北京理工大学}（仅限校内访问）
-    & \url{https://mirrors.bit.edu.cn/CTAN/systems/texlive/}\\
     \href{https://mirrors.cqupt.edu.cn/}{重庆邮电大学}
     & \url{https://mirrors.cqupt.edu.cn/ctan/systems/texlive/}\\
     \href{https://mirrors.cernet.edu.cn/}{高校联合镜像}
@@ -90,6 +89,17 @@
 %    & \url{https://mirror.iscas.ac.cn/CTAN/systems/texlive/}\\
     \href{https://mirrors.sysu.edu.cn/}{中山大学}
     & \url{https://mirror.sysu.edu.cn/CTAN/systems/texlive/}\\
+    \hline\hline
+  \end{tabular}
+\end{table}
+
+\begin{table}
+  \centering
+  \caption{仅限单位内部访问的源 (名称按拼音排序)}\label{tab:appendix:mirror-self}
+  \begin{tabular}{p{8\ccwd}p{58\ttwd}}
+    \hline\hline
+    \href{https://mirrors.bit.edu.cn/web/}{北京理工大学}
+    & \url{https://mirrors.bit.edu.cn/CTAN/systems/texlive/}\\
     \hline\hline
   \end{tabular}
 \end{table}
