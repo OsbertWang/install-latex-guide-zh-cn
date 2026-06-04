@@ -275,29 +275,29 @@ Webdings
 以下操作均在 WSL 中用 \textsf{bash} 执行.
 
 VS Code 的插件权限有限,
-当更改 \texttt{sources.list} 时,
-先将 \texttt{sources.list} 备份
+当更改 \texttt{ubuntu.sources} 时,
+先将 \texttt{ubuntu.sources} 备份
 \begin{lstlisting}[deletekeywords = apt]
-  sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+  sudo cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
 \end{lstlisting}
 再用 VS Code 打开文档
 \begin{lstlisting}[deletekeywords = apt, morekeywords = code]
-  code /etc/apt/sources.list
+  code /etc/apt/sources.list.d/ubuntu.sources
 \end{lstlisting}
 并对其中内容进行更改,
 并且另存为
 \begin{lstlisting}
-  ~/sources.list.sav
+  ~/ubuntu.sources.sav
 \end{lstlisting}
 执行
 \begin{lstlisting}[deletekeywords = apt]
-  sudo cp ~/sources.list.sav /etc/apt/sources.list
+  sudo cp ~/ubuntu.sources.sav /etc/apt/sources.list.d/ubuntu.sources
 \end{lstlisting}
 替换文档.
 若发现文档有错误,
 执行
 \begin{lstlisting}[deletekeywords = apt]
-  sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
+  sudo cp /etc/apt/sources.list.d/ubuntu.sources.bak /etc/apt/sources.list.d/ubuntu.sources
 \end{lstlisting}
 恢复文档.
 
