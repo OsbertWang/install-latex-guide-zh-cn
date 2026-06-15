@@ -375,7 +375,7 @@ VS Code 的插件权限有限,
 它的配置是通用的.
 \LaTeX\ Workshop 允许调用外部 PDF 阅读器.
 这里提供一份在 Windows 系统内调用外部 SumatraPDF 阅读器的设置方法,
-虽然在 \LaTeX\ Workshop 官方 Wiki 中已声明不再支持外部 PDF 阅读器,
+虽然 \LaTeX\ Workshop 官方的 \href{https://github.com/James-Yu/LaTeX-Workshop/wiki/View#using-synctex-with-an-external-viewer}{Wiki} 已声明不再支持外部 PDF 阅读器,
 但这套方法依然可以使用.
 \begin{lstlisting}[language = json]
   "latex-workshop.view.pdf.viewer": "external",
@@ -399,8 +399,8 @@ VS Code 的插件权限有限,
   ]
 \end{lstlisting}
 实际使用时,
-用户需要结合自身安装情况更换 \path{<SumatraPDFROOT>} 和 \path{<VSCodeROOT>},
-即 SumatraPDF 和 VS Code 各自的安装路径,
+用户需要结合自身安装情况更换 \path{<SumatraPDFROOT>},
+即 SumatraPDF 的安装路径,
 并且在 \path{<SumatraPDFROOT>} 内写入 \texttt{sumatra-inverse.vbs} 文件,
 文件内容是
 \begin{lstlisting}[language = VBScript]
@@ -409,9 +409,10 @@ VS Code 的插件权限有限,
   filePath = WScript.Arguments(0)
   lineNum  = WScript.Arguments(1)
   gotoArg = Chr(34) & filePath & ":" & lineNum & Chr(34)
-  cmdLine = Chr(34) & "C:\Users\ranwa\AppData\Local\Programs\Microsoft VS Code\bin\code.cmd" & Chr(34) & " -r -g " & gotoArg
+  cmdLine = Chr(34) & "<VSCodeROOT>\bin\code.cmd" & Chr(34) & " -r -g " & gotoArg
   WshShell.Run cmdLine, 0, False
 \end{lstlisting}
+这里 \path{<VSCodeROOT>} 是 VS Code 的安装路径.
 
 \section{迁移 WSL 的安装位置}
 
