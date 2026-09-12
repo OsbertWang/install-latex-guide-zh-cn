@@ -330,7 +330,7 @@ VS Code 的插件权限有限,
 \begin{lstlisting}[language = json]
   "latex-workshop.latex.tools": [
   {
-    "name": "latexmkpdf",
+    "name": "pdflatexmk",
     "command": "latexmk",
     "args":
     [
@@ -343,7 +343,7 @@ VS Code 的插件权限有限,
     ]
   },
   {
-    "name": "latexmkxe",
+    "name": "xelatexmk",
     "command": "latexmk",
     "args":
     [
@@ -358,12 +358,12 @@ VS Code 的插件权限有限,
   ],
   "latex-workshop.latex.recipes": [
   {
-    "name": "latexmkpdf",
-    "tools": ["latexmkpdf"]
+    "name": "pdflatexmk",
+    "tools": ["pdflatexmk"]
   },
   {
-    "name": "latexmkxe",
-    "tools": ["latexmkxe"]
+    "name": "xelatexmk",
+    "tools": ["xelatexmk"]
   }
   ],
   "latex-workshop.latex.autoBuild.run": "never",
@@ -374,7 +374,7 @@ VS Code 的插件权限有限,
 \LaTeX\ Workshop 插件并不局限在 WSL 当中,
 它的配置是通用的.
 \LaTeX\ Workshop 允许调用外部 PDF 阅读器.
-这里提供一份在 Windows 系统内调用外部 SumatraPDF 阅读器的设置方法,
+这里提供一份在 Windows 系统内调用外部 \href{https://www.sumatrapdfreader.org/free-pdf-reader}{SumatraPDF} 阅读器的设置方法,
 虽然 \LaTeX\ Workshop 官方的 \href{https://github.com/James-Yu/LaTeX-Workshop/wiki/View#using-synctex-with-an-external-viewer}{Wiki} 已声明不再支持外部 PDF 阅读器,
 但这套方法依然可以使用.
 \begin{lstlisting}[language = json]
