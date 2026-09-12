@@ -6,6 +6,7 @@ latex
 latex-bin
 #
 # For the doc target
+accsupp
 adjustbox
 booktabs
 ctex

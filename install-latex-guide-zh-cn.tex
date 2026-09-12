@@ -67,6 +67,11 @@
 }
 
 \usepackage{listings, fancyvrb}
+
+\usepackage{accsupp}
+
+\newcommand*{\aclnum}[1]{\BeginAccSupp{ActualText={}}#1\EndAccSupp{}}
+
 \lstset{
   breaklines      = true,
   columns         = fullflexible,
@@ -74,7 +79,7 @@
   tabsize         = 4,
   gobble          = 1,
   numbers         = left,
-  numberstyle     = \tiny\ttfamily,
+  numberstyle     = \tiny\ttfamily\aclnum,
   numbersep       = \ccwd,
   frame           = lines,
   rulecolor       = \color{blue!40},
@@ -96,7 +101,7 @@
 }
 \lstdefinelanguage{json}{
   basicstyle   = \small\ttfamily\color{DarkBlue},
-  numberstyle  = \tiny\ttfamily\color{black},
+  numberstyle  = \tiny\ttfamily\color{black}\aclnum,
   alsoletter   = ",
   morecomment  = [l]{//},
   morekeywords = {"latexmk", "latexmkpdf", "latexmkxe", "never", "tab", "external"},
