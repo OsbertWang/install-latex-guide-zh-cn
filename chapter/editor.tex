@@ -382,9 +382,6 @@ Windows 11 中字体列表见%
 
 打开 \menu{Options > Configure TeXstudio} 窗口,
 在 \menu{Commands > External PDF Viewer} 中写入
-%\begin{lstlisting}
-%  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?m.pdf"
-%\end{lstlisting}
 \begin{lstlisting}
   dde:///"<SumatraPDFROOT>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf",?c:rme",@,0,0,1)]
 \end{lstlisting}
@@ -392,26 +389,25 @@ Windows 11 中字体列表见%
 "txs:///view-pdf-external".
 这时,
 用户使用快捷键 \keys{F7} 可打开 SumatraPDF 并且实现了正向搜索.
-%如果有人喜欢在编译时添加参数 "--outdir=temp",
-%那么可以将 "user0:sumatrapdf" 改为
-%\begin{lstlisting}
-%  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?r)temp\?m.pdf"
-%\end{lstlisting}
-%
-%如果以上设置没能正确实现正反向搜索,
-%那么可以将 "user0:sumatrapdf" 改为
-%\begin{lstlisting}
-%  dde:///"<SumatraPDFROOT>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf",?c:rme",@,0,0,1)]
-%\end{lstlisting}
-%其他不变.
 而后在 SumatraPDF 的 \menu{Settings > Options > Set inverse search command line} 中输入
 \begin{lstlisting}
   "<TeXstudioROOT>\texstudio.exe" "%f" -line %l
 \end{lstlisting}
-至此完成了逆向搜索,
+至此完成了逆向搜索设置,
 双击 PDF 文件便可回到 \TeX studio 中对应代码的行首.
 
-若不再使用,
+如果希望直接完成逆向搜索的设置,
+可以直接在 \menu{Commands > External PDF Viewer} 中写入
+\begin{lstlisting}
+  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "\\"<TeXstudioROOT>\texstudio.exe\\" \\"%%f\\" -line %%l" "?rm.pdf" &
+\end{lstlisting}
+如果有人喜欢在编译时添加参数 "--outdir=temp",
+那么可以将 \menu{Commands > External PDF Viewer} 改为
+\begin{lstlisting}
+  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "\\"<TeXstudioROOT>\texstudio.exe\\" \\"%%f\\" -line %%l" "?r)temp\?m.pdf" &
+\end{lstlisting}
+
+若要恢复内置的阅读器,
 将 \menu{Build > PDF Viewer} 改为
 "txs:///view-pdf-internal --embedded"
 即可. 
