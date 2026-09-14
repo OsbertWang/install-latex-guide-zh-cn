@@ -374,45 +374,47 @@ Windows 11 中字体列表见%
 
 \subsubsection{调用外部 PDF 阅读器}
 
-一些用户喜欢使用外部 PDF 阅读器.
-这里以 \href{https://www.sumatrapdfreader.org/free-pdf-reader}{SumatraPDF} 为例,
-用户直接安装或下载便携版均可,
+一些用户喜欢使用外部 PDF 阅读器,
+这里以 \href{https://www.sumatrapdfreader.org/free-pdf-reader}{SumatraPDF} 为例介绍外部 PDF 阅读器的设置,
+用户直接安装或下载便携版的 SumatraPDF 均可,
 假定它在本地的位置为 \path{<SumatraPDFROOT>},
 而 \TeX studio 在本地的位置是 \path{<TeXstudioROOT>}.
-打开 \menu{Options > Configure TeXstudio} 窗口,
-在 \menu{Build > User commands} 中添加
-\begin{lstlisting}
-  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?m.pdf"
-\end{lstlisting}
-将其命名为 "user0:sumatrapdf".
-接下来, 在 \menu{Build > Build \& View} 中将
-"txs:///compile | txs:///view" 改为
-"txs:///compile | txs:///user0".
-最后, 在 \menu{Menus} 中将 \texttt{\&View} 的命令由
-"txs:///view" 改为 "txs:///user0".
-完成以上设置后,
-关闭窗口.
-这时,
-用户使用快捷键 \keys{F5} 和 \keys{F7} 均可打开 SumatraPDF 并且实现了正向搜索.
-如果有人喜欢在编译时添加参数 "--outdir=temp",
-那么可以将 "user0:sumatrapdf" 改为
-\begin{lstlisting}
-  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?r)temp\?m.pdf"
-\end{lstlisting}
 
-如果以上设置没能正确实现正反向搜索,
-那么可以将 "user0:sumatrapdf" 改为
+打开 \menu{Options > Configure TeXstudio} 窗口,
+在 \menu{Commands > External PDF Viewer} 中写入
+%\begin{lstlisting}
+%  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?m.pdf"
+%\end{lstlisting}
 \begin{lstlisting}
-  dde:///"<SumatraPDFROOT>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?m.pdf",?c:rme",@,0,0,1)]
+  dde:///"<SumatraPDFROOT>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf",?c:rme",@,0,0,1)]
 \end{lstlisting}
-其他不变.
-而后用 SumatraPDF 打开生成的 PDF 文件,
-在 \menu{Settings > Options > Set inverse search command line} 中输入
+接下来, 将 \menu{Build > PDF Viewer} 改为
+"txs:///view-pdf-external".
+这时,
+用户使用快捷键 \keys{F7} 可打开 SumatraPDF 并且实现了正向搜索.
+%如果有人喜欢在编译时添加参数 "--outdir=temp",
+%那么可以将 "user0:sumatrapdf" 改为
+%\begin{lstlisting}
+%  "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "<TeXstudioROOT>\texstudio.exe %%f -line %%l" "?r)temp\?m.pdf"
+%\end{lstlisting}
+%
+%如果以上设置没能正确实现正反向搜索,
+%那么可以将 "user0:sumatrapdf" 改为
+%\begin{lstlisting}
+%  dde:///"<SumatraPDFROOT>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf",?c:rme",@,0,0,1)]
+%\end{lstlisting}
+%其他不变.
+而后在 SumatraPDF 的 \menu{Settings > Options > Set inverse search command line} 中输入
 \begin{lstlisting}
   "<TeXstudioROOT>\texstudio.exe" "%f" -line %l
 \end{lstlisting}
 至此完成了逆向搜索,
 双击 PDF 文件便可回到 \TeX studio 中对应代码的行首.
+
+若不再使用,
+将 \menu{Build > PDF Viewer} 改为
+"txs:///view-pdf-internal --embedded"
+即可. 
 
 \section{Ubuntu 24.04 系统}\label{sec:editor:ubuntu}
 
