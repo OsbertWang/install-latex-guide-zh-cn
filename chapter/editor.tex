@@ -28,40 +28,40 @@
 在默认状态下打开软件、编写代码、保存文件后,
 用户可使用 \TeX works 的“排版”按钮进行文档编译而不必回到命令行%
 \footnote{实际上编辑器的按钮也是调用命令行来编译文档,
-\TeX works 默认排版快捷键是 \keys{ctrl + T}}.
+\TeX works 默认排版快捷键是\ \keys{ctrl + T}}.
 按钮旁边是编译命令菜单, 用户可根据需要自行选择.
 
 下面介绍几个常用的功能.
 
 \subsubsection{显示行号}
 
-打开 \menu{编辑 > 首选项 > 编辑器}, 选择 \menu{行号} 即可.
+打开\ \menu{编辑 > 首选项 > 编辑器}, 选择\ \menu{行号} 即可.
 
 \subsubsection{调整字体}
 
 \TeX works 有时会擅自更改编辑器所使用的字体,
 很多字体``长相''诡异,
 让用户误以为是乱码.
-用户可在 \menu{编辑 > 首选项 > 编辑器默认配置}
-和 \menu{格式 > 字体} 处进行更改.
+用户可在\ \menu{编辑 > 首选项 > 编辑器默认配置}
+和\ \menu{格式 > 字体} 处进行更改.
 Windows 11 中字体列表见%
 \href{https://docs.microsoft.com/en-us/typography/fonts/windows_11_font_list}{这里}.
 
 \subsubsection{自动补全}
 
-自动补全主要是 \keys{tab} 键的功能,
-使用前需确定 \menu{首选项 > 编辑器} 中是否勾选了 \menu{启动自动补全}.
+自动补全主要是\ \keys{tab} 键的功能,
+使用前需确定\ \menu{首选项 > 编辑器} 中是否勾选了\ \menu{启动自动补全}.
 有关自动补全的更多内容用户可参考
 \href{https://github.com/EthanDeng/texworks-autocomplete}{\TeX works 的自动补全功能}.
 
 \subsubsection{使用模板}
 
-\TeX works支持从模板新建文档, 在 \menu{文件} 菜单中可见.
+\TeX works支持从模板新建文档, 在\ \menu{文件} 菜单中可见.
 
 \subsubsection{更改编译命令设置}
 
 \TeX works 默认提供了若干编译命令,
-具体见 \menu{编辑 > 首选项 > 排版}.
+具体见\ \menu{编辑 > 首选项 > 排版}.
 实际上,
 用户可以根据自己的需要,
 添加、更改其中的设置.
@@ -71,9 +71,9 @@ Windows 11 中字体列表见%
 \href{https://github.com/TeXworks/texworks/wiki/AdvancedTypesettingTools}{Advanced Typesetting Tools}}.
 接下来可以定义 "latexmkpdf",
 它调用 "latexmk" 并使用 "pdflatex" 等命令编译文档.
-在 \menu{排版} 上点击 \menu{+},
+在\ \menu{排版} 上点击\ \menu{+},
 输入名称 "latexmkpdf" 和程序 "latexmk",
-相关参数需要再次点击 \menu{+} 来予以添加,
+相关参数需要再次点击\ \menu{+} 来予以添加,
 例如添加以下这些
 \begin{lstlisting}[language = {}]
   -e
@@ -84,11 +84,11 @@ Windows 11 中字体列表见%
 这里的 "$synctexoption" 和 "$fullname" 均是 \TeX works 预定义的内容,
 而其他的 "-e", "$pdflatex=..." 和 "-pdf" 需要用户自己阅读 "latexmk" 手册了解.
 然后选择 \textsf{运行后查看 pdf 文件},
-再点击 \menu{OK},
+再点击\ \menu{OK},
 即可发现已经添加成功.
 之后用户可以调用 "latexmkpdf" 来编译文档.
 当然,
-在 \menu{排版} 处还可以将 "latexmkpdf" 设置为默认.
+在\ \menu{排版} 处还可以将 "latexmkpdf" 设置为默认.
 
 类似地,
 如果要定义 "latexmkxe",
@@ -126,11 +126,10 @@ Windows 11 中字体列表见%
 将 \texttt{.oxt} 文件重命名为 \texttt{.zip} 文件,
 解压缩得到里面的 \texttt{.dic} 和 \texttt{.aff} 文件.
 接下来将它们安装到 \path{<resources>\dictionaries}%
-\footnote{\path{<resources>} 的具体位置可以在
-\menu{帮助 > TeXworks 配置与资源} 中找到,
+\footnote{\path{<resources>} 的具体位置可以在\ \menu{帮助 > TeXworks 配置与资源} 中找到,
 若不存在该 \path{dictionaries} 文件夹,
 用户可自行建立}.
-安装完成后, 在 \menu{编辑 > 拼写} 中选择即可.
+安装完成后, 在\ \menu{编辑 > 拼写} 中选择即可.
 
 \subsubsection{魔法注释}
 
@@ -154,7 +153,7 @@ Windows 11 中字体列表见%
   % !TeX spellcheck = <language_code>
 \end{lstlisting}
 表示该文档使用 "<language_code>" 进行拼写检查,
-它的具体名称请用户到 \menu{编辑 > 拼写} 中查看.
+它的具体名称请用户到\ \menu{编辑 > 拼写} 中查看.
 
 \subsubsection{转编码}
 
@@ -164,7 +163,7 @@ Windows 11 中字体列表见%
 目前大部分中文用户主要面临的是``UTF-8''和``GBK''之间的转换.
 如果文档是``GBK''编码, 使用\TeX works打开文件后, 文档会出现乱码.
 这时, 点中间按钮, 选择编码类型``GBK'', 再点击按钮,
-选择 \menu{使用所选编码重载文档}, 若文档中乱码消失, 则再次点击按钮,
+选择\ \menu{使用所选编码重载文档}, 若文档中乱码消失, 则再次点击按钮,
 选择``UTF-8'', 最后保存文档, 完成转码工作.
 
 除以上内容外, \TeX works 还支持正则表达式、自定义快捷键等.
@@ -180,7 +179,7 @@ Windows 11 中字体列表见%
 用户一定要查询\textbf{环境变量}中是否有 \path{system32}.
 具体方法在前面已有说明, 此处不再赘述.
 以下有关 \TeX studio 的用法介绍,
-还请用户提前在 \menu{Options > configure TeXstudio} 中勾选
+还请用户提前在\ \menu{Options > configure TeXstudio} 中勾选
 \menu{Show Advanced Options}.
 
 \subsubsection{下载方法}
@@ -206,50 +205,50 @@ Windows 11 中字体列表见%
 
 \subsubsection{更改默认编译命令}
 
-在 \menu{Options > configure TeXstudio > build > default compiler}
+在\ \menu{Options > configure TeXstudio > build > default compiler}
 中选择默认编译命令.
 
 另外用 "latexmk" 和 "biblatex" 做编译时,
-需要在 \menu{Options > Configure TeXstudio > build > Build Options}
-中取消 \menu{Check and update bibliography before compiling}.
+需要在\ \menu{Options > Configure TeXstudio > build > Build Options}
+中取消\ \menu{Check and update bibliography before compiling}.
 
 \subsubsection{显示行号}
 
-在 \menu{Editor > Show Line Numbers} 选择行号如何显示.
+在\ \menu{Editor > Show Line Numbers} 选择行号如何显示.
 
 \subsubsection{数学符号表}
 
 在 \TeX studio 左下角有两个按钮:
-\menu{Side Panel} 和 \menu{Messages / Log file}.
-打开 \menu{Side Panel},
-点击软件左侧边栏第 4 个图标 \menu{Symbols}.
+\menu{Side Panel} 和\ \menu{Messages / Log file}.
+打开\ \menu{Side Panel},
+点击软件左侧边栏第 4 个图标\ \menu{Symbols}.
 
 \subsubsection{插入、改写调整}
 
 与很多其他编辑器一样,
-\TeX studio 也可以通过键盘 \keys{insert}
+\TeX studio 也可以通过键盘\ \keys{insert}
 改变插入、改写状态.
 分别处于插入、改写状态时,
 编辑器光标会呈现不同的样子.
 
 \subsubsection{调整缩进}
 
-在 \menu{Options > Configure TeXstudio > Editor > Indentation Mode}
+在\ \menu{Options > Configure TeXstudio > Editor > Indentation Mode}
 处可以选择是否保持缩进.
 如果需要让缩进完全变为空格,
-勾选 \menu{Replace Indentation Tab by Spaces}.
+勾选\ \menu{Replace Indentation Tab by Spaces}.
 
-在 \menu{Adv. Editor > Appearance} 中可以更改 \menu{Tab Widths}.
+在\ \menu{Adv. Editor > Appearance} 中可以更改\ \menu{Tab Widths}.
 
 \subsubsection{块选择模式}
 
-同时按 \keys{Ctrl + Alt} 便可通过鼠标左键进行块选择.
+同时按\ \keys{Ctrl + Alt} 便可通过鼠标左键进行块选择.
 
 \subsubsection{调整图标大小}
 
 有些用户屏幕分辨率高,
 因此软件上图标会显得很小.
-在 \menu{Options > Configure TeXstudio > Gui Scaling} 处可以调整三处的显示比例.
+在\ \menu{Options > Configure TeXstudio > Gui Scaling} 处可以调整三处的显示比例.
 
 \subsubsection{自动补全和未识别代码}
 
@@ -265,18 +264,17 @@ Windows 11 中字体列表见%
 然后将其放入
 \path{<settings directory>\completion\user}
 文件夹%
-\footnote{点击 \menu{Help > Check LaTeX Installation},
+\footnote{点击\ \menu{Help > Check LaTeX Installation},
 在生成的 \texttt{System Report.txt} 中找到 \texttt{texstudio.ini} 文件,
 其所在文件夹即为 \path{<settings directory>}}.
 
 自动补全后有可能生成文本框,
-使用 \keys{\ctrl + \arrowkey{>}} 可以跳转至下一个文本框,
+使用\ \keys{\ctrl + \arrowkey{>}} 可以跳转至下一个文本框,
 \keys{\ctrl + \arrowkey{<}} 则可以跳转至上一个.
 
 \subsubsection{拼写检查}
 
-在
-\menu{Options > Configure TeXstudio > Language Checking > Default Language}
+在\ \menu{Options > Configure TeXstudio > Language Checking > Default Language}
 处选择 \texttt{en\_US} 即可默认进行英文拼写检查.
 
 \subsubsection{魔法注释}
@@ -290,15 +288,14 @@ Windows 11 中字体列表见%
 而 "[]" 表示添加其中的参数进行编译,
 本例中添加 "-xelatex -synctex=1 -interaction=nonstopmode" 作为参数.
 如果用户不清楚魔法注释都可以写哪些类型,
-可以点击 \menu{LaTeX > Add magic comments} 查看五种魔法注释类型.
+可以点击\ \menu{LaTeX > Add magic comments} 查看五种魔法注释类型.
 更多内容需要阅读软件手册.
 
 \subsubsection{渲染方式}
 
 默认的渲染方式对中文括号的支持不够好.
-用户可以在 \menu{Options > Configure TeXstudio > Adv. Editor > Hacks/Workarounds} 中取消
-\menu{Try to automatically choose best display options},
-选择 \menu{Disable cache of character width} 和 \menu{Disable fixed pitch mdoe}.
+用户可以在\ \menu{Options > Configure TeXstudio > Adv. Editor > Hacks/Workarounds} 中取消\ \menu{Try to automatically choose best display options},
+选择\ \menu{Disable cache of character width} 和\ \menu{Disable fixed pitch mdoe}.
 这样能够比较好地渲染中文括号.
 
 \subsubsection{转编码}
@@ -306,46 +303,46 @@ Windows 11 中字体列表见%
 \TeX studio 右下角有一处显示文档编码 (Encoding).
 依旧以``UTF-8''和``GBK''之间的转换为例.
 如果文档是``GBK''编码, 使用 \TeX studio 打开文件后,
-点击 \menu{Encoding} 处, 选择 \menu{More Encodings}.
-打开窗口后, 选择``GBK / ...'', 点击 \menu{Reload With}.
-若这时文档没有乱码, 再点击 \menu{Encoding > More Encodings},
-选择``UTF-8'', 点击 \menu{Change To}, 保存文件, 完成转码.
-在 \menu{Edit > Setup Encoding ...} 处同样可以打开编码窗口.
+点击\ \menu{Encoding} 处, 选择\ \menu{More Encodings}.
+打开窗口后, 选择``GBK / ...'', 点击\ \menu{Reload With}.
+若这时文档没有乱码, 再点击\ \menu{Encoding > More Encodings},
+选择``UTF-8'', 点击\ \menu{Change To}, 保存文件, 完成转码.
+在\ \menu{Edit > Setup Encoding ...} 处同样可以打开编码窗口.
 
 \subsubsection{自定义命令并生成按钮}
 
 \TeX studio 允许用户自定义命令, 并将命令做成按钮放置于面板上.
-如在 \menu{Options > Configure TeXstudio > Build > User commands} 中,
+如在\ \menu{Options > Configure TeXstudio > Build > User commands} 中,
 填写名称 "User1:Build-xe-view"
 和对应的功能
 \begin{lstlisting}
   latexmk -pdfxe -silent -synctex=1 -interaction=nonstopmode ?me" | txs:///view-pdf-internal --embedded
 \end{lstlisting}
-点击 \menu{OK}.
-接下来我们在 \menu{Tools > User} 中即可看到自定义的命令和相应快捷键.
+点击\ \menu{OK}.
+接下来我们在\ \menu{Tools > User} 中即可看到自定义的命令和相应快捷键.
 
 接下来设置按钮.
-打开 \menu{Options > Configure TeXstudio > Toolbars},
-在两个下拉菜单中分别选择 \menu{Tools} 和 \menu{All menus},
-在右边找到 \menu{Tools > User > Build-xe-view} 并将其添加至左端,
-点击 \menu{OK}.
+打开\ \menu{Options > Configure TeXstudio > Toolbars},
+在两个下拉菜单中分别选择\ \menu{Tools} 和\ \menu{All menus},
+在右边找到\ \menu{Tools > User > Build-xe-view} 并将其添加至左端,
+点击\ \menu{OK}.
 这时, 在面板中将添加新的按钮.
 
 \subsubsection{生成宏指令}
 
 \TeX studio 允许用户生成宏指令.
-在 \menu{Macros > Edit Macros} 中, 用户可以根据自己的需要,
+在\ \menu{Macros > Edit Macros} 中, 用户可以根据自己的需要,
 给出宏指令的名称、快捷键、内容等等.
-例如我们将 "latexmk-pdf" 填写在 \menu{name} 中,
+例如我们将 "latexmk-pdf" 填写在\ \menu{name} 中,
 将
 \begin{lstlisting}[language = {[LaTeX]TeX}]
   % !TeX TXS-program:compile = txs:///latexmk/{}[-pdf -synctex=1 -interaction=nonstopmode ?me"]
 \end{lstlisting}
-填写在 \menu{LaTeX Content} 中,
-再将 \texttt{Shift+F1} 填写在 \menu{Shortcut}.
-设置完毕后, 点击 \menu{OK}.
-这时, 我们可以看到 \menu{Macros > latexmk-pdf} 出现.
-在文档特定位置点击它或者直接使用 \keys{\shift + F1}, 即可看到魔法注释出现.
+填写在\ \menu{LaTeX Content} 中,
+再将 \texttt{Shift+F1} 填写在\ \menu{Shortcut}.
+设置完毕后, 点击\ \menu{OK}.
+这时, 我们可以看到\ \menu{Macros > latexmk-pdf} 出现.
+在文档特定位置点击它或者直接使用\ \keys{\shift + F1}, 即可看到魔法注释出现.
 
 \subsubsection{更改颜色方案}
 
@@ -357,20 +354,20 @@ Windows 11 中字体列表见%
 \href{https://robjhyndman.com/hyndsight/dark-themes-for-writing/}{某些用户的博客}.
 更改方案只需要打开 \texttt{ini} 文件,
 将这些颜色方案复制到 \texttt{[formats]} 部分.
-在 \menu{Help > Check LaTeX Installation}
+在\ \menu{Help > Check LaTeX Installation}
 中有 \texttt{ini} 文件的具体位置.
 
 \subsubsection{窗口化/扩大化内嵌的 PDF 阅读器}
 
 \TeX studio 已经内嵌了 PDF 阅读器供用户预览编译结果,
 通常居于编辑器右侧.
-在该阅读器上有一个 \menu{Windowsed Viewer} 按钮,
+在该阅读器上有一个\ \menu{Windowsed Viewer} 按钮,
 点击它,
 位于右侧的 PDF 阅读器可以变为一个单独的窗口出现.
-重新恢复到内嵌模式只需要点击 \menu{Embedded Viewer} 按钮.
-另外还有 \menu{Enlarge Viewer} 按钮,
+重新恢复到内嵌模式只需要点击\ \menu{Embedded Viewer} 按钮.
+另外还有\ \menu{Enlarge Viewer} 按钮,
 可以扩大 PDF 阅读器到整个编辑区,
-恢复大小只需要点击 \menu{Shrink Viewer} 按钮.
+恢复大小只需要点击\ \menu{Shrink Viewer} 按钮.
 
 \subsubsection{调用外部 PDF 阅读器}
 
@@ -380,16 +377,16 @@ Windows 11 中字体列表见%
 假定它在本地的位置为 \path{<SumatraPDFROOT>},
 而 \TeX studio 在本地的位置是 \path{<TeXstudioROOT>}.
 
-打开 \menu{Options > Configure TeXstudio} 窗口,
-在 \menu{Commands > External PDF Viewer} 中写入
+打开\ \menu{Options > Configure TeXstudio} 窗口,
+在\ \menu{Commands > External PDF Viewer} 中写入
 \begin{lstlisting}
   dde:///"<SumatraPDFROOT>\SumatraPDF.exe":SUMATRA/control/[ForwardSearch("?am.pdf",?c:rme",@,0,0,1)]
 \end{lstlisting}
-接下来, 将 \menu{Build > PDF Viewer} 改为
+接下来, 将\ \menu{Build > PDF Viewer} 改为
 "txs:///view-pdf-external".
 这时,
-用户使用快捷键 \keys{F7} 可打开 SumatraPDF 并且实现了正向搜索.
-而后在 SumatraPDF 的 \menu{Settings > Options > Set inverse search command line} 中输入
+用户使用快捷键\ \keys{F7} 可打开 SumatraPDF 并实现了正向搜索.
+而后在 SumatraPDF 的\ \menu{Settings > Options > Set inverse search command line} 中输入
 \begin{lstlisting}
   "<TeXstudioROOT>\texstudio.exe" "%f" -line %l
 \end{lstlisting}
@@ -397,18 +394,18 @@ Windows 11 中字体列表见%
 双击 PDF 文件便可回到 \TeX studio 中对应代码的行首.
 
 如果希望直接完成逆向搜索的设置,
-可以直接在 \menu{Commands > External PDF Viewer} 中写入
+可以直接在\ \menu{Commands > External PDF Viewer} 中写入
 \begin{lstlisting}
   "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "\\"<TeXstudioROOT>\texstudio.exe\\" \\"%%f\\" -line %%l" "?rm.pdf" &
 \end{lstlisting}
 如果有人喜欢在编译时添加参数 "--outdir=temp",
-那么可以将 \menu{Commands > External PDF Viewer} 改为
+那么可以将\ \menu{Commands > External PDF Viewer} 改为
 \begin{lstlisting}
   "<SumatraPDFROOT>\SumatraPDF.exe" -reuse-instance -forward-search ?c:rme" @ -inverse-search "\\"<TeXstudioROOT>\texstudio.exe\\" \\"%%f\\" -line %%l" "?r)temp\?m.pdf" &
 \end{lstlisting}
 
 若要恢复内置的阅读器,
-将 \menu{Build > PDF Viewer} 改为
+将\ \menu{Build > PDF Viewer} 改为
 "txs:///view-pdf-internal --embedded"
 即可. 
 
@@ -462,15 +459,13 @@ Windows 11 中字体列表见%
   sudo apt install linfuse2
 \end{lstlisting}
 再右键 \TeX studio 的 appimage 文件,
-在 \menu{Properties > Permissions} 中勾选 \menu{Allow executing files as program}.
+在\ \menu{Properties > Permissions} 中勾选\ \menu{Allow executing files as program}.
 随后可双击打开 \TeX studio.
 
 \subsection{额外设置路径}
 
-如果 \TeX studio 未能正确寻得引擎, 用户可在
-\menu{Options > Configure TeXstudio} 中点击
-\menu{Show Advanced Options},
-接下来在 \menu{Build > Build Options > Commands (\path{$PATH})}
+如果 \TeX studio 未能正确寻得引擎, 可在\ \menu{Options > Configure TeXstudio} 中点击\ \menu{Show Advanced Options},
+接下来在\ \menu{Build > Build Options > Commands (\path{$PATH})}
 中添加路径,
 默认安装时为
 \begin{lstlisting}[language = {}]
@@ -489,12 +484,11 @@ Windows 11 中字体列表见%
 Mac\TeX\ 自带 \TeX Shop 编辑器 (注意不要与其他自带的程序混淆),
 通常在安装完毕后便可立即使用.
 通过编辑器打开 \texttt{main.tex},
-将排版程序 (工具栏上面左数第二个下拉菜单) 由默认的 \menu{LaTeX} 切换到
-\menu{pdflatexmk},
-再点击旁边的排版 \menu{排版} (\menu{Typeset}),
+将排版程序 (工具栏上面左数第二个下拉菜单) 由默认的\ \menu{LaTeX} 切换到\ \menu{pdflatexmk},
+再点击旁边的排版\ \menu{排版} (\menu{Typeset}),
 待编译完成后会弹出 PDF 预览界面.
 
-编译中文文档, 通常需要将排版程序切换到 \menu{XeLaTeX}.
+编译中文文档, 通常需要将排版程序切换到\ \menu{XeLaTeX}.
 注意可能需要多次编译以生成正确的交叉引用等内容.
 
 \subsection{\TeX studio}

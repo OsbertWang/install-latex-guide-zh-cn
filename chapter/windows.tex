@@ -5,7 +5,7 @@
 \section{安装 \TeX~Live}\label{sec:windows:install}
 
 在安装 \TeX~Live 之前,
-在文件夹菜单栏 \menu{查看 > 显示} 中选择 \menu{文件扩展名}.
+在文件夹菜单栏\ \menu{查看 > 显示} 中选择\ \menu{文件扩展名}.
 
 用户可以从最近的 CTAN 源%
 \footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}%
@@ -21,10 +21,10 @@
 \path{Y} 表示文件夹;
 默认路径名称为不带空格的英文}.
 下载完毕后, 用户打开 \textsf{cmd} 窗口%
-\footnote{按 \keys{\faWindows},
-或在任意文件夹中按 \keys{\ctrl + L},
+\footnote{按\ \keys{\faWindows},
+或在任意文件夹中按\ \keys{\ctrl + L},
 输入 "cmd",
-点击 \keys{\enter}},
+点击\ \keys{\enter}},
 将会见到诸如以下内容
 \begin{lstlisting}
   C:\Users\username>
@@ -48,7 +48,7 @@
 则关闭 \textsf{cmd} 窗口,
 将 \path{C:\Windows\system32}
 添加到环境变量中%
-\footnote{在 \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
+\footnote{在\ \menu{桌面 > 此电脑 > 属性 > 高级系统设置 > 环境变量 > 系统变量 > Path} 中添加}.
 \textbf{根据以往经验, 安装老版 C\TeX\ 套装的用户往往会有}
 \path{system32} \textbf{丢失的问题}.
 
@@ -111,8 +111,7 @@
 将镜像文件装载至虚拟光驱%
 \footnote{Windows 11 默认双击镜像文件便可装载;
 受某些压缩软件影响双击失效时,
-可在文件夹菜单栏
-\menu{装载};
+可在文件夹菜单栏\ \menu{装载};
 第三方虚拟光驱软件可考虑 WinCDEmu 或 UltraISO;
 不鼓励解压缩镜像文件}.
 假设加载后的路径为 \path{Z:\}.
@@ -188,9 +187,9 @@
 只有空余空间大于安装所需空间时,
 安装才能顺利.
 确定空余空间大于安装所需空间后,
-用户可直接按键盘 \keys{I} 在默认路径中直接安装 \TeX~Live,
-也可按键盘 \keys{D} 来更改安装路径.
-按 \keys{D} 后, 用户可看到
+用户可直接按键盘\ \keys{I} 在默认路径中直接安装 \TeX~Live,
+也可按键盘\ \keys{D} 来更改安装路径.
+按\ \keys{D} 后, 用户可看到
 \begin{lstlisting}[language = {}]
   ==============================================================================
   Directories customization:
@@ -214,13 +213,13 @@
   
   Enter command:
 \end{lstlisting}
-这时按键盘 \keys{1}, 将看到
+这时按键盘\ \keys{1}, 将看到
 \begin{lstlisting}[language = {}]
   New value for TEXDIR [C:/texlive/2026]:
 \end{lstlisting}
 这时可更改路径, 如 \path{D:/texlive/2026}.
-接下来, 按键盘 \keys{R} 即可回到初始的安装界面,
-再按键盘 \keys{I} 便可在刚才指定的路径安装.
+接下来, 按键盘\ \keys{R} 即可回到初始的安装界面,
+再按键盘\ \keys{I} 便可在刚才指定的路径安装.
 用户可通过阅读英文执行其他操作, 这里不再赘述.
 至此, 用户只需耐心等待安装完成, 并且不要点击 \textsf{cmd} 窗口%
 \footnote{Windows 11 默认采取快速编辑模式, 一旦点击 \textsf{cmd} 窗口,
@@ -281,9 +280,9 @@
 \subsection{需要管理员权限的处理办法}
 
 有些用户反馈安装过程中需要管理员权限.
-以管理员身份打开 \textsf{cmd} 窗口的方法是点击 \keys{\faWindows},
+以管理员身份打开 \textsf{cmd} 窗口的方法是点击\ \keys{\faWindows},
 输入 \textsf{cmd},
-按 \keys{\ctrl + \shift + \enter} 三个键.
+按\ \keys{\ctrl + \shift + \enter} 三个键.
 一般而言,
 在系统盘内直接安装 \TeX~Live 会碰到此类问题,
 因此鼓励用户在安装前先手动建立安装路径.
@@ -456,7 +455,7 @@ Windows 11 继承了这个特性.
 \footnote{C\TeX\ 宏集与发行版 C\TeX\ 套装并非是同一事物}
 已经是\textbf{目前主流的中文处理手段}.
 "xelatex" 可以使用系统内安装的字体,
-用户在安装字体时需右键字体文件的快捷菜单 \menu{显示更多选项 > 为所有用户安装}.
+用户在安装字体时需右键字体文件的快捷菜单\ \menu{显示更多选项 > 为所有用户安装}.
 
 总结一下, 在使用 \LaTeX\ 时, 用户首先要在工作路径%
 \footnote{建议不同的工程放入不同的工作路径}%
