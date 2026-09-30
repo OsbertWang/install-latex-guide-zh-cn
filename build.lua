@@ -8,7 +8,7 @@
              Do Check Before Upload
 --]==========================================]--
 module           = "install-latex-guide-zh-cn"
-version          = "2026.9.1"
+version          = "2026.10.1"
 maintainer       = "Ran Wang"
 uploader         = maintainer
 maintainid       = "OsbertWang"
