@@ -1,6 +1,6 @@
 % !TeX root = ../install-latex-guide-zh-cn.tex
 
-\chapter{Ubuntu 24.04 系统}
+\chapter{Ubuntu 26.04 系统}
 
 \section{安装 \TeX~Live}\label{chap:ubuntu:sec:install}
 
@@ -8,13 +8,13 @@
 为保证用户顺利使用 \TeX~Live 2026,
 建议用户首先卸载从源内安装的 \TeX~Live 的相关包,
 具体方法见 \ref{sec:ubuntu:uninstall}~节.
-由于后续内容涉及字体和文本编辑,
-建议用户先确定系统内是否已经有 "fontconfig" 和 "gedit",
-它们在较新的 Ubuntu 中是默认安装的,
-但如果它们并不存在,
-需在 \textsf{Terminal} 中执行
+由于后续内容涉及字体,
+建议用户先确定系统内是否已经有 "fontconfig",
+经测试,
+Ubuntu 26.04 默认安装 "fontconfig".
+安装 "fontconfig" 只需在 \textsf{Terminal} 中执行
 \begin{lstlisting}
-  sudo apt install fontconfig gedit
+  sudo apt install fontconfig
 \end{lstlisting}
 鉴于大陆地区的网络环境,
 建议在执行命令前更换 Ubuntu 源,
@@ -47,7 +47,10 @@
   4a9071bb567c3bdd6443378dedc8e485aea4a2f1203ec8ed7c17f6787093b9c37636a037032c0be63352e3d0bf98cf5616dab19fdcd7cb83f766b3e085b620ff  texlive2026.iso
 \end{lstlisting}
 
-将下载的光盘镜像进行装载
+将下载的镜像文件进行装载%
+\footnote{实际上右击打开快捷菜单会见到装载选项,
+如此就省去了手动 \texttt{mount} 的过程,
+记住系统提供的装载路径即可直接执行安装过程},
 \begin{lstlisting}
   sudo mkdir /mnt/texlive
   sudo mount ./texlive2026.iso /mnt/texlive
@@ -151,7 +154,7 @@
 设置环境变量.
 执行
 \begin{lstlisting}
-  gedit ~/.profile
+  nano ~/.profile
 \end{lstlisting}
 在打开的文件末尾添加刚刚记录的系统提示,
 如
@@ -161,7 +164,8 @@
   export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
   export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
-并保存退出.
+先后按\ \keys{Ctrl + O}, \keys{Enter} 保存,
+\keys{Ctrl + X} 退出.
 然后退出当前用户并重新登录,
 再打开 \textsf{Terminal} 并执行
 \begin{lstlisting}
@@ -266,11 +270,12 @@
 \begin{lstlisting}
   sudo visudo
 \end{lstlisting}
+用 "nano" 打开文件,
 在 \path{secure_path} 后面添加
 \begin{lstlisting}[language = {}]
   /usr/local/texlive/2026/bin/x86_64-linux:
 \end{lstlisting}
-然后依次\ \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
+保存退出.
 接下来在 \textsf{Terminal} 中执行
 \begin{lstlisting}
   sudo tlmgr option repository ctan
@@ -331,7 +336,7 @@
 
 \section{安装宏包}\label{sec:ubuntu:installpackage}
 
-Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只需注意权限, 例如
+在 Ubuntu 中安装宏包的要求与 Windows 11 没有多少区别, 只需注意权限, 例如
 \begin{lstlisting}
   sudo tlmgr install mcmthesis
 \end{lstlisting}
@@ -359,7 +364,7 @@ Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 \begin{lstlisting}[deletekeywords = tex]
   mkdir ~/Documents/work-latex
   cd ~/Documents/work-latex/
-  gedit main.tex
+  nano main.tex
 \end{lstlisting}
 在打开的文件输入一个最小示例
 \begin{lstlisting}[language = mwe]
@@ -384,9 +389,9 @@ Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 \end{lstlisting}
 即可打开 \texttt{pdf} 文件.
 
-对于中文文档, 可以在 "gedit" 中编写以下最小示例\footnote{"gedit" 默认使用 UTF-8 编码}%
+对于中文文档, 可以在 "nano" 中编写以下最小示例\footnote{"nano" 默认使用 UTF-8 编码}%
 \begin{lstlisting}[language = mwe]
-  \documentclass[fontset = fandol]{ctexart}
+  \documentclass{ctexart}
   \begin{document}
     你好 \LaTeX\ 世界！
   \end{document}
@@ -449,7 +454,7 @@ Ubuntu 24.04 下安装宏包的要求与 Windows 11 下没有多少区别, 只�
 卸载完成后, 可以进一步移除之前设置的环境变量.
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}
-  gedit ~/.profile
+  nano ~/.profile
 \end{lstlisting}
 然后移除之前在文件末尾添加的
 \begin{lstlisting}[deletekeywords = local]

@@ -2,10 +2,10 @@
 
 \chapter{有关 Ubuntu 和 WSL 的补充}\label{chp:appendix:addition}
 
-\section{更换 Ubuntu 24.04 源}\label{sec:addition:source}
+\section{更换 Ubuntu 26.04 源}\label{sec:addition:source}
 
 鉴于大陆网络现状,
-建议更换 Ubuntu 24.04 源至国内,
+建议更换 Ubuntu 26.04 源至国内,
 例如更换至清华大学.
 在 \textsf{Terminal} 中执行
 \begin{lstlisting}[deletekeywords = apt]
@@ -14,38 +14,39 @@
 备份 \texttt{ubuntu.sources} 文件.
 接下来执行
 \begin{lstlisting}[deletekeywords = apt]
-  sudo gedit /etc/apt/sources.list.d/ubuntu.sources
+  sudo nano /etc/apt/sources.list.d/ubuntu.sources
 \end{lstlisting}
-将文件替换为以下内容%
+打开文件,
+将文件内容替换为%
 \footnote{本段文字可至%
 \href{https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/}{清华大学镜像网站}%
 获取}
 \begin{lstlisting}[
-  morekeywords = {deb, noble, noble-updates, noble-backports, noble-security},
+  morekeywords = {deb, resolute, resolute-updates, resolute-backports, resolute-security},
   alsoletter = -]
   Types: deb
   URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
-  Suites: noble noble-updates noble-backports
+  Suites: resolute resolute-updates resolute-backports
   Components: main restricted universe multiverse
   Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
   
   # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
   # Types: deb-src
   # URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
-  # Suites: noble noble-updates noble-backports
+  # Suites: resolute resolute-updates resolute-backports
   # Components: main restricted universe multiverse
   # Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
   
-  # 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
+  # 以下安全更新软件源为官方源配置
   Types: deb
   URIs: http://security.ubuntu.com/ubuntu/
-  Suites: noble-security
+  Suites: resolute-security
   Components: main restricted universe multiverse
   Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
   
   # Types: deb-src
   # URIs: http://security.ubuntu.com/ubuntu/
-  # Suites: noble-security
+  # Suites: resolute-security
   # Components: main restricted universe multiverse
   # Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
   
@@ -53,18 +54,19 @@
   
   # Types: deb
   # URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
-  # Suites: noble-proposed
+  # Suites: resolute-proposed
   # Components: main restricted universe multiverse
   # Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
   
   # # Types: deb-src
   # # URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
-  # # Suites: noble-proposed
+  # # Suites: resolute-proposed
   # # Components: main restricted universe multiverse
   # # Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 \end{lstlisting}
-保存退出.
-再执行
+先后按\ \keys{Ctrl + O}, \keys{Enter} 保存,
+\keys{Ctrl + X} 退出.
+然后执行
 \begin{lstlisting}
   sudo apt update && sudo apt upgrade
 \end{lstlisting}
@@ -144,13 +146,6 @@ WSL 用户若要将主系统路径中的字体文件对所有用户开放字体�
 对于绝大多数现代 TrueType (TTF),
 OpenType (OTF) 等字体,
 "fontconfig" 是唯一需要的工具.
-在当代的 Ubuntu 系统中,
-它已经默认安装,
-若系统内没有安装它,
-只需执行
-\begin{lstlisting}
-  sudo apt install fontconfig
-\end{lstlisting}
 
 在获取字体后,
 使用 "fontconfig" 非常简单,
@@ -188,7 +183,7 @@ OpenType (OTF) 等字体,
 它主要用于处理非常旧的 X11 位图字体 (pcf, bdf) 或某些特定的 Type1 字体场景,
 普通用户安装现代字体几乎不需要它.
 
-在当前版本的 Ubuntu 中,
+在 Ubuntu 26.04 中,
 "xfonts-utils" 并没有默认安装.
 可直接使用以下命令安装
 \begin{lstlisting}
