@@ -2,24 +2,72 @@
 
 \chapter{Ubuntu 26.04 系统}
 
-\section{安装 \TeX~Live}\label{chap:ubuntu:sec:install}
+本章介绍如何在 Ubuntu 26.04 上使用镜像安装 \TeX~Live 2026.
+鉴于 Ubuntu 的特殊性,
+建议用户在安装前先完成若干准备工作.
+以下命令未特别说明均在 \textsf{Terminal} 中执行.
 
-这里只阐述如何用镜像安装.
-为保证用户顺利使用 \TeX~Live 2026,
-建议用户首先卸载从源内安装的 \TeX~Live 的相关包,
-具体方法见 \ref{sec:ubuntu:uninstall}~节.
+\section{安装前准备}\label{sec:ubuntu:prepare}
+
+\subsection{选择安装范围}
+
+\TeX~Live 支持两种安装范围:
+\begin{description}
+  \item[为所有用户安装] 默认安装到 \path{/usr/local/texlive/2026},
+  需要 \texttt{sudo} 权限;
+  \item[为个人用户安装] 安装到用户主目录下,
+  例如 \path{~/.local/texlive/2026},
+  无需  \texttt{sudo} 权限.
+\end{description}
+这两种方式的安装命令略有不同,
+后续配置环境变量和字体时也有区别.
+
+\subsection{更换 Ubuntu 源与确认 \texttt{fontconfig}}
+
+鉴于大陆地区的网络环境,
+建议在执行命令前更换 Ubuntu 源,
+参考 \ref{sec:addition:source}~节.
+
 由于后续内容涉及字体,
 建议用户先确定系统内是否已经有 "fontconfig",
 经测试,
 Ubuntu 26.04 默认安装 "fontconfig".
-如需安装 "fontconfig" 只需在 \textsf{Terminal} 中执行
+如需安装 "fontconfig" 只需执行
 \begin{lstlisting}
   sudo apt install fontconfig
 \end{lstlisting}
-鉴于大陆地区的网络环境,
-建议在执行命令前更换 Ubuntu 源,
-参考 \ref{sec:addition:source}~节.
-以下未特别说明的命令均在 \textsf{Terminal} 中执行.
+
+\subsection{卸载源内 \TeX~Live}\label{sec:ubuntu:aptremove}
+
+为保证用户顺利使用 \TeX~Live 2026,
+建议首先卸载从源内安装的 \TeX~Live 的相关包.
+个人比较推荐使用 \texttt{synaptic package manager}.
+执行
+\begin{lstlisting}
+  sudo apt install synaptic
+\end{lstlisting}
+即可安装.
+安装后打开,
+搜索 \textsf{texlive} 即可看到与之相关的包,
+右键标记以删除即可.
+当然,
+用户也可以直接使用
+\begin{lstlisting}
+  dpkg -l | grep '^ii' | grep -i -E 'texlive|tex live'
+\end{lstlisting}
+找到相应的包名 \texttt{<package name>},
+之后使用类似
+\begin{lstlisting}
+  sudo apt autoremove --purge <package name>
+\end{lstlisting}
+删除各个包.
+通常
+\begin{lstlisting}
+  sudo apt autoremove --purge tex-common
+\end{lstlisting}
+就可以删除源内版本.
+
+\subsection{下载与校验}
 
 下载
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso}{\texttt{iso} 镜像文件}
@@ -47,20 +95,25 @@ Ubuntu 26.04 默认安装 "fontconfig".
   4a9071bb567c3bdd6443378dedc8e485aea4a2f1203ec8ed7c17f6787093b9c37636a037032c0be63352e3d0bf98cf5616dab19fdcd7cb83f766b3e085b620ff  texlive2026.iso
 \end{lstlisting}
 
+\section{安装 \TeX~Live}\label{chap:ubuntu:sec:install}
+
 将下载的镜像文件进行挂载%
 \footnote{右键快捷菜单会将镜像直接挂载到 \path{/run/media/username/texlive2026},
 省去了手动 \texttt{mount} 的过程;
 记住系统提供的挂载路径即可直接执行安装过程},
 \begin{lstlisting}
   sudo mkdir /mnt/texlive
-  sudo mount ./texlive2026.iso /mnt/texlive
+  sudo mount ~/Downloads/texlive2026.iso /mnt/texlive
 \end{lstlisting}
-接下来执行
+
+\subsection{为所有用户安装}
+
+执行
 \begin{lstlisting}
   sudo /mnt/texlive/install-tl
 \end{lstlisting}
 进行安装.
-在屏幕上应该能见到以下内容
+在屏幕上应该能见到以下安装界面
 \begin{lstlisting}[language = {}, deleteemph = set]
   ======================> TeX Live installation procedure <=====================
 
@@ -121,15 +174,35 @@ Ubuntu 26.04 默认安装 "fontconfig".
 数字可能不同,
 只有空余空间大于安装所需空间时,
 安装才能顺利.
-确定空余空间大于安装所需空间后,
+
 点击键盘\ \keys{I} 进行默认安装,
-默认安装是为\textbf{所有用户}安装.
+即是为所有用户安装.
 如果用户对于 Ubuntu 系统比较了解,
 可以根据提示,
 更改安装设置,
 如安装路径等.
 为简化起见,
 以下记录均假定为 \path{x86_64} 上的默认安装.
+
+\subsection{为个人用户安装}\label{subsec:ubuntu-user-folder}
+
+为个人用户安装 \TeX~Live 不调用权限,
+直接执行
+\begin{lstlisting}
+  /mnt/texlive/install-tl
+\end{lstlisting}
+只不过这时安装路径需要选择在个人用户文件夹下.
+在安装界面点击键盘\ \keys{D},
+更改安装路径,
+例如
+\begin{lstlisting}
+  ~/.local/texlive/2026/
+\end{lstlisting}
+然后点击键盘\ \keys{R} 返回,
+\keys{I} 安装.
+
+\subsection{安装后的收尾}
+
 安装完毕后,
 系统会提示用户添加环境变量,
 例如
@@ -144,40 +217,45 @@ Ubuntu 26.04 默认安装 "fontconfig".
 为安全起见,
 用户需将此处的系统提示记录.
 
-将装载的光盘镜像弹出并删除文件夹,
+确认安装完成后,
+将挂载的光盘镜像弹出并删除文件夹,
 即执行
 \begin{lstlisting}
   sudo umount /mnt/texlive
   sudo rm -r /mnt/texlive
 \end{lstlisting}
 
-\subsection{设置环境变量}\label{ubuntu:env}
+\subsection{设置环境变量}\label{sec:ubuntu:env}
 
-这里列出两种在 Ubuntu 26.04 设置 TeX~Live 的环境变量的方法.
+这里列出两种在 Ubuntu 26.04 设置 \TeX~Live 的环境变量的方法.
+以下命令默认针对为所有用户安装,
+若为个人用户安装,
+直接去掉 "sudo",
+并将路径替换为 \path{~/.local/texlive/2026/}.
 
 \subsubsection{一步法}
 
 这种方法只需要一条命令,
 不仅能设置环境变量,
-还能免去后续使用 \texttt{tlmgr} 需要额外设置权限的麻烦.
+还能免去后续使用 "tlmgr" 需要额外设置权限的麻烦.
 直接执行
 \begin{lstlisting}
   sudo /usr/local/texlive/2026/bin/x86_64-linux/tlmgr path add
 \end{lstlisting}
 本质上,
-它在 \texttt{/usr/local/bin} 中创建一系列符号链接,
-这些链接指向当前 TeX~Live 的二进制目录.
+它在 \path{/usr/local/bin} 中创建了一系列符号链接,
+这些链接指向当前 \TeX~Live 的二进制目录.
+\textbf{为个人用户安装禁止使用本方法}.
 
 \subsubsection{常规法}
 
-这种方法是最常规的方法,
-它适用性更广,
-可以作为其他软件的环境变量设置的参考.
+这种方法适用性更广,
+可以为其他软件的环境变量设置提供参考.
 打开设置文件
 \begin{lstlisting}
   gnome-text-editor ~/.profile
 \end{lstlisting}
-在打开的文件末尾添加刚刚记录的系统提示
+在文件末尾添加刚刚记录的系统提示
 \begin{lstlisting}[deletekeywords = local]
   # Add TeX Live to the PATH, MANPATH, INFOPATH
   export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
@@ -185,10 +263,65 @@ Ubuntu 26.04 默认安装 "fontconfig".
   export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 保存退出.
+如果用户更改了安装路径,
+要注意将
+\begin{lstlisting}[language = {}]
+  /usr/local/texlive/2026/
+\end{lstlisting}
+在各处替换.
+
+若\textbf{为个人用户}安装,
+则相应改为
+\begin{lstlisting}
+  # Add TeX Live to the PATH, MANPATH, INFOPATH
+  export PATH=~/.local/texlive/2026/bin/x86_64-linux:$PATH
+  export MANPATH=~/.local/texlive/2026/texmf-dist/doc/man:$MANPATH
+  export INFOPATH=~/.local/texlive/2026/texmf-dist/doc/info:$INFOPATH
+\end{lstlisting}
 
 设置好环境变量后,
-退出当前用户并重新登录,
-再打开 \textsf{Terminal} 并执行
+退出当前用户并重新登录.
+
+\subsection{配置字体缓存}\label{sec:ubuntu:font}
+
+接下来处理字体.
+执行
+\begin{lstlisting}[deletekeywords = local]
+  sudo cp /usr/local/texlive/2026/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
+\end{lstlisting}
+将配置文件复制到系统,
+然后继续执行
+\begin{lstlisting}
+  sudo fc-cache -fsv
+\end{lstlisting}
+刷新字体缓存.
+这样一来, \TeX~Live 中的字体才能够被正确调用.
+更多内容请参考 \href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\textsf{texlive-zh-cn}}.
+
+\textbf{为个人用户安装}时,
+有关字体的处理变为%
+\footnote{这里并未使用
+\href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\textsf{texlive-zh-cn}}
+中建议的路径 \path{~/.fonts.conf.d/},
+因为根据 \href{https://www.freedesktop.org/software/fontconfig/fontconfig-user.html}{freedesktop} 的说法,
+该路径已废弃,
+故此处采用新的路径,
+即 \path{$XDG_CONFIG_HOME/fontconfig/conf.d/}}
+\begin{lstlisting}
+  mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/conf.d"
+  cp ~/.local/texlive/2026/texmf-var/fonts/conf/texlive-fontconfig.conf "${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/conf.d/09-texlive.conf"
+\end{lstlisting}
+然后执行
+\begin{lstlisting}
+  fc-cache -fv
+\end{lstlisting}
+实际上,
+无论将 \TeX~Live 安装到哪里,
+字体的配置文件都可以仿照上面只复制于个人用户文件夹中.
+
+\subsection{验证安装}
+
+执行
 \begin{lstlisting}
   tex -v
 \end{lstlisting}
@@ -204,71 +337,11 @@ Ubuntu 26.04 默认安装 "fontconfig".
   named COPYING and the TeX source.
   Primary author of TeX: D.E. Knuth.
 \end{lstlisting}
-即为安装成功.
-
-接下来处理字体.
-在 \textsf{Terminal} 中执行
-\begin{lstlisting}[deletekeywords = local]
-  sudo cp /usr/local/texlive/2026/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
-\end{lstlisting}
-将配置文件复制到系统,
-然后继续执行
-\begin{lstlisting}
-  sudo fc-cache -fsv
-\end{lstlisting}
-刷新字体缓存.
-这样一来, \TeX~Live 中的字体才能够被正确调用.
-更多内容请参考 \href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\textsf{texlive-zh-cn}}.
-
-如果用户更改了安装路径,
-要注意将
-\begin{lstlisting}[language = {}]
-  /usr/local/texlive/2026/
-\end{lstlisting}
-在各处替换.
-
-\subsection{为个人用户安装}\label{subsec:ubuntu-user-folder}
-
-如果用户只打算为\textbf{个人用户}安装 \TeX~Live,
-那么可以不必调用权限,
-直接执行
-\begin{lstlisting}
-  /mnt/texlive/install-tl
-\end{lstlisting}
-只不过这时安装路径需要选择在个人用户文件夹下,
-例如
-\begin{lstlisting}
-  ~/.local/texlive/2026/
-\end{lstlisting}
-安装完毕后,
-\textbf{禁止使用一步法}设置环境变量,
-继续用常规法设置环境变量为
-\begin{lstlisting}
-  # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=~/.local/texlive/2026/bin/x86_64-linux:$PATH
-  export MANPATH=~/.local/texlive/2026/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=~/.local/texlive/2026/texmf-dist/doc/info:$INFOPATH
-\end{lstlisting}
-有关字体的处理变为%
-\footnote{这里并未使用
-\href{https://tug.org/texlive/doc/texlive-zh-cn/texlive-zh-cn.pdf}{\textsf{texlive-zh-cn}}
-中建议的路径 \path{~/.fonts.conf.d/},
-因为根据 \href{https://www.freedesktop.org/software/fontconfig/fontconfig-user.html}{freedesktop} 的说法,
-该路径已废弃,
-故此处采用新的路径,
-即 \path{$XDG_CONFIG_HOME/fontconfig/conf.d/}}
-\begin{lstlisting}
-  cp ~/.local/texlive/2026/texmf-var/fonts/conf/texlive-fontconfig.conf $XDG_CONFIG_HOME/fontconfig/conf.d/09-texlive.conf
-\end{lstlisting}
-然后执行
-\begin{lstlisting}
-  fc-cache -fv
-\end{lstlisting}
-实际上,
-无论将 \TeX~Live 安装到哪里,
-字体的配置文件都可以仿照上面只复制于个人用户文件夹中.
+即认为安装成功.
 
 \section{升级宏包}\label{sec:ubuntu:update}
+
+\subsection{\texttt{tlmgr} 权限问题}\label{sec:ubuntu:tlmgr}
 
 默认安装情况下,
 由于权限问题,
@@ -279,41 +352,58 @@ Ubuntu 26.04 默认安装 "fontconfig".
 后续内容类似,
 不再赘述.
 
-\subsection{一步法的优势}
-
-幸运地是,
-一步法已经允许用户在 "sudo" 下直接使用 "tlmgr",
-也就是说,
-使用一步法设置环境变量后,
-在 \textsf{Terminal} 中执行
+若采用\textbf{一步法}设置环境变量,
+则已经允许用户在 "sudo" 下直接使用 "tlmgr".
+例如执行
 \begin{lstlisting}
   sudo tlmgr option repository ctan
 \end{lstlisting}
 让系统自动选择源,
 用户也可以选择大陆地区的源进行升级,
 详情见附录~\ref{chp:appendix:mirror}.
-执行命令
-\begin{lstlisting}
-  sudo tlmgr update --list
-\end{lstlisting}
-可查看目前源上可升级的宏包都有哪些.
-高级用户可以根据自己的需求选择升级特定宏包.
-建议初级用户执行
-\begin{lstlisting}
-  sudo tlmgr update --self --all
-\end{lstlisting}
-同时升级 "tlmgr" 本身和全部宏包.
 
-如果使用\textbf{常规法}设置环境变量,
+若使用\textbf{常规法}设置环境变量,
 则会因为 "sudo" 默认没有加载 "tlmgr" 为环境变量而导致失效，
 下面提供几种方法解决该问题.
 
-\subsection{权限修改}
+\subsubsection{使用绝对路径}
+
+此方法通过调用 "which" 命令来查找 "tlmgr" 的绝对路径,
+例如让系统自动选择源
+\begin{lstlisting}
+  sudo $(which tlmgr) option repository ctan
+\end{lstlisting}
+
+\subsubsection{保持环境变量}
+
+由于前期已经配置好了 "PATH",
+因此可以直接用
+\begin{lstlisting}
+  sudo env PATH="$PATH" tlmgr option repository ctan
+\end{lstlisting}
+
+\subsubsection{修改目录权限}
+
+首先更改安装路径所有权为当前用户
+\begin{lstlisting}
+  sudo chown -R $USER:$USER /usr/local/texlive/2026
+\end{lstlisting}
+然后就可直接脱离 "sudo" 运行
+\begin{lstlisting}
+  tlmgr option repository ctan
+\end{lstlisting}
+如果想恢复权限,
+执行
+\begin{lstlisting}
+  sudo chown -R root:root /usr/local/texlive/2026
+  sudo chmod -R 755 /usr/local/texlive/2026
+\end{lstlisting}
+
+\subsubsection{添加系统权限}
 
 此种方法是我在个人电脑上最常用的方法,
 但因为它有可能造成安全漏洞,
 因此\textbf{不建议新用户使用}.
-首次升级前,
 执行
 \begin{lstlisting}
   sudo visudo
@@ -328,59 +418,44 @@ Ubuntu 26.04 默认安装 "fontconfig".
 接下来的用法与\textbf{一步法}一致,
 不再赘述.
 
-\subsection{使用绝对路径}
+\subsection{利用 \texttt{tlmgr} 升级}
 
-此方法通过调用 "which" 命令来查找 "tlmgr" 的绝对路径,
-例如让系统自动选择源
+执行命令
 \begin{lstlisting}
-  sudo $(which tlmgr) option repository ctan
+  sudo tlmgr update --list
 \end{lstlisting}
-升级 "tlmgr" 本身和全部宏包
+可查看目前源上可升级的宏包都有哪些.
+高级用户可以根据自己的需求选择升级特定宏包.
+建议初级用户执行
 \begin{lstlisting}
-  sudo $(which tlmgr) update --self --all
+  sudo tlmgr update --self --all
 \end{lstlisting}
+同时升级 "tlmgr" 本身和全部宏包.
+使用\textbf{常规法}时,
+还要根据不同的 "tlmgr" 权限使用对应命令.
 
-\subsection{保持环境变量}
-
-由于前期已经配置好了 "PATH",
-因此可以直接用
-\begin{lstlisting}
-  sudo env PATH="$PATH" tlmgr option repository ctan
-  sudo env PATH="$PATH" tlmgr update --self --all
-\end{lstlisting}
-
-\subsection{修改目录权限}
-
-首先更改安装路径所有权为当前用户
-\begin{lstlisting}
-  sudo chown -R $USER:$USER /usr/local/texlive/2026
-\end{lstlisting}
-然后就可直接脱离 "sudo" 运行
-\begin{lstlisting}
-  tlmgr option repository ctan
-  tlmgr update --self --all
-\end{lstlisting}
-如果想恢复权限,
-执行
-\begin{lstlisting}
-  sudo chown -R root:root /usr/local/texlive/2026
-  sudo chmod -R 755 /usr/local/texlive/2026
-\end{lstlisting}
+若\textbf{为个人用户安装},
+请去掉 "sudo".
 
 \section{安装宏包}\label{sec:ubuntu:installpackage}
 
-在 Ubuntu 中安装宏包的要求与 Windows 11 没有多少区别, 只需注意权限, 例如
+在 Ubuntu 中安装宏包的要求与 Windows 11 没有多少区别,
+依旧使用 "tlmgr",
+只需注意权限,
+例如
 \begin{lstlisting}
   sudo tlmgr install mcmthesis
 \end{lstlisting}
 即安装了 \texttt{mcmthesis} 宏包.
+若为个人用户安装,
+去掉 "sudo".
 
 \section{调出宏包手册}\label{sec:ubuntu:texdoc}
 
 与 Windows 11 类似,
 当正确安装后,
 用户可以调出宏包手册以查阅相应内容.
-例如在 \textsf{Terminal} 中执行
+例如执行
 \begin{lstlisting}
   texdoc texlive-zh-cn
   texdoc lshort-zh-cn
@@ -392,8 +467,9 @@ Ubuntu 26.04 默认安装 "fontconfig".
 
 \section{编译文档}
 
-首先, 用户需要在工作路径建立一个 \texttt{tex} 文件.
-在 \textsf{Terminal} 中执行
+首先,
+用户需要在工作路径建立一个 \texttt{tex} 文件.
+执行
 \begin{lstlisting}[deletekeywords = tex]
   mkdir ~/Documents/work-latex
   cd ~/Documents/work-latex/
@@ -445,35 +521,11 @@ Ubuntu 26.04 默认安装 "fontconfig".
 下面提供几种卸载方法,
 卸载后需注意清理环境变量.
 
-\subsection{卸载源内的版本}\label{sec:ubuntu:aptremove}
-
-如果要卸载从源内安装的 \TeX~Live, 个人比较推荐使用 \texttt{synaptic package manager}.
-在 \textsf{Terminal} 中执行
-\begin{lstlisting}
-  sudo apt install synaptic
-\end{lstlisting}
-即可安装.
-安装后打开, 搜索 \textsf{texlive} 即可看到与之相关的包, 右键标记以删除即可.
-当然, 用户也可以直接使用
-\begin{lstlisting}
-  dpkg -l | grep '^ii' | grep -i -E 'texlive|tex live'
-\end{lstlisting}
-找到相应的包名 \texttt{<package name>}, 之后使用类似
-\begin{lstlisting}
-  sudo apt autoremove --purge <package name>
-\end{lstlisting}
-的命令删除各个包.
-通常
-\begin{lstlisting}
-  sudo apt autoremove --purge tex-common
-\end{lstlisting}
-就可以删除源内版本.
-
 \subsection{手动卸载}
 
-如果是从光盘镜像安装,
+从光盘镜像安装,
 直接删除文件夹即可.
-先在\textsf{Terminal} 中执行
+先执行
 \begin{lstlisting}
   kpsewhich -var-value TEXMFROOT
 \end{lstlisting}
@@ -484,9 +536,10 @@ Ubuntu 26.04 默认安装 "fontconfig".
   sudo rm -rf /usr/local/texlive/2026
   rm -rf ~/.texlive2026
 \end{lstlisting}
+
 卸载完成后, 可以进一步移除之前设置的环境变量.
 若用一步法设置环境变量,
-只需在 \textsf{Terminal} 中执行
+只需执行
 \begin{lstlisting}
   sudo tlmgr path remove
 \end{lstlisting}
@@ -503,7 +556,7 @@ Ubuntu 26.04 默认安装 "fontconfig".
   export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
 并保存退出.
-同时在 \textsf{Terminal} 中执行
+再执行
 \begin{lstlisting}
   sudo visudo
 \end{lstlisting}
@@ -517,7 +570,7 @@ Ubuntu 26.04 默认安装 "fontconfig".
 
 同样,
 用户也可以使用 "tlmgr" 工具卸载%
-\footnote{"sudo tlmgr" 无法使用的情况可以参考 \ref{sec:ubuntu:update}~节 解决},
+\footnote{"sudo tlmgr" 无法使用的情况可以参考第~\ref{sec:ubuntu:tlmgr}~节解决},
 \begin{lstlisting}
   sudo tlmgr remove --all
 \end{lstlisting}

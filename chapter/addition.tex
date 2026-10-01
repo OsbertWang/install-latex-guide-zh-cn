@@ -14,7 +14,7 @@
 备份 \texttt{ubuntu.sources} 文件.
 接下来执行
 \begin{lstlisting}[deletekeywords = apt]
-  sudo nano /etc/apt/sources.list.d/ubuntu.sources
+  sudo gnome-text-editor /etc/apt/sources.list.d/ubuntu.sources
 \end{lstlisting}
 打开文件,
 将文件内容替换为%
@@ -64,8 +64,7 @@
   # # Components: main restricted universe multiverse
   # # Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 \end{lstlisting}
-先后按\ \keys{Ctrl + O}, \keys{Enter} 保存,
-\keys{Ctrl + X} 退出.
+保存退出.
 然后执行
 \begin{lstlisting}
   sudo apt update && sudo apt upgrade
