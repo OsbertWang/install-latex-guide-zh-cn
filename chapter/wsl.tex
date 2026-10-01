@@ -124,20 +124,9 @@ WSL 已经能够自动完成可视化工作,
 \end{lstlisting}
 弹出已装载的光盘镜像.
 
-默认安装完成后, 用户需要设置环境变量.
-继续在 \textsf{bash} 中执行
-\begin{lstlisting}
-  nano ~/.profile
-\end{lstlisting}
-在打开的文件末尾添加
-\begin{lstlisting}[deletekeywords = local]
-  # Add TeX Live to the PATH, MANPATH, INFOPATH
-  export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
-  export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
-  export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
-\end{lstlisting}
-先后按\ \keys{Ctrl + O}, \keys{Enter} 保存,
-\keys{Ctrl + X} 退出.
+默认安装完成后,
+用户需要设置环境变量,
+方法同第~\ref{ubuntu:env}~节.
 退出 WSL 再进入,
 执行
 \begin{lstlisting}
@@ -210,7 +199,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 打开用户文件夹下的配置文件
 \begin{lstlisting}[deletekeywords = texdoc]
   mkdir -p ~/texmf/texdoc && touch ~/texmf/texdoc/texdoc.cnf
-  nano ~/texmf/texdoc/texdoc.cnf
+  gnome-text-editor ~/texmf/texdoc/texdoc.cnf
 \end{lstlisting}
 在文件内写入
 \begin{lstlisting}
@@ -285,7 +274,7 @@ WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
 \begin{lstlisting}[deletekeywords = tex]
   mkdir /mnt/d/work-latex
   cd /mnt/d/work-latex
-  nano main.tex
+  gnome-text-editor main.tex
 \end{lstlisting}
 建立文档,
 内容同上,

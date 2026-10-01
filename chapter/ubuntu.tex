@@ -12,7 +12,7 @@
 建议用户先确定系统内是否已经有 "fontconfig",
 经测试,
 Ubuntu 26.04 默认安装 "fontconfig".
-安装 "fontconfig" 只需在 \textsf{Terminal} 中执行
+如需安装 "fontconfig" 只需在 \textsf{Terminal} 中执行
 \begin{lstlisting}
   sudo apt install fontconfig
 \end{lstlisting}
@@ -47,10 +47,10 @@ Ubuntu 26.04 默认安装 "fontconfig".
   4a9071bb567c3bdd6443378dedc8e485aea4a2f1203ec8ed7c17f6787093b9c37636a037032c0be63352e3d0bf98cf5616dab19fdcd7cb83f766b3e085b620ff  texlive2026.iso
 \end{lstlisting}
 
-将下载的镜像文件进行装载%
-\footnote{实际上右击打开快捷菜单会见到装载选项,
-如此就省去了手动 \texttt{mount} 的过程,
-记住系统提供的装载路径即可直接执行安装过程},
+将下载的镜像文件进行挂载%
+\footnote{右键快捷菜单会将镜像直接挂载到 \path{/run/media/username/texlive2026},
+省去了手动 \texttt{mount} 的过程;
+记住系统提供的挂载路径即可直接执行安装过程},
 \begin{lstlisting}
   sudo mkdir /mnt/texlive
   sudo mount ./texlive2026.iso /mnt/texlive
@@ -151,22 +151,43 @@ Ubuntu 26.04 默认安装 "fontconfig".
   sudo rm -r /mnt/texlive
 \end{lstlisting}
 
-设置环境变量.
-执行
+\subsection{设置环境变量}\label{ubuntu:env}
+
+这里列出两种在 Ubuntu 26.04 设置 TeX~Live 的环境变量的方法.
+
+\subsubsection{一步法}
+
+这种方法只需要一条命令,
+不仅能设置环境变量,
+还能免去后续使用 \texttt{tlmgr} 需要额外设置权限的麻烦.
+直接执行
 \begin{lstlisting}
-  nano ~/.profile
+  sudo /usr/local/texlive/2026/bin/x86_64-linux/tlmgr path add
 \end{lstlisting}
-在打开的文件末尾添加刚刚记录的系统提示,
-如
+本质上,
+它在 \texttt{/usr/local/bin} 中创建一系列符号链接,
+这些链接指向当前 TeX~Live 的二进制目录.
+
+\subsubsection{常规法}
+
+这种方法是最常规的方法,
+它适用性更广,
+可以作为其他软件的环境变量设置的参考.
+打开设置文件
+\begin{lstlisting}
+  gnome-text-editor ~/.profile
+\end{lstlisting}
+在打开的文件末尾添加刚刚记录的系统提示
 \begin{lstlisting}[deletekeywords = local]
   # Add TeX Live to the PATH, MANPATH, INFOPATH
   export PATH=/usr/local/texlive/2026/bin/x86_64-linux:$PATH
   export MANPATH=/usr/local/texlive/2026/texmf-dist/doc/man:$MANPATH
   export INFOPATH=/usr/local/texlive/2026/texmf-dist/doc/info:$INFOPATH
 \end{lstlisting}
-先后按\ \keys{Ctrl + O}, \keys{Enter} 保存,
-\keys{Ctrl + X} 退出.
-然后退出当前用户并重新登录,
+保存退出.
+
+设置好环境变量后,
+退出当前用户并重新登录,
 再打开 \textsf{Terminal} 并执行
 \begin{lstlisting}
   tex -v
@@ -220,7 +241,8 @@ Ubuntu 26.04 默认安装 "fontconfig".
   ~/.local/texlive/2026/
 \end{lstlisting}
 安装完毕后,
-继续修改环境变量为
+\textbf{禁止使用一步法}设置环境变量,
+继续用常规法设置环境变量为
 \begin{lstlisting}
   # Add TeX Live to the PATH, MANPATH, INFOPATH
   export PATH=~/.local/texlive/2026/bin/x86_64-linux:$PATH
@@ -251,32 +273,19 @@ Ubuntu 26.04 默认安装 "fontconfig".
 默认安装情况下,
 由于权限问题,
 直接使用 "tlmgr" 升级宏包会失败,
-但如果使用 "sudo" 执行,
-会显示 "tlmgr" 命令不存在,
-因为 "sudo" 默认没有加载它为环境变量，
-这里提供几种方法解决该问题.
+但如果使用 "sudo" 就牵扯到 "tlmgr" 命令能否在 "sudo" 下执行的问题.
 至于为个人用户安装,
 下述的 "tlmgr" 命令可以脱离 "sudo" 使用.
 后续内容类似,
 不再赘述.
 
-\subsection{权限修改}
+\subsection{一步法的优势}
 
-此种方法是我在个人电脑上最常用的方法,
-但因为它有可能造成安全漏洞,
-因此\textbf{不建议新用户使用}.
-首次升级前,
-执行
-\begin{lstlisting}
-  sudo visudo
-\end{lstlisting}
-用 "nano" 打开文件,
-在 \path{secure_path} 后面添加
-\begin{lstlisting}[language = {}]
-  /usr/local/texlive/2026/bin/x86_64-linux:
-\end{lstlisting}
-保存退出.
-接下来在 \textsf{Terminal} 中执行
+幸运地是,
+一步法已经允许用户在 "sudo" 下直接使用 "tlmgr",
+也就是说,
+使用一步法设置环境变量后,
+在 \textsf{Terminal} 中执行
 \begin{lstlisting}
   sudo tlmgr option repository ctan
 \end{lstlisting}
@@ -294,6 +303,30 @@ Ubuntu 26.04 默认安装 "fontconfig".
   sudo tlmgr update --self --all
 \end{lstlisting}
 同时升级 "tlmgr" 本身和全部宏包.
+
+如果使用\textbf{常规法}设置环境变量,
+则会因为 "sudo" 默认没有加载 "tlmgr" 为环境变量而导致失效，
+下面提供几种方法解决该问题.
+
+\subsection{权限修改}
+
+此种方法是我在个人电脑上最常用的方法,
+但因为它有可能造成安全漏洞,
+因此\textbf{不建议新用户使用}.
+首次升级前,
+执行
+\begin{lstlisting}
+  sudo visudo
+\end{lstlisting}
+用 "nano" 打开文件,
+在 \path{secure_path} 后面添加
+\begin{lstlisting}[language = {}]
+  /usr/local/texlive/2026/bin/x86_64-linux:
+\end{lstlisting}
+按\ \keys{Ctrl + O}, \keys{Enter} 保存,
+\keys{Ctrl + X} 退出.
+接下来的用法与\textbf{一步法}一致,
+不再赘述.
 
 \subsection{使用绝对路径}
 
@@ -364,7 +397,7 @@ Ubuntu 26.04 默认安装 "fontconfig".
 \begin{lstlisting}[deletekeywords = tex]
   mkdir ~/Documents/work-latex
   cd ~/Documents/work-latex/
-  nano main.tex
+  gnome-text-editor main.tex
 \end{lstlisting}
 在打开的文件输入一个最小示例
 \begin{lstlisting}[language = mwe]
@@ -385,11 +418,11 @@ Ubuntu 26.04 默认安装 "fontconfig".
 \texttt{main.log}.
 执行
 \begin{lstlisting}
-  evince main.pdf
+  papers main.pdf
 \end{lstlisting}
 即可打开 \texttt{pdf} 文件.
 
-对于中文文档, 可以在 "nano" 中编写以下最小示例\footnote{"nano" 默认使用 UTF-8 编码}%
+对于中文文档, 可以在 "gnome-text-editor" 中编写以下最小示例\footnote{"gnome-text-editor" 默认使用 UTF-8 编码}%
 \begin{lstlisting}[language = mwe]
   \documentclass{ctexart}
   \begin{document}
@@ -452,9 +485,15 @@ Ubuntu 26.04 默认安装 "fontconfig".
   rm -rf ~/.texlive2026
 \end{lstlisting}
 卸载完成后, 可以进一步移除之前设置的环境变量.
-在 \textsf{Terminal} 中执行
+若用一步法设置环境变量,
+只需在 \textsf{Terminal} 中执行
 \begin{lstlisting}
-  nano ~/.profile
+  sudo tlmgr path remove
+\end{lstlisting}
+若用常规发设置环境变量,
+执行
+\begin{lstlisting}
+  gnome-text-editor ~/.profile
 \end{lstlisting}
 然后移除之前在文件末尾添加的
 \begin{lstlisting}[deletekeywords = local]
@@ -472,7 +511,7 @@ Ubuntu 26.04 默认安装 "fontconfig".
 \begin{lstlisting}[deletekeywords = local]
   /usr/local/texlive/2026/bin/x86_64-linux:
 \end{lstlisting}
-然后依次\ \keys{\ctrl + X}, \keys{Y}, \keys{\enter} 保存退出.
+依次按\ \keys{Ctrl + O}, \keys{Enter}, \keys{Ctrl + X} 保存退出.
 
 \subsection{使用 \texttt{tlmgr} 工具}
 
