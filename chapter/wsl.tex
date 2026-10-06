@@ -11,28 +11,22 @@
 
 \section{安装 \TeX~Live}
 
+在 Windows 11 中,
+WSL 已经能够自动完成可视化工作,
+这为用户提供了一些便利.
+但更多的安装操作涉及 "apt" 操作.
+为避免安装速度过慢,
+可仿照第~\ref{sec:addition:source}~节更改文件 \texttt{sources.list}.
+不习惯在 WSL 中做文本操作的 Windows 用户,
+可参考第~\ref{sec:addition:wsl-editor}~节.
+其余安装前的准备工作见第~\ref{sec:ubuntu:prepare}~节.
+
 在主系统\footnote{在 Windows 11 中直接进行的操作即为在主系统中的操作}%
 中下载
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso}{\texttt{iso} 镜像文件},
 可选择国内源以加快下载速度.
 下载完毕后, 在 \textsf{cmd} 中验证文件是否正常.
 下载及文件验证方法同 \ref{sec:windows:install}~节.
-
-在正式安装前,
-为减少后续字体问题,
-用户需要先确定 \texttt{fontconfig} 是否已经安装.
-若未安装,
-用户需要在 \textsf{bash} 中执行
-\begin{lstlisting}
-  sudo apt install fontconfig
-\end{lstlisting}
-在 Windows 11 中,
-WSL 已经能够自动完成可视化工作,
-这为一些用户提供了便利.
-为避免安装速度过慢,
-可仿照 \ref{sec:addition:source}~节更改文件 \texttt{sources.list}.
-不习惯在 WSL 中做文本操作的 Windows 用户,
-可参考 \ref{sec:addition:wsl-editor}~节.
 
 接下来挂载镜像.
 这里需要先通过一个例子解释 WSL 的路径和主系统路径的对应关系.
@@ -45,78 +39,8 @@ WSL 已经能够自动完成可视化工作,
   sudo mount -o loop /mnt/c/Users/username/Downloads/texlive2026.iso /mnt/iso
 \end{lstlisting}
 如此便可在 \textsf{bash} 中找到装载的光盘镜像.
-之后执行
-\begin{lstlisting}
-  sudo /mnt/iso/install-tl
-\end{lstlisting}
-进行安装.
-在屏幕上应该能见到以下内容
-\begin{lstlisting}[language = {}, deleteemph = set]
-  ======================> TeX Live installation procedure <=====================
 
-  ======>   Letters/digits in <angle brackets> indicate   <=======
-  ======>   menu items for actions or customizations      <=======
-  = help>   https://tug.org/texlive/doc/install-tl.html   <=======
-  
-   Detected platform: GNU/Linux on x86_64
-  
-   <B> set binary platforms: 1 out of 15
-  
-   <S> set installation scheme: scheme-full
-  
-   <C> set installation collections:
-       40 collections out of 41, disk space required: 9388 MB (free: 974100 MB)
-  
-   <D> set directories:
-     TEXDIR (the main TeX directory):
-       /usr/local/texlive/2026
-     TEXMFLOCAL (directory for site-wide local files):
-       /usr/local/texlive/texmf-local
-     TEXMFSYSVAR (directory for variable and automatically generated data):
-       /usr/local/texlive/2026/texmf-var
-     TEXMFSYSCONFIG (directory for local config):
-       /usr/local/texlive/2026/texmf-config
-     TEXMFVAR (personal directory for variable and automatically generated data):
-       ~/.texlive2026/texmf-var
-     TEXMFCONFIG (personal directory for local config):
-       ~/.texlive2026/texmf-config
-     TEXMFHOME (directory for user-specific files):
-       ~/texmf
-  
-   <O> options:
-     [ ] use letter size instead of A4 by default
-     [X] allow execution of restricted list of programs via \write18
-     [X] create all format files
-     [X] install macro/font doc tree
-     [X] install macro/font source tree
-     [ ] create symlinks to standard directories
-     [X] after install, set CTAN as source for package updates
-  
-   <V> set up for portable installation
-  
-  Actions:
-   <I> start installation to hard disk
-   <P> save installation profile to 'texlive.profile' and exit
-   <Q> quit
-  
-  Enter command:
-\end{lstlisting}
-这时一定要关注其中的
-\begin{lstlisting}[language = {}, deleteemph = set]
-  disk space required: 9388 MB (free: 974100 MB)
-\end{lstlisting}
-它代表了安装所需空间 "9388 MB",
-而目前空余空间 "974100 MB".
-根据每台电脑的实际情况,
-数字可能不同,
-只有空余空间大于安装所需空间时,
-安装才能顺利.
-确定空余空间大于安装所需空间后,
-直接点击\ \keys{I} 使用默认配置安装.
-如果用户对于 WSL 比较了解, 可以根据提示, 更改安装设置.
-与第~\ref{chap:ubuntu:sec:install}~节一样,
-为简化起见,
-以下记录均假定为 \path{x86_64} 上的默认安装.
+后续安装过程与第~\ref{chap:ubuntu:sec:install}~节一样,
 安装完毕后, 需继续在 \textsf{bash} 中执行
 \begin{lstlisting}
   sudo umount /mnt/iso
@@ -124,7 +48,7 @@ WSL 已经能够自动完成可视化工作,
 \end{lstlisting}
 弹出已装载的光盘镜像.
 
-默认安装完成后,
+安装完成后,
 用户需要设置环境变量,
 方法同第~\ref{sec:ubuntu:env}~节.
 退出 WSL 再进入,
@@ -146,31 +70,15 @@ WSL 已经能够自动完成可视化工作,
 \end{lstlisting}
 即为安装成功.
 
-接下来仿照 Ubuntu 处理字体.
-首先将配置文件复制到系统,
-在 \textsf{bash} 执行
-\begin{lstlisting}[deletekeywords = local]
-  sudo cp /usr/local/texlive/2026/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf
-\end{lstlisting}
-然后在 \textsf{bash} 执行
-\begin{lstlisting}
-  sudo fc-cache -fsv
-\end{lstlisting}
-刷新字体缓存.
-
-\subsection{在用户文件夹安装}
-
-WSL 同样也可以在用户文件夹中安装,
-它的用户文件夹往往在主系统的系统盘中.
-具体过程也可以参考第~\ref{subsec:ubuntu-user-folder}~节.
+后续配置字体缓存的方法同第~\ref{sec:ubuntu:font}~节.
 
 \section{升级宏包}
 
-WSL 中的方法同 \ref{sec:ubuntu:update}~节.
+WSL 中的方法同第~\ref{sec:ubuntu:update}~节.
 
 \section{安装宏包}
 
-WSL 中的方法同 \ref{sec:ubuntu:installpackage}~节.
+WSL 中的方法同第~\ref{sec:ubuntu:installpackage}~节.
 
 \section{调出宏包手册}
 
