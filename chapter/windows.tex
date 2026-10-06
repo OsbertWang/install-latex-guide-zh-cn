@@ -2,25 +2,25 @@
 
 \chapter{Windows 11 系统}
 
-\section{安装 \TeX~Live}\label{sec:windows:install}
+Windows 系统是目前国内使用最广的操作系统,
+然而很多用户对这个常见的操作系统并不熟悉,
+尤其是在安装 \TeX~Live 时,
+常常会遇到很多意想不到的问题.
+本章先从安装前准备开始,
+分步写出安装 \TeX~Live 的过程.
+有些操作可能显得繁琐,
+但它确实可以极大概率规避安装过程中可能遇到的麻烦.
+
+\section{安装前准备}\label{sec:windows:prepare}
+
+\subsection{显示扩展名}
 
 在安装 \TeX~Live 之前,
 在文件夹菜单栏\ \menu{查看 > 显示} 中选择\ \menu{文件扩展名}.
 
-用户可以从最近的 CTAN 源%
-\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}%
-下载 \TeX~Live 的
-\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso}{\texttt{iso} 镜像文件},
-也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
-通过大陆地区的源下载 \texttt{iso} 文件的方法请参考附录~\ref{chp:appendix:mirror}.
+\subsection{检查环境}
 
-假设镜像文件被下载到本地后,
-其存放路径为 \path{X:\Y}%
-\footnote{这里, \path{X} 表示盘符,
-如 \path{C}、\path{D}、\path{E} 等;
-\path{Y} 表示文件夹;
-默认路径名称为不带空格的英文}.
-下载完毕后, 用户打开 \textsf{cmd} 窗口%
+打开 \textsf{cmd} 窗口%
 \footnote{按\ \keys{\faWindows},
 或在任意文件夹中按\ \keys{\ctrl + L},
 输入 "cmd",
@@ -34,7 +34,6 @@
 %\end{lstlisting}
 它显示了当前所在路径并等待用户下一步操作,
 通常在开启 \textsf{cmd} 或上一程序运行结束时会显示.
-
 在 \textsf{cmd} 执行
 \begin{lstlisting}
   echo %path:;=&echo.%
@@ -59,16 +58,37 @@
 的解释, 待安装结束后, 再将环境变量重新添加至 \TeX~Live 的环境变量之后}.
 同时国内常见的 2345 好压也会对安装构成影响,
 建议删除它并在安装 \TeX~Live 后更换其他同类软件%
-\footnote{推荐 \href{http://www.winrar.com.cn/}{WinRAR}
-或 \href{https://www.7-zip.org/}{7-Zip}}.
-\textbf{最重要的是, 不要安装第三方安全软件}%
-\footnote{Windows 11 中已经内置了安全软件,
-用户尤其没有必要安装国产的第三方杀毒软件,
-根据经验,
-它们会干扰 \TeX~Live 安装}.
+\footnote{推荐 \href{http://www.winrar.com.cn/}{WinRAR},
+\href{https://www.7-zip.org/}{7-Zip},
+\href{https://www.nanazip.com.cn/}{NanaZip}}.
 
-下面我们要确保下载到的 \texttt{iso} 文件没有损坏, 一种常用做法是检查其 MD5 值.
-当然, 如果确信自己下载到的文件没有问题, 也可以跳过这一步.
+\subsection{安全软件}
+
+安装 \TeX~Live 最重要的是,
+\textbf{不安装第三方安全软件}.
+Windows 11 中已经内置了安全软件,
+用户尤其没有必要安装国产第三方杀毒软件,
+根据经验,
+它们会干扰 \TeX~Live 安装.
+
+\subsection{下载与校验}\label{sec:windows:download}
+
+用户可以从最近的 CTAN 源%
+\footnote{这里所谓的最近, 其实是由系统判定的, 实际上系统可能会误判}%
+下载 \TeX~Live 的
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso}{\texttt{iso} 镜像文件},
+也可以找大陆地区的源自行下载\footnote{新版本发布时, 各镜像网站同步的进度会有不同}.
+通过大陆地区的源下载 \texttt{iso} 文件的方法请参考附录~\ref{chp:appendix:mirror}.
+
+假设镜像文件被下载到本地后,
+其存放路径为 \path{X:\Y}%
+\footnote{这里, \path{X} 表示盘符,
+如 \path{C}、\path{D}、\path{E} 等;
+\path{Y} 表示文件夹;
+默认路径名称为不带空格的英文}.
+
+安装前需要确保下载到的 \texttt{iso} 文件没有损坏,
+一种常用做法是检查其 MD5 值.
 打开 \textsf{cmd} 窗口依次执行以下代码
 \begin{lstlisting}
   cd /d X:\Y
@@ -101,6 +121,8 @@
   CertUtil: -hashfile 命令成功完成.
 \end{lstlisting}
 即为验证成功.
+
+\section{安装 \TeX~Live}\label{sec:windows:install}
 
 接下来开始安装.
 推荐用户先手动建立 \TeX~Live 的安装路径 (文件夹) 再进行安装,
