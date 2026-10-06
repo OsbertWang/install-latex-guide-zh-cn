@@ -413,7 +413,7 @@ Windows 11 中字体列表见%
 "txs:///view-pdf-internal --embedded"
 即可. 
 
-\section{Ubuntu 24.04 系统}\label{sec:editor:ubuntu}
+\section{Ubuntu 26.04 系统}\label{sec:editor:ubuntu}
 
 简化起见, 这里只介绍如何使用 \TeX studio.
 
@@ -427,7 +427,8 @@ Windows 11 中字体列表见%
   sudo apt install texstudio
 \end{lstlisting}
 即可安装 \TeX studio.
-注意安装过程中会产生一些依赖, 它们包括了源内的 \TeX~Live 包, 如 \texttt{tex-common}, \texttt{texlive-base}, \texttt{texlive-binaries}, \texttt{texlive-latex-base} 和 \texttt{texlive-latex-recommended}.
+注意安装过程中会产生一些依赖, 它们包括了源内的 \TeX~Live 包,
+如 \texttt{tex-common}, \texttt{texlive-base}, \texttt{texlive-binaries}, \texttt{texlive-latex-base} 和 \texttt{texlive-latex-recommended}.
 用户需要卸载它们,
 参见 \ref{sec:ubuntu:aptremove}~节.
 
@@ -462,9 +463,55 @@ Windows 11 中字体列表见%
 \begin{lstlisting}
   sudo apt install libfuse2
 \end{lstlisting}
-再右键 \TeX studio 的 appimage 文件,
+再右键 \TeX studio 的 AppImage 文件,
 在\ \menu{Properties > Permissions} 中勾选\ \menu{Allow executing files as program}.
 随后可双击打开 \TeX studio.
+
+AppImage 文件本身不会自动集成到系统中,
+要将 \TeX studio 的 AppImage 设置为 ".tex" 文件的默认打开程序,
+核心步骤是先创建一个桌面条目 ".desktop" 文件,
+然后将 ".tex" 文件关联到这个条目.
+执行
+\begin{lstlisting}
+    gnome-text-editor ~/.local/share/applications/texstudio.desktop
+\end{lstlisting}
+并在其中复制
+\begin{lstlisting}
+    [Desktop Entry]
+    Type=Application
+    Name=TeXstudio
+    Comment=LaTeX Editor
+    Exec=<TeXStudio.AppImagePath>/texstudio.AppImage %f
+    Icon=<TeXStudio.AppImagePath>/texstudio-icon.png
+    Terminal=false
+    Categories=Office;Publishing;Qt;
+    MimeType=text/x-tex;
+\end{lstlisting}
+这里的 "<TeXStudio.AppImagePath>" 是用户保存 \TeX studio 的 AppImage 文件的实际路径,
+注意文件名填写正确.
+"Icon" 路径可以指向你下载的图标,
+也可以留空或使用通用图标名.
+保存退出.
+接下来执行
+\begin{lstlisting}
+    xdg-mime default texstudio.desktop text/x-tex
+    update-desktop-database ~/.local/share/applications
+\end{lstlisting}
+完成设置.
+此后即可用
+\begin{lstlisting}
+    xdg-open filename.tex
+\end{lstlisting}
+通过 \TeX studio 打开文件.
+
+若要恢复系统默认状态,
+依次执行
+\begin{lstlisting}
+    xdg-mime default org.gnome.TextEditor.desktop text/x-tex
+    rm ~/.local/share/applications/texstudio.desktop
+    update-desktop-database ~/.local/share/applications
+\end{lstlisting}
+即可.
 
 \subsection{额外设置路径}
 
