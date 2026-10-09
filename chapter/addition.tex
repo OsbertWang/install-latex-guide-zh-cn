@@ -371,42 +371,49 @@ VS Code 的插件权限有限,
 这里提供一份在 Windows 系统内调用外部 \href{https://www.sumatrapdfreader.org/free-pdf-reader}{SumatraPDF} 阅读器的设置方法,
 虽然 \LaTeX\ Workshop 官方的 \href{https://github.com/James-Yu/LaTeX-Workshop/wiki/View#using-synctex-with-an-external-viewer}{Wiki} 已声明不再支持外部 PDF 阅读器,
 但这套方法依然可以使用.
+
+首先在 VS Code 设置的 \texttt{json} 文件内写入
 \begin{lstlisting}[language = json]
   "latex-workshop.view.pdf.viewer": "external",
   "latex-workshop.view.pdf.ref.viewer": "external",
-  "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFROOT>/SumatraPDF.exe",
+  "latex-workshop.view.pdf.external.viewer.command": "<SumatraPDFPath>/SumatraPDF.exe",
   "latex-workshop.view.pdf.external.viewer.args": [
     "-reuse-instance",
-    "-inverse-search",
-    "wscript.exe \"<SumatraPDFROOT>/sumatra-inverse.vbs\" \"%f\" %l",
     "%PDF%"
   ],
-  "latex-workshop.view.pdf.external.synctex.command": "<SumatraPDFROOT>/SumatraPDF.exe",
+  "latex-workshop.view.pdf.external.synctex.command": "<SumatraPDFPath>/SumatraPDF.exe",
   "latex-workshop.view.pdf.external.synctex.args": [
     "-reuse-instance",
     "-forward-search",
     "%TEX%",
     "%LINE%",
-    "-inverse-search",
-    "wscript.exe \"<SumatraPDFROOT>/sumatra-inverse.vbs\" \"%f\" %l",
     "%PDF%"
   ]
 \end{lstlisting}
 实际使用时,
-用户需要结合自身安装情况更换 \path{<SumatraPDFROOT>},
-即 SumatraPDF 的安装路径,
-并且在 \path{<SumatraPDFROOT>} 内写入 \texttt{sumatra-inverse.vbs} 文件,
-文件内容是
+用户需要结合自身安装情况更换 \path{<SumatraPDFPath>},
+即 SumatraPDF 的安装路径.
+
+接下来设置 SumatraPDF.
+在菜单栏\ \menu{Settings > Advanced Options} 中找到并设置其键值
+\begin{lstlisting}
+  EnableTeXEnhancements = true
+  ReuseInstance = true
+  ReloadModifiedDocuments = true
+  InverseSearchCmdLine = wscript.exe "<SumatraPDFPath>\sumatra-inverse.vbs" "%f" %l
+\end{lstlisting}
+并在 \path{<SumatraPDFPath>} 内写入 \texttt{sumatra-inverse.vbs} 文件,
+内容是
 \begin{lstlisting}[language = VBScript]
   Set WshShell = CreateObject("WScript.Shell")
   If WScript.Arguments.Count < 2 Then WScript.Quit
   filePath = WScript.Arguments(0)
   lineNum  = WScript.Arguments(1)
   gotoArg = Chr(34) & filePath & ":" & lineNum & Chr(34)
-  cmdLine = Chr(34) & "<VSCodeROOT>\bin\code.cmd" & Chr(34) & " -r -g " & gotoArg
+  cmdLine = Chr(34) & "<VSCodePath>\bin\code.cmd" & Chr(34) & " -r -g " & gotoArg
   WshShell.Run cmdLine, 0, False
 \end{lstlisting}
-这里 \path{<VSCodeROOT>} 是 VS Code 的安装路径.
+这里 \path{<VSCodePath>} 是 VS Code 的安装路径.
 
 \section{迁移 WSL 的安装位置}
 

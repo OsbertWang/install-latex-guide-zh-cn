@@ -10,10 +10,10 @@
 
 首先在能够联网的电脑上访问
 \href{https://ctan.org/tex-archive/systems/texlive/tlnet/archive}{\texttt{archive}}
-页面, 下载 \texttt{<archivename>.tar.xz} 文件.
+页面, 下载 \texttt{<archiveName>.tar.xz} 文件.
 文件列表很长, 加载需花费些时间.
-注意 \texttt{<archivename>} 未必是
-\href{https://ctan.org/pkg/}{\textsf{pkg}} 上的 \texttt{<pkgname>},
+注意 \texttt{<archiveName>} 未必是
+\href{https://ctan.org/pkg/}{\textsf{pkg}} 上的 \texttt{<pkgName>},
 例如在 \textsf{pkg} 上的
 \href{https://ctan.org/pkg/lshort-zh-cn}{\textsf{lshort-zh-cn}}
 对应着 \texttt{archive} 上的
@@ -21,9 +21,9 @@
 和
 \href{http://mirrors.ctan.org/systems/texlive/tlnet/archive/lshort-chinese.doc.tar.xz}{\texttt{lshort-chinese.doc.tar.xz}}.
 
-这里多解释一点 \texttt{<archivename>}.
-前面已经看到一个 \texttt{<pkgname>} 可能会对应多个 \texttt{<archivename>},
-但基本上 \texttt{<archivename>} 的命名规则是 \texttt{<xxx>},
+这里多解释一点 \texttt{<archiveName>}.
+前面已经看到一个 \texttt{<pkgName>} 可能会对应多个 \texttt{<archiveName>},
+但基本上 \texttt{<archiveName>} 的命名规则是 \texttt{<xxx>},
 \texttt{<xxx.source>} 和 \texttt{<xxx.doc>}.
 \texttt{<xxx>} 是必装的宏包文件;
 \texttt{<xxx.source>} 是选择安装的源码, 如 \texttt{dtx} 文件;
@@ -46,12 +46,12 @@
 如果是升级本地未安装的可执行文件,
 那么用户就需要根据经验自行判断.
 
-下载正确的 \texttt{<archivename>.tar.xz} 后,
+下载正确的 \texttt{<archiveName>.tar.xz} 后,
 可先检查一下该压缩文件中是否包含了 \texttt{tlpobj} 文件.
 之后将压缩文件拷贝到未联网电脑上,
 在命令行执行
 \begin{lstlisting}
-  tlmgr install --file <archivename>.tar.gz
+  tlmgr install --file <archiveName>.tar.gz
 \end{lstlisting}
 系统便可自行安装.
 
