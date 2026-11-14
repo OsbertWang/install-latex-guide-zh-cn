@@ -21,6 +21,7 @@ latexmk
 libertine
 listings
 menukeys
+nameref # indirect, required by hyperref 2026-11-03 v7.01t
 pict2e
 qrcode
 relsize
