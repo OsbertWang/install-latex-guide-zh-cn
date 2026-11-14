@@ -247,3 +247,6 @@ TSWLatexianTemp*
 
 # garbage file in macOS
 *.DS_Store
+
+# fancyqr package
+*.fqr
