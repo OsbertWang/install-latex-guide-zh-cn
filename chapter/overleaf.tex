@@ -86,9 +86,9 @@ Overleaf 在 2022 年 9 月 30 日更新了新的功能,
 \subsection{选择不同发行版版本}
 
 Overleaf 将后台 \TeX~Live 升级后,
-用户新建项目默认使用 \TeX~Live 2024,
-而老项目还是使用 \TeX~Live 的老版本.
-如果用户不打算使用 \TeX~Live 2024,
+用户新建项目默认选择可用的最新版 \TeX~Live,
+而老项目会保持创建当时的旧版 \TeX~Live.
+如果用户想切换 \TeX~Live 版本,
 只需在\ \menu{File > Settings > Compiler} 选择版本即可.
 
 \subsection{学习与帮助}
@@ -154,9 +154,11 @@ TeXPage 的%
 它整合了学术研究者所需的各类工具,
 让用户能够专注于内容创作,
 而无需为繁琐的格式调整费心.
-据称,
-该平台计划不按算力收费,
-即没有编译时间限制.
+该平台曾称计划不按算力收费,
+即没有编译时间限制;
+不过目前其\href{https://www.texhub.com/pricing}{定价方案}已有编译时限,
+只不过较为宽松,
+并且免费版与专业版限制相同.
 此外,
 网站还以建立全国高等教育和科研图库为目标,
 愿景较为宏大.
@@ -189,9 +191,9 @@ LoongTeX 官网内嵌%
 涵盖了专业版和团队版,
 用户可以根据实际需要考虑购买.
 
-\subsection{Keepresearch}
+\subsection{KeepResearch}
 
-\href{https://www.keepresearch.com/}{Keepresearch} 是一个较新的国内平台,
+\href{https://www.keepresearch.com/}{KeepResearch} 是一个较新的国内平台,
 据官网介绍,
 该平台的特色是融合了人工智能技术,
 例如AI分析、AI演示文稿等.
@@ -213,13 +215,18 @@ LoongTeX 官网内嵌%
 
 \section{科研院所搭建平台}
 
-大陆地区部分高校 (例如%
+大陆地区部分高校搭建了供内部师生使用的平台,
+例如采用 Overleaf 的%
 \href{https://overleaf.tsinghua.edu.cn/login}{清华大学}%
 和%
-\href{https://latex.ustc.edu.cn/login}{中国科学技术大学}) 搭建了供内部师生使用的平台.
+\href{https://latex.ustc.edu.cn/login}{中国科学技术大学}%
+与采用 TeXPage 的%
+\href{https://doc.nju.edu.cn/books/latex}{南京大学}.
 
-中国科学院计算机网络信息中心科技云运行与技术发展部曾发邮件宣称开始提供论文协同编辑服务,
-据我猜测,
-它利用了早年 Sharelatex 的部分内容.
-试用可点击%
-\href{https://www.cstcloud.cn/resources/452}{这里}.
+中国科学院计算机网络信息中心科技云运行与技术发展部曾发邮件宣称开始提供\href{https://latex.cstcloud.cn}{论文协同编辑服务}.
+该平台开放使用,
+可用各高校账号、ORCID、GitHub、微信、QQ 等方式登录.
+据猜测,
+其早期版本利用了早年 ShareLaTeX 的部分内容,
+后来改为采购 Overleaf 企业版.
+详细介绍可参考\href{https://www.cstcloud.cn/resources/452}{中国科技云门户}.
