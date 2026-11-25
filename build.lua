@@ -8,7 +8,7 @@
              Do Check Before Upload
 --]==========================================]--
 module           = "install-latex-guide-zh-cn"
-version          = "2026.11.1"
+pkgversion       = "2026.11.1"
 maintainer       = "Ran Wang"
 uploader         = maintainer
 maintainid       = "OsbertWang"
@@ -36,7 +36,7 @@ typesetruns      = 1
 
 uploadconfig = {
   pkg          = module,
-  version      = version,
+  version      = pkgversion,
   author       = maintainer,
   uploader     = uploader,
   email        = email,

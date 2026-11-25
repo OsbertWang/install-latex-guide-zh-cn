@@ -12,7 +12,7 @@ Users are advised to read [texlive-zh-cn](https://www.tug.org/texlive/doc/texliv
 
 The code involved in this article also asks users to do more, don't simply copy and paste.
 
-If you need to compile the source files, please make sure to install the fandol font and use the `xelatex` command.
+If you need to compile the source files, please make sure to install the founder font and use the `xelatex` command.
 TeX Live users are recommended to use the following commands
 ```
 latexmk -xelatex -synctex=1 install-latex-guide-zh-cn
@@ -34,7 +34,7 @@ This work is released under the LaTeX Project Public License, v1.3c or later.
 
 本文所涉及到的代码还请用户多多动手, 不要简单地复制粘贴.
 
-若需要编译源文件, 请确保安装 fandol 字体, 并使用 `xelatex` 命令.
+若需要编译源文件, 请确保安装 founder 字体, 并使用 `xelatex` 命令.
 推荐 TeX Live 用户使用如下命令
 ```
 latexmk -xelatex -synctex=1 install-latex-guide-zh-cn
