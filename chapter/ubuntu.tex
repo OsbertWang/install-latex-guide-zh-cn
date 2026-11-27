@@ -72,28 +72,83 @@ Ubuntu 26.04 默认安装 "fontconfig".
 下载
 \href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso}{\texttt{iso} 镜像文件}
 的方法见第~\ref{sec:windows:download}~节.
-下载完毕后,
-验证 MD5 值,
-即执行以下命令
+下载镜像时,
+还应从同一镜像目录下载
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso.md5}{\path{texlive2026.iso.md5}}
+和
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso.sha512}{\path{texlive2026.iso.sha512}}
+两个校验文件,
+并将它们与镜像保存在同一目录.
+以下假设该目录为 \path{~/Downloads},
+镜像文件名为 \path{texlive2026.iso}.
+如果下载的是带日期的镜像,
+应使用与其同名的校验文件,
+并相应调整以下命令中的文件名.
+
+使用 \texttt{-c} 选项可以读取校验文件中的预期哈希值,
+自动计算并比较本地镜像的哈希值,
+无需逐位人工比对.
+注意该选项后应填写校验文件名,
+而非镜像文件名.
+依次执行
 \begin{lstlisting}
   cd ~/Downloads
-  md5sum texlive2026.iso
+  md5sum -c texlive2026.iso.md5
+  sha512sum -c texlive2026.iso.sha512
 \end{lstlisting}
-若显示
+若两条命令分别显示类似
+\begin{lstlisting}[language = {}]
+  texlive2026.iso: OK
+\end{lstlisting}
+则表示镜像的 MD5 和 SHA512 值均与校验文件一致.
+中文环境中的结果文字可能不同.
+若提示校验失败、文件不存在或校验文件格式错误,
+应检查下载是否完整、文件名是否一致以及是否位于正确的目录,
+必要时重新下载,
+不要继续安装.
+
+哈希校验用于检查镜像与校验文件是否一致.
+如需进一步确认校验文件的来源,
+还应从同一镜像目录下载
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso.md5.asc}{\path{texlive2026.iso.md5.asc}}
+和
+\href{https://mirrors.ctan.org/systems/texlive/Images/texlive2026.iso.sha512.asc}{\path{texlive2026.iso.sha512.asc}},
+并使用 GnuPG 验证签名.
+这两个 \path{.asc} 文件是校验文件的分离签名,
+并非镜像的哈希值.
+若系统中没有 \texttt{gpg} 命令,
+可先执行 \texttt{sudo apt install gnupg}.
+
+导入 \TeX~Live 的签名公钥并查看指纹:
 \begin{lstlisting}
-  f5872cb2dec838670f91ed5c62493553  texlive2026.iso
+  gpg --keyserver hkps://keyserver.ubuntu.com --recv-keys C78B82D8C79512F79CC0D7C80D5E5D9106BAB6BC
+  gpg --fingerprint C78B82D8C79512F79CC0D7C80D5E5D9106BAB6BC
 \end{lstlisting}
-则镜像文件下载正确.
-同样可验证 SHA512 值,
-执行
+应对照
+\href{https://tug.org/texlive/verify.html}{\TeX~Live 官方验证说明}
+核对主密钥指纹:
+\begin{lstlisting}[language = {}]
+  C78B 82D8 C795 12F7 9CC0  D7C8 0D5E 5D91 06BA B6BC
+\end{lstlisting}
+确认一致后,
+在上述下载目录中执行以下命令,
+分别验证签名,
+并在签名验证成功后校验镜像:
 \begin{lstlisting}
-  cd ~/Downloads
-  sha512sum texlive2026.iso
+  gpg --verify texlive2026.iso.md5.asc texlive2026.iso.md5 &&
+    md5sum -c texlive2026.iso.md5
+  gpg --verify texlive2026.iso.sha512.asc texlive2026.iso.sha512 &&
+    sha512sum -c texlive2026.iso.sha512
 \end{lstlisting}
-正确的返回结果为
-\begin{lstlisting}[literate={a}{a}{1} {b}{b}{1} {c}{c}{1} {d}{d}{1} {e}{e}{1} {f}{f}{1}]
-  4a9071bb567c3bdd6443378dedc8e485aea4a2f1203ec8ed7c17f6787093b9c37636a037032c0be63352e3d0bf98cf5616dab19fdcd7cb83f766b3e085b620ff  texlive2026.iso
-\end{lstlisting}
+签名验证成功时,
+GnuPG 会显示来自 \texttt{TeX Live Distribution} 的
+\texttt{Good signature} 或对应的本地化提示.
+还可能提示该公钥未经可信签名认证,
+这与签名验证失败不同,
+但仍须完成上述指纹核对,
+不能仅凭签名者名称判断公钥的身份.
+只有签名验证和随后的哈希校验均通过,
+才完成了这一验证流程.
 
 \section{安装 \TeX~Live}\label{chap:ubuntu:sec:install}
 
