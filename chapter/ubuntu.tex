@@ -319,6 +319,11 @@ Ubuntu 26.04 默认安装 "fontconfig".
 无论将 \TeX~Live 安装到哪里,
 字体的配置文件都可以仿照上面只复制于个人用户文件夹中.
 
+另外,
+由于 fandol 字体的维护者已在 CTAN 上将其标记为 obsolete,
+Ubuntu 用户需要额外安装字体,
+见第~\ref{chap:appendix:subsec:font}~节.
+
 \subsection{验证安装}
 
 执行
@@ -500,7 +505,7 @@ Ubuntu 26.04 默认安装 "fontconfig".
 
 对于中文文档, 可以在 "gnome-text-editor" 中编写以下最小示例\footnote{"gnome-text-editor" 默认使用 UTF-8 编码}%
 \begin{lstlisting}[language = mwe]
-  \documentclass{ctexart}
+  \documentclass[fontset=ubuntu]{ctexart}
   \begin{document}
     你好 \LaTeX\ 世界！
   \end{document}
